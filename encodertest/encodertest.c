@@ -25,17 +25,27 @@ WORD enc_readReg(WORD address) {
     cmd.w = 0x4000|address.w; //set 2nd MSB to 1 for a read
     cmd.w |= parity(cmd.w)<<15; //calculate even parity for
 
-    ENC_NCS = 0; //lower the chip select line to start transfer
-    SPI1BUF = (uint16_t)cmd.w;
+    //ENC_NCS = 0; //lower the chip select line to start transfer
+    D3 = 0;
+    SPI1BUF = (uint16_t)cmd.b[1];
     while (SPI1STATbits.SPIRBF ==0) {}
-    result.w = SPI1BUF;
-    ENC_NCS = 1;
+    result.b[1] = (uint8_t)SPI1BUF;
+    SPI1BUF = (uint16_t)cmd.b[0];
+    while (SPI1STATbits.SPIRBF ==0) {}
+    result.b[0] = (uint8_t)SPI1BUF;
+    D3 = 1;
+    //ENC_NCS = 1;
 
-    ENC_NCS = 0;
+    //ENC_NCS = 0;
+    D3 = 0;
     SPI1BUF = 0;
     while (SPI1STATbits.SPIRBF ==0) {}
-    result.w = SPI1BUF;
-    ENC_NCS=1;
+    result.b[1] = (uint8_t)SPI1BUF;
+    SPI1BUF = 0;
+    while (SPI1STATbits.SPIRBF ==0) {}
+    result.b[0] = (uint8_t)SPI1BUF;
+    D3 = 1;
+    //ENC_NCS=1;
 
     return result;
 }
@@ -94,12 +104,17 @@ int16_t main(void) {
 
   init_elecanisms();
 
-  ENC_MOSI_DIR = OUT;
-  ENC_MISO_DIR = IN;
-  ENC_SCK_DIR = OUT;
-  ENC_NCS_DIR = OUT;
+  //ENC_MOSI_DIR = OUT;
+  //ENC_MISO_DIR = IN;
+  //ENC_SCK_DIR = OUT;
+  //ENC_NCS_DIR = OUT;
+  D0_DIR = OUT;
+  D1_DIR = IN;
+  D2_DIR = OUT;
+  D3_DIR = OUT;
 
-  ENC_NCS = 1; //Raise the chip select line (it's active low). 
+  //ENC_NCS = 1; //Raise the chip select line (it's active low). 
+  D3 = 1;
 
   RPOR = (uint8_t *)&RPOR0;
   RPINR = (uint8_t *)&RPINR0;
@@ -110,7 +125,7 @@ int16_t main(void) {
   RPOR[D2_RP] = SCK1OUT_RP;
   __builtin_write_OSCCONL(OSCCON | 0x40);
 
-  SPI1CON1 = 0x0132;              // SPI mode = 0, SCK freq = 1 MHz
+  SPI1CON1 = 0x0032;              // SPI mode = 1, SCK freq = 1 MHz
   SPI1CON2 = 0;
   SPI1STAT = 0x8000;
 
