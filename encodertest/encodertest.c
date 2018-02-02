@@ -11,21 +11,12 @@
 #define READ_SW3            5
 #define READ_ENCODER        6
 
-#define ENC_MOSI  D0
-#define ENC_MISO  D1
-#define ENC_SCK   D2
-#define ENC_NCS   D3
-#define ENC_MOSI_DIR  D0_DIR
-#define ENC_MISO_DIR  D1_DIR
-#define ENC_SCK_DIR   D2_DIR
-#define ENC_NCS_DIR   D3_DIR
-
 WORD enc_readReg(WORD address) {
     WORD cmd, result;
     cmd.w = 0x4000|address.w; //set 2nd MSB to 1 for a read
     cmd.w |= parity(cmd.w)<<15; //calculate even parity for
 
-    //ENC_NCS = 0; //lower the chip select line to start transfer
+    //lower the chip select line to start transfer
     D3 = 0;
     SPI1BUF = (uint16_t)cmd.b[1];
     while (SPI1STATbits.SPIRBF ==0) {}
@@ -34,9 +25,7 @@ WORD enc_readReg(WORD address) {
     while (SPI1STATbits.SPIRBF ==0) {}
     result.b[0] = (uint8_t)SPI1BUF;
     D3 = 1;
-    //ENC_NCS = 1;
 
-    //ENC_NCS = 0;
     D3 = 0;
     SPI1BUF = 0;
     while (SPI1STATbits.SPIRBF ==0) {}
@@ -45,7 +34,6 @@ WORD enc_readReg(WORD address) {
     while (SPI1STATbits.SPIRBF ==0) {}
     result.b[0] = (uint8_t)SPI1BUF;
     D3 = 1;
-    //ENC_NCS=1;
 
     return result;
 }
@@ -104,14 +92,10 @@ int16_t main(void) {
 
   init_elecanisms();
 
-  //ENC_MOSI_DIR = OUT;
-  //ENC_MISO_DIR = IN;
-  //ENC_SCK_DIR = OUT;
-  //ENC_NCS_DIR = OUT;
-  D0_DIR = OUT;
-  D1_DIR = IN;
-  D2_DIR = OUT;
-  D3_DIR = OUT;
+  D0_DIR = OUT; //MOSI
+  D1_DIR = IN;  //MISO
+  D2_DIR = OUT; //SCK
+  D3_DIR = OUT; //NCS
 
   //ENC_NCS = 1; //Raise the chip select line (it's active low). 
   D3 = 1;
