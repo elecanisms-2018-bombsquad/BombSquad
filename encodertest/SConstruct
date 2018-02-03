@@ -15,10 +15,13 @@ list = Builder(action = 'xc16-objdump -S -D $SOURCE > $TARGET',
                src_suffix = 'elf')
 env.Append(BUILDERS = {'List' : list})
 
-env.Program('blink', ['blink.c', 
-                      '../lib/elecanisms.c']) 
-env.Hex('blink')
-env.List('blink')
+env.Program('encodertest', ['encodertest.c', 
+                      '../lib/elecanisms.c',
+                      '../lib/usb.c',
+                      '../lib/common.c',
+                      'descriptors.c']) 
+env.Hex('encodertest')
+env.List('encodertest')
 
 
 
@@ -39,6 +42,6 @@ env.List('blink')
 #env.Append(BUILDERS = {'Load' : load})
 
 
-env.Hex('blink')
-env.List('blink')
+env.Hex('encodertest')
+env.List('encodertest')
 #env.Load('blink')
