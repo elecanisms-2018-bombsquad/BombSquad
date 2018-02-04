@@ -55,9 +55,7 @@ class encodertestgui:
         self.sw1_status.configure(text = 'SW1 is currently {!s}'.format(self.dev.read_sw1()))
         self.sw2_status.configure(text = 'SW2 is currently {!s}'.format(self.dev.read_sw2()))
         self.sw3_status.configure(text = 'SW3 is currently {!s}'.format(self.dev.read_sw3()))
-        angle = self.dev.get_angle()
-        if (angle != 0):
-            self.enc_status.configure(text = 'Angle is {:05d}'.format(angle))
+        self.enc_status.configure(text = 'Angle is {:05d}'.format(self.dev.get_angle()))
         self.update_job = self.root.after(50, self.update_status)
 
     def shut_down(self):
