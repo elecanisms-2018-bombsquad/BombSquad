@@ -26,6 +26,14 @@ WORD enc_readReg(WORD address) {
     result.b[0] = (uint8_t)SPI1BUF;
     D3 = 1;
 
+    __builtin_nop();
+    __builtin_nop();
+    __builtin_nop();
+    __builtin_nop();
+    __builtin_nop();
+    __builtin_nop();
+
+
     D3 = 0;
     SPI1BUF = 0;
     while (SPI1STATbits.SPIRBF ==0) {}
@@ -109,7 +117,7 @@ int16_t main(void) {
   RPOR[D2_RP] = SCK1OUT_RP;
   __builtin_write_OSCCONL(OSCCON | 0x40);
 
-  SPI1CON1 = 0x0032;              // SPI mode = 1, SCK freq = 1 MHz
+  SPI1CON1 = 0x003A;              // SPI mode = 1, SCK freq = 2 MHz
   SPI1CON2 = 0;
   SPI1STAT = 0x8000;
 
