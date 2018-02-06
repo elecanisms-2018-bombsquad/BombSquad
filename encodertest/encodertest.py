@@ -1,3 +1,4 @@
+
 import usb.core
 import time
 
@@ -10,7 +11,7 @@ class encodertest:
         self.READ_SW1 = 3
         self.READ_SW2 = 4
         self.READ_SW3 = 5
-        self.READ_ENCODER = 6
+        self.ENC_READ_REG = 6
         self.dev = usb.core.find(idVendor = 0x6666, idProduct = 0x0003)
         if self.dev is None:
             raise ValueError('no USB device found matching idVendor = 0x6666 and idProduct = 0x0003')
@@ -71,10 +72,20 @@ class encodertest:
         else:
             return int(ret[0])
 
-    def read_encoder(self, address):
+    def enc_readReg(self, address):
         try:
-            ret = self.dev.ctrl_transfer(0xC0, self.READ_ENCODER, address, 0, 2)
+            ret = self.dev.ctrl_transfer(0xC0, self.ENC_READ_REG, address, 0, 2)
         except usb.core.USBError:
             print "Could not send ENC_READ_REG vendor request."
         else:
             return ret
+
+    def get_angle(self):
+        try:
+            ret = self.dev.ctrl_transfer(0xC0, self.ENC_READ_REG, 0x3FFF, 0, 2)
+        except usb.core.USBError:
+            print "Could not send ENC_READ_REG vendor request."
+        else:
+            return (int(ret[0]) + 256 * int(ret[1])) & 0x3FFF
+
+
