@@ -7,7 +7,7 @@
 
 //loop nops for delay
 void blocking_delay_us(uint16_t N);
-// initiates I2C1 module to baud rate BRG
+// initiates I2C3 module to baud rate BRG
 void i2c_init(int BRG);
 //function iniates a start condition on bus
 void i2c_start(void);

@@ -17,6 +17,7 @@ env.Append(BUILDERS = {'List' : list})
 
 env.Program('i2ctest', ['i2ctest.c',
                         '../lib/i2c_reg.c',
-                        '../lib/elecanisms.c'])
+                        '../lib/elecanisms.c',
+                        '../lib/ajuart.c'])
 env.Hex('i2ctest')
 env.List('i2ctest')

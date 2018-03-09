@@ -12,31 +12,31 @@ void blocking_delay_us(uint16_t N)
   }
 }
 
-// initiates I2C1 module to baud rate BRG
+// initiates I2C3 module to baud rate BRG
 void i2c_init(int BRG){
    int temp;
 
    // I2CBRG = 157 for 16Mhz OSC with 100kHz I2C clock
-   I2C1BRG = BRG;
-   I2C1CONbits.I2CEN = 0;	// Disable I2C Mode
-   I2C1CONbits.DISSLW = 1;	// Disable slew rate control
-   IFS1bits.MI2C1IF = 0;	 // Clear Interrupt
-   I2C1CONbits.I2CEN = 1;	// Enable I2C Mode
-   temp = I2C1RCV;	 // read buffer to clear buffer full
+   I2C3BRG = BRG;           // Sets freq to 100kHz
+   I2C3CONbits.I2CEN = 0;	// Disable I2C Mode
+   I2C3CONbits.DISSLW = 1;	// Disable slew rate control
+   IFS5bits.MI2C3IF = 0;	 // Clear Interrupt
+   I2C3CONbits.I2CEN = 1;	// Enable I2C Mode
+   temp = I2C3RCV;	 // read buffer to clear buffer full
    reset_i2c_bus();	 // set bus to idle
 }
 
 //function iniates a start condition on bus
 void i2c_start(void){
    int x = 0;
-   I2C1CONbits.ACKDT = 0;	//Reset any previous Ack
+   I2C3CONbits.ACKDT = 0;	//Reset any previous Ack
    blocking_delay_us(10);
-   I2C1CONbits.SEN = 1;	//Initiate Start condition
+   I2C3CONbits.SEN = 1;	//Initiate Start condition
    __asm__("nop");
 
    //the hardware will automatically clear Start Bit
    //wait for automatic clear before proceding
-   while (I2C1CONbits.SEN){
+   while (I2C3CONbits.SEN){
       blocking_delay_us(1);
       x++;
       if (x > 20)
@@ -49,12 +49,12 @@ void i2c_restart(void)
 {
    int x = 0;
 
-   I2C1CONbits.RSEN = 1;	//Initiate restart condition
+   I2C3CONbits.RSEN = 1;	//Initiate restart condition
    __asm__("nop");
 
    //the hardware will automatically clear restart bit
    //wait for automatic clear before proceding
-   while (I2C1CONbits.RSEN)
+   while (I2C3CONbits.RSEN)
    {
       blocking_delay_us(1);
       x++;
@@ -70,17 +70,17 @@ void reset_i2c_bus(void)
 {
    int x = 0;
 
-   I2C1CONbits.PEN = 1;     //initiate stop bit
-   while (I2C1CONbits.PEN) {     //wait for hardware clear of stop bit
+   I2C3CONbits.PEN = 1;     //initiate stop bit
+   while (I2C3CONbits.PEN) {     //wait for hardware clear of stop bit
       blocking_delay_us(1);
       x ++;
       if (x > 20) break;
    }
 
-   I2C1CONbits.RCEN = 0;
-   IFS1bits.MI2C1IF = 0; // Clear Interrupt
-   I2C1STATbits.IWCOL = 0;
-   I2C1STATbits.BCL = 0;
+   I2C3CONbits.RCEN = 0;
+   IFS5bits.MI2C3IF = 0; // Clear Interrupt
+   I2C3STATbits.IWCOL = 0;
+   I2C3STATbits.BCL = 0;
    blocking_delay_us(10);
 }
 
@@ -89,13 +89,13 @@ void reset_i2c_bus(void)
 char send_i2c_byte(int data){       //basic I2C byte send
    int i;
 
-   while (I2C1STATbits.TBF) { }
-   IFS1bits.MI2C1IF = 0; // Clear Interrupt
-   I2C1TRN = data; // load the outgoing data byte
+   while (I2C3STATbits.TBF) { }
+   IFS5bits.MI2C3IF = 0; // Clear Interrupt
+   I2C3TRN = data; // load the outgoing data byte
 
 
    for (i=0; i<500; i++){           // wait for transmission
-      if (!I2C1STATbits.TRSTAT) break;
+      if (!I2C3STATbits.TRSTAT) break;
       blocking_delay_us(1);
     }
 
@@ -103,7 +103,7 @@ char send_i2c_byte(int data){       //basic I2C byte send
         return(1);
     }
 
-   if (I2C1STATbits.ACKSTAT == 1){          // Check for NO_ACK from slave, abort if not found
+   if (I2C3STATbits.ACKSTAT == 1){          // Check for NO_ACK from slave, abort if not found
       reset_i2c_bus();
       return(1);
    }
@@ -117,15 +117,15 @@ char send_i2c_byte(int data){       //basic I2C byte send
 char i2c_read(void){
    int i = 0;
    char data = 0;
-   I2C1CONbits.RCEN = 1;            //set I2C module to receive
+   I2C3CONbits.RCEN = 1;            //set I2C module to receive
 
-   while (!I2C1STATbits.RBF) {           //if no response, break
+   while (!I2C3STATbits.RBF) {           //if no response, break
       i ++;
       if (i > 2000) break;
    }
 
 
-   data = I2C1RCV;       //get data from I2C1RCV register
+   data = I2C3RCV;       //get data from I2C3RCV register
    return data;
 }
 
@@ -134,15 +134,15 @@ char i2c_read(void){
 char i2c_read_ack(void){	//does not reset bus!!!
    int i = 0;
    char data = 0;
-   I2C1CONbits.RCEN = 1;            //set I2C module to receive
+   I2C3CONbits.RCEN = 1;            //set I2C module to receive
 
-   while (!I2C1STATbits.RBF) {       //if no response, break
+   while (!I2C3STATbits.RBF) {       //if no response, break
       i++;
       if (i > 2000) break;
    }
 
-   data = I2C1RCV;               //get data from I2C1RCV register
-   I2C1CONbits.ACKEN = 1;       //set ACK to high
+   data = I2C3RCV;               //get data from I2C3RCV register
+   I2C3CONbits.ACKEN = 1;       //set ACK to high
    blocking_delay_us(10);               //wait before exiting
    return data;
 }
