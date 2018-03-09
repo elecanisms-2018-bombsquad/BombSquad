@@ -91,7 +91,7 @@ class bootloadercmd:
                 print 'Write completed, but not verified.'
         else:
             print 'Could not write device.\nNo connection to a PIC24FJ USB bootloader device.'
-    
+
     def read_device(self):
         if self.connected==True:
             print 'Reading program memory...'
@@ -167,6 +167,12 @@ class bootloadercmd:
             self.connected = False
             print 'Could not connect to a PIC24FJ USB bootloader device.\nPlease connect one and try again.'
 
+    def disconnect(self):
+        self.bootloader.start_user()
+        self.bootloader.close()
+        self.connected = False
+        print 'Disconnected from PIC24FJ USB bootloader device.\nStarting user code.'
+
     def clear_flash(self):
         for i in range(0x2AC00):
             if i%2==0:
@@ -202,7 +208,7 @@ class bootloadercmd:
                         line = line + '.'
             outfile.write(line)
         outfile.close()
-    
+
     def import_hex(self, filename = ''):
         if filename=='':
             return
@@ -324,44 +330,47 @@ SYNOPSIS
 
 OPTIONS
 
-    -B    Exclude the bootloader segment of flash from an exported hex or dump 
+    -B    Exclude the bootloader segment of flash from an exported hex or dump
           file (default behavior).
 
-    +B    Include the bootloader segment of flash from an exported hex or dump 
+    +B    Include the bootloader segment of flash from an exported hex or dump
           file.
 
     -V    Do not verify the connected PIC24FJ USB bootloader device on write.
 
-    +V    Verify the connected PIC24FJ USB bootloader device on write (default 
+    +V    Verify the connected PIC24FJ USB bootloader device on write (default
           behavior).
 
     -i <hex_file>
-          Import hex file specified by <hex_file> into the flash memory buffer. 
+          Import hex file specified by <hex_file> into the flash memory buffer.
 
-    -e    Erase the program memory of the connected PIC24FJ USB bootloader 
+    -e    Erase the program memory of the connected PIC24FJ USB bootloader
           device.
 
     -b    Blank check the connected PIC24FJ USB bootloader device.
 
-    -r    Read the program memory of the connected PIC24FJ USB bootloader 
+    -r    Read the program memory of the connected PIC24FJ USB bootloader
           device.
 
-    -w    Erase the program memory of the connected PIC24FJ USB bootloader 
-          device, write the contents of the flash memory buffer, and verify 
+    -w    Erase the program memory of the connected PIC24FJ USB bootloader
+          device, write the contents of the flash memory buffer, and verify
           the device if verify on write is enabled.
 
-    -v    Verify that the contents of program memory of the connected PIC24FJ 
+    -v    Verify that the contents of program memory of the connected PIC24FJ
           USB bootloader device match those of the flash memory buffer.
 
     -x <hex_file>
-          Export the contents of the flash memory buffer to a hex file 
+          Export the contents of the flash memory buffer to a hex file
           specified by <hex_file>.
 
     -d <dump_file>
-          Dump the contents of the flash memory buffer to a text file 
+          Dump the contents of the flash memory buffer to a text file
           specified by <dump_file>.
 
     -h    Display this help.
+
+    -q    Disconnect the connected PIC24FJ USB bootloader device and start
+          user program
     '''
 
 def main(argv):
@@ -401,6 +410,8 @@ def main(argv):
             boot.verify()
         elif argv[i]=='-b':
             boot.blank_check()
+        elif argv[i]=='-q':
+            boot.disconnect()
         elif argv[i]=='-h' or argv[i]=='--help':
             pass
         else:
