@@ -1,25 +1,24 @@
 
-env = Environment(PIC = '24FJ128GB206', 
-                  CC = 'xc16-gcc', 
-                  PROGSUFFIX = '.elf', 
-                  CFLAGS = '-g -omf=elf -x c -mcpu=$PIC', 
-                  LINKFLAGS = '-omf=elf -mcpu=$PIC -Wl,--script="app_p24FJ128GB206.gld"', 
+env = Environment(PIC = '24FJ128GB206',
+                  CC = 'xc16-gcc',
+                  PROGSUFFIX = '.elf',
+                  CFLAGS = '-g -omf=elf -x c -mcpu=$PIC',
+                  LINKFLAGS = '-omf=elf -mcpu=$PIC -Wl,--script="app_p24FJ128GB206.gld"',
                   CPPPATH = '../lib')
-env.PrependENVPath('PATH', '/Applications/microchip/xc16/v1.33/bin')
+env.PrependENVPath('PATH', '/opt/microchip/xc16/v1.33/bin')
 bin2hex = Builder(action = 'xc16-bin2hex $SOURCE -omf=elf',
-                  suffix = 'hex', 
+                  suffix = 'hex',
                   src_suffix = 'elf')
 env.Append(BUILDERS = {'Hex' : bin2hex})
-list = Builder(action = 'xc16-objdump -S -D $SOURCE > $TARGET', 
-               suffix = 'lst', 
+list = Builder(action = 'xc16-objdump -S -D $SOURCE > $TARGET',
+               suffix = 'lst',
                src_suffix = 'elf')
 env.Append(BUILDERS = {'List' : list})
 
-env.Program('cdctest', ['cdctest.c', 
-                        'descriptors.c', 
-                        '../lib/elecanisms.c', 
-                        '../lib/cdc.c', 
-                        '../lib/usb.c']) 
+env.Program('cdctest', ['cdctest.c',
+                        'descriptors.c',
+                        '../lib/elecanisms.c',
+                        '../lib/cdc.c',
+                        '../lib/usb.c'])
 env.Hex('cdctest')
 env.List('cdctest')
-
