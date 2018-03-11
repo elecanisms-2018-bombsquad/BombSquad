@@ -3,24 +3,24 @@
 ** All rights reserved.
 **
 ** Redistribution and use in source and binary forms, with or without
-** modification, are permitted provided that the following conditions are met: 
-** 
-**     1. Redistributions of source code must retain the above copyright 
-**        notice, this list of conditions and the following disclaimer. 
-**     2. Redistributions in binary form must reproduce the above copyright 
-**        notice, this list of conditions and the following disclaimer in the 
-**        documentation and/or other materials provided with the distribution. 
+** modification, are permitted provided that the following conditions are met:
 **
-** THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
-** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
-** IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
-** ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE 
-** LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR 
-** CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF 
-** SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS 
-** INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN 
-** CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+**     1. Redistributions of source code must retain the above copyright
+**        notice, this list of conditions and the following disclaimer.
+**     2. Redistributions in binary form must reproduce the above copyright
+**        notice, this list of conditions and the following disclaimer in the
+**        documentation and/or other materials provided with the distribution.
+**
+** THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+** IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+** ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+** LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+** CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+** SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+** INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+** CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 ** POSSIBILITY OF SUCH DAMAGE.
 */
 
@@ -29,7 +29,7 @@
 
 #include <stdint.h>
 
-#define init_clock()    CLKDIV = 0x0100     // RCDIV = 001 (4MHz, div2), 
+#define init_clock()    CLKDIV = 0x0100     // RCDIV = 001 (4MHz, div2),
                                             // CPDIV = 00 (FOSC = 32MHz, FCY = 16MHz)
 
 #define FCY     16e6
@@ -48,6 +48,26 @@
 
 #define disable_interrupts()    __asm__ volatile("disi #0x3FFF")
 #define enable_interrupts()     DISICNT = 0
+
+// max, min, sign, clamp added by Logan from previous year's elecanisms code
+
+#define max(a,b) \
+   ({ __typeof__ (a) _a = (a); \
+       __typeof__ (b) _b = (b); \
+     _a > _b ? _a : _b; })
+
+#define min(a,b) \
+   ({ __typeof__ (a) _a = (a); \
+       __typeof__ (b) _b = (b); \
+     _a < _b ? _a : _b; })
+
+#define sign(x) \
+   ({ __typeof__ (x) _x = (x); \
+     (_x > 0) - (_x < 0); })
+
+#define clamp(x, l, h) \
+   ({ __typeof__ (x) _x = (x); \
+     max(l, min(x, h)); })
 
 typedef union {
     int16_t i;
