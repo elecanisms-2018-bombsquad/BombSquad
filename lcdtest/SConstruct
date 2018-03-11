@@ -23,14 +23,8 @@ list = Builder(action = 'xc16-objdump -S -D $SOURCE > $TARGET',
 env.Append(BUILDERS = {'List' : list})
 
 env.Program('lcdtest', ['lcdtest.c',
-                        '../lib/strm.c',
-                        '../lib/ui.c',
                         '../lib/lcd.c',
-                        '../lib/pin.c',
-                        '../lib/uart.c',
-                        '../lib/timer.c',
                         '../lib/i2c.c',
-                        '../lib/oc.c',
                         '../lib/common.c'])
 
 #print('Creating builder to load hex file via bootloader...')

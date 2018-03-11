@@ -1,9 +1,6 @@
 #include <p24FJ128GB206.h>
 
-// #include "common.h"
 #include "lcd.h"
-#include "timer.h"
-// #include "ui.h"
 
 // I2C Reg (MSB) P7 P6 P5 P4 P3 P2 P1 P0
 // Driver pin    D7 D6 D5 D4 ?  E  RW RS
@@ -66,10 +63,10 @@ void __lcd_i2c_write(_LCD *self, uint8_t ch) {
 void __lcd_enablePulse(_LCD *self) {
     self->io_write_val ^= ENABLE_TOGGLE;
     __lcd_i2c_write(self, self->io_write_val);
-    timer_delayMicro(100);
+    blocking_delay_us(100);
     self->io_write_val ^= ENABLE_TOGGLE;
     __lcd_i2c_write(self, self->io_write_val);
-    // timer_delayMicro(1000);
+    // blocking_delay_us(1000);
 }
 
 void __lcd_send(_LCD *self, uint8_t value, uint8_t command) {
@@ -138,33 +135,33 @@ void lcd_init(_LCD *self, uint8_t addr, char vendor) {
 
     __lcd_i2c_write(self, 0x00);
 
-    timer_delayMicro(15000);
+    blocking_delay_us(15000);
 
     // Some bullshit according to pg 46
     __lcd_send8(self, 0x03, INTERNAL_WRITE);
-    timer_delayMicro(5000);
+    blocking_delay_us(5000);
 
     __lcd_send8(self, 0x03, INTERNAL_WRITE);//0b00110000
-    timer_delayMicro(5000);
+    blocking_delay_us(5000);
 
     __lcd_send8(self, 0x03, INTERNAL_WRITE);//0b00110000
-    timer_delayMicro(5000);
+    blocking_delay_us(5000);
 
     // Put it in 4 bit mode
     __lcd_send8(self, 0x02, INTERNAL_WRITE);//0b00110000
-    timer_delayMicro(5000);
+    blocking_delay_us(5000);
 
     __lcd_send(self, 0x28, INTERNAL_WRITE); // Set rows and direction
-    timer_delayMicro(50);
+    blocking_delay_us(50);
 
     __lcd_send(self, 0x80, INTERNAL_WRITE); // Display off, cursor off
-    timer_delayMicro(50);
+    blocking_delay_us(50);
 
     __lcd_send(self, 0x01, INTERNAL_WRITE); // Go to home position
-    timer_delayMicro(2000);
+    blocking_delay_us(2000);
 
     __lcd_send(self, 0x06, INTERNAL_WRITE); // Set curson direction
-    timer_delayMicro(5000);
+    blocking_delay_us(5000);
 
     __lcd_send(self, 0x0C, INTERNAL_WRITE); // Display on, cursor off
 }
@@ -184,12 +181,12 @@ void lcd_display(_LCD *self, uint8_t on) {
 
 void lcd_clear(_LCD *self) {
     __lcd_send(self, LCD_CLEARDISPLAY, INTERNAL_WRITE);
-    timer_delayMicro(2000);
+    blocking_delay_us(2000);
 }
 
 void lcd_putc(_LCD *self, char c) {
     __lcd_send(self, c, DR_WRITE);
-    // timer_delayMicro(1000);
+    // blocking_delay_us(1000);
 }
 
 void lcd_goto(_LCD *self, uint8_t line, uint8_t col) { //x=col, y=row
