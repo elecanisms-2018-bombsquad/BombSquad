@@ -2,20 +2,27 @@
 #include "ajuart.h"
 #include <stdio.h>
 
+void delay_by_nop(int num_nops){    // 1 nop= 375ns
+    uint16_t count = 0;
+    while (count < num_nops){
+        __asm__("nop");
+        count +=1;
+    }
+}
+
 int16_t main(void) {
     init_elecanisms();
+    LED1 = 1;
+    delay_by_nop(50);
     i2c_init(157);
-
-    char msg[] = "Hello World!";
-    uint8_t len = 13;
     LED3 = 1;
 
+    char msg[] = "imiy}y";
+    uint8_t len = 6;
 
     while (1) {
-      // printf("I tried the while loop \n");
-      LED1 = !LED1;
+        reset_i2c_bus();
 
-      I2Cwritearray(0x7E, msg, len);
-      blocking_delay_us(10000);
+      I2Cwritearray(0x7C, msg, len);
     }
 }
