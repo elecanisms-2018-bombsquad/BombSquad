@@ -2,7 +2,7 @@
 #define _LCD_H_
 
 #include <stdint.h>
-#include "i2c.h"
+#include "i2c_reg.h"
 
 void init_lcd(uint8_t initiator);
 

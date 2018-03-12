@@ -11,7 +11,6 @@
 
 int16_t main(void) {
     init_clock();
-    init_i2c();
 
     init_lcd(3); // Inits 3 _LCD type objects in an array
 
@@ -21,9 +20,9 @@ int16_t main(void) {
     lcd_clear(&lcd[2]);
 
 
-    char string1[17]="Spark Scrambler";
+    char string1[17]="Testing i2creg";
     char* strptr1=string1;
-    char string2[17]="Suction Scissor";
+    char string2[17]="using old lcd.h";
     char* strptr2=string2;
     char string3[17]="Photo Sprinkler";
     char* strptr3=string3;
@@ -34,9 +33,8 @@ int16_t main(void) {
     char string6[17]="Ice Thrower";
     char* strptr6=string6;
 
-    lcd_print2(&lcd[0],strptr1,strptr2);
-    lcd_print2(&lcd[1],strptr3,strptr4);
-    lcd_print2(&lcd[2],strptr5,strptr6);
+    lcd_print2(&lcd[1],strptr1,strptr2);
+    lcd_print2(&lcd[0],strptr3,strptr4);
 
     while(1) {
         //

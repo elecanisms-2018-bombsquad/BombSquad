@@ -49,26 +49,25 @@
 
 _LCD lcd[3];
 
-_I2C *__lcd_i2c;
-
 void __lcd_i2c_write(_LCD *self, uint8_t ch) {
-    i2c_start(__lcd_i2c);
-    i2c_putc(__lcd_i2c, self->addr_write);
-    i2c_idle(__lcd_i2c);
-    i2c_putc(__lcd_i2c, ch);
-    i2c_idle(__lcd_i2c);
-    i2c_stop(__lcd_i2c);
+    i2c_start();
+    send_i2c_byte(self->addr_write);
+    send_i2c_byte(ch);
+    reset_i2c_bus();
 }
 
+// Pulse enable pin high and then low to shift in 4 bits of data
 void __lcd_enablePulse(_LCD *self) {
     self->io_write_val ^= ENABLE_TOGGLE;
     __lcd_i2c_write(self, self->io_write_val);
-    blocking_delay_us(100);
+    delay_by_nop(100);
     self->io_write_val ^= ENABLE_TOGGLE;
     __lcd_i2c_write(self, self->io_write_val);
-    // blocking_delay_us(1000);
+    // delay_by_nop(1000);
 }
 
+/* Send 8 bits of data as one 4-bit nibble, shifting in, second 4-bit nibble, and
+shifting in */
 void __lcd_send(_LCD *self, uint8_t value, uint8_t command) {
     uint8_t MS = value & 0x78;
     uint8_t LS = value << 4;
@@ -87,10 +86,11 @@ void __lcd_send8(_LCD *self, uint8_t value, uint8_t command) {
     __lcd_enablePulse(self);
 }
 
-
+/* Some code from last year's Spaceteam project that sets up three LCD screens on
+ one bus with corresponding IO extender types and hard-wired addresses */
 void init_lcd(uint8_t initiator) {
-    __lcd_i2c = &i2c3;
-    i2c_open(__lcd_i2c, 1e3);
+
+    i2c_init(1e3);
 
     switch (initiator) {
         case 0: // Central
@@ -116,6 +116,7 @@ void init_lcd(uint8_t initiator) {
     }
 }
 
+// Initializes the LCD screen hardware as per pg. 46 of the datasheet
 void lcd_init(_LCD *self, uint8_t addr, char vendor) {
     switch(vendor){
         case 'T':// 0x40 == vendor prefix for PCF8574T
@@ -133,43 +134,45 @@ void lcd_init(_LCD *self, uint8_t addr, char vendor) {
 
     self->io_write_val = 0x00;
 
-    __lcd_i2c_write(self, 0x00);  // here is where to edit things 
+    __lcd_i2c_write(self, 0x00);
 
-    blocking_delay_us(15000);
+    delay_by_nop(15000);
 
     // Some bullshit according to pg 46
     __lcd_send8(self, 0x03, INTERNAL_WRITE);
-    blocking_delay_us(5000);
+    delay_by_nop(5000);
 
     __lcd_send8(self, 0x03, INTERNAL_WRITE);//0b00110000
-    blocking_delay_us(5000);
+    delay_by_nop(5000);
 
     __lcd_send8(self, 0x03, INTERNAL_WRITE);//0b00110000
-    blocking_delay_us(5000);
+    delay_by_nop(5000);
 
     // Put it in 4 bit mode
     __lcd_send8(self, 0x02, INTERNAL_WRITE);//0b00110000
-    blocking_delay_us(5000);
+    delay_by_nop(5000);
 
     __lcd_send(self, 0x28, INTERNAL_WRITE); // Set rows and direction
-    blocking_delay_us(50);
+    delay_by_nop(50);
 
     __lcd_send(self, 0x80, INTERNAL_WRITE); // Display off, cursor off
-    blocking_delay_us(50);
+    delay_by_nop(50);
 
     __lcd_send(self, 0x01, INTERNAL_WRITE); // Go to home position
-    blocking_delay_us(2000);
+    delay_by_nop(2000);
 
     __lcd_send(self, 0x06, INTERNAL_WRITE); // Set curson direction
-    blocking_delay_us(5000);
+    delay_by_nop(5000);
 
     __lcd_send(self, 0x0C, INTERNAL_WRITE); // Display on, cursor off
 }
 
+// Stops lcd I2C transfer
 void lcd_stop(_LCD *self) {
-    i2c_stop(__lcd_i2c);
+    reset_i2c_bus();
 }
 
+// Sends show display command to LCD
 void lcd_display(_LCD *self, uint8_t on) {
     if (on) {
         self->display_control |= LCD_DISPLAYON;
@@ -179,16 +182,19 @@ void lcd_display(_LCD *self, uint8_t on) {
     __lcd_send(self, self->display_control | LCD_DISPLAYCONTROL, INTERNAL_WRITE);
 }
 
+// Sends clear display command to LCD
 void lcd_clear(_LCD *self) {
     __lcd_send(self, LCD_CLEARDISPLAY, INTERNAL_WRITE);
-    blocking_delay_us(2000);
+    delay_by_nop(2000);
 }
 
+// Sends single character to LCD display
 void lcd_putc(_LCD *self, char c) {
     __lcd_send(self, c, DR_WRITE);
-    // blocking_delay_us(1000);
+    // delay_by_nop(1000);
 }
 
+// Sends commands to move LCD cursor to specified location
 void lcd_goto(_LCD *self, uint8_t line, uint8_t col) { //x=col, y=row
     uint8_t address;
     switch(line) {
@@ -206,6 +212,7 @@ void lcd_goto(_LCD *self, uint8_t line, uint8_t col) { //x=col, y=row
     address = address+col;
     __lcd_send(self, LCD_SETDDRAMADDR | address, INTERNAL_WRITE);
 }
+
 
 void lcd_cursor(_LCD *self, uint8_t cur) {
     switch(cur) {

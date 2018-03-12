@@ -2,12 +2,12 @@
 
 #include "i2c_reg.h"
 
-void blocking_delay_us(uint16_t N){      //loop __asm__("nop");s for delay
-  uint16_t j;
-  while(N > 0) {
-      for(j=0;j < 16000; j++);
-      __asm__("nop");
-  }
+void delay_by_nop(int num_nops){    // 1 nop= 375ns
+    uint16_t count = 0;
+    while (count < num_nops){
+        __asm__("nop");
+        count +=1;
+    }
 }
 
 // initiates I2C3 module to baud rate BRG
@@ -59,7 +59,7 @@ void reset_i2c_bus(void){
    int x = 0;
    I2C3CONbits.PEN = 1;     //initiate stop bit
    while (I2C3CONbits.PEN) {     //wait for hardware clear of stop bit
-      // blocking_delay_us(1);
+      // delay_by_nop(1);
       delay_by_nop(1);
       x ++;
       if (x > 20) break;
@@ -69,7 +69,7 @@ void reset_i2c_bus(void){
    IFS5bits.MI2C3IF = 0; // Clear Interrupt
    I2C3STATbits.IWCOL = 0;
    I2C3STATbits.BCL = 0;
-   // blocking_delay_us(10);
+   // delay_by_nop(10);
    delay_by_nop(10);
 }
 
