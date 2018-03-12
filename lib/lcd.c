@@ -133,7 +133,7 @@ void lcd_init(_LCD *self, uint8_t addr, char vendor) {
 
     self->io_write_val = 0x00;
 
-    __lcd_i2c_write(self, 0x00);
+    __lcd_i2c_write(self, 0x00);  // here is where to edit things 
 
     blocking_delay_us(15000);
 

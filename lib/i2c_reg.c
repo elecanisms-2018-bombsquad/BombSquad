@@ -2,21 +2,17 @@
 
 #include "i2c_reg.h"
 
-//loop __asm__("nop");s for delay
-void blocking_delay_us(uint16_t N)
-{
+void blocking_delay_us(uint16_t N){      //loop __asm__("nop");s for delay
   uint16_t j;
   while(N > 0) {
-    for(j=0;j < 16000; j++);
+      for(j=0;j < 16000; j++);
       __asm__("nop");
   }
 }
 
 // initiates I2C3 module to baud rate BRG
-void i2c_init(int BRG){
+void i2c_init(int BRG){      // I2CBRG = 157 for 16Mhz OSC with 100kHz I2C clock
    int temp;
-
-   // I2CBRG = 157 for 16Mhz OSC with 100kHz I2C clock
    I2C3BRG = BRG;           // Sets freq to 100kHz
    I2C3CONbits.I2CEN = 0;	// Disable I2C Mode
    I2C3CONbits.DISSLW = 1;	// Disable slew rate control
@@ -30,49 +26,41 @@ void i2c_init(int BRG){
 void i2c_start(void){
    int x = 0;
    I2C3CONbits.ACKDT = 0;	//Reset any previous Ack
-   blocking_delay_us(10);
+   delay_by_nop(10);
    I2C3CONbits.SEN = 1;	//Initiate Start condition
    __asm__("nop");
 
-   //the hardware will automatically clear Start Bit
-   //wait for automatic clear before proceding
-   while (I2C3CONbits.SEN){
-      blocking_delay_us(1);
+   while (I2C3CONbits.SEN){    //the hardware will automatically clear Start Bit
+      delay_by_nop(1);      //wait for automatic clear before proceding
       x++;
       if (x > 20)
       break;
    }
-   blocking_delay_us(2);
+   delay_by_nop(2);
 }
 
-void i2c_restart(void)
-{
+void i2c_restart(void){
    int x = 0;
-
    I2C3CONbits.RSEN = 1;	//Initiate restart condition
    __asm__("nop");
-
    //the hardware will automatically clear restart bit
    //wait for automatic clear before proceding
-   while (I2C3CONbits.RSEN)
-   {
-      blocking_delay_us(1);
+   while (I2C3CONbits.RSEN){
+      delay_by_nop(1);
       x++;
       if (x > 20)	break;
    }
-
-   blocking_delay_us(2);
+   delay_by_nop(2);
 }
 
 
 //Resets the I2C bus to Idle
-void reset_i2c_bus(void)
-{
+void reset_i2c_bus(void){
    int x = 0;
-
    I2C3CONbits.PEN = 1;     //initiate stop bit
    while (I2C3CONbits.PEN) {     //wait for hardware clear of stop bit
-      blocking_delay_us(1);
+      // blocking_delay_us(1);
+      delay_by_nop(1);
       x ++;
       if (x > 20) break;
    }
@@ -81,34 +69,30 @@ void reset_i2c_bus(void)
    IFS5bits.MI2C3IF = 0; // Clear Interrupt
    I2C3STATbits.IWCOL = 0;
    I2C3STATbits.BCL = 0;
-   blocking_delay_us(10);
+   // blocking_delay_us(10);
+   delay_by_nop(10);
 }
 
 
 
 char send_i2c_byte(int data){       //basic I2C byte send
    int i;
-
    while (I2C3STATbits.TBF) { }
    IFS5bits.MI2C3IF = 0; // Clear Interrupt
    I2C3TRN = data; // load the outgoing data byte
 
-
    for (i=0; i<500; i++){           // wait for transmission
       if (!I2C3STATbits.TRSTAT) break;
-      blocking_delay_us(1);
-    }
+      delay_by_nop(1); }
 
     if (i == 500) {
-        return(1);
-    }
+        return(1); }
 
    if (I2C3STATbits.ACKSTAT == 1){          // Check for NO_ACK from slave, abort if not found
       reset_i2c_bus();
-      return(1);
-   }
+      return(1); }
 
-   blocking_delay_us(2);
+   delay_by_nop(2);
    return(0);
 }
 
@@ -123,7 +107,6 @@ char i2c_read(void){
       i ++;
       if (i > 2000) break;
    }
-
 
    data = I2C3RCV;       //get data from I2C3RCV register
    return data;
@@ -143,13 +126,12 @@ char i2c_read_ack(void){	//does not reset bus!!!
 
    data = I2C3RCV;               //get data from I2C3RCV register
    I2C3CONbits.ACKEN = 1;       //set ACK to high
-   blocking_delay_us(10);               //wait before exiting
+   delay_by_nop(10);               //wait before exiting
    return data;
 }
 
 // function puts together I2C protocol for random write
-void I2Cwrite(char addr, char subaddr, char value)
-{
+void I2Cwrite(char addr, char subaddr, char value){
    i2c_start();
    send_i2c_byte(addr & 0xfffe); // set /W bit
    send_i2c_byte(subaddr);
@@ -158,14 +140,13 @@ void I2Cwrite(char addr, char subaddr, char value)
 }
 
 // function puts together I2C protocol for random read
-char I2Cread(char addr, char subaddr)
-{
+char I2Cread(char addr, char subaddr){
    char temp;
 
    i2c_start();
    send_i2c_byte(addr);
    send_i2c_byte(subaddr);
-   blocking_delay_us(10);
+   delay_by_nop(10);
 
    i2c_restart();
    send_i2c_byte(addr | 0x01); // set R bit
@@ -175,12 +156,9 @@ char I2Cread(char addr, char subaddr)
    return temp;
 }
 
-
 // function checks if device at addr is on bus
-unsigned char I2Cpoll(char addr)
-{
+unsigned char I2Cpoll(char addr){
    unsigned char temp = 0;
-
    i2c_start();
    temp = send_i2c_byte((addr) & (0xfffe)); // set /W bit
    reset_i2c_bus();
