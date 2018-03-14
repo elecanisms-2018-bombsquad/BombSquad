@@ -1,0 +1,2612 @@
+
+button_module.elf:     file format elf32-pic30
+
+Disassembly of section .aivt._AltADC1Interrupt:
+
+0000012e <.aivt._AltADC1Interrupt>:
+ 12e:	92 1b 00    	nop       
+Disassembly of section .aivt._AltAddressError:
+
+00000108 <.aivt._AltAddressError>:
+ 108:	92 1b 00    	nop       
+Disassembly of section .aivt._AltCNInterrupt:
+
+0000013a <.aivt._AltCNInterrupt>:
+ 13a:	92 1b 00    	nop       
+Disassembly of section .aivt._AltCRCInterrupt:
+
+0000019a <.aivt._AltCRCInterrupt>:
+ 19a:	92 1b 00    	nop       
+Disassembly of section .aivt._AltCTMUInterrupt:
+
+000001ae <.aivt._AltCTMUInterrupt>:
+ 1ae:	92 1b 00    	nop       
+Disassembly of section .aivt._AltCompInterrupt:
+
+00000138 <.aivt._AltCompInterrupt>:
+ 138:	92 1b 00    	nop       
+Disassembly of section .aivt._AltIC1Interrupt:
+
+00000116 <.aivt._AltIC1Interrupt>:
+ 116:	92 1b 00    	nop       
+Disassembly of section .aivt._AltIC2Interrupt:
+
+0000011e <.aivt._AltIC2Interrupt>:
+ 11e:	92 1b 00    	nop       
+Disassembly of section .aivt._AltIC3Interrupt:
+
+0000015e <.aivt._AltIC3Interrupt>:
+ 15e:	92 1b 00    	nop       
+Disassembly of section .aivt._AltIC4Interrupt:
+
+00000160 <.aivt._AltIC4Interrupt>:
+ 160:	92 1b 00    	nop       
+Disassembly of section .aivt._AltIC5Interrupt:
+
+00000162 <.aivt._AltIC5Interrupt>:
+ 162:	92 1b 00    	nop       
+Disassembly of section .aivt._AltIC6Interrupt:
+
+00000164 <.aivt._AltIC6Interrupt>:
+ 164:	92 1b 00    	nop       
+Disassembly of section .aivt._AltIC7Interrupt:
+
+00000140 <.aivt._AltIC7Interrupt>:
+ 140:	92 1b 00    	nop       
+Disassembly of section .aivt._AltIC8Interrupt:
+
+00000142 <.aivt._AltIC8Interrupt>:
+ 142:	92 1b 00    	nop       
+Disassembly of section .aivt._AltIC9Interrupt:
+
+000001ce <.aivt._AltIC9Interrupt>:
+ 1ce:	92 1b 00    	nop       
+Disassembly of section .aivt._AltINT0Interrupt:
+
+00000114 <.aivt._AltINT0Interrupt>:
+ 114:	92 1b 00    	nop       
+Disassembly of section .aivt._AltINT1Interrupt:
+
+0000013c <.aivt._AltINT1Interrupt>:
+ 13c:	92 1b 00    	nop       
+Disassembly of section .aivt._AltINT2Interrupt:
+
+0000014e <.aivt._AltINT2Interrupt>:
+ 14e:	92 1b 00    	nop       
+Disassembly of section .aivt._AltINT3Interrupt:
+
+0000017e <.aivt._AltINT3Interrupt>:
+ 17e:	92 1b 00    	nop       
+Disassembly of section .aivt._AltINT4Interrupt:
+
+00000180 <.aivt._AltINT4Interrupt>:
+ 180:	92 1b 00    	nop       
+Disassembly of section .aivt._AltInterrupt14:
+
+00000130 <.aivt._AltInterrupt14>:
+ 130:	92 1b 00    	nop       
+Disassembly of section .aivt._AltInterrupt15:
+
+00000132 <.aivt._AltInterrupt15>:
+ 132:	92 1b 00    	nop       
+Disassembly of section .aivt._AltInterrupt21:
+
+0000013e <.aivt._AltInterrupt21>:
+ 13e:	92 1b 00    	nop       
+Disassembly of section .aivt._AltInterrupt24:
+
+00000144 <.aivt._AltInterrupt24>:
+ 144:	92 1b 00    	nop       
+Disassembly of section .aivt._AltInterrupt34:
+
+00000158 <.aivt._AltInterrupt34>:
+ 158:	92 1b 00    	nop       
+Disassembly of section .aivt._AltInterrupt35:
+
+0000015a <.aivt._AltInterrupt35>:
+ 15a:	92 1b 00    	nop       
+Disassembly of section .aivt._AltInterrupt36:
+
+0000015c <.aivt._AltInterrupt36>:
+ 15c:	92 1b 00    	nop       
+Disassembly of section .aivt._AltInterrupt4:
+
+0000011c <.aivt._AltInterrupt4>:
+ 11c:	92 1b 00    	nop       
+Disassembly of section .aivt._AltInterrupt46:
+
+00000170 <.aivt._AltInterrupt46>:
+ 170:	92 1b 00    	nop       
+Disassembly of section .aivt._AltInterrupt47:
+
+00000172 <.aivt._AltInterrupt47>:
+ 172:	92 1b 00    	nop       
+Disassembly of section .aivt._AltInterrupt48:
+
+00000174 <.aivt._AltInterrupt48>:
+ 174:	92 1b 00    	nop       
+Disassembly of section .aivt._AltInterrupt51:
+
+0000017a <.aivt._AltInterrupt51>:
+ 17a:	92 1b 00    	nop       
+Disassembly of section .aivt._AltInterrupt52:
+
+0000017c <.aivt._AltInterrupt52>:
+ 17c:	92 1b 00    	nop       
+Disassembly of section .aivt._AltInterrupt55:
+
+00000182 <.aivt._AltInterrupt55>:
+ 182:	92 1b 00    	nop       
+Disassembly of section .aivt._AltInterrupt56:
+
+00000184 <.aivt._AltInterrupt56>:
+ 184:	92 1b 00    	nop       
+Disassembly of section .aivt._AltInterrupt57:
+
+00000186 <.aivt._AltInterrupt57>:
+ 186:	92 1b 00    	nop       
+Disassembly of section .aivt._AltInterrupt58:
+
+00000188 <.aivt._AltInterrupt58>:
+ 188:	92 1b 00    	nop       
+Disassembly of section .aivt._AltInterrupt59:
+
+0000018a <.aivt._AltInterrupt59>:
+ 18a:	92 1b 00    	nop       
+Disassembly of section .aivt._AltInterrupt60:
+
+0000018c <.aivt._AltInterrupt60>:
+ 18c:	92 1b 00    	nop       
+Disassembly of section .aivt._AltInterrupt61:
+
+0000018e <.aivt._AltInterrupt61>:
+ 18e:	92 1b 00    	nop       
+Disassembly of section .aivt._AltInterrupt63:
+
+00000192 <.aivt._AltInterrupt63>:
+ 192:	92 1b 00    	nop       
+Disassembly of section .aivt._AltInterrupt64:
+
+00000194 <.aivt._AltInterrupt64>:
+ 194:	92 1b 00    	nop       
+Disassembly of section .aivt._AltInterrupt68:
+
+0000019c <.aivt._AltInterrupt68>:
+ 19c:	92 1b 00    	nop       
+Disassembly of section .aivt._AltInterrupt69:
+
+0000019e <.aivt._AltInterrupt69>:
+ 19e:	92 1b 00    	nop       
+Disassembly of section .aivt._AltInterrupt70:
+
+000001a0 <.aivt._AltInterrupt70>:
+ 1a0:	92 1b 00    	nop       
+Disassembly of section .aivt._AltInterrupt71:
+
+000001a2 <.aivt._AltInterrupt71>:
+ 1a2:	92 1b 00    	nop       
+Disassembly of section .aivt._AltInterrupt73:
+
+000001a6 <.aivt._AltInterrupt73>:
+ 1a6:	92 1b 00    	nop       
+Disassembly of section .aivt._AltInterrupt74:
+
+000001a8 <.aivt._AltInterrupt74>:
+ 1a8:	92 1b 00    	nop       
+Disassembly of section .aivt._AltInterrupt75:
+
+000001aa <.aivt._AltInterrupt75>:
+ 1aa:	92 1b 00    	nop       
+Disassembly of section .aivt._AltInterrupt76:
+
+000001ac <.aivt._AltInterrupt76>:
+ 1ac:	92 1b 00    	nop       
+Disassembly of section .aivt._AltInterrupt78:
+
+000001b0 <.aivt._AltInterrupt78>:
+ 1b0:	92 1b 00    	nop       
+Disassembly of section .aivt._AltInterrupt79:
+
+000001b2 <.aivt._AltInterrupt79>:
+ 1b2:	92 1b 00    	nop       
+Disassembly of section .aivt._AltInterrupt80:
+
+000001b4 <.aivt._AltInterrupt80>:
+ 1b4:	92 1b 00    	nop       
+Disassembly of section .aivt._AltLVDInterrupt:
+
+000001a4 <.aivt._AltLVDInterrupt>:
+ 1a4:	92 1b 00    	nop       
+Disassembly of section .aivt._AltMI2C1Interrupt:
+
+00000136 <.aivt._AltMI2C1Interrupt>:
+ 136:	92 1b 00    	nop       
+Disassembly of section .aivt._AltMI2C2Interrupt:
+
+00000178 <.aivt._AltMI2C2Interrupt>:
+ 178:	92 1b 00    	nop       
+Disassembly of section .aivt._AltMI2C3Interrupt:
+
+000001be <.aivt._AltMI2C3Interrupt>:
+ 1be:	92 1b 00    	nop       
+Disassembly of section .aivt._AltMathError:
+
+0000010c <.aivt._AltMathError>:
+ 10c:	92 1b 00    	nop       
+Disassembly of section .aivt._AltOC1Interrupt:
+
+00000118 <.aivt._AltOC1Interrupt>:
+ 118:	92 1b 00    	nop       
+Disassembly of section .aivt._AltOC2Interrupt:
+
+00000120 <.aivt._AltOC2Interrupt>:
+ 120:	92 1b 00    	nop       
+Disassembly of section .aivt._AltOC3Interrupt:
+
+00000146 <.aivt._AltOC3Interrupt>:
+ 146:	92 1b 00    	nop       
+Disassembly of section .aivt._AltOC4Interrupt:
+
+00000148 <.aivt._AltOC4Interrupt>:
+ 148:	92 1b 00    	nop       
+Disassembly of section .aivt._AltOC5Interrupt:
+
+00000166 <.aivt._AltOC5Interrupt>:
+ 166:	92 1b 00    	nop       
+Disassembly of section .aivt._AltOC6Interrupt:
+
+00000168 <.aivt._AltOC6Interrupt>:
+ 168:	92 1b 00    	nop       
+Disassembly of section .aivt._AltOC7Interrupt:
+
+0000016a <.aivt._AltOC7Interrupt>:
+ 16a:	92 1b 00    	nop       
+Disassembly of section .aivt._AltOC8Interrupt:
+
+0000016c <.aivt._AltOC8Interrupt>:
+ 16c:	92 1b 00    	nop       
+Disassembly of section .aivt._AltOC9Interrupt:
+
+000001cc <.aivt._AltOC9Interrupt>:
+ 1cc:	92 1b 00    	nop       
+Disassembly of section .aivt._AltOscillatorFail:
+
+00000106 <.aivt._AltOscillatorFail>:
+ 106:	92 1b 00    	nop       
+Disassembly of section .aivt._AltPMPInterrupt:
+
+0000016e <.aivt._AltPMPInterrupt>:
+ 16e:	92 1b 00    	nop       
+Disassembly of section .aivt._AltRTCCInterrupt:
+
+00000190 <.aivt._AltRTCCInterrupt>:
+ 190:	92 1b 00    	nop       
+Disassembly of section .aivt._AltReservedTrap0:
+
+00000104 <.aivt._AltReservedTrap0>:
+ 104:	92 1b 00    	nop       
+Disassembly of section .aivt._AltReservedTrap5:
+
+0000010e <.aivt._AltReservedTrap5>:
+ 10e:	92 1b 00    	nop       
+Disassembly of section .aivt._AltReservedTrap6:
+
+00000110 <.aivt._AltReservedTrap6>:
+ 110:	92 1b 00    	nop       
+Disassembly of section .aivt._AltReservedTrap7:
+
+00000112 <.aivt._AltReservedTrap7>:
+ 112:	92 1b 00    	nop       
+Disassembly of section .aivt._AltSI2C1Interrupt:
+
+00000134 <.aivt._AltSI2C1Interrupt>:
+ 134:	92 1b 00    	nop       
+Disassembly of section .aivt._AltSI2C2Interrupt:
+
+00000176 <.aivt._AltSI2C2Interrupt>:
+ 176:	92 1b 00    	nop       
+Disassembly of section .aivt._AltSI2C3Interrupt:
+
+000001bc <.aivt._AltSI2C3Interrupt>:
+ 1bc:	92 1b 00    	nop       
+Disassembly of section .aivt._AltSPI1ErrInterrupt:
+
+00000126 <.aivt._AltSPI1ErrInterrupt>:
+ 126:	92 1b 00    	nop       
+Disassembly of section .aivt._AltSPI1Interrupt:
+
+00000128 <.aivt._AltSPI1Interrupt>:
+ 128:	92 1b 00    	nop       
+Disassembly of section .aivt._AltSPI2ErrInterrupt:
+
+00000154 <.aivt._AltSPI2ErrInterrupt>:
+ 154:	92 1b 00    	nop       
+Disassembly of section .aivt._AltSPI2Interrupt:
+
+00000156 <.aivt._AltSPI2Interrupt>:
+ 156:	92 1b 00    	nop       
+Disassembly of section .aivt._AltSPI3ErrInterrupt:
+
+000001c8 <.aivt._AltSPI3ErrInterrupt>:
+ 1c8:	92 1b 00    	nop       
+Disassembly of section .aivt._AltSPI3Interrupt:
+
+000001ca <.aivt._AltSPI3Interrupt>:
+ 1ca:	92 1b 00    	nop       
+Disassembly of section .aivt._AltStackError:
+
+0000010a <.aivt._AltStackError>:
+ 10a:	92 1b 00    	nop       
+Disassembly of section .aivt._AltT1Interrupt:
+
+0000011a <.aivt._AltT1Interrupt>:
+ 11a:	92 1b 00    	nop       
+Disassembly of section .aivt._AltT2Interrupt:
+
+00000122 <.aivt._AltT2Interrupt>:
+ 122:	92 1b 00    	nop       
+Disassembly of section .aivt._AltT3Interrupt:
+
+00000124 <.aivt._AltT3Interrupt>:
+ 124:	92 1b 00    	nop       
+Disassembly of section .aivt._AltT4Interrupt:
+
+0000014a <.aivt._AltT4Interrupt>:
+ 14a:	92 1b 00    	nop       
+Disassembly of section .aivt._AltT5Interrupt:
+
+0000014c <.aivt._AltT5Interrupt>:
+ 14c:	92 1b 00    	nop       
+Disassembly of section .aivt._AltU1ErrInterrupt:
+
+00000196 <.aivt._AltU1ErrInterrupt>:
+ 196:	92 1b 00    	nop       
+Disassembly of section .aivt._AltU1RXInterrupt:
+
+0000012a <.aivt._AltU1RXInterrupt>:
+ 12a:	92 1b 00    	nop       
+Disassembly of section .aivt._AltU1TXInterrupt:
+
+0000012c <.aivt._AltU1TXInterrupt>:
+ 12c:	92 1b 00    	nop       
+Disassembly of section .aivt._AltU2ErrInterrupt:
+
+00000198 <.aivt._AltU2ErrInterrupt>:
+ 198:	92 1b 00    	nop       
+Disassembly of section .aivt._AltU2RXInterrupt:
+
+00000150 <.aivt._AltU2RXInterrupt>:
+ 150:	92 1b 00    	nop       
+Disassembly of section .aivt._AltU2TXInterrupt:
+
+00000152 <.aivt._AltU2TXInterrupt>:
+ 152:	92 1b 00    	nop       
+Disassembly of section .aivt._AltU3ErrInterrupt:
+
+000001b6 <.aivt._AltU3ErrInterrupt>:
+ 1b6:	92 1b 00    	nop       
+Disassembly of section .aivt._AltU3RXInterrupt:
+
+000001b8 <.aivt._AltU3RXInterrupt>:
+ 1b8:	92 1b 00    	nop       
+Disassembly of section .aivt._AltU3TXInterrupt:
+
+000001ba <.aivt._AltU3TXInterrupt>:
+ 1ba:	92 1b 00    	nop       
+Disassembly of section .aivt._AltU4ErrInterrupt:
+
+000001c2 <.aivt._AltU4ErrInterrupt>:
+ 1c2:	92 1b 00    	nop       
+Disassembly of section .aivt._AltU4RXInterrupt:
+
+000001c4 <.aivt._AltU4RXInterrupt>:
+ 1c4:	92 1b 00    	nop       
+Disassembly of section .aivt._AltU4TXInterrupt:
+
+000001c6 <.aivt._AltU4TXInterrupt>:
+ 1c6:	92 1b 00    	nop       
+Disassembly of section .aivt._AltUSB1Interrupt:
+
+000001c0 <.aivt._AltUSB1Interrupt>:
+ 1c0:	92 1b 00    	nop       
+Disassembly of section .reset:
+
+00000000 <.reset>:
+   0:	10 11 04    	goto      0x1110 <__reset>
+   2:	00 00 00 
+Disassembly of section .text:
+
+00001110 <__reset>:
+    1110:	cf 81 20    	mov.w     #0x81c, w15
+    1112:	0e ff 27    	mov.w     #0x7ff0, w14
+    1114:	0e 01 88    	mov.w     w14, 0x20
+    1116:	00 00 00    	nop       
+    1118:	00 00 20    	mov.w     #0x0, w0
+    111a:	00 00 e0    	cp0.w     w0
+    111c:	02 00 32    	bra       Z, 0x1122 <CORCON_RESET>
+    111e:	00 01 20    	mov.w     #0x10, w0
+    1120:	20 02 88    	mov.w     w0, 0x44
+
+00001122 <CORCON_RESET>:
+    1122:	14 00 07    	rcall     0x114c <__psv_init>
+    1124:	7d 00 07    	rcall     0x1220 <__crt_start_mode> <__crt_start_mode_normal>
+    1126:	00 00 e0    	cp0.w     w0
+    1128:	03 00 3a    	bra       NZ, 0x1130 <L11>
+    112a:	e0 b7 21    	mov.w     #0x1b7e, w0
+    112c:	01 00 20    	mov.w     #0x0, w1
+    112e:	02 00 37    	bra       0x1134 <L21>
+
+00001130 <L11>:
+    1130:	00 00 20    	mov.w     #0x0, w0
+    1132:	01 00 20    	mov.w     #0x0, w1
+
+00001134 <L21>:
+    1134:	81 0f 70    	ior.w     w0, w1, [w15]
+    1136:	01 00 32    	bra       Z, 0x113a <L12>
+    1138:	14 00 07    	rcall     0x1162 <__data_init> <__data_init_da>
+
+0000113a <L12>:
+    113a:	00 00 20    	mov.w     #0x0, w0
+    113c:	00 00 e0    	cp0.w     w0
+    113e:	02 00 32    	bra       Z, 0x1144 <L13>
+    1140:	00 00 02    	call      0x0 <__DEFAULT_VECTOR-0x110c>
+    1142:	00 00 00 
+
+00001144 <L13>:
+    1144:	ce 1a 02    	call      0x1ace <_main>
+    1146:	00 00 00 
+    1148:	00 40 da    	break     
+    114a:	00 00 fe    	reset     
+
+0000114c <__psv_init>:
+    114c:	44 40 a9    	bclr.b    0x44, #0x2
+    114e:	00 0c 20    	mov.w     #0xc0, w0
+    1150:	00 00 e0    	cp0.w     w0
+    1152:	03 00 32    	bra       Z, 0x115a <L14>
+    1154:	00 20 20    	mov.w     #0x200, w0
+    1156:	90 01 88    	mov.w     w0, 0x32
+    1158:	44 40 a8    	bset.b    0x44, #0x2
+
+0000115a <L14>:
+    115a:	00 00 06    	return    
+
+0000115c <__long_indirect_call>:
+    115c:	8a 1f 78    	mov.w     w10, [w15++]
+    115e:	8b 1f 78    	mov.w     w11, [w15++]
+    1160:	00 00 06    	return    
+
+00001162 <__data_init>:
+    1162:	a1 02 88    	mov.w     w1, 0x54
+    1164:	80 04 78    	mov.w     w0, w9
+    1166:	00 00 eb    	clr.w     w0
+    1168:	1f 00 37    	bra       0x11a8 <L41>
+
+0000116a <L11>:
+    116a:	e2 84 44    	add.w     w9, #0x2, w9
+    116c:	54 a0 b4    	addc.w    0x54
+    116e:	99 05 ba    	tblrdl.w  [w9], w11
+    1170:	e2 84 44    	add.w     w9, #0x2, w9
+    1172:	54 a0 b4    	addc.w    0x54
+    1174:	99 06 ba    	tblrdl.w  [w9], w13
+    1176:	e2 84 44    	add.w     w9, #0x2, w9
+    1178:	54 a0 b4    	addc.w    0x54
+    117a:	00 06 eb    	clr.w     w12
+    117c:	47 6f de    	lsr.w     w13, #0x7, w14
+    117e:	fd 07 b2    	and.w     #0x7f, w13
+    1180:	ae 01 88    	mov.w     w14, 0x34
+    1182:	63 6c e1    	cp.b      w13, #0x3
+    1184:	03 00 3a    	bra       NZ, 0x118c <L21>
+    1186:	ea ff 07    	rcall     0x115c <__long_indirect_call>
+    1188:	00 00 eb    	clr.w     w0
+    118a:	0e 00 37    	bra       0x11a8 <L41>
+
+0000118c <L21>:
+    118c:	60 6c e1    	cp.b      w13, #0x0
+    118e:	08 00 3a    	bra       NZ, 0x11a0 <L22>
+
+00001190 <L91>:
+    1190:	00 4d eb    	clr.b     [w10]
+    1192:	0a 05 e8    	inc.w     w10, w10
+    1194:	02 00 39    	bra       NC, 0x119a <L81>
+    1196:	34 20 ec    	inc.w     0x34
+    1198:	0a f0 a0    	bset.w    w10, #0xf
+
+0000119a <L81>:
+    119a:	8b 05 e9    	dec.w     w11, w11
+    119c:	f9 ff 3e    	bra       GTU, 0x1190 <L91>
+    119e:	04 00 37    	bra       0x11a8 <L41>
+
+000011a0 <L22>:
+    11a0:	61 68 e1    	cp.w      w13, #0x1
+    11a2:	01 00 32    	bra       Z, 0x11a6 <L31>
+    11a4:	00 86 eb    	setm.w    w12
+
+000011a6 <L31>:
+    11a6:	0b 00 07    	rcall     0x11be <L13> <__memcpyd3extended>
+
+000011a8 <L41>:
+    11a8:	19 c7 ba    	tblrdh.b  [w9], w14
+    11aa:	19 05 ba    	tblrdl.w  [w9], w10
+    11ac:	0e 04 e0    	cp0.b     w14
+    11ae:	03 00 3a    	bra       NZ, 0x11b6 <L12>
+    11b0:	0a 00 e0    	cp0.w     w10
+    11b2:	db ff 3a    	bra       NZ, 0x116a <L11>
+    11b4:	00 00 06    	return    
+
+000011b6 <L12>:
+    11b6:	fe 07 b2    	and.w     #0x7f, w14
+    11b8:	ae 02 88    	mov.w     w14, 0x54
+    11ba:	8a 04 78    	mov.w     w10, w9
+    11bc:	f5 ff 37    	bra       0x11a8 <L41>
+
+000011be <L13>:
+    11be:	0c d0 a3    	btst.c    w12, #0xd
+    11c0:	e2 0f 4d    	addc.w    w10, #0x2, [w15]
+    11c2:	1c 00 39    	bra       NC, 0x11fc <L23>
+    11c4:	89 02 78    	mov.w     w9, w5
+    11c6:	35 4d ba    	tblrdl.b  [w5++], [w10]
+    11c8:	0a 05 e8    	inc.w     w10, w10
+    11ca:	02 00 39    	bra       NC, 0x11d0 <L32>
+    11cc:	34 20 ec    	inc.w     0x34
+    11ce:	0a f0 a0    	bset.w    w10, #0xf
+
+000011d0 <L32>:
+    11d0:	8b 05 e9    	dec.w     w11, w11
+    11d2:	0f 00 32    	bra       Z, 0x11f2 <L42>
+    11d4:	25 4d ba    	tblrdl.b  [w5--], [w10]
+    11d6:	0a 05 e8    	inc.w     w10, w10
+    11d8:	02 00 39    	bra       NC, 0x11de <L33>
+    11da:	34 20 ec    	inc.w     0x34
+    11dc:	0a f0 a0    	bset.w    w10, #0xf
+
+000011de <L33>:
+    11de:	8b 05 e9    	dec.w     w11, w11
+    11e0:	08 00 32    	bra       Z, 0x11f2 <L42>
+    11e2:	0c 00 e0    	cp0.w     w12
+    11e4:	06 00 32    	bra       Z, 0x11f2 <L42>
+    11e6:	15 cd ba    	tblrdh.b  [w5], [w10]
+    11e8:	0a 05 e8    	inc.w     w10, w10
+    11ea:	02 00 39    	bra       NC, 0x11f0 <L34>
+    11ec:	34 20 ec    	inc.w     0x34
+    11ee:	0a f0 a0    	bset.w    w10, #0xf
+
+000011f0 <L34>:
+    11f0:	8b 05 e9    	dec.w     w11, w11
+
+000011f2 <L42>:
+    11f2:	89 84 e8    	inc2.w    w9, w9
+    11f4:	54 a0 b4    	addc.w    0x54
+    11f6:	0b 00 e0    	cp0.w     w11
+    11f8:	e2 ff 3a    	bra       NZ, 0x11be <L13> <__memcpyd3extended>
+    11fa:	00 00 06    	return    
+
+000011fc <L23>:
+    11fc:	99 02 ba    	tblrdl.w  [w9], w5
+    11fe:	05 5d 78    	mov.b     w5, [w10++]
+    1200:	8b 05 e9    	dec.w     w11, w11
+    1202:	f7 ff 32    	bra       Z, 0x11f2 <L42>
+    1204:	c8 2a de    	lsr.w     w5, #0x8, w5
+    1206:	05 5d 78    	mov.b     w5, [w10++]
+    1208:	8b 05 e9    	dec.w     w11, w11
+    120a:	f3 ff 32    	bra       Z, 0x11f2 <L42>
+    120c:	0c 00 e0    	cp0.w     w12
+    120e:	f1 ff 32    	bra       Z, 0x11f2 <L42>
+    1210:	19 dd ba    	tblrdh.b  [w9], [w10++]
+    1212:	ee ff 37    	bra       0x11f0 <L34>
+
+00001214 <.handle>:
+    1214:	2c 1a 04    	goto      0x1a2c <_active>
+    1216:	00 00 00 
+    1218:	f6 19 04    	goto      0x19f6 <_idle>
+    121a:	00 00 00 
+    121c:	a8 1a 04    	goto      0x1aa8 <_end>
+    121e:	00 00 00 
+
+00001220 <__crt_start_mode>:
+    1220:	00 00 05    	retlw.w   #0x0, w0
+Disassembly of section .application_ivt:
+
+00001000 <__DEFAULT_VECTOR-0x10c>:
+    1000:	10 11 04    	goto      0x1110 <__reset>
+    1002:	00 00 00 
+    1004:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    1006:	00 00 00 
+    1008:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    100a:	00 00 00 
+    100c:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    100e:	00 00 00 
+    1010:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    1012:	00 00 00 
+    1014:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    1016:	00 00 00 
+    1018:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    101a:	00 00 00 
+    101c:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    101e:	00 00 00 
+    1020:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    1022:	00 00 00 
+    1024:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    1026:	00 00 00 
+    1028:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    102a:	00 00 00 
+    102c:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    102e:	00 00 00 
+    1030:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    1032:	00 00 00 
+    1034:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    1036:	00 00 00 
+    1038:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    103a:	00 00 00 
+    103c:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    103e:	00 00 00 
+    1040:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    1042:	00 00 00 
+    1044:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    1046:	00 00 00 
+    1048:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    104a:	00 00 00 
+    104c:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    104e:	00 00 00 
+    1050:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    1052:	00 00 00 
+    1054:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    1056:	00 00 00 
+    1058:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    105a:	00 00 00 
+    105c:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    105e:	00 00 00 
+    1060:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    1062:	00 00 00 
+    1064:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    1066:	00 00 00 
+    1068:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    106a:	00 00 00 
+    106c:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    106e:	00 00 00 
+    1070:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    1072:	00 00 00 
+    1074:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    1076:	00 00 00 
+    1078:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    107a:	00 00 00 
+    107c:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    107e:	00 00 00 
+    1080:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    1082:	00 00 00 
+    1084:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    1086:	00 00 00 
+    1088:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    108a:	00 00 00 
+    108c:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    108e:	00 00 00 
+    1090:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    1092:	00 00 00 
+    1094:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    1096:	00 00 00 
+    1098:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    109a:	00 00 00 
+    109c:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    109e:	00 00 00 
+    10a0:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    10a2:	00 00 00 
+    10a4:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    10a6:	00 00 00 
+    10a8:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    10aa:	00 00 00 
+    10ac:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    10ae:	00 00 00 
+    10b0:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    10b2:	00 00 00 
+    10b4:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    10b6:	00 00 00 
+    10b8:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    10ba:	00 00 00 
+    10bc:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    10be:	00 00 00 
+    10c0:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    10c2:	00 00 00 
+    10c4:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    10c6:	00 00 00 
+    10c8:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    10ca:	00 00 00 
+    10cc:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    10ce:	00 00 00 
+    10d0:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    10d2:	00 00 00 
+    10d4:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    10d6:	00 00 00 
+    10d8:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    10da:	00 00 00 
+    10dc:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    10de:	00 00 00 
+    10e0:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    10e2:	00 00 00 
+    10e4:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    10e6:	00 00 00 
+    10e8:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    10ea:	00 00 00 
+    10ec:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    10ee:	00 00 00 
+    10f0:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    10f2:	00 00 00 
+    10f4:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    10f6:	00 00 00 
+    10f8:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    10fa:	00 00 00 
+    10fc:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    10fe:	00 00 00 
+    1100:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    1102:	00 00 00 
+    1104:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    1106:	00 00 00 
+    1108:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    110a:	00 00 00 
+
+0000110c <__DEFAULT_VECTOR>:
+    110c:	92 1b 04    	goto      0x1b92 <__DefaultInterrupt>
+    110e:	00 00 00 
+Disassembly of section .ivt:
+
+00000004 <.ivt>:
+   4:	04 10 00    	nop       
+   6:	08 10 00    	nop       
+   8:	0c 10 00    	nop       
+   a:	10 10 00    	nop       
+   c:	14 10 00    	nop       
+   e:	0c 11 00    	nop       
+  10:	0c 11 00    	nop       
+  12:	0c 11 00    	nop       
+  14:	18 10 00    	nop       
+  16:	1c 10 00    	nop       
+  18:	20 10 00    	nop       
+  1a:	24 10 00    	nop       
+  1c:	0c 11 00    	nop       
+  1e:	28 10 00    	nop       
+  20:	2c 10 00    	nop       
+  22:	30 10 00    	nop       
+  24:	34 10 00    	nop       
+  26:	38 10 00    	nop       
+  28:	3c 10 00    	nop       
+  2a:	40 10 00    	nop       
+  2c:	44 10 00    	nop       
+  2e:	48 10 00    	nop       
+  30:	0c 11 00    	nop       
+  32:	0c 11 00    	nop       
+  34:	4c 10 00    	nop       
+  36:	50 10 00    	nop       
+  38:	54 10 00    	nop       
+  3a:	58 10 00    	nop       
+  3c:	5c 10 00    	nop       
+  3e:	0c 11 00    	nop       
+  40:	60 10 00    	nop       
+  42:	64 10 00    	nop       
+  44:	0c 11 00    	nop       
+  46:	68 10 00    	nop       
+  48:	6c 10 00    	nop       
+  4a:	70 10 00    	nop       
+  4c:	74 10 00    	nop       
+  4e:	78 10 00    	nop       
+  50:	7c 10 00    	nop       
+  52:	80 10 00    	nop       
+  54:	84 10 00    	nop       
+  56:	88 10 00    	nop       
+  58:	0c 11 00    	nop       
+  5a:	0c 11 00    	nop       
+  5c:	0c 11 00    	nop       
+  5e:	8c 10 00    	nop       
+  60:	90 10 00    	nop       
+  62:	94 10 00    	nop       
+  64:	98 10 00    	nop       
+  66:	9c 10 00    	nop       
+  68:	a0 10 00    	nop       
+  6a:	a4 10 00    	nop       
+  6c:	a8 10 00    	nop       
+  6e:	ac 10 00    	nop       
+  70:	0c 11 00    	nop       
+  72:	0c 11 00    	nop       
+  74:	0c 11 00    	nop       
+  76:	b0 10 00    	nop       
+  78:	b4 10 00    	nop       
+  7a:	0c 11 00    	nop       
+  7c:	0c 11 00    	nop       
+  7e:	b8 10 00    	nop       
+  80:	bc 10 00    	nop       
+  82:	0c 11 00    	nop       
+  84:	0c 11 00    	nop       
+  86:	0c 11 00    	nop       
+  88:	0c 11 00    	nop       
+  8a:	0c 11 00    	nop       
+  8c:	0c 11 00    	nop       
+  8e:	0c 11 00    	nop       
+  90:	c0 10 00    	nop       
+  92:	0c 11 00    	nop       
+  94:	0c 11 00    	nop       
+  96:	c4 10 00    	nop       
+  98:	c8 10 00    	nop       
+  9a:	cc 10 00    	nop       
+  9c:	0c 11 00    	nop       
+  9e:	0c 11 00    	nop       
+  a0:	0c 11 00    	nop       
+  a2:	0c 11 00    	nop       
+  a4:	d0 10 00    	nop       
+  a6:	0c 11 00    	nop       
+  a8:	0c 11 00    	nop       
+  aa:	0c 11 00    	nop       
+  ac:	0c 11 00    	nop       
+  ae:	d4 10 00    	nop       
+  b0:	0c 11 00    	nop       
+  b2:	0c 11 00    	nop       
+  b4:	0c 11 00    	nop       
+  b6:	d8 10 00    	nop       
+  b8:	dc 10 00    	nop       
+  ba:	e0 10 00    	nop       
+  bc:	e4 10 00    	nop       
+  be:	e8 10 00    	nop       
+  c0:	ec 10 00    	nop       
+  c2:	f0 10 00    	nop       
+  c4:	f4 10 00    	nop       
+  c6:	f8 10 00    	nop       
+  c8:	fc 10 00    	nop       
+  ca:	00 11 00    	nop       
+  cc:	04 11 00    	nop       
+  ce:	08 11 00    	nop       
+  d0:	0c 11 00    	nop       
+  d2:	0c 11 00    	nop       
+  d4:	0c 11 00    	nop       
+  d6:	0c 11 00    	nop       
+  d8:	0c 11 00    	nop       
+  da:	0c 11 00    	nop       
+  dc:	0c 11 00    	nop       
+  de:	0c 11 00    	nop       
+  e0:	0c 11 00    	nop       
+  e2:	0c 11 00    	nop       
+  e4:	0c 11 00    	nop       
+  e6:	0c 11 00    	nop       
+  e8:	0c 11 00    	nop       
+  ea:	0c 11 00    	nop       
+  ec:	0c 11 00    	nop       
+  ee:	0c 11 00    	nop       
+  f0:	0c 11 00    	nop       
+  f2:	0c 11 00    	nop       
+  f4:	0c 11 00    	nop       
+  f6:	0c 11 00    	nop       
+  f8:	0c 11 00    	nop       
+  fa:	0c 11 00    	nop       
+  fc:	0c 11 00    	nop       
+  fe:	0c 11 00    	nop       
+Disassembly of section .const:
+
+00009222 <.LC0-0x92>:
+    9222:	20 20       	.word 0x2020
+    9224:	20 20       	.word 0x2020
+    9226:	20 20       	.word 0x2020
+    9228:	20 20       	.word 0x2020
+    922a:	20 20       	.word 0x2020
+    922c:	20 20       	.word 0x2020
+    922e:	20 20       	.word 0x2020
+    9230:	20 20       	.word 0x2020
+    9232:	20 20       	.word 0x2020
+    9234:	20 20       	.word 0x2020
+    9236:	20 20       	.word 0x2020
+    9238:	20 20       	.word 0x2020
+    923a:	20 20       	.word 0x2020
+    923c:	20 20       	.word 0x2020
+    923e:	20 20       	.word 0x2020
+    9240:	20 20       	.word 0x2020
+    9242:	20 20       	.word 0x2020
+    9244:	20 20       	.word 0x2020
+    9246:	20 20       	.word 0x2020
+    9248:	20 20       	.word 0x2020
+    924a:	20 20       	.word 0x2020
+    924c:	20 20       	.word 0x2020
+    924e:	20 20       	.word 0x2020
+    9250:	20 20       	.word 0x2020
+    9252:	20 20       	.word 0x2020
+    9254:	20 20       	.word 0x2020
+    9256:	20 20       	.word 0x2020
+    9258:	20 20       	.word 0x2020
+    925a:	00 20       	.word 0x2000
+    925c:	20 20       	.word 0x2020
+    925e:	20 20       	.word 0x2020
+    9260:	20 20       	.word 0x2020
+    9262:	20 20       	.word 0x2020
+    9264:	20 20       	.word 0x2020
+    9266:	20 20       	.word 0x2020
+    9268:	20 20       	.word 0x2020
+    926a:	20 00       	.word 0x20
+    926c:	7a 79       	.word 0x797a
+    926e:	78 77       	.word 0x7778
+    9270:	76 75       	.word 0x7576
+    9272:	74 73       	.word 0x7374
+    9274:	72 71       	.word 0x7172
+    9276:	70 6f       	.word 0x6f70
+    9278:	6e 6d       	.word 0x6d6e
+    927a:	6c 6b       	.word 0x6b6c
+    927c:	6a 69       	.word 0x696a
+    927e:	68 67       	.word 0x6768
+    9280:	66 65       	.word 0x6566
+    9282:	64 63       	.word 0x6364
+    9284:	62 61       	.word 0x6162
+    9286:	39 38       	.word 0x3839
+    9288:	37 36       	.word 0x3637
+    928a:	35 34       	.word 0x3435
+    928c:	33 32       	.word 0x3233
+    928e:	31 30       	.word 0x3031
+    9290:	31 32       	.word 0x3231
+    9292:	33 34       	.word 0x3433
+    9294:	35 36       	.word 0x3635
+    9296:	37 38       	.word 0x3837
+    9298:	39 61       	.word 0x6139
+    929a:	62 63       	.word 0x6362
+    929c:	64 65       	.word 0x6564
+    929e:	66 67       	.word 0x6766
+    92a0:	68 69       	.word 0x6968
+    92a2:	6a 6b       	.word 0x6b6a
+    92a4:	6c 6d       	.word 0x6d6c
+    92a6:	6e 6f       	.word 0x6f6e
+    92a8:	70 71       	.word 0x7170
+    92aa:	72 73       	.word 0x7372
+    92ac:	74 75       	.word 0x7574
+    92ae:	76 77       	.word 0x7776
+    92b0:	78 79       	.word 0x7978
+    92b2:	7a 00       	.word 0x7a
+
+000092b4 <.LC0>:
+    92b4:	4c 6f       	.word 0x6f4c
+    92b6:	67 61       	.word 0x6167
+    92b8:	6e 00       	.word 0x6e
+
+000092ba <.LC1>:
+    92ba:	49 20       	.word 0x2049
+    92bc:	6c 6f       	.word 0x6f6c
+    92be:	76 65       	.word 0x6576
+    92c0:	20 79       	.word 0x7920
+    92c2:	6f 75       	.word 0x756f
+	...
+
+000092c5 <.LC2>:
+	...
+
+000092c6 <.LC3>:
+    92c6:	43 6f       	.word 0x6f43
+    92c8:	75 6e       	.word 0x6e75
+    92ca:	74 69       	.word 0x6974
+    92cc:	6e 67       	.word 0x676e
+    92ce:	20 44       	.word 0x4420
+    92d0:	6f 77       	.word 0x776f
+    92d2:	6e 00       	.word 0x6e
+
+000092d4 <.LC4>:
+    92d4:	53 61       	.word 0x6153
+    92d6:	64 00       	.word 0x64
+
+000092d8 <.LC5>:
+    92d8:	59 6f       	.word 0x6f59
+    92da:	75 20       	.word 0x2075
+    92dc:	4c 6f       	.word 0x6f4c
+    92de:	73 65       	.word 0x6573
+    92e0:	00 00       	.word 0
+Disassembly of section .text:
+
+000012e2 <___lcd_i2c_write>:
+#define DR_READ 0x0B
+
+_LCD lcd[3];
+
+void __lcd_i2c_write(_LCD *self, uint8_t ch) {
+    12e2:	04 00 fa    	lnk       #0x4
+    12e4:	00 0f 78    	mov.w     w0, [w14]
+    12e6:	21 47 98    	mov.b     w1, [w14+2]
+    i2c_start();
+    12e8:	7f 02 07    	rcall     0x17e8 <_i2c_start> <.LFB2> <.LFE1>
+    send_i2c_byte(self->addr_write);
+    12ea:	1e 00 78    	mov.w     [w14], w0
+    12ec:	10 40 78    	mov.b     [w0], w0
+    12ee:	00 80 fb    	ze        w0, w0
+    12f0:	c3 02 07    	rcall     0x1878 <_send_i2c_byte> <.LFB5> <.LFE4>
+    send_i2c_byte(ch);
+    12f2:	2e 40 90    	mov.b     [w14+2], w0
+    12f4:	00 80 fb    	ze        w0, w0
+    12f6:	c0 02 07    	rcall     0x1878 <_send_i2c_byte> <.LFB5> <.LFE4>
+    reset_i2c_bus();
+    12f8:	a6 02 07    	rcall     0x1846 <_reset_i2c_bus> <.LFB4> <.LFE3>
+}
+    12fa:	00 80 fa    	ulnk      
+    12fc:	00 00 06    	return    
+
+000012fe <___lcd_enablePulse>:
+
+// Pulse enable pin high and then low to shift in 4 bits of data
+void __lcd_enablePulse(_LCD *self) {
+    12fe:	02 00 fa    	lnk       #0x2
+    1300:	00 0f 78    	mov.w     w0, [w14]
+    self->io_write_val ^= ENABLE_TOGGLE;
+    1302:	1e 00 78    	mov.w     [w14], w0
+    1304:	20 40 90    	mov.b     [w0+2], w0
+    1306:	80 40 78    	mov.b     w0, w1
+    1308:	01 24 a2    	btg.b     w1, #0x2
+    130a:	1e 00 78    	mov.w     [w14], w0
+    130c:	21 40 98    	mov.b     w1, [w0+2]
+    __lcd_i2c_write(self, self->io_write_val);
+    130e:	1e 00 78    	mov.w     [w14], w0
+    1310:	20 40 90    	mov.b     [w0+2], w0
+    1312:	80 40 78    	mov.b     w0, w1
+    1314:	1e 00 78    	mov.w     [w14], w0
+    1316:	e5 ff 07    	rcall     0x12e2 <___lcd_i2c_write> <.L0> <.LFB0> <.Ltext0>
+    delay_by_nop(100);
+    1318:	40 06 20    	mov.w     #0x64, w0
+    131a:	4d 02 07    	rcall     0x17b6 <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+    self->io_write_val ^= ENABLE_TOGGLE;
+    131c:	1e 00 78    	mov.w     [w14], w0
+    131e:	20 40 90    	mov.b     [w0+2], w0
+    1320:	80 40 78    	mov.b     w0, w1
+    1322:	01 24 a2    	btg.b     w1, #0x2
+    1324:	1e 00 78    	mov.w     [w14], w0
+    1326:	21 40 98    	mov.b     w1, [w0+2]
+    __lcd_i2c_write(self, self->io_write_val);
+    1328:	1e 00 78    	mov.w     [w14], w0
+    132a:	20 40 90    	mov.b     [w0+2], w0
+    132c:	80 40 78    	mov.b     w0, w1
+    132e:	1e 00 78    	mov.w     [w14], w0
+    1330:	d8 ff 07    	rcall     0x12e2 <___lcd_i2c_write> <.L0> <.LFB0> <.Ltext0>
+    // delay_by_nop(1000);
+}
+    1332:	00 80 fa    	ulnk      
+    1334:	00 00 06    	return    
+
+00001336 <___lcd_send>:
+
+/* Send 8 bits of data as one 4-bit nibble, shifting in, second 4-bit nibble, and
+shifting in */
+void __lcd_send(_LCD *self, uint8_t value, uint8_t command) {
+    1336:	06 00 fa    	lnk       #0x6
+    1338:	10 07 98    	mov.w     w0, [w14+2]
+    133a:	41 47 98    	mov.b     w1, [w14+4]
+    133c:	52 47 98    	mov.b     w2, [w14+5]
+    uint8_t MS = value & 0x78;
+    133e:	4e 40 90    	mov.b     [w14+4], w0
+    1340:	81 c7 b3    	mov.b     #0x78, w1
+    1342:	01 4f 60    	and.b     w0, w1, [w14]
+    uint8_t LS = value << 4;
+    1344:	ce 40 90    	mov.b     [w14+4], w1
+    1346:	40 00 20    	mov.w     #0x4, w0
+    1348:	00 08 dd    	sl.w      w1, w0, w0
+    134a:	10 47 98    	mov.b     w0, [w14+1]
+    self->io_write_val = command | MS;
+    134c:	5e 40 90    	mov.b     [w14+5], w0
+    134e:	9e 40 70    	ior.b     w0, [w14], w1
+    1350:	1e 00 90    	mov.w     [w14+2], w0
+    1352:	21 40 98    	mov.b     w1, [w0+2]
+    __lcd_i2c_write(self, self->io_write_val);
+    1354:	1e 00 90    	mov.w     [w14+2], w0
+    1356:	20 40 90    	mov.b     [w0+2], w0
+    1358:	80 40 78    	mov.b     w0, w1
+    135a:	1e 00 90    	mov.w     [w14+2], w0
+    135c:	c2 ff 07    	rcall     0x12e2 <___lcd_i2c_write> <.L0> <.LFB0> <.Ltext0>
+    __lcd_enablePulse(self);
+    135e:	1e 00 90    	mov.w     [w14+2], w0
+    1360:	ce ff 07    	rcall     0x12fe <___lcd_enablePulse> <.LFB1> <.LFE0>
+    self->io_write_val= command | LS;
+    1362:	de 40 90    	mov.b     [w14+5], w1
+    1364:	1e 40 90    	mov.b     [w14+1], w0
+    1366:	80 c0 70    	ior.b     w1, w0, w1
+    1368:	1e 00 90    	mov.w     [w14+2], w0
+    136a:	21 40 98    	mov.b     w1, [w0+2]
+    __lcd_i2c_write(self, self->io_write_val);
+    136c:	1e 00 90    	mov.w     [w14+2], w0
+    136e:	20 40 90    	mov.b     [w0+2], w0
+    1370:	80 40 78    	mov.b     w0, w1
+    1372:	1e 00 90    	mov.w     [w14+2], w0
+    1374:	b6 ff 07    	rcall     0x12e2 <___lcd_i2c_write> <.L0> <.LFB0> <.Ltext0>
+    __lcd_enablePulse(self);
+    1376:	1e 00 90    	mov.w     [w14+2], w0
+    1378:	c2 ff 07    	rcall     0x12fe <___lcd_enablePulse> <.LFB1> <.LFE0>
+}
+    137a:	00 80 fa    	ulnk      
+    137c:	00 00 06    	return    
+
+0000137e <___lcd_send8>:
+
+void __lcd_send8(_LCD *self, uint8_t value, uint8_t command) {
+    137e:	04 00 fa    	lnk       #0x4
+    1380:	00 0f 78    	mov.w     w0, [w14]
+    1382:	21 47 98    	mov.b     w1, [w14+2]
+    1384:	32 47 98    	mov.b     w2, [w14+3]
+    value = value << 4;
+    1386:	ae 40 90    	mov.b     [w14+2], w1
+    1388:	40 00 20    	mov.w     #0x4, w0
+    138a:	00 08 dd    	sl.w      w1, w0, w0
+    138c:	20 47 98    	mov.b     w0, [w14+2]
+    self->io_write_val = command | value;
+    138e:	be 40 90    	mov.b     [w14+3], w1
+    1390:	2e 40 90    	mov.b     [w14+2], w0
+    1392:	80 c0 70    	ior.b     w1, w0, w1
+    1394:	1e 00 78    	mov.w     [w14], w0
+    1396:	21 40 98    	mov.b     w1, [w0+2]
+    __lcd_i2c_write(self, self->io_write_val);
+    1398:	1e 00 78    	mov.w     [w14], w0
+    139a:	20 40 90    	mov.b     [w0+2], w0
+    139c:	80 40 78    	mov.b     w0, w1
+    139e:	1e 00 78    	mov.w     [w14], w0
+    13a0:	a0 ff 07    	rcall     0x12e2 <___lcd_i2c_write> <.L0> <.LFB0> <.Ltext0>
+    __lcd_enablePulse(self);
+    13a2:	1e 00 78    	mov.w     [w14], w0
+    13a4:	ac ff 07    	rcall     0x12fe <___lcd_enablePulse> <.LFB1> <.LFE0>
+}
+    13a6:	00 80 fa    	ulnk      
+    13a8:	00 00 06    	return    
+
+000013aa <_init_lcd>:
+
+/* Some code from last year's Spaceteam project that sets up three LCD screens on
+ one bus with corresponding IO extender types and hard-wired addresses */
+void init_lcd(uint8_t initiator) {
+    13aa:	02 00 fa    	lnk       #0x2
+    13ac:	00 4f 78    	mov.b     w0, [w14]
+
+    i2c_init(1e3);
+    13ae:	80 3e 20    	mov.w     #0x3e8, w0
+    13b0:	0e 02 07    	rcall     0x17ce <_i2c_init> <.LFB1> <.LFE0>
+
+    switch (initiator) {
+    13b2:	1e 80 fb    	ze        [w14], w0
+    13b4:	e1 0f 50    	sub.w     w0, #0x1, [w15]
+    13b6:	17 00 32    	bra       Z, 0x13e6 <.L8>
+    13b8:	e1 0f 50    	sub.w     w0, #0x1, [w15]
+    13ba:	03 00 3c    	bra       GT, 0x13c2 <.L11>
+    13bc:	00 00 e0    	cp0.w     w0
+    13be:	06 00 32    	bra       Z, 0x13cc <.L7>
+    13c0:	39 00 37    	bra       0x1434 <.L5>
+
+000013c2 <.L11>:
+    13c2:	e2 0f 50    	sub.w     w0, #0x2, [w15]
+    13c4:	1d 00 32    	bra       Z, 0x1400 <.L9>
+    13c6:	e3 0f 50    	sub.w     w0, #0x3, [w15]
+    13c8:	28 00 32    	bra       Z, 0x141a <.L10>
+    13ca:	34 00 37    	bra       0x1434 <.L5>
+
+000013cc <.L7>:
+        case 0: // Central
+            lcd_init(&lcd[0], 0x05,'A');
+    13cc:	12 c4 b3    	mov.b     #0x41, w2
+    13ce:	51 c0 b3    	mov.b     #0x5, w1
+    13d0:	60 80 20    	mov.w     #0x806, w0
+    13d2:	32 00 07    	rcall     0x1438 <_lcd_init> <.LFB5> <.LFE4>
+            lcd_init(&lcd[1], 0x07,'A');
+    13d4:	12 c4 b3    	mov.b     #0x41, w2
+    13d6:	71 c0 b3    	mov.b     #0x7, w1
+    13d8:	b0 80 20    	mov.w     #0x80b, w0
+    13da:	2e 00 07    	rcall     0x1438 <_lcd_init> <.LFB5> <.LFE4>
+            lcd_init(&lcd[2], 0x06,'T');
+    13dc:	42 c5 b3    	mov.b     #0x54, w2
+    13de:	61 c0 b3    	mov.b     #0x6, w1
+    13e0:	00 81 20    	mov.w     #0x810, w0
+    13e2:	2a 00 07    	rcall     0x1438 <_lcd_init> <.LFB5> <.LFE4>
+            break;
+    13e4:	27 00 37    	bra       0x1434 <.L5>
+
+000013e6 <.L8>:
+        case 1:
+            lcd_init(&lcd[0], 0x07,'A');
+    13e6:	12 c4 b3    	mov.b     #0x41, w2
+    13e8:	71 c0 b3    	mov.b     #0x7, w1
+    13ea:	60 80 20    	mov.w     #0x806, w0
+    13ec:	25 00 07    	rcall     0x1438 <_lcd_init> <.LFB5> <.LFE4>
+            lcd_init(&lcd[2], 0x06,'A');
+    13ee:	12 c4 b3    	mov.b     #0x41, w2
+    13f0:	61 c0 b3    	mov.b     #0x6, w1
+    13f2:	00 81 20    	mov.w     #0x810, w0
+    13f4:	21 00 07    	rcall     0x1438 <_lcd_init> <.LFB5> <.LFE4>
+            lcd_init(&lcd[1], 0x05,'A');
+    13f6:	12 c4 b3    	mov.b     #0x41, w2
+    13f8:	51 c0 b3    	mov.b     #0x5, w1
+    13fa:	b0 80 20    	mov.w     #0x80b, w0
+    13fc:	1d 00 07    	rcall     0x1438 <_lcd_init> <.LFB5> <.LFE4>
+            break;
+    13fe:	1a 00 37    	bra       0x1434 <.L5>
+
+00001400 <.L9>:
+        case 2:
+            lcd_init(&lcd[0], 0x07,'T');
+    1400:	42 c5 b3    	mov.b     #0x54, w2
+    1402:	71 c0 b3    	mov.b     #0x7, w1
+    1404:	60 80 20    	mov.w     #0x806, w0
+    1406:	18 00 07    	rcall     0x1438 <_lcd_init> <.LFB5> <.LFE4>
+            lcd_init(&lcd[1], 0x06,'A');
+    1408:	12 c4 b3    	mov.b     #0x41, w2
+    140a:	61 c0 b3    	mov.b     #0x6, w1
+    140c:	b0 80 20    	mov.w     #0x80b, w0
+    140e:	14 00 07    	rcall     0x1438 <_lcd_init> <.LFB5> <.LFE4>
+            lcd_init(&lcd[2], 0x05,'A');
+    1410:	12 c4 b3    	mov.b     #0x41, w2
+    1412:	51 c0 b3    	mov.b     #0x5, w1
+    1414:	00 81 20    	mov.w     #0x810, w0
+    1416:	10 00 07    	rcall     0x1438 <_lcd_init> <.LFB5> <.LFE4>
+            break;
+    1418:	0d 00 37    	bra       0x1434 <.L5>
+
+0000141a <.L10>:
+        case 3:
+            lcd_init(&lcd[0], 0x07,'A');
+    141a:	12 c4 b3    	mov.b     #0x41, w2
+    141c:	71 c0 b3    	mov.b     #0x7, w1
+    141e:	60 80 20    	mov.w     #0x806, w0
+    1420:	0b 00 07    	rcall     0x1438 <_lcd_init> <.LFB5> <.LFE4>
+            lcd_init(&lcd[1], 0x06,'A');
+    1422:	12 c4 b3    	mov.b     #0x41, w2
+    1424:	61 c0 b3    	mov.b     #0x6, w1
+    1426:	b0 80 20    	mov.w     #0x80b, w0
+    1428:	07 00 07    	rcall     0x1438 <_lcd_init> <.LFB5> <.LFE4>
+            lcd_init(&lcd[2], 0x05,'A');
+    142a:	12 c4 b3    	mov.b     #0x41, w2
+    142c:	51 c0 b3    	mov.b     #0x5, w1
+    142e:	00 81 20    	mov.w     #0x810, w0
+    1430:	03 00 07    	rcall     0x1438 <_lcd_init> <.LFB5> <.LFE4>
+            break;
+    1432:	00 00 00    	nop       
+
+00001434 <.L5>:
+    }
+}
+    1434:	00 80 fa    	ulnk      
+    1436:	00 00 06    	return    
+
+00001438 <_lcd_init>:
+
+// Initializes the LCD screen hardware as per pg. 46 of the datasheet
+void lcd_init(_LCD *self, uint8_t addr, char vendor) {
+    1438:	04 00 fa    	lnk       #0x4
+    143a:	00 0f 78    	mov.w     w0, [w14]
+    143c:	21 47 98    	mov.b     w1, [w14+2]
+    143e:	32 47 98    	mov.b     w2, [w14+3]
+    switch(vendor){
+    1440:	3e 40 90    	mov.b     [w14+3], w0
+    1442:	00 00 fb    	se        w0, w0
+    1444:	11 04 20    	mov.w     #0x41, w1
+    1446:	81 0f 50    	sub.w     w0, w1, [w15]
+    1448:	10 00 32    	bra       Z, 0x146a <.L14>
+    144a:	41 05 20    	mov.w     #0x54, w1
+    144c:	81 0f 50    	sub.w     w0, w1, [w15]
+    144e:	1a 00 3a    	bra       NZ, 0x1484 <.L13>
+        case 'T':// 0x40 == vendor prefix for PCF8574T
+            self->addr_write = 0x40 + (addr << 1);
+    1450:	2e 40 90    	mov.b     [w14+2], w0
+    1452:	00 40 40    	add.b     w0, w0, w0
+    1454:	02 c4 b3    	mov.b     #0x40, w2
+    1456:	82 40 40    	add.b     w0, w2, w1
+    1458:	1e 00 78    	mov.w     [w14], w0
+    145a:	01 48 78    	mov.b     w1, [w0]
+            self->addr_read = 0x40 + (addr << 1)+1;
+    145c:	2e 40 90    	mov.b     [w14+2], w0
+    145e:	00 40 40    	add.b     w0, w0, w0
+    1460:	12 c4 b3    	mov.b     #0x41, w2
+    1462:	82 40 40    	add.b     w0, w2, w1
+    1464:	1e 00 78    	mov.w     [w14], w0
+    1466:	11 40 98    	mov.b     w1, [w0+1]
+            break;
+    1468:	0d 00 37    	bra       0x1484 <.L13>
+
+0000146a <.L14>:
+        case 'A':// 0x70 == vendor prefix PCF8574AT
+            self->addr_write = 0x70 + (addr << 1);
+    146a:	2e 40 90    	mov.b     [w14+2], w0
+    146c:	00 40 40    	add.b     w0, w0, w0
+    146e:	02 c7 b3    	mov.b     #0x70, w2
+    1470:	82 40 40    	add.b     w0, w2, w1
+    1472:	1e 00 78    	mov.w     [w14], w0
+    1474:	01 48 78    	mov.b     w1, [w0]
+            self->addr_read = 0x70 + (addr << 1)+1;
+    1476:	2e 40 90    	mov.b     [w14+2], w0
+    1478:	00 40 40    	add.b     w0, w0, w0
+    147a:	12 c7 b3    	mov.b     #0x71, w2
+    147c:	82 40 40    	add.b     w0, w2, w1
+    147e:	1e 00 78    	mov.w     [w14], w0
+    1480:	11 40 98    	mov.b     w1, [w0+1]
+            break;
+    1482:	00 00 00    	nop       
+
+00001484 <.L13>:
+    }
+
+    self->display_control = 0x00;
+    1484:	1e 00 78    	mov.w     [w14], w0
+    1486:	80 40 eb    	clr.b     w1
+    1488:	31 40 98    	mov.b     w1, [w0+3]
+    self->display_mode = 0x00;
+    148a:	1e 00 78    	mov.w     [w14], w0
+    148c:	80 40 eb    	clr.b     w1
+    148e:	41 40 98    	mov.b     w1, [w0+4]
+
+    self->io_write_val = 0x00;
+    1490:	1e 00 78    	mov.w     [w14], w0
+    1492:	80 40 eb    	clr.b     w1
+    1494:	21 40 98    	mov.b     w1, [w0+2]
+
+    __lcd_i2c_write(self, 0x00);
+    1496:	80 40 eb    	clr.b     w1
+    1498:	1e 00 78    	mov.w     [w14], w0
+    149a:	23 ff 07    	rcall     0x12e2 <___lcd_i2c_write> <.L0> <.LFB0> <.Ltext0>
+
+    delay_by_nop(15000);
+    149c:	80 a9 23    	mov.w     #0x3a98, w0
+    149e:	8b 01 07    	rcall     0x17b6 <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+
+    // Some bullshit according to pg 46
+    __lcd_send8(self, 0x03, INTERNAL_WRITE);
+    14a0:	82 c0 b3    	mov.b     #0x8, w2
+    14a2:	31 c0 b3    	mov.b     #0x3, w1
+    14a4:	1e 00 78    	mov.w     [w14], w0
+    14a6:	6b ff 07    	rcall     0x137e <___lcd_send8> <.LFB3> <.LFE2>
+    delay_by_nop(5000);
+    14a8:	80 38 21    	mov.w     #0x1388, w0
+    14aa:	85 01 07    	rcall     0x17b6 <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+
+    __lcd_send8(self, 0x03, INTERNAL_WRITE);//0b00110000
+    14ac:	82 c0 b3    	mov.b     #0x8, w2
+    14ae:	31 c0 b3    	mov.b     #0x3, w1
+    14b0:	1e 00 78    	mov.w     [w14], w0
+    14b2:	65 ff 07    	rcall     0x137e <___lcd_send8> <.LFB3> <.LFE2>
+    delay_by_nop(5000);
+    14b4:	80 38 21    	mov.w     #0x1388, w0
+    14b6:	7f 01 07    	rcall     0x17b6 <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+
+    __lcd_send8(self, 0x03, INTERNAL_WRITE);//0b00110000
+    14b8:	82 c0 b3    	mov.b     #0x8, w2
+    14ba:	31 c0 b3    	mov.b     #0x3, w1
+    14bc:	1e 00 78    	mov.w     [w14], w0
+    14be:	5f ff 07    	rcall     0x137e <___lcd_send8> <.LFB3> <.LFE2>
+    delay_by_nop(5000);
+    14c0:	80 38 21    	mov.w     #0x1388, w0
+    14c2:	79 01 07    	rcall     0x17b6 <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+
+    // Put it in 4 bit mode
+    __lcd_send8(self, 0x02, INTERNAL_WRITE);//0b00110000
+    14c4:	82 c0 b3    	mov.b     #0x8, w2
+    14c6:	21 c0 b3    	mov.b     #0x2, w1
+    14c8:	1e 00 78    	mov.w     [w14], w0
+    14ca:	59 ff 07    	rcall     0x137e <___lcd_send8> <.LFB3> <.LFE2>
+    delay_by_nop(5000);
+    14cc:	80 38 21    	mov.w     #0x1388, w0
+    14ce:	73 01 07    	rcall     0x17b6 <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+
+    __lcd_send(self, 0x28, INTERNAL_WRITE); // Set rows and direction
+    14d0:	82 c0 b3    	mov.b     #0x8, w2
+    14d2:	81 c2 b3    	mov.b     #0x28, w1
+    14d4:	1e 00 78    	mov.w     [w14], w0
+    14d6:	2f ff 07    	rcall     0x1336 <___lcd_send> <.LFB2> <.LFE1>
+    delay_by_nop(50);
+    14d8:	20 03 20    	mov.w     #0x32, w0
+    14da:	6d 01 07    	rcall     0x17b6 <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+
+    __lcd_send(self, 0x80, INTERNAL_WRITE); // Display off, cursor off
+    14dc:	82 c0 b3    	mov.b     #0x8, w2
+    14de:	01 c8 b3    	mov.b     #0x80, w1
+    14e0:	1e 00 78    	mov.w     [w14], w0
+    14e2:	29 ff 07    	rcall     0x1336 <___lcd_send> <.LFB2> <.LFE1>
+    delay_by_nop(50);
+    14e4:	20 03 20    	mov.w     #0x32, w0
+    14e6:	67 01 07    	rcall     0x17b6 <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+
+    __lcd_send(self, 0x01, INTERNAL_WRITE); // Go to home position
+    14e8:	82 c0 b3    	mov.b     #0x8, w2
+    14ea:	11 c0 b3    	mov.b     #0x1, w1
+    14ec:	1e 00 78    	mov.w     [w14], w0
+    14ee:	23 ff 07    	rcall     0x1336 <___lcd_send> <.LFB2> <.LFE1>
+    delay_by_nop(2000);
+    14f0:	00 7d 20    	mov.w     #0x7d0, w0
+    14f2:	61 01 07    	rcall     0x17b6 <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+
+    __lcd_send(self, 0x06, INTERNAL_WRITE); // Set curson direction
+    14f4:	82 c0 b3    	mov.b     #0x8, w2
+    14f6:	61 c0 b3    	mov.b     #0x6, w1
+    14f8:	1e 00 78    	mov.w     [w14], w0
+    14fa:	1d ff 07    	rcall     0x1336 <___lcd_send> <.LFB2> <.LFE1>
+    delay_by_nop(5000);
+    14fc:	80 38 21    	mov.w     #0x1388, w0
+    14fe:	5b 01 07    	rcall     0x17b6 <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+
+    __lcd_send(self, 0x0C, INTERNAL_WRITE); // Display on, cursor off
+    1500:	82 c0 b3    	mov.b     #0x8, w2
+    1502:	c1 c0 b3    	mov.b     #0xc, w1
+    1504:	1e 00 78    	mov.w     [w14], w0
+    1506:	17 ff 07    	rcall     0x1336 <___lcd_send> <.LFB2> <.LFE1>
+}
+    1508:	00 80 fa    	ulnk      
+    150a:	00 00 06    	return    
+
+0000150c <_lcd_stop>:
+
+// Stops lcd I2C transfer
+void lcd_stop(_LCD *self) {
+    150c:	02 00 fa    	lnk       #0x2
+    150e:	00 0f 78    	mov.w     w0, [w14]
+    reset_i2c_bus();
+    1510:	9a 01 07    	rcall     0x1846 <_reset_i2c_bus> <.LFB4> <.LFE3>
+}
+    1512:	00 80 fa    	ulnk      
+    1514:	00 00 06    	return    
+
+00001516 <_lcd_display>:
+
+// Sends show display command to LCD
+void lcd_display(_LCD *self, uint8_t on) {
+    1516:	04 00 fa    	lnk       #0x4
+    1518:	00 0f 78    	mov.w     w0, [w14]
+    151a:	21 47 98    	mov.b     w1, [w14+2]
+    if (on) {
+    151c:	2e 40 90    	mov.b     [w14+2], w0
+    151e:	00 04 e0    	cp0.b     w0
+    1520:	07 00 32    	bra       Z, 0x1530 <.L18>
+        self->display_control |= LCD_DISPLAYON;
+    1522:	1e 00 78    	mov.w     [w14], w0
+    1524:	30 40 90    	mov.b     [w0+3], w0
+    1526:	80 40 78    	mov.b     w0, w1
+    1528:	01 24 a0    	bset.b    w1, #0x2
+    152a:	1e 00 78    	mov.w     [w14], w0
+    152c:	31 40 98    	mov.b     w1, [w0+3]
+    152e:	06 00 37    	bra       0x153c <.L19>
+
+00001530 <.L18>:
+    } else {
+        self->display_control &= ~LCD_DISPLAYON;
+    1530:	1e 00 78    	mov.w     [w14], w0
+    1532:	b0 40 90    	mov.b     [w0+3], w1
+    1534:	b0 cf b3    	mov.b     #0xfb, w0
+    1536:	80 c0 60    	and.b     w1, w0, w1
+    1538:	1e 00 78    	mov.w     [w14], w0
+    153a:	31 40 98    	mov.b     w1, [w0+3]
+
+0000153c <.L19>:
+    }
+    __lcd_send(self, self->display_control | LCD_DISPLAYCONTROL, INTERNAL_WRITE);
+    153c:	1e 00 78    	mov.w     [w14], w0
+    153e:	30 40 90    	mov.b     [w0+3], w0
+    1540:	00 34 a0    	bset.b    w0, #0x3
+    1542:	82 c0 b3    	mov.b     #0x8, w2
+    1544:	80 40 78    	mov.b     w0, w1
+    1546:	1e 00 78    	mov.w     [w14], w0
+    1548:	f6 fe 07    	rcall     0x1336 <___lcd_send> <.LFB2> <.LFE1>
+}
+    154a:	00 80 fa    	ulnk      
+    154c:	00 00 06    	return    
+
+0000154e <_lcd_clear>:
+
+// Sends clear display command to LCD
+void lcd_clear(_LCD *self) {
+    154e:	02 00 fa    	lnk       #0x2
+    1550:	00 0f 78    	mov.w     w0, [w14]
+    __lcd_send(self, LCD_CLEARDISPLAY, INTERNAL_WRITE);
+    1552:	82 c0 b3    	mov.b     #0x8, w2
+    1554:	11 c0 b3    	mov.b     #0x1, w1
+    1556:	1e 00 78    	mov.w     [w14], w0
+    1558:	ee fe 07    	rcall     0x1336 <___lcd_send> <.LFB2> <.LFE1>
+    delay_by_nop(2000);
+    155a:	00 7d 20    	mov.w     #0x7d0, w0
+    155c:	2c 01 07    	rcall     0x17b6 <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+}
+    155e:	00 80 fa    	ulnk      
+    1560:	00 00 06    	return    
+
+00001562 <_lcd_putc>:
+
+// Sends single character to LCD display
+void lcd_putc(_LCD *self, char c) {
+    1562:	04 00 fa    	lnk       #0x4
+    1564:	00 0f 78    	mov.w     w0, [w14]
+    1566:	21 47 98    	mov.b     w1, [w14+2]
+    __lcd_send(self, c, DR_WRITE);
+    1568:	2e 40 90    	mov.b     [w14+2], w0
+    156a:	92 c0 b3    	mov.b     #0x9, w2
+    156c:	80 40 78    	mov.b     w0, w1
+    156e:	1e 00 78    	mov.w     [w14], w0
+    1570:	e2 fe 07    	rcall     0x1336 <___lcd_send> <.LFB2> <.LFE1>
+    // delay_by_nop(1000);
+}
+    1572:	00 80 fa    	ulnk      
+    1574:	00 00 06    	return    
+
+00001576 <_lcd_goto>:
+
+// Sends commands to move LCD cursor to specified location
+void lcd_goto(_LCD *self, uint8_t line, uint8_t col) { //x=col, y=row
+    1576:	06 00 fa    	lnk       #0x6
+    1578:	10 07 98    	mov.w     w0, [w14+2]
+    157a:	41 47 98    	mov.b     w1, [w14+4]
+    157c:	52 47 98    	mov.b     w2, [w14+5]
+    uint8_t address;
+    switch(line) {
+    157e:	4e 40 90    	mov.b     [w14+4], w0
+    1580:	00 80 fb    	ze        w0, w0
+    1582:	e1 0f 50    	sub.w     w0, #0x1, [w15]
+    1584:	03 00 32    	bra       Z, 0x158c <.L24>
+    1586:	e2 0f 50    	sub.w     w0, #0x2, [w15]
+    1588:	04 00 32    	bra       Z, 0x1592 <.L25>
+    158a:	06 00 37    	bra       0x1598 <.L27>
+
+0000158c <.L24>:
+        case 1:
+            address = 0x00;
+    158c:	00 40 eb    	clr.b     w0
+    158e:	00 4f 78    	mov.b     w0, [w14]
+            break;
+    1590:	06 00 37    	bra       0x159e <.L26>
+
+00001592 <.L25>:
+        case 2:
+            address = 0x40;
+    1592:	00 c4 b3    	mov.b     #0x40, w0
+    1594:	00 4f 78    	mov.b     w0, [w14]
+            break;
+    1596:	03 00 37    	bra       0x159e <.L26>
+
+00001598 <.L27>:
+        default:
+            address = 0x00;
+    1598:	00 40 eb    	clr.b     w0
+    159a:	00 4f 78    	mov.b     w0, [w14]
+            break;
+    159c:	00 00 00    	nop       
+
+0000159e <.L26>:
+    }
+
+    address = address+col;
+    159e:	5e 40 90    	mov.b     [w14+5], w0
+    15a0:	1e 4f 40    	add.b     w0, [w14], [w14]
+    __lcd_send(self, LCD_SETDDRAMADDR | address, INTERNAL_WRITE);
+    15a2:	1e 40 78    	mov.b     [w14], w0
+    15a4:	00 74 a0    	bset.b    w0, #0x7
+    15a6:	82 c0 b3    	mov.b     #0x8, w2
+    15a8:	80 40 78    	mov.b     w0, w1
+    15aa:	1e 00 90    	mov.w     [w14+2], w0
+    15ac:	c4 fe 07    	rcall     0x1336 <___lcd_send> <.LFB2> <.LFE1>
+}
+    15ae:	00 80 fa    	ulnk      
+    15b0:	00 00 06    	return    
+
+000015b2 <_lcd_cursor>:
+
+
+void lcd_cursor(_LCD *self, uint8_t cur) {
+    15b2:	04 00 fa    	lnk       #0x4
+    15b4:	00 0f 78    	mov.w     w0, [w14]
+    15b6:	21 47 98    	mov.b     w1, [w14+2]
+    switch(cur) {
+    15b8:	2e 40 90    	mov.b     [w14+2], w0
+    15ba:	00 80 fb    	ze        w0, w0
+    15bc:	00 00 e0    	cp0.w     w0
+    15be:	03 00 32    	bra       Z, 0x15c6 <.L30>
+    15c0:	e1 0f 50    	sub.w     w0, #0x1, [w15]
+    15c2:	06 00 32    	bra       Z, 0x15d0 <.L31>
+        case 0:
+            __lcd_send(self, 0x0C, INTERNAL_WRITE);
+            break;
+        case 1:
+            __lcd_send(self, 0x0E, INTERNAL_WRITE);
+            break;
+        default:
+            break;
+    15c4:	0a 00 37    	bra       0x15da <.L28>
+
+000015c6 <.L30>:
+    15c6:	82 c0 b3    	mov.b     #0x8, w2
+    15c8:	c1 c0 b3    	mov.b     #0xc, w1
+    15ca:	1e 00 78    	mov.w     [w14], w0
+    15cc:	b4 fe 07    	rcall     0x1336 <___lcd_send> <.LFB2> <.LFE1>
+    15ce:	05 00 37    	bra       0x15da <.L28>
+
+000015d0 <.L31>:
+    15d0:	82 c0 b3    	mov.b     #0x8, w2
+    15d2:	e1 c0 b3    	mov.b     #0xe, w1
+    15d4:	1e 00 78    	mov.w     [w14], w0
+    15d6:	af fe 07    	rcall     0x1336 <___lcd_send> <.LFB2> <.LFE1>
+    15d8:	00 00 00    	nop       
+
+000015da <.L28>:
+    }
+}
+    15da:	00 80 fa    	ulnk      
+    15dc:	00 00 06    	return    
+
+000015de <_lcd_print1>:
+
+void lcd_print1(_LCD *self, char *str) {
+    15de:	04 00 fa    	lnk       #0x4
+    15e0:	00 0f 78    	mov.w     w0, [w14]
+    15e2:	11 07 98    	mov.w     w1, [w14+2]
+    lcd_clear(self);
+    15e4:	1e 00 78    	mov.w     [w14], w0
+    15e6:	b3 ff 07    	rcall     0x154e <_lcd_clear> <.LFB8> <.LFE7>
+    while (*str) {
+    15e8:	08 00 37    	bra       0x15fa <.L34>
+
+000015ea <.L35>:
+        lcd_putc(self, *str);
+    15ea:	1e 00 90    	mov.w     [w14+2], w0
+    15ec:	10 40 78    	mov.b     [w0], w0
+    15ee:	80 40 78    	mov.b     w0, w1
+    15f0:	1e 00 78    	mov.w     [w14], w0
+    15f2:	b7 ff 07    	rcall     0x1562 <_lcd_putc> <.LFB9> <.LFE8>
+        str++;
+    15f4:	1e 00 90    	mov.w     [w14+2], w0
+    15f6:	00 00 e8    	inc.w     w0, w0
+    15f8:	10 07 98    	mov.w     w0, [w14+2]
+
+000015fa <.L34>:
+    15fa:	1e 00 90    	mov.w     [w14+2], w0
+    15fc:	10 40 78    	mov.b     [w0], w0
+    15fe:	00 04 e0    	cp0.b     w0
+    1600:	f4 ff 3a    	bra       NZ, 0x15ea <.L35>
+    }
+}
+    1602:	00 80 fa    	ulnk      
+    1604:	00 00 06    	return    
+
+00001606 <_lcd_print2>:
+
+void lcd_print2(_LCD *self, char* line1, char* line2){
+    1606:	42 00 fa    	lnk       #0x42
+    1608:	60 1f 98    	mov.w     w0, [w14+60]
+    160a:	71 1f 98    	mov.w     w1, [w14+62]
+    160c:	02 27 98    	mov.w     w2, [w14+64]
+    lcd_clear(self);
+    160e:	6e 18 90    	mov.w     [w14+60], w0
+    1610:	9e ff 07    	rcall     0x154e <_lcd_clear> <.LFB8> <.LFE7>
+    char str[56] ="                                                        ";
+    1612:	20 22 29    	mov.w     #0x9222, w0
+    1614:	e4 00 47    	add.w     w14, #0x4, w1
+    1616:	37 00 09    	repeat    #0x37
+    1618:	b0 58 78    	mov.b     [w0++], [w1++]
+    161a:	80 03 b1    	sub.w     #0x38, w0
+    int i =0;
+    161c:	00 00 eb    	clr.w     w0
+    161e:	00 0f 78    	mov.w     w0, [w14]
+    while (*line1){
+    1620:	09 00 37    	bra       0x1634 <.L37>
+
+00001622 <.L38>:
+        str[i]=*line1;
+    1622:	7e 18 90    	mov.w     [w14+62], w0
+    1624:	90 40 78    	mov.b     [w0], w1
+    1626:	64 00 47    	add.w     w14, #0x4, w0
+    1628:	1e 00 40    	add.w     w0, [w14], w0
+    162a:	01 48 78    	mov.b     w1, [w0]
+        i=i+1;
+    162c:	1e 0f e8    	inc.w     [w14], [w14]
+        line1++;
+    162e:	7e 18 90    	mov.w     [w14+62], w0
+    1630:	00 00 e8    	inc.w     w0, w0
+    1632:	70 1f 98    	mov.w     w0, [w14+62]
+
+00001634 <.L37>:
+    1634:	7e 18 90    	mov.w     [w14+62], w0
+    1636:	10 40 78    	mov.b     [w0], w0
+    1638:	00 04 e0    	cp0.b     w0
+    163a:	f3 ff 3a    	bra       NZ, 0x1622 <.L38>
+    }
+    i =40;
+    163c:	80 02 20    	mov.w     #0x28, w0
+    163e:	00 0f 78    	mov.w     w0, [w14]
+    while (*line2){
+    1640:	09 00 37    	bra       0x1654 <.L39>
+
+00001642 <.L40>:
+        str[i]=*line2;
+    1642:	0e 20 90    	mov.w     [w14+64], w0
+    1644:	90 40 78    	mov.b     [w0], w1
+    1646:	64 00 47    	add.w     w14, #0x4, w0
+    1648:	1e 00 40    	add.w     w0, [w14], w0
+    164a:	01 48 78    	mov.b     w1, [w0]
+        i=i+1;
+    164c:	1e 0f e8    	inc.w     [w14], [w14]
+        line2++;
+    164e:	0e 20 90    	mov.w     [w14+64], w0
+    1650:	00 00 e8    	inc.w     w0, w0
+    1652:	00 27 98    	mov.w     w0, [w14+64]
+
+00001654 <.L39>:
+    1654:	0e 20 90    	mov.w     [w14+64], w0
+    1656:	10 40 78    	mov.b     [w0], w0
+    1658:	00 04 e0    	cp0.b     w0
+    165a:	f3 ff 3a    	bra       NZ, 0x1642 <.L40>
+    }
+    char* strptr=str;
+    165c:	64 00 47    	add.w     w14, #0x4, w0
+    165e:	10 07 98    	mov.w     w0, [w14+2]
+    lcd_print1(self,strptr);
+    1660:	9e 00 90    	mov.w     [w14+2], w1
+    1662:	6e 18 90    	mov.w     [w14+60], w0
+    1664:	bc ff 07    	rcall     0x15de <_lcd_print1> <.LFB12> <.LFE11>
+}
+    1666:	00 80 fa    	ulnk      
+    1668:	00 00 06    	return    
+
+0000166a <_lcd_print>:
+
+void lcd_print(_LCD *self, char* message) {
+    166a:	30 00 fa    	lnk       #0x30
+    166c:	60 17 98    	mov.w     w0, [w14+44]
+    166e:	71 17 98    	mov.w     w1, [w14+46]
+    char newstr1[17] = "                ";
+    1670:	b0 25 29    	mov.w     #0x925b, w0
+    1672:	ea 00 47    	add.w     w14, #0xa, w1
+    1674:	10 00 09    	repeat    #0x10
+    1676:	b0 58 78    	mov.b     [w0++], [w1++]
+    1678:	10 01 b1    	sub.w     #0x11, w0
+    char* newstrptr1= newstr1;
+    167a:	6a 0f 47    	add.w     w14, #0xa, [w14]
+    char newstr2[17] = "                ";
+    167c:	b0 25 29    	mov.w     #0x925b, w0
+    167e:	fb 00 47    	add.w     w14, #0x1b, w1
+    1680:	10 00 09    	repeat    #0x10
+    1682:	b0 58 78    	mov.b     [w0++], [w1++]
+    1684:	10 01 b1    	sub.w     #0x11, w0
+    char* newstrptr2= newstr2;
+    1686:	7b 00 47    	add.w     w14, #0x1b, w0
+    1688:	10 07 98    	mov.w     w0, [w14+2]
+    char* temp1 = newstrptr1;
+    168a:	9e 00 78    	mov.w     [w14], w1
+    168c:	31 07 98    	mov.w     w1, [w14+6]
+    char* temp2 = newstrptr2;
+    168e:	9e 00 90    	mov.w     [w14+2], w1
+    1690:	41 07 98    	mov.w     w1, [w14+8]
+    uint8_t i=0;
+    1692:	00 40 eb    	clr.b     w0
+    1694:	40 47 98    	mov.b     w0, [w14+4]
+    while (i <17){
+    1696:	0f 00 37    	bra       0x16b6 <.L42>
+
+00001698 <.L44>:
+        if (*message){
+    1698:	7e 10 90    	mov.w     [w14+46], w0
+    169a:	10 40 78    	mov.b     [w0], w0
+    169c:	00 04 e0    	cp0.b     w0
+    169e:	08 00 32    	bra       Z, 0x16b0 <.L43>
+            *newstrptr1=*message;
+    16a0:	7e 10 90    	mov.w     [w14+46], w0
+    16a2:	90 40 78    	mov.b     [w0], w1
+    16a4:	1e 00 78    	mov.w     [w14], w0
+    16a6:	01 48 78    	mov.b     w1, [w0]
+            message++;
+    16a8:	7e 10 90    	mov.w     [w14+46], w0
+    16aa:	00 00 e8    	inc.w     w0, w0
+    16ac:	70 17 98    	mov.w     w0, [w14+46]
+            newstrptr1++;
+    16ae:	1e 0f e8    	inc.w     [w14], [w14]
+
+000016b0 <.L43>:
+        }
+        i++;
+    16b0:	4e 40 90    	mov.b     [w14+4], w0
+    16b2:	00 40 e8    	inc.b     w0, w0
+    16b4:	40 47 98    	mov.b     w0, [w14+4]
+
+000016b6 <.L42>:
+    16b6:	4e 40 90    	mov.b     [w14+4], w0
+    16b8:	f0 4f 50    	sub.b     w0, #0x10, [w15]
+    16ba:	ee ff 36    	bra       LEU, 0x1698 <.L44>
+    }
+    i=0;
+    16bc:	00 40 eb    	clr.b     w0
+    16be:	40 47 98    	mov.b     w0, [w14+4]
+    message--; //SKETCHY!
+    16c0:	7e 10 90    	mov.w     [w14+46], w0
+    16c2:	00 00 e9    	dec.w     w0, w0
+    16c4:	70 17 98    	mov.w     w0, [w14+46]
+    while (i <17){
+    16c6:	11 00 37    	bra       0x16ea <.L45>
+
+000016c8 <.L47>:
+        if (*message){
+    16c8:	7e 10 90    	mov.w     [w14+46], w0
+    16ca:	10 40 78    	mov.b     [w0], w0
+    16cc:	00 04 e0    	cp0.b     w0
+    16ce:	0a 00 32    	bra       Z, 0x16e4 <.L46>
+            *newstrptr2=*message;
+    16d0:	7e 10 90    	mov.w     [w14+46], w0
+    16d2:	90 40 78    	mov.b     [w0], w1
+    16d4:	1e 00 90    	mov.w     [w14+2], w0
+    16d6:	01 48 78    	mov.b     w1, [w0]
+            message++;
+    16d8:	7e 10 90    	mov.w     [w14+46], w0
+    16da:	00 00 e8    	inc.w     w0, w0
+    16dc:	70 17 98    	mov.w     w0, [w14+46]
+            newstrptr2++;
+    16de:	1e 00 90    	mov.w     [w14+2], w0
+    16e0:	00 00 e8    	inc.w     w0, w0
+    16e2:	10 07 98    	mov.w     w0, [w14+2]
+
+000016e4 <.L46>:
+        }
+        i++;
+    16e4:	4e 40 90    	mov.b     [w14+4], w0
+    16e6:	00 40 e8    	inc.b     w0, w0
+    16e8:	40 47 98    	mov.b     w0, [w14+4]
+
+000016ea <.L45>:
+    16ea:	4e 40 90    	mov.b     [w14+4], w0
+    16ec:	f0 4f 50    	sub.b     w0, #0x10, [w15]
+    16ee:	ec ff 36    	bra       LEU, 0x16c8 <.L47>
+    }
+    lcd_print2(self, temp1, temp2);
+    16f0:	4e 01 90    	mov.w     [w14+8], w2
+    16f2:	be 00 90    	mov.w     [w14+6], w1
+    16f4:	6e 10 90    	mov.w     [w14+44], w0
+    16f6:	87 ff 07    	rcall     0x1606 <_lcd_print2> <.LFB13> <.LFE12>
+}
+    16f8:	00 80 fa    	ulnk      
+    16fa:	00 00 06    	return    
+
+000016fc <_lcd_broadcast>:
+
+void lcd_broadcast(char* message) {
+    16fc:	04 00 fa    	lnk       #0x4
+    16fe:	10 07 98    	mov.w     w0, [w14+2]
+    uint8_t i;
+    for (i = 0; i < 3; i++)
+    1700:	00 40 eb    	clr.b     w0
+    1702:	00 4f 78    	mov.b     w0, [w14]
+    1704:	08 00 37    	bra       0x1716 <.L49>
+
+00001706 <.L50>:
+        lcd_print(&lcd[i], message);
+    1706:	1e 80 fb    	ze        [w14], w0
+    1708:	65 00 b9    	mul.su    w0, #0x5, w0
+    170a:	80 00 78    	mov.w     w0, w1
+    170c:	60 80 20    	mov.w     #0x806, w0
+    170e:	00 80 40    	add.w     w1, w0, w0
+    1710:	9e 00 90    	mov.w     [w14+2], w1
+    1712:	ab ff 07    	rcall     0x166a <_lcd_print> <.LFB14> <.LFE13>
+    1714:	1e 4f e8    	inc.b     [w14], [w14]
+
+00001716 <.L49>:
+    1716:	1e 40 78    	mov.b     [w14], w0
+    1718:	e2 4f 50    	sub.b     w0, #0x2, [w15]
+    171a:	f5 ff 36    	bra       LEU, 0x1706 <.L50>
+}
+    171c:	00 80 fa    	ulnk      
+    171e:	00 00 06    	return    
+
+00001720 <_itoa>:
+
+char * itoa (int value, char *result, int base) {
+    1720:	0e 00 fa    	lnk       #0xe
+    1722:	40 07 98    	mov.w     w0, [w14+8]
+    1724:	51 07 98    	mov.w     w1, [w14+10]
+    1726:	62 07 98    	mov.w     w2, [w14+12]
+    // check that the base if valid
+    if (base < 2 || base > 36) { *result = '\0'; return result; }
+    1728:	6e 00 90    	mov.w     [w14+12], w0
+    172a:	e1 0f 50    	sub.w     w0, #0x1, [w15]
+    172c:	04 00 34    	bra       LE, 0x1736 <.L52>
+    172e:	ee 00 90    	mov.w     [w14+12], w1
+    1730:	40 02 20    	mov.w     #0x24, w0
+    1732:	80 8f 50    	sub.w     w1, w0, [w15]
+    1734:	05 00 34    	bra       LE, 0x1740 <.L53>
+
+00001736 <.L52>:
+    1736:	5e 00 90    	mov.w     [w14+10], w0
+    1738:	80 40 eb    	clr.b     w1
+    173a:	01 48 78    	mov.b     w1, [w0]
+    173c:	5e 00 90    	mov.w     [w14+10], w0
+    173e:	39 00 37    	bra       0x17b2 <.L54>
+
+00001740 <.L53>:
+
+    char* ptr = result, *ptr1 = result, tmp_char;
+    1740:	de 00 90    	mov.w     [w14+10], w1
+    1742:	01 0f 78    	mov.w     w1, [w14]
+    1744:	5e 01 90    	mov.w     [w14+10], w2
+    1746:	12 07 98    	mov.w     w2, [w14+2]
+
+00001748 <.L55>:
+    int tmp_value;
+
+    do {
+        tmp_value = value;
+    1748:	ce 00 90    	mov.w     [w14+8], w1
+    174a:	21 07 98    	mov.w     w1, [w14+4]
+        value /= base;
+    174c:	ce 00 90    	mov.w     [w14+8], w1
+    174e:	6e 00 90    	mov.w     [w14+12], w0
+    1750:	00 01 78    	mov.w     w0, w2
+    1752:	11 00 09    	repeat    #0x11
+    1754:	82 00 d8    	div.sw    w1, w2
+    1756:	40 07 98    	mov.w     w0, [w14+8]
+        *ptr++ = "zyxwvutsrqponmlkjihgfedcba9876543210123456789abcdefghijklmnopqrstuvwxyz" [35 + (tmp_value - value * base)];
+    1758:	ce 00 90    	mov.w     [w14+8], w1
+    175a:	6e 00 90    	mov.w     [w14+12], w0
+    175c:	00 88 b9    	mul.ss    w1, w0, w0
+    175e:	00 00 78    	mov.w     w0, w0
+    1760:	ae 00 90    	mov.w     [w14+4], w1
+    1762:	00 80 50    	sub.w     w1, w0, w0
+    1764:	30 02 b0    	add.w     #0x23, w0
+    1766:	c1 26 29    	mov.w     #0x926c, w1
+    1768:	e1 40 78    	mov.b     [w1+w0], w1
+    176a:	1e 00 78    	mov.w     [w14], w0
+    176c:	01 48 78    	mov.b     w1, [w0]
+    176e:	1e 0f e8    	inc.w     [w14], [w14]
+    } while ( value );
+    1770:	4e 00 90    	mov.w     [w14+8], w0
+    1772:	00 00 e0    	cp0.w     w0
+    1774:	e9 ff 3a    	bra       NZ, 0x1748 <.L55>
+
+    // Apply negative sign
+    if (tmp_value < 0) *ptr++ = '-';
+    1776:	2e 00 90    	mov.w     [w14+4], w0
+    1778:	00 00 e0    	cp0.w     w0
+    177a:	04 00 3d    	bra       GE, 0x1784 <.L56>
+    177c:	1e 00 78    	mov.w     [w14], w0
+    177e:	d1 c2 b3    	mov.b     #0x2d, w1
+    1780:	01 48 78    	mov.b     w1, [w0]
+    1782:	1e 0f e8    	inc.w     [w14], [w14]
+
+00001784 <.L56>:
+    *ptr-- = '\0';
+    1784:	1e 00 78    	mov.w     [w14], w0
+    1786:	80 40 eb    	clr.b     w1
+    1788:	01 48 78    	mov.b     w1, [w0]
+    178a:	1e 0f e9    	dec.w     [w14], [w14]
+    while (ptr1 < ptr) {
+    178c:	0e 00 37    	bra       0x17aa <.L57>
+
+0000178e <.L58>:
+        tmp_char = *ptr;
+    178e:	1e 00 78    	mov.w     [w14], w0
+    1790:	90 40 78    	mov.b     [w0], w1
+    1792:	61 47 98    	mov.b     w1, [w14+6]
+        *ptr--= *ptr1;
+    1794:	1e 00 90    	mov.w     [w14+2], w0
+    1796:	90 40 78    	mov.b     [w0], w1
+    1798:	1e 00 78    	mov.w     [w14], w0
+    179a:	01 48 78    	mov.b     w1, [w0]
+    179c:	1e 0f e9    	dec.w     [w14], [w14]
+        *ptr1++ = tmp_char;
+    179e:	1e 00 90    	mov.w     [w14+2], w0
+    17a0:	6e 41 90    	mov.b     [w14+6], w2
+    17a2:	02 48 78    	mov.b     w2, [w0]
+    17a4:	1e 00 90    	mov.w     [w14+2], w0
+    17a6:	00 00 e8    	inc.w     w0, w0
+    17a8:	10 07 98    	mov.w     w0, [w14+2]
+
+000017aa <.L57>:
+    17aa:	1e 00 90    	mov.w     [w14+2], w0
+    17ac:	9e 0f 50    	sub.w     w0, [w14], [w15]
+    17ae:	ef ff 39    	bra       NC, 0x178e <.L58>
+    }
+    return result;
+    17b0:	5e 00 90    	mov.w     [w14+10], w0
+
+000017b2 <.L54>:
+}
+    17b2:	00 80 fa    	ulnk      
+    17b4:	00 00 06    	return    
+
+000017b6 <_delay_by_nop>:
+    17b6:	04 00 fa    	lnk       #0x4
+    17b8:	10 07 98    	mov.w     w0, [w14+2]
+    17ba:	00 00 eb    	clr.w     w0
+    17bc:	00 0f 78    	mov.w     w0, [w14]
+    17be:	02 00 37    	bra       0x17c4 <.L2>
+
+000017c0 <.L3>:
+    17c0:	00 00 00    	nop       
+    17c2:	1e 0f e8    	inc.w     [w14], [w14]
+
+000017c4 <.L2>:
+    17c4:	1e 00 90    	mov.w     [w14+2], w0
+    17c6:	9e 0f 50    	sub.w     w0, [w14], [w15]
+    17c8:	fb ff 3e    	bra       GTU, 0x17c0 <.L3>
+    17ca:	00 80 fa    	ulnk      
+    17cc:	00 00 06    	return    
+
+000017ce <_i2c_init>:
+    17ce:	04 00 fa    	lnk       #0x4
+    17d0:	10 07 98    	mov.w     w0, [w14+2]
+    17d2:	1e 00 90    	mov.w     [w14+2], w0
+    17d4:	a0 13 88    	mov.w     w0, 0x274
+    17d6:	77 e2 a9    	bclr.b    0x277, #0x7
+    17d8:	77 22 a8    	bset.b    0x277, #0x1
+    17da:	8e a0 a9    	bclr.b    0x8e, #0x5
+    17dc:	77 e2 a8    	bset.b    0x277, #0x7
+    17de:	80 13 80    	mov.w     0x270, w0
+    17e0:	00 0f 78    	mov.w     w0, [w14]
+    17e2:	31 00 07    	rcall     0x1846 <_reset_i2c_bus> <.LFB4> <.LFE3>
+    17e4:	00 80 fa    	ulnk      
+    17e6:	00 00 06    	return    
+
+000017e8 <_i2c_start>:
+    17e8:	02 00 fa    	lnk       #0x2
+    17ea:	00 00 eb    	clr.w     w0
+    17ec:	00 0f 78    	mov.w     w0, [w14]
+    17ee:	76 a2 a9    	bclr.b    0x276, #0x5
+    17f0:	a0 00 20    	mov.w     #0xa, w0
+    17f2:	e1 ff 07    	rcall     0x17b6 <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+    17f4:	76 02 a8    	bset.b    0x276, #0x0
+    17f6:	00 00 00    	nop       
+    17f8:	06 00 37    	bra       0x1806 <.L6>
+
+000017fa <.L8>:
+    17fa:	10 00 20    	mov.w     #0x1, w0
+    17fc:	dc ff 07    	rcall     0x17b6 <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+    17fe:	1e 0f e8    	inc.w     [w14], [w14]
+    1800:	1e 00 78    	mov.w     [w14], w0
+    1802:	f4 0f 50    	sub.w     w0, #0x14, [w15]
+    1804:	05 00 3c    	bra       GT, 0x1810 <.L9>
+
+00001806 <.L6>:
+    1806:	b0 13 80    	mov.w     0x276, w0
+    1808:	61 00 60    	and.w     w0, #0x1, w0
+    180a:	00 00 e0    	cp0.w     w0
+    180c:	f6 ff 3a    	bra       NZ, 0x17fa <.L8>
+    180e:	01 00 37    	bra       0x1812 <.L7>
+
+00001810 <.L9>:
+    1810:	00 00 00    	nop       
+
+00001812 <.L7>:
+    1812:	20 00 20    	mov.w     #0x2, w0
+    1814:	d0 ff 07    	rcall     0x17b6 <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+    1816:	00 80 fa    	ulnk      
+    1818:	00 00 06    	return    
+
+0000181a <_i2c_restart>:
+    181a:	02 00 fa    	lnk       #0x2
+    181c:	00 00 eb    	clr.w     w0
+    181e:	00 0f 78    	mov.w     w0, [w14]
+    1820:	76 22 a8    	bset.b    0x276, #0x1
+    1822:	00 00 00    	nop       
+    1824:	06 00 37    	bra       0x1832 <.L11>
+
+00001826 <.L13>:
+    1826:	10 00 20    	mov.w     #0x1, w0
+    1828:	c6 ff 07    	rcall     0x17b6 <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+    182a:	1e 0f e8    	inc.w     [w14], [w14]
+    182c:	1e 00 78    	mov.w     [w14], w0
+    182e:	f4 0f 50    	sub.w     w0, #0x14, [w15]
+    1830:	05 00 3c    	bra       GT, 0x183c <.L14>
+
+00001832 <.L11>:
+    1832:	b0 13 80    	mov.w     0x276, w0
+    1834:	62 00 60    	and.w     w0, #0x2, w0
+    1836:	00 00 e0    	cp0.w     w0
+    1838:	f6 ff 3a    	bra       NZ, 0x1826 <.L13>
+    183a:	01 00 37    	bra       0x183e <.L12>
+
+0000183c <.L14>:
+    183c:	00 00 00    	nop       
+
+0000183e <.L12>:
+    183e:	20 00 20    	mov.w     #0x2, w0
+    1840:	ba ff 07    	rcall     0x17b6 <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+    1842:	00 80 fa    	ulnk      
+    1844:	00 00 06    	return    
+
+00001846 <_reset_i2c_bus>:
+    1846:	02 00 fa    	lnk       #0x2
+    1848:	00 00 eb    	clr.w     w0
+    184a:	00 0f 78    	mov.w     w0, [w14]
+    184c:	76 42 a8    	bset.b    0x276, #0x2
+    184e:	06 00 37    	bra       0x185c <.L16>
+
+00001850 <.L18>:
+    1850:	10 00 20    	mov.w     #0x1, w0
+    1852:	b1 ff 07    	rcall     0x17b6 <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+    1854:	1e 0f e8    	inc.w     [w14], [w14]
+    1856:	1e 00 78    	mov.w     [w14], w0
+    1858:	f4 0f 50    	sub.w     w0, #0x14, [w15]
+    185a:	05 00 3c    	bra       GT, 0x1866 <.L19>
+
+0000185c <.L16>:
+    185c:	b0 13 80    	mov.w     0x276, w0
+    185e:	64 00 60    	and.w     w0, #0x4, w0
+    1860:	00 00 e0    	cp0.w     w0
+    1862:	f6 ff 3a    	bra       NZ, 0x1850 <.L18>
+    1864:	01 00 37    	bra       0x1868 <.L17>
+
+00001866 <.L19>:
+    1866:	00 00 00    	nop       
+
+00001868 <.L17>:
+    1868:	76 62 a9    	bclr.b    0x276, #0x3
+    186a:	8e a0 a9    	bclr.b    0x8e, #0x5
+    186c:	78 e2 a9    	bclr.b    0x278, #0x7
+    186e:	79 42 a9    	bclr.b    0x279, #0x2
+    1870:	a0 00 20    	mov.w     #0xa, w0
+    1872:	a1 ff 07    	rcall     0x17b6 <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+    1874:	00 80 fa    	ulnk      
+    1876:	00 00 06    	return    
+
+00001878 <_send_i2c_byte>:
+    1878:	04 00 fa    	lnk       #0x4
+    187a:	10 07 98    	mov.w     w0, [w14+2]
+    187c:	00 00 00    	nop       
+
+0000187e <.L21>:
+    187e:	c0 13 80    	mov.w     0x278, w0
+    1880:	61 00 60    	and.w     w0, #0x1, w0
+    1882:	00 00 e0    	cp0.w     w0
+    1884:	fc ff 3a    	bra       NZ, 0x187e <.L21>
+    1886:	8e a0 a9    	bclr.b    0x8e, #0x5
+    1888:	1e 00 90    	mov.w     [w14+2], w0
+    188a:	90 13 88    	mov.w     w0, 0x272
+    188c:	00 00 eb    	clr.w     w0
+    188e:	00 0f 78    	mov.w     w0, [w14]
+    1890:	08 00 37    	bra       0x18a2 <.L22>
+
+00001892 <.L25>:
+    1892:	c1 13 80    	mov.w     0x278, w1
+    1894:	00 00 24    	mov.w     #0x4000, w0
+    1896:	00 80 60    	and.w     w1, w0, w0
+    1898:	00 00 e0    	cp0.w     w0
+    189a:	08 00 32    	bra       Z, 0x18ac <.L29>
+    189c:	10 00 20    	mov.w     #0x1, w0
+    189e:	8b ff 07    	rcall     0x17b6 <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+    18a0:	1e 0f e8    	inc.w     [w14], [w14]
+
+000018a2 <.L22>:
+    18a2:	30 1f 20    	mov.w     #0x1f3, w0
+    18a4:	9e 00 78    	mov.w     [w14], w1
+    18a6:	80 8f 50    	sub.w     w1, w0, [w15]
+    18a8:	f4 ff 34    	bra       LE, 0x1892 <.L25>
+    18aa:	01 00 37    	bra       0x18ae <.L24>
+
+000018ac <.L29>:
+    18ac:	00 00 00    	nop       
+
+000018ae <.L24>:
+    18ae:	40 1f 20    	mov.w     #0x1f4, w0
+    18b0:	9e 00 78    	mov.w     [w14], w1
+    18b2:	80 8f 50    	sub.w     w1, w0, [w15]
+    18b4:	02 00 3a    	bra       NZ, 0x18ba <.L26>
+    18b6:	10 c0 b3    	mov.b     #0x1, w0
+    18b8:	0b 00 37    	bra       0x18d0 <.L27>
+
+000018ba <.L26>:
+    18ba:	c1 13 80    	mov.w     0x278, w1
+    18bc:	00 00 28    	mov.w     #0x8000, w0
+    18be:	00 80 60    	and.w     w1, w0, w0
+    18c0:	00 00 e0    	cp0.w     w0
+    18c2:	03 00 32    	bra       Z, 0x18ca <.L28>
+    18c4:	c0 ff 07    	rcall     0x1846 <_reset_i2c_bus> <.LFB4> <.LFE3>
+    18c6:	10 c0 b3    	mov.b     #0x1, w0
+    18c8:	03 00 37    	bra       0x18d0 <.L27>
+
+000018ca <.L28>:
+    18ca:	20 00 20    	mov.w     #0x2, w0
+    18cc:	74 ff 07    	rcall     0x17b6 <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+    18ce:	00 40 eb    	clr.b     w0
+
+000018d0 <.L27>:
+    18d0:	00 80 fa    	ulnk      
+    18d2:	00 00 06    	return    
+
+000018d4 <_i2c_read>:
+    18d4:	04 00 fa    	lnk       #0x4
+    18d6:	00 00 eb    	clr.w     w0
+    18d8:	00 0f 78    	mov.w     w0, [w14]
+    18da:	00 40 eb    	clr.b     w0
+    18dc:	20 47 98    	mov.b     w0, [w14+2]
+    18de:	76 62 a8    	bset.b    0x276, #0x3
+    18e0:	05 00 37    	bra       0x18ec <.L31>
+
+000018e2 <.L33>:
+    18e2:	1e 0f e8    	inc.w     [w14], [w14]
+    18e4:	00 7d 20    	mov.w     #0x7d0, w0
+    18e6:	9e 00 78    	mov.w     [w14], w1
+    18e8:	80 8f 50    	sub.w     w1, w0, [w15]
+    18ea:	05 00 3c    	bra       GT, 0x18f6 <.L34>
+
+000018ec <.L31>:
+    18ec:	c0 13 80    	mov.w     0x278, w0
+    18ee:	62 00 60    	and.w     w0, #0x2, w0
+    18f0:	00 00 e0    	cp0.w     w0
+    18f2:	f7 ff 32    	bra       Z, 0x18e2 <.L33>
+    18f4:	01 00 37    	bra       0x18f8 <.L32>
+
+000018f6 <.L34>:
+    18f6:	00 00 00    	nop       
+
+000018f8 <.L32>:
+    18f8:	80 13 80    	mov.w     0x270, w0
+    18fa:	20 47 98    	mov.b     w0, [w14+2]
+    18fc:	2e 40 90    	mov.b     [w14+2], w0
+    18fe:	00 80 fa    	ulnk      
+    1900:	00 00 06    	return    
+
+00001902 <_i2c_read_ack>:
+    1902:	04 00 fa    	lnk       #0x4
+    1904:	00 00 eb    	clr.w     w0
+    1906:	00 0f 78    	mov.w     w0, [w14]
+    1908:	00 40 eb    	clr.b     w0
+    190a:	20 47 98    	mov.b     w0, [w14+2]
+    190c:	76 62 a8    	bset.b    0x276, #0x3
+    190e:	05 00 37    	bra       0x191a <.L36>
+
+00001910 <.L38>:
+    1910:	1e 0f e8    	inc.w     [w14], [w14]
+    1912:	00 7d 20    	mov.w     #0x7d0, w0
+    1914:	9e 00 78    	mov.w     [w14], w1
+    1916:	80 8f 50    	sub.w     w1, w0, [w15]
+    1918:	05 00 3c    	bra       GT, 0x1924 <.L39>
+
+0000191a <.L36>:
+    191a:	c0 13 80    	mov.w     0x278, w0
+    191c:	62 00 60    	and.w     w0, #0x2, w0
+    191e:	00 00 e0    	cp0.w     w0
+    1920:	f7 ff 32    	bra       Z, 0x1910 <.L38>
+    1922:	01 00 37    	bra       0x1926 <.L37>
+
+00001924 <.L39>:
+    1924:	00 00 00    	nop       
+
+00001926 <.L37>:
+    1926:	80 13 80    	mov.w     0x270, w0
+    1928:	20 47 98    	mov.b     w0, [w14+2]
+    192a:	76 82 a8    	bset.b    0x276, #0x4
+    192c:	a0 00 20    	mov.w     #0xa, w0
+    192e:	43 ff 07    	rcall     0x17b6 <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+    1930:	2e 40 90    	mov.b     [w14+2], w0
+    1932:	00 80 fa    	ulnk      
+    1934:	00 00 06    	return    
+
+00001936 <_I2Cwrite>:
+    1936:	04 00 fa    	lnk       #0x4
+    1938:	00 4f 78    	mov.b     w0, [w14]
+    193a:	11 47 98    	mov.b     w1, [w14+1]
+    193c:	22 47 98    	mov.b     w2, [w14+2]
+    193e:	54 ff 07    	rcall     0x17e8 <_i2c_start> <.LFB2> <.LFE1>
+    1940:	1e 00 fb    	se        [w14], w0
+    1942:	80 00 78    	mov.w     w0, w1
+    1944:	e0 ff 2f    	mov.w     #0xfffe, w0
+    1946:	00 80 60    	and.w     w1, w0, w0
+    1948:	97 ff 07    	rcall     0x1878 <_send_i2c_byte> <.LFB5> <.LFE4>
+    194a:	1e 40 90    	mov.b     [w14+1], w0
+    194c:	00 00 fb    	se        w0, w0
+    194e:	94 ff 07    	rcall     0x1878 <_send_i2c_byte> <.LFB5> <.LFE4>
+    1950:	2e 40 90    	mov.b     [w14+2], w0
+    1952:	00 00 fb    	se        w0, w0
+    1954:	91 ff 07    	rcall     0x1878 <_send_i2c_byte> <.LFB5> <.LFE4>
+    1956:	77 ff 07    	rcall     0x1846 <_reset_i2c_bus> <.LFB4> <.LFE3>
+    1958:	00 80 fa    	ulnk      
+    195a:	00 00 06    	return    
+
+0000195c <_I2Cread>:
+    195c:	04 00 fa    	lnk       #0x4
+    195e:	20 47 98    	mov.b     w0, [w14+2]
+    1960:	31 47 98    	mov.b     w1, [w14+3]
+    1962:	42 ff 07    	rcall     0x17e8 <_i2c_start> <.LFB2> <.LFE1>
+    1964:	2e 40 90    	mov.b     [w14+2], w0
+    1966:	00 00 fb    	se        w0, w0
+    1968:	87 ff 07    	rcall     0x1878 <_send_i2c_byte> <.LFB5> <.LFE4>
+    196a:	3e 40 90    	mov.b     [w14+3], w0
+    196c:	00 00 fb    	se        w0, w0
+    196e:	84 ff 07    	rcall     0x1878 <_send_i2c_byte> <.LFB5> <.LFE4>
+    1970:	a0 00 20    	mov.w     #0xa, w0
+    1972:	21 ff 07    	rcall     0x17b6 <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+    1974:	52 ff 07    	rcall     0x181a <_i2c_restart> <.LFB3> <.LFE2>
+    1976:	2e 40 90    	mov.b     [w14+2], w0
+    1978:	00 04 a0    	bset.b    w0, #0x0
+    197a:	00 00 fb    	se        w0, w0
+    197c:	7d ff 07    	rcall     0x1878 <_send_i2c_byte> <.LFB5> <.LFE4>
+    197e:	aa ff 07    	rcall     0x18d4 <_i2c_read> <.LFB6> <.LFE5>
+    1980:	00 4f 78    	mov.b     w0, [w14]
+    1982:	61 ff 07    	rcall     0x1846 <_reset_i2c_bus> <.LFB4> <.LFE3>
+    1984:	1e 40 78    	mov.b     [w14], w0
+    1986:	00 80 fa    	ulnk      
+    1988:	00 00 06    	return    
+
+0000198a <_I2Cpoll>:
+    198a:	04 00 fa    	lnk       #0x4
+    198c:	20 47 98    	mov.b     w0, [w14+2]
+    198e:	00 40 eb    	clr.b     w0
+    1990:	00 4f 78    	mov.b     w0, [w14]
+    1992:	2a ff 07    	rcall     0x17e8 <_i2c_start> <.LFB2> <.LFE1>
+    1994:	2e 40 90    	mov.b     [w14+2], w0
+    1996:	00 00 fb    	se        w0, w0
+    1998:	80 00 78    	mov.w     w0, w1
+    199a:	e0 ff 2f    	mov.w     #0xfffe, w0
+    199c:	00 80 60    	and.w     w1, w0, w0
+    199e:	6c ff 07    	rcall     0x1878 <_send_i2c_byte> <.LFB5> <.LFE4>
+    19a0:	00 4f 78    	mov.b     w0, [w14]
+    19a2:	51 ff 07    	rcall     0x1846 <_reset_i2c_bus> <.LFB4> <.LFE3>
+    19a4:	1e 40 78    	mov.b     [w14], w0
+    19a6:	00 80 fa    	ulnk      
+    19a8:	00 00 06    	return    
+
+000019aa <_I2Cwritearray>:
+    19aa:	08 00 fa    	lnk       #0x8
+    19ac:	20 47 98    	mov.b     w0, [w14+2]
+    19ae:	21 07 98    	mov.w     w1, [w14+4]
+    19b0:	62 47 98    	mov.b     w2, [w14+6]
+    19b2:	00 40 eb    	clr.b     w0
+    19b4:	00 4f 78    	mov.b     w0, [w14]
+    19b6:	18 ff 07    	rcall     0x17e8 <_i2c_start> <.LFB2> <.LFE1>
+    19b8:	2e 40 90    	mov.b     [w14+2], w0
+    19ba:	00 00 fb    	se        w0, w0
+    19bc:	80 00 78    	mov.w     w0, w1
+    19be:	e0 ff 2f    	mov.w     #0xfffe, w0
+    19c0:	00 80 60    	and.w     w1, w0, w0
+    19c2:	5a ff 07    	rcall     0x1878 <_send_i2c_byte> <.LFB5> <.LFE4>
+    19c4:	00 4f 78    	mov.b     w0, [w14]
+    19c6:	00 40 eb    	clr.b     w0
+    19c8:	10 47 98    	mov.b     w0, [w14+1]
+    19ca:	0d 00 37    	bra       0x19e6 <.L44>
+
+000019cc <.L45>:
+    19cc:	1e 40 90    	mov.b     [w14+1], w0
+    19ce:	00 80 fb    	ze        w0, w0
+    19d0:	ae 00 90    	mov.w     [w14+4], w1
+    19d2:	00 80 40    	add.w     w1, w0, w0
+    19d4:	10 40 78    	mov.b     [w0], w0
+    19d6:	00 00 fb    	se        w0, w0
+    19d8:	4f ff 07    	rcall     0x1878 <_send_i2c_byte> <.LFB5> <.LFE4>
+    19da:	9e 40 78    	mov.b     [w14], w1
+    19dc:	01 40 70    	ior.b     w0, w1, w0
+    19de:	00 4f 78    	mov.b     w0, [w14]
+    19e0:	1e 40 90    	mov.b     [w14+1], w0
+    19e2:	00 40 e8    	inc.b     w0, w0
+    19e4:	10 47 98    	mov.b     w0, [w14+1]
+
+000019e6 <.L44>:
+    19e6:	9e 40 90    	mov.b     [w14+1], w1
+    19e8:	6e 40 90    	mov.b     [w14+6], w0
+    19ea:	80 cf 50    	sub.b     w1, w0, [w15]
+    19ec:	ef ff 39    	bra       NC, 0x19cc <.L45>
+    19ee:	2b ff 07    	rcall     0x1846 <_reset_i2c_bus> <.LFB4> <.LFE3>
+    19f0:	1e 40 78    	mov.b     [w14], w0
+    19f2:	00 80 fa    	ulnk      
+    19f4:	00 00 06    	return    
+
+000019f6 <_idle>:
+    19f6:	00 00 fa    	lnk       #0x0
+    19f8:	01 40 80    	mov.w     0x800, w1
+    19fa:	10 40 80    	mov.w     0x802, w0
+    19fc:	80 8f 50    	sub.w     w1, w0, [w15]
+    19fe:	08 00 32    	bra       Z, 0x1a10 <.L2>
+    1a00:	00 40 80    	mov.w     0x800, w0
+    1a02:	10 40 88    	mov.w     w0, 0x802
+    1a04:	dc e2 a8    	bset.b    0x2dc, #0x7
+    1a06:	ea a2 a8    	bset.b    0x2ea, #0x5
+    1a08:	42 2b 29    	mov.w     #0x92b4, w2
+    1a0a:	a1 2b 29    	mov.w     #0x92ba, w1
+    1a0c:	60 81 20    	mov.w     #0x816, w0
+    1a0e:	fb fd 07    	rcall     0x1606 <_lcd_print2> <.LFB13> <.LFE12>
+
+00001a10 <.L2>:
+    1a10:	50 17 80    	mov.w     0x2ea, w0
+    1a12:	70 00 60    	and.w     w0, #0x10, w0
+    1a14:	00 00 e0    	cp0.w     w0
+    1a16:	02 00 3a    	bra       NZ, 0x1a1c <.L3>
+    1a18:	c0 a2 21    	mov.w     #0x1a2c, w0
+    1a1a:	00 40 88    	mov.w     w0, 0x800
+
+00001a1c <.L3>:
+    1a1c:	01 40 80    	mov.w     0x800, w1
+    1a1e:	10 40 80    	mov.w     0x802, w0
+    1a20:	80 8f 50    	sub.w     w1, w0, [w15]
+    1a22:	02 00 32    	bra       Z, 0x1a28 <.L1>
+    1a24:	dc e2 a9    	bclr.b    0x2dc, #0x7
+    1a26:	ea a2 a9    	bclr.b    0x2ea, #0x5
+
+00001a28 <.L1>:
+    1a28:	00 80 fa    	ulnk      
+    1a2a:	00 00 06    	return    
+
+00001a2c <_active>:
+    1a2c:	00 00 fa    	lnk       #0x0
+    1a2e:	01 40 80    	mov.w     0x800, w1
+    1a30:	10 40 80    	mov.w     0x802, w0
+    1a32:	80 8f 50    	sub.w     w1, w0, [w15]
+    1a34:	0c 00 32    	bra       Z, 0x1a4e <.L6>
+    1a36:	00 40 80    	mov.w     0x800, w0
+    1a38:	10 40 88    	mov.w     w0, 0x802
+    1a3a:	ea a2 a8    	bset.b    0x2ea, #0x5
+    1a3c:	84 60 a9    	bclr.b    0x84, #0x3
+    1a3e:	00 21 ef    	clr.w     0x100
+    1a40:	05 e1 a8    	bset.b    0x105, #0x7
+    1a42:	40 01 20    	mov.w     #0x14, w0
+    1a44:	20 40 88    	mov.w     w0, 0x804
+    1a46:	52 2c 29    	mov.w     #0x92c5, w2
+    1a48:	61 2c 29    	mov.w     #0x92c6, w1
+    1a4a:	60 81 20    	mov.w     #0x816, w0
+    1a4c:	dc fd 07    	rcall     0x1606 <_lcd_print2> <.LFB13> <.LFE12>
+
+00001a4e <.L6>:
+    1a4e:	20 04 80    	mov.w     0x84, w0
+    1a50:	68 00 60    	and.w     w0, #0x8, w0
+    1a52:	00 00 e0    	cp0.w     w0
+    1a54:	14 00 32    	bra       Z, 0x1a7e <.L7> <.LBE2>
+
+00001a56 <.LBB2>:
+    1a56:	84 60 a9    	bclr.b    0x84, #0x3
+    1a58:	51 17 80    	mov.w     0x2ea, w1
+    1a5a:	00 02 20    	mov.w     #0x20, w0
+    1a5c:	00 80 60    	and.w     w1, w0, w0
+    1a5e:	00 f0 a7    	btsc.w    w0, #0xf
+    1a60:	00 00 ea    	neg.w     w0, w0
+    1a62:	00 00 e9    	dec.w     w0, w0
+    1a64:	4f 00 de    	lsr.w     w0, #0xf, w0
+    1a66:	00 40 78    	mov.b     w0, w0
+    1a68:	00 80 fb    	ze        w0, w0
+    1a6a:	61 00 60    	and.w     w0, #0x1, w0
+    1a6c:	45 00 dd    	sl.w      w0, #0x5, w0
+    1a6e:	52 17 80    	mov.w     0x2ea, w2
+    1a70:	f1 fd 2f    	mov.w     #0xffdf, w1
+    1a72:	81 00 61    	and.w     w2, w1, w1
+    1a74:	01 00 70    	ior.w     w0, w1, w0
+    1a76:	50 17 88    	mov.w     w0, 0x2ea
+    1a78:	20 40 80    	mov.w     0x804, w0
+    1a7a:	00 00 e9    	dec.w     w0, w0
+    1a7c:	20 40 88    	mov.w     w0, 0x804
+
+00001a7e <.L7>:
+    1a7e:	91 16 80    	mov.w     0x2d2, w1
+    1a80:	00 00 21    	mov.w     #0x1000, w0
+    1a82:	00 80 60    	and.w     w1, w0, w0
+    1a84:	00 00 e0    	cp0.w     w0
+    1a86:	03 00 3a    	bra       NZ, 0x1a8e <.L8>
+    1a88:	60 9f 21    	mov.w     #0x19f6, w0
+    1a8a:	00 40 88    	mov.w     w0, 0x800
+    1a8c:	05 00 37    	bra       0x1a98 <.L9>
+
+00001a8e <.L8>:
+    1a8e:	20 40 80    	mov.w     0x804, w0
+    1a90:	00 00 e0    	cp0.w     w0
+    1a92:	02 00 3a    	bra       NZ, 0x1a98 <.L9>
+    1a94:	80 aa 21    	mov.w     #0x1aa8, w0
+    1a96:	00 40 88    	mov.w     w0, 0x800
+
+00001a98 <.L9>:
+    1a98:	01 40 80    	mov.w     0x800, w1
+    1a9a:	10 40 80    	mov.w     0x802, w0
+    1a9c:	80 8f 50    	sub.w     w1, w0, [w15]
+    1a9e:	02 00 32    	bra       Z, 0x1aa4 <.L5>
+    1aa0:	ea a2 a9    	bclr.b    0x2ea, #0x5
+    1aa2:	05 e1 a9    	bclr.b    0x105, #0x7
+
+00001aa4 <.L5>:
+    1aa4:	00 80 fa    	ulnk      
+    1aa6:	00 00 06    	return    
+
+00001aa8 <_end>:
+    1aa8:	00 00 fa    	lnk       #0x0
+    1aaa:	01 40 80    	mov.w     0x800, w1
+    1aac:	10 40 80    	mov.w     0x802, w0
+    1aae:	80 8f 50    	sub.w     w1, w0, [w15]
+    1ab0:	07 00 32    	bra       Z, 0x1ac0 <.L12>
+    1ab2:	00 40 80    	mov.w     0x800, w0
+    1ab4:	10 40 88    	mov.w     w0, 0x802
+    1ab6:	ec 22 a8    	bset.b    0x2ec, #0x1
+    1ab8:	42 2d 29    	mov.w     #0x92d4, w2
+    1aba:	81 2d 29    	mov.w     #0x92d8, w1
+    1abc:	60 81 20    	mov.w     #0x816, w0
+    1abe:	a3 fd 07    	rcall     0x1606 <_lcd_print2> <.LFB13> <.LFE12>
+
+00001ac0 <.L12>:
+    1ac0:	01 40 80    	mov.w     0x800, w1
+    1ac2:	10 40 80    	mov.w     0x802, w0
+    1ac4:	80 8f 50    	sub.w     w1, w0, [w15]
+    1ac6:	01 00 32    	bra       Z, 0x1aca <.L11>
+    1ac8:	ec 22 a9    	bclr.b    0x2ec, #0x1
+
+00001aca <.L11>:
+    1aca:	00 80 fa    	ulnk      
+    1acc:	00 00 06    	return    
+
+00001ace <_main>:
+    1ace:	00 00 fa    	lnk       #0x0
+    1ad0:	19 00 07    	rcall     0x1b04 <_init_elecanisms> <.L0> <.LFB0> <.LFE3> <.Letext0> <.Ltext0>
+    1ad2:	80 3e 20    	mov.w     #0x3e8, w0
+    1ad4:	7c fe 07    	rcall     0x17ce <_i2c_init> <.LFB1> <.LFE0>
+    1ad6:	12 c4 b3    	mov.b     #0x41, w2
+    1ad8:	51 c0 b3    	mov.b     #0x5, w1
+    1ada:	60 81 20    	mov.w     #0x816, w0
+    1adc:	ad fc 07    	rcall     0x1438 <_lcd_init> <.LFB5> <.LFE4>
+    1ade:	60 81 20    	mov.w     #0x816, w0
+    1ae0:	36 fd 07    	rcall     0x154e <_lcd_clear> <.LFB8> <.LFE7>
+    1ae2:	e8 a2 a9    	bclr.b    0x2e8, #0x5
+    1ae4:	c9 e2 a9    	bclr.b    0x2c9, #0x7
+    1ae6:	ea a2 a8    	bset.b    0x2ea, #0x5
+    1ae8:	cb e2 a9    	bclr.b    0x2cb, #0x7
+    1aea:	70 20 a8    	bset.b    0x70, #0x1
+    1aec:	00 03 20    	mov.w     #0x30, w0
+    1aee:	20 08 88    	mov.w     w0, 0x104
+    1af0:	10 a1 27    	mov.w     #0x7a11, w0
+    1af2:	10 08 88    	mov.w     w0, 0x102
+    1af4:	00 21 ef    	clr.w     0x100
+    1af6:	84 60 a9    	bclr.b    0x84, #0x3
+    1af8:	60 9f 21    	mov.w     #0x19f6, w0
+    1afa:	00 40 88    	mov.w     w0, 0x800
+    1afc:	02 28 ef    	clr.w     0x802
+
+00001afe <.L15>:
+    1afe:	00 40 80    	mov.w     0x800, w0
+    1b00:	00 00 01    	call      w0
+    1b02:	fd ff 37    	bra       0x1afe <.L15>
+
+00001b04 <_init_elecanisms>:
+    1b04:	00 00 fa    	lnk       #0x0
+    1b06:	00 10 20    	mov.w     #0x100, w0
+    1b08:	20 3a 88    	mov.w     w0, 0x744
+    1b0a:	d8 a2 a8    	bset.b    0x2d8, #0x5
+    1b0c:	d8 82 a8    	bset.b    0x2d8, #0x4
+    1b0e:	e8 82 a8    	bset.b    0x2e8, #0x4
+    1b10:	e8 a2 a8    	bset.b    0x2e8, #0x5
+    1b12:	c9 e2 a8    	bset.b    0x2c9, #0x7
+    1b14:	e8 62 a8    	bset.b    0x2e8, #0x3
+    1b16:	d9 02 a8    	bset.b    0x2d9, #0x0
+    1b18:	d9 62 a8    	bset.b    0x2d9, #0x3
+    1b1a:	d9 22 a8    	bset.b    0x2d9, #0x1
+    1b1c:	d9 42 a8    	bset.b    0x2d9, #0x2
+    1b1e:	d8 02 a8    	bset.b    0x2d8, #0x0
+    1b20:	d8 22 a8    	bset.b    0x2d8, #0x1
+    1b22:	d8 42 a8    	bset.b    0x2d8, #0x2
+    1b24:	d8 62 a8    	bset.b    0x2d8, #0x3
+    1b26:	c8 a2 a8    	bset.b    0x2c8, #0x5
+    1b28:	c8 82 a8    	bset.b    0x2c8, #0x4
+    1b2a:	c8 62 a8    	bset.b    0x2c8, #0x3
+    1b2c:	c8 42 a8    	bset.b    0x2c8, #0x2
+    1b2e:	c8 22 a8    	bset.b    0x2c8, #0x1
+    1b30:	c8 02 a8    	bset.b    0x2c8, #0x0
+    1b32:	f0 03 20    	mov.w     #0x3f, w0
+    1b34:	10 27 88    	mov.w     w0, 0x4e2
+    1b36:	e4 24 ef    	clr.w     0x4e4
+    1b38:	e6 24 ef    	clr.w     0x4e6
+    1b3a:	ea 24 ef    	clr.w     0x4ea
+    1b3c:	ec 24 ef    	clr.w     0x4ec
+    1b3e:	00 0e 20    	mov.w     #0xe0, w0
+    1b40:	00 19 88    	mov.w     w0, 0x320
+    1b42:	22 23 ef    	clr.w     0x322
+    1b44:	00 c4 20    	mov.w     #0xc40, w0
+    1b46:	20 19 88    	mov.w     w0, 0x324
+    1b48:	50 00 20    	mov.w     #0x5, w0
+    1b4a:	40 19 88    	mov.w     w0, 0x328
+    1b4c:	21 e3 a8    	bset.b    0x321, #0x7
+    1b4e:	d8 e2 a9    	bclr.b    0x2d8, #0x7
+    1b50:	dc e2 a9    	bclr.b    0x2dc, #0x7
+    1b52:	e8 02 a9    	bclr.b    0x2e8, #0x0
+    1b54:	ec 02 a9    	bclr.b    0x2ec, #0x0
+    1b56:	e8 22 a9    	bclr.b    0x2e8, #0x1
+    1b58:	ec 22 a9    	bclr.b    0x2ec, #0x1
+    1b5a:	d1 e2 a8    	bset.b    0x2d1, #0x7
+    1b5c:	d1 82 a8    	bset.b    0x2d1, #0x4
+    1b5e:	c9 82 a8    	bset.b    0x2c9, #0x4
+    1b60:	00 80 fa    	ulnk      
+    1b62:	00 00 06    	return    
+
+00001b64 <_read_analog>:
+    1b64:	02 00 fa    	lnk       #0x2
+    1b66:	00 0f 78    	mov.w     w0, [w14]
+    1b68:	9e 00 78    	mov.w     [w14], w1
+    1b6a:	41 19 88    	mov.w     w1, 0x328
+    1b6c:	20 23 a8    	bset.b    0x320, #0x1
+    1b6e:	00 00 00    	nop       
+
+00001b70 <.L3>:
+    1b70:	00 19 80    	mov.w     0x320, w0
+    1b72:	61 00 60    	and.w     w0, #0x1, w0
+    1b74:	00 00 e0    	cp0.w     w0
+    1b76:	fc ff 32    	bra       Z, 0x1b70 <.L3>
+    1b78:	00 18 80    	mov.w     0x300, w0
+    1b7a:	00 80 fa    	ulnk      
+    1b7c:	00 00 06    	return    
+Disassembly of section .dinit:
+
+00001b7e <.dinit>:
+    1b7e:	16 08 00    	nop       
+    1b80:	06 00 00    	nop       
+    1b82:	80 00 00    	nop       
+    1b84:	00 08 00    	nop       
+    1b86:	06 00 00    	nop       
+    1b88:	80 00 00    	nop       
+    1b8a:	06 08 00    	nop       
+    1b8c:	10 00 00    	nop       
+    1b8e:	80 00 00    	nop       
+    1b90:	00 00 00    	nop       
+Disassembly of section .isr:
+
+00001b92 <__DefaultInterrupt>:
+    1b92:	00 40 da    	break     
+    1b94:	00 00 fe    	reset     

@@ -38,7 +38,7 @@ int16_t main(void) {
     char string6[17]="Disp3Line2";
     char* strptr6=string6;
 
-    lcd_print2(&lcd1,strptr1,strptr2);
+    lcd_print2(&lcd1,"StrLiteral",strptr2);
     lcd_print2(&lcd2,strptr3,strptr4);
     lcd_print2(&lcd3,strptr5,strptr6);
 
