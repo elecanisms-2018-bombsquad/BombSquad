@@ -5,7 +5,7 @@
 
 #include "elecanisms.h"
 
-void delay_by_nop(int num_nops);     //loop nops for delay
+void delay_by_nop(uint32_t num_nops);     //loop nops for delay
 void i2c_init(int BRG);                 // initiates I2C3 module to baud rate BRG
 void i2c_start(void);                   //function iniates a start condition on bus
 void reset_i2c_bus(void);               //Resets the I2C bus to Idle

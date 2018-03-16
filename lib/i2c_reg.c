@@ -2,8 +2,8 @@
 
 #include "i2c_reg.h"
 
-void delay_by_nop(int num_nops){    // 1 nop= 375ns
-    uint16_t count = 0;
+void delay_by_nop(uint32_t num_nops){    // 1 nop= 375ns
+    uint32_t count = 0;
     while (count < num_nops){
         __asm__("nop");
         count +=1;
