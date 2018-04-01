@@ -12,6 +12,7 @@ void reset_i2c_bus(void);               //Resets the I2C bus to Idle
 char send_i2c_byte(int data);           //basic I2C byte send
 char i2c_read(void);                    //function reads data, returns the read data, no ack
 char i2c_read_ack(void);                //function reads data, returns the read data, with ack
+char i2c_read_nack(void); 
 void I2Cwrite(char addr, char subaddr, char value);     // function puts together I2C protocol for random write
 char I2Cread(char addr, char subaddr);                  // function puts together I2C protocol for random read
 unsigned char I2Cpoll(char addr);                       // function checks if device at addr is on bus

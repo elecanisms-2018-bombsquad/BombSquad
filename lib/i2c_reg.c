@@ -74,23 +74,23 @@ void reset_i2c_bus(void){
 }
 
 
-
-char send_i2c_byte(int data){       //basic I2C byte send
+//basic I2C byte send
+char send_i2c_byte(int data){
    int i;
    while (I2C3STATbits.TBF) { }
    IFS5bits.MI2C3IF = 0; // Clear Interrupt
    I2C3TRN = data; // load the outgoing data byte
 
    for (i=0; i<500; i++){           // wait for transmission
-      if (!I2C3STATbits.TRSTAT) break;
+      if (!I2C3STATbits.TRSTAT) break; // if master transmit not in progress break
       delay_by_nop(1); }
 
-    if (i == 500) {
-        return(1); }
+    if (i == 500) {     // if i got to 500, then there was an issue`
+        return(1); }    // return 1 to indicate failure
 
-   if (I2C3STATbits.ACKSTAT == 1){          // Check for NO_ACK from slave, abort if not found
+   if (I2C3STATbits.ACKSTAT == 1){   // Check for NO_ACK from slave,
       reset_i2c_bus();
-      return(1); }
+      return(1); }            // abort if not found
 
    delay_by_nop(2);
    return(0);
@@ -98,6 +98,7 @@ char send_i2c_byte(int data){       //basic I2C byte send
 
 
 //function reads data, returns the read data, no ack
+// helper function
 char i2c_read(void){
    int i = 0;
    char data = 0;
@@ -105,8 +106,7 @@ char i2c_read(void){
 
    while (!I2C3STATbits.RBF) {           //if no response, break
       i ++;
-      if (i > 2000) break;
-   }
+      if (i > 2000) break;  }
 
    data = I2C3RCV;       //get data from I2C3RCV register
    return data;
@@ -121,19 +121,34 @@ char i2c_read_ack(void){	//does not reset bus!!!
 
    while (!I2C3STATbits.RBF) {       //if no response, break
       i++;
-      if (i > 2000) break;
-   }
+      if (i > 2000) break;}
 
    data = I2C3RCV;               //get data from I2C3RCV register
-   I2C3CONbits.ACKEN = 1;       //set ACK to high
-   delay_by_nop(10);               //wait before exiting
+   I2C3CONbits.ACKEN = 1;        //start ACK generation
+   delay_by_nop(10);             //wait before exiting
+   return data;
+}
+
+char i2c_read_nack(void){	//does not reset bus!!!
+   int i = 0;
+   char data = 0;
+   I2C3CONbits.RCEN = 1;            //set I2C module to receive
+
+   while (!I2C3STATbits.RBF) {       //if no response, break
+      i++;
+      if (i > 2000) break;}
+
+   data = I2C3RCV;               //get data from I2C3RCV register
+   I2C3CONbits.ACKDT = 1;        // set mastrer to nack instead of ack 
+   I2C3CONbits.ACKEN = 1;        //start ack generation
+   delay_by_nop(10);             //wait before exiting
    return data;
 }
 
 // function puts together I2C protocol for random write
 void I2Cwrite(char addr, char subaddr, char value){
    i2c_start();
-   send_i2c_byte(addr & 0xfffe); // set /W bit
+   send_i2c_byte(addr & 0xfffe); // set /W bit, turns least sig, bit to 0
    send_i2c_byte(subaddr);
    send_i2c_byte(value);
    reset_i2c_bus();
@@ -142,14 +157,13 @@ void I2Cwrite(char addr, char subaddr, char value){
 // function puts together I2C protocol for random read
 char I2Cread(char addr, char subaddr){
    char temp;
-
    i2c_start();
    send_i2c_byte(addr);
    send_i2c_byte(subaddr);
    delay_by_nop(10);
-
    i2c_restart();
-   send_i2c_byte(addr | 0x01); // set R bit
+
+   send_i2c_byte(addr | 0x01); // set R bit, turn least sig. bit to 1
    temp = i2c_read();
 
    reset_i2c_bus();
@@ -157,12 +171,12 @@ char I2Cread(char addr, char subaddr){
 }
 
 // function checks if device at addr is on bus
+// 1 means it is not there, 0 means it is there
 unsigned char I2Cpoll(char addr){
    unsigned char temp = 0;
    i2c_start();
    temp = send_i2c_byte((addr) & (0xfffe)); // set /W bit
    reset_i2c_bus();
-
    return temp;
 }
 
