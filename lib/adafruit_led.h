@@ -54,6 +54,7 @@ MIT license, all text above must be included in any redistribution
 #define BIN 2
 #define BYTE 0
 
+#define _BV(X) (1 << X)
 
 /*
 - Struct definition

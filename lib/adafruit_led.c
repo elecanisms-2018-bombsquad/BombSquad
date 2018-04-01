@@ -25,7 +25,7 @@ MIT license, all text above must be included in any redistribution
 
 #include "adafruit_led.h"
 
-static const uint8_t numbertable[] = {
+const uint8_t numbertable[] = {
 	0x3F, /* 0 */
 	0x06, /* 1 */
 	0x5B, /* 2 */
@@ -44,7 +44,7 @@ static const uint8_t numbertable[] = {
 	0x71, /* F */
 };
 
-static const uint16_t alphafonttable[] PROGMEM =  {
+const uint16_t alphafonttable[128] = {
 
 0b0000000000000001,
 0b0000000000000010,
@@ -177,6 +177,7 @@ static const uint16_t alphafonttable[] PROGMEM =  {
 
 };
 
+
 void led_begin(_ADAFRUIT_LED* ptr, uint8_t addr){
   ptr->i2c_addr = addr;
 
@@ -233,7 +234,7 @@ void alphanum_writeDigitRaw(_ALPHANUM* ptr, uint8_t n, uint16_t bitmask){
 }
 
 void alphanum_writeDigitAscii(_ALPHANUM* ptr, uint8_t n, uint8_t ascii, uint8_t dot){
-  uint16_t font = pgm_read_word(alphafonttable+ascii);
+  uint16_t font = alphafonttable[ascii];
   ptr->super.displaybuffer[n] = font;
   if (dot) ptr->super.displaybuffer[n] |= (1<<14);
 }
@@ -286,7 +287,7 @@ uint8_t write(_7SEGMENT* ptr, uint8_t c){
   if (c == '\r') ptr->position = 0;
 
   if ((c >= '0') && (c <= '9')) {
-    sevenseg_writeDigitNum(ptr->position, c-'0');
+    sevseg_writeDigitNum(ptr, ptr->position, c-'0', 0);
     r = 1;
   }
 
