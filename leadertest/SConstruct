@@ -1,5 +1,5 @@
 env = Environment(tools = ['gcc', 'gnulink', 'ar', 'zip'],
-                    PIC = '24FJ128GB206',
+                  PIC = '24FJ128GB206',
                   CC = 'xc16-gcc',
                   PROGSUFFIX = '.elf',
                   CFLAGS = '-g -omf=elf -x c -mcpu=$PIC',

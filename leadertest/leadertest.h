@@ -11,4 +11,4 @@ typedef struct {
     uint8_t display_mode;
 } _ISQUC;
 
-int16_t main(void); 
+int16_t main(void);
