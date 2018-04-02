@@ -25,7 +25,8 @@ env.Append(BUILDERS = {'List' : list})
 env.Program('adafruittest', ['adafruittest.c',
                         '../lib/i2c_reg.c',
                         '../lib/adafruit_led.c',
-                        '../lib/common.c'])
+                        '../lib/common.c',
+                        '../lib/elecanisms.c'])
 
 #print('Creating builder to load hex file via bootloader...')
 # def load_function(target, source, env):
