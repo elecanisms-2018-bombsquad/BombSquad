@@ -19,18 +19,9 @@ void countup(void) {
   for (counter = 0; counter < 9999; counter ++) {
     sevseg_writeDigitNum(&matrix, 0, (counter / 1000), drawDots);
     sevseg_writeDigitNum(&matrix, 1, (counter / 100) % 10, drawDots);
-    sevseg_drawColon(&matrix, drawDots);
     sevseg_writeDigitNum(&matrix, 3, (counter / 10) % 10, drawDots);
     sevseg_writeDigitNum(&matrix, 4, counter % 10, drawDots);
 
-    blinkcounter+=50;
-    if (blinkcounter < 500) {
-      drawDots = 0;
-    } else if (blinkcounter < 1000) {
-      drawDots = 1;
-    } else {
-      blinkcounter = 0;
-    }
     led_writeDisplay((_ADAFRUIT_LED*)&matrix.super);
   }
 }
@@ -50,22 +41,18 @@ int16_t main(void) {
   // Initializes I2C on I2C3
   i2c_init(1e3);
 
-  LED2 = ON;
+  LED2 = ON; // Start LED2 on
   while (LED2) {
-  delay_by_nop(300000);
-  LED2 = I2Cpoll(target_addr);
+    delay_by_nop(300000); // wait to make LED2 visible
+    LED2 = I2Cpoll(target_addr); // turn off LED2 if we've found the display
   }
 
-  led_begin((_ADAFRUIT_LED*)&matrix.super, target_addr);
-  // led_blinkRate((_ADAFRUIT_LED*)&matrix.super, HT16K33_BLINK_OFF);
+  led_begin((_ADAFRUIT_LED*)&matrix.super, target_addr); // Set up the HT16K33 and start the oscillator
 
   while (1){
-    drawOnce();
+    // drawOnce(); // Draw 1234
+    countup(); // Count up to 9999
     LED3 = !LED3;
     delay_by_nop(3000000);
   }
-  // while (1) {
-  //   LED3 = !LED3;
-  //   delay_by_nop(300000);
-  // }
 }
