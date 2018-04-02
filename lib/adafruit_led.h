@@ -142,7 +142,7 @@ void sevseg_println_v(_7SEGMENT* ptr, void);
                                                 ) (_7SEGMENT* ptr, X)
 */
 
-void sevseg_writeDigitRaw(_7SEGMENT* ptr, uint8_t x, uint8_t bitmask);
+void sevseg_writeDigitRaw(_7SEGMENT* ptr, uint8_t x, uint16_t bitmask);
 void sevseg_writeDigitNum(_7SEGMENT* ptr, uint8_t x, uint8_t num, uint8_t dot);
 void sevseg_drawColon(_7SEGMENT* ptr, uint8_t state);
 void sevseg_printNumber(_7SEGMENT* ptr, long n, uint8_t base);
