@@ -882,7 +882,7 @@ Disassembly of section .isr.text:
     122a:	00 40 80    	mov.w     0x800, w0
     122c:	e1 0f 50    	sub.w     w0, #0x1, [w15]
     122e:	12 00 3a    	bra       NZ, 0x1254 <.L5>
-    1230:	d1 16 80    	mov.w     0x2da, w1
+    1230:	e1 16 80    	mov.w     0x2dc, w1
     1232:	00 08 20    	mov.w     #0x80, w0
     1234:	00 80 60    	and.w     w1, w0, w0
     1236:	00 f0 a7    	btsc.w    w0, #0xf
@@ -893,16 +893,16 @@ Disassembly of section .isr.text:
     1240:	00 80 fb    	ze        w0, w0
     1242:	61 00 60    	and.w     w0, #0x1, w0
     1244:	47 00 dd    	sl.w      w0, #0x7, w0
-    1246:	d2 16 80    	mov.w     0x2da, w2
+    1246:	e2 16 80    	mov.w     0x2dc, w2
     1248:	f1 f7 2f    	mov.w     #0xff7f, w1
     124a:	81 00 61    	and.w     w2, w1, w1
     124c:	01 00 70    	ior.w     w0, w1, w0
-    124e:	d0 16 88    	mov.w     w0, 0x2da
-    1250:	ea 02 a9    	bclr.b    0x2ea, #0x0
+    124e:	e0 16 88    	mov.w     w0, 0x2dc
+    1250:	ec 02 a9    	bclr.b    0x2ec, #0x0
     1252:	10 00 37    	bra       0x1274 <.L1>
 
 00001254 <.L5>:
-    1254:	50 17 80    	mov.w     0x2ea, w0
+    1254:	60 17 80    	mov.w     0x2ec, w0
     1256:	61 00 60    	and.w     w0, #0x1, w0
     1258:	00 f0 a7    	btsc.w    w0, #0xf
     125a:	00 00 ea    	neg.w     w0, w0
@@ -911,12 +911,12 @@ Disassembly of section .isr.text:
     1260:	00 40 78    	mov.b     w0, w0
     1262:	00 80 fb    	ze        w0, w0
     1264:	61 00 60    	and.w     w0, #0x1, w0
-    1266:	52 17 80    	mov.w     0x2ea, w2
+    1266:	62 17 80    	mov.w     0x2ec, w2
     1268:	e1 ff 2f    	mov.w     #0xfffe, w1
     126a:	81 00 61    	and.w     w2, w1, w1
     126c:	01 00 70    	ior.w     w0, w1, w0
-    126e:	50 17 88    	mov.w     w0, 0x2ea
-    1270:	da e2 a9    	bclr.b    0x2da, #0x7
+    126e:	60 17 88    	mov.w     w0, 0x2ec
+    1270:	dc e2 a9    	bclr.b    0x2dc, #0x7
     1272:	00 00 00    	nop       
 
 00001274 <.L1>:
@@ -1067,13 +1067,13 @@ void init_elecanisms(void) {
     // Configure LED pins as outputs, set to low (off)
     LED1_DIR = OUT; LED1 = 0;
     131a:	d8 e2 a9    	bclr.b    0x2d8, #0x7
-    131c:	da e2 a9    	bclr.b    0x2da, #0x7
+    131c:	dc e2 a9    	bclr.b    0x2dc, #0x7
     LED2_DIR = OUT; LED2 = 0;
     131e:	e8 02 a9    	bclr.b    0x2e8, #0x0
-    1320:	ea 02 a9    	bclr.b    0x2ea, #0x0
+    1320:	ec 02 a9    	bclr.b    0x2ec, #0x0
     LED3_DIR = OUT; LED3 = 0;
     1322:	e8 22 a9    	bclr.b    0x2e8, #0x1
-    1324:	ea 22 a9    	bclr.b    0x2ea, #0x1
+    1324:	ec 22 a9    	bclr.b    0x2ec, #0x1
 
     // Configure SW pins as inputs
     SW1_DIR = IN;
@@ -1113,7 +1113,7 @@ uint16_t read_analog(uint16_t pin_an) {
 0000134a <_main>:
     134a:	00 00 fa    	lnk       #0x0
     134c:	c1 ff 07    	rcall     0x12d0 <.LFE2> <_init_elecanisms> <.L0> <.LFB0> <.Ltext0>
-    134e:	ea 02 a8    	bset.b    0x2ea, #0x0
+    134e:	ec 02 a8    	bset.b    0x2ec, #0x0
     1350:	00 28 ef    	clr.w     0x800
     1352:	00 03 20    	mov.w     #0x30, w0
     1354:	20 08 88    	mov.w     w0, 0x104
@@ -1147,11 +1147,11 @@ uint16_t read_analog(uint16_t pin_an) {
     1388:	00 80 fb    	ze        w0, w0
     138a:	61 00 60    	and.w     w0, #0x1, w0
     138c:	00 00 40    	add.w     w0, w0, w0
-    138e:	52 17 80    	mov.w     0x2ea, w2
+    138e:	62 17 80    	mov.w     0x2ec, w2
     1390:	d1 ff 2f    	mov.w     #0xfffd, w1
     1392:	81 00 61    	and.w     w2, w1, w1
     1394:	01 00 70    	ior.w     w0, w1, w0
-    1396:	50 17 88    	mov.w     w0, 0x2ea
+    1396:	60 17 88    	mov.w     w0, 0x2ec
     1398:	f4 ff 37    	bra       0x1382 <.L10>
 Disassembly of section .dinit:
 
