@@ -61,7 +61,7 @@
 #define D6                  PORTDbits.RD8
 #define D7                  PORTDbits.RD11
 #define D8                  PORTDbits.RD9
-#define D9                  PORTDbits.D10
+#define D9                  PORTDbits.RD10
 #define D10                 PORTDbits.RD0
 #define D11                 PORTDbits.RD1
 #define D12                 PORTDbits.RD2
