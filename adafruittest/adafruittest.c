@@ -26,6 +26,21 @@ void countup(void) {
   }
 }
 
+// Display a seconds variable in minutes and seconds on the seven segment
+void dispSeconds(uint16_t seconds) {
+  // Turn seconds into minutes and seconds
+  uint16_t minutes = seconds / 60;
+  uint8_t displaySeconds = seconds % 60;
+  sevseg_writeDigitNum(&matrix, 0, minutes / 10, 0);
+  sevseg_writeDigitNum(&matrix, 1, minutes % 10, 0);
+  sevseg_drawColon(&matrix, 1); // Times are supposed to have a colon I guess
+  sevseg_writeDigitNum(&matrix, 3, (displaySeconds / 10) % 10, 0);
+  sevseg_writeDigitNum(&matrix, 4, displaySeconds % 10, 0);
+
+  led_writeDisplay((_ADAFRUIT_LED*)&matrix.super); //Don't forget to actually write the data!
+}
+
+// Draw 1234 on the seven segment
 void drawOnce(void) {
   sevseg_writeDigitNum(&matrix, 0, 1, 0);
   sevseg_writeDigitNum(&matrix, 1, 2, 0);
@@ -49,10 +64,15 @@ int16_t main(void) {
 
   led_begin((_ADAFRUIT_LED*)&matrix.super, target_addr); // Set up the HT16K33 and start the oscillator
 
+  uint16_t timeleft = 240;
+
   while (1){
-    // drawOnce(); // Draw 1234
-    countup(); // Count up to 9999
-    LED3 = !LED3;
-    delay_by_nop(3000000);
+    dispSeconds(timeleft);
+    // countup();
+    delay_by_nop(2666666); // Delay approximately a second (1s / 375ns) = 2666666
+    timeleft--;
+    if (timeleft == 0) {
+      timeleft = 240;
+    }
   }
 }
