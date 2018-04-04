@@ -45,6 +45,7 @@
 #define s8          14  // 856
 #define s           15  // 881
 #define soops       16  // other
+#define szero       17  // other
 
 
 void ledoff(void){ LED1 = 0; LED2 = 0; LED3 = 0; }
@@ -57,8 +58,8 @@ int16_t main(void) {
 
 
 while(1){
-    uint8_t val = read_analog(A0_AN);
-
+    uint16_t val = read_analog(A0_AN);
+    if(val ==0 )              {state = szero;   }
     if(val > 500 && val < 548){state = s1248;   }
     if(val > 548 && val < 566){state = s124;    }
     if(val > 566 && val < 608){state = s128;    }
@@ -75,12 +76,13 @@ while(1){
     if(val > 842 && val < 864){state = s4;      }
     if(val > 864 && val < 900){state = s8;      }
     if(val > 900 && val < 920){state = s;       }
-    if(val > 920 || val < 548){state = soops;   }
+    if(val < 500 )            {state = soops;   }
+    if(val > 920 )            {state = soops;   }
 
     switch(state){
         case soops:
             ledoff();
-            LED1 = 1;
+            LED3 = 1;
         break;
 
         case s1248:
@@ -88,9 +90,9 @@ while(1){
             LED2 = 1;
         break;
 
-        case s124:
+        case szero:
             ledoff();
-            LED3 = 1;
+            LED1 = 1;
         break;
 
         // default:
