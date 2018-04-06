@@ -24,9 +24,11 @@
 ** POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "elecanisms.h"
-// #include "usb.h"
+#include <p24FJ128GB206.h>
+#include <stdint.h>
 #include <stdio.h>
+#include "elecanisms.h"
+#include "i2c_reg.h"
 
 #define s1248       0   // 539
 #define s124        1   // 556
@@ -46,9 +48,18 @@
 #define s           15  // 881
 #define soops       16  // other
 #define szero       17  // other
+#define sbig        18  // other
 
 
 void ledoff(void){ LED1 = 0; LED2 = 0; LED3 = 0; }
+
+void delay_by_nop(uint32_t num_nops){    // 1 nop= 375ns
+    uint32_t count = 0;
+    while (count < num_nops){
+        __asm__("nop");
+        count +=1;
+    }
+}
 
 uint16_t state;
 
@@ -59,7 +70,7 @@ int16_t main(void) {
 
 while(1){
     uint16_t val = read_analog(A0_AN);
-    if(val ==0 )              {state = szero;   }
+    // if(val ==0 )              {state = szero;   }
     if(val > 500 && val < 548){state = s1248;   }
     if(val > 548 && val < 566){state = s124;    }
     if(val > 566 && val < 608){state = s128;    }
@@ -77,22 +88,35 @@ while(1){
     if(val > 864 && val < 900){state = s8;      }
     if(val > 900 && val < 920){state = s;       }
     if(val < 500 )            {state = soops;   }
-    if(val > 920 )            {state = soops;   }
+    if(val > 920 )            {state = sbig;   }
 
     switch(state){
         case soops:
             ledoff();
+            // delay_by_nop(30000);
             LED3 = 1;
+            // delay_by_nop(30000);
+        break;
+
+        case sbig:
+            ledoff();
+            // delay_by_nop(30000);
+            LED3 = 1;
+            // delay_by_nop(30000);
         break;
 
         case s1248:
             ledoff();
+            // delay_by_nop(30000);
             LED2 = 1;
+            // delay_by_nop(30000);
         break;
 
-        case szero:
+        case s124:
             ledoff();
+            // delay_by_nop(30000);
             LED1 = 1;
+            // delay_by_nop(30000);
         break;
 
         // default:
