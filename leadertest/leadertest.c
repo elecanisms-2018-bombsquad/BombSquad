@@ -1,6 +1,5 @@
 #include <p24FJ128GB206.h>
 #include <stdint.h>
-// #include "common.h" // common.h needed for _init_clock
 #include "elecanisms.h"
 #include "i2c_reg.h"
 #include "leadertest.h"
@@ -19,7 +18,7 @@ int main(void) {
     uint16_t u16_len;
     uint16_t pollval;
     int16_t i = 0;
-    i2c_init(157);             // initialize I2C for 16Mhz OSC with 100kHz I2C clock
+    i2c_init(157);      // initialize I2C for 16Mhz OSC with 100kHz I2C clock
 
     delay_by_nop(3000);
 
@@ -34,9 +33,8 @@ int main(void) {
         if(datareturned == 5){LED3 = 1;}
         reset_i2c_bus();
 
-        // delay_by_nop(30000);
-        // LED3 = 0;
-        delay_by_nop(30000);
+        delay_by_nop(60000);
+        LED1 = 0; LED2 = 0; LED3 = 0;
 
 
         // datareturned = I2Cread(SLAVE_ADDR, 1);
@@ -49,35 +47,3 @@ int main(void) {
 
     }
 }
-
-
-//
-// int16_t main(void) {
-//     init_elecanisms();
-//     i2c_init(1e3);    // Initializes I2C on I2C3
-//
-//     // _ISQUC leader1;
-//     int16_t i = 0;
-//     int16_t pollval;
-//     int16_t check;
-//     int datain = 0;
-//
-//     i2c_start();
-
-    // while(i < 256) {
-    //     pollval = I2Cpoll(i);
-    //     if(pollval == 0) {
-    //         LED1 = 1;
-    //         if(i>0){LED3 = 1; }
-    //     }
-    //     delay_by_nop(500);
-    //     i = i + 1;
-    // }
-
-    // LED2 = 1;
-    // delay_by_nop(5000000);
-    // LED1 = 0;
-    // LED2 = 0;
-    // LED3 = 0;
-    // delay_by_nop(5000000);
-// }

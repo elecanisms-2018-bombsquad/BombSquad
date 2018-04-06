@@ -1,13 +1,11 @@
 #include <p24FJ128GB206.h>
 #include <stdint.h>
-// #include "common.h" // common.h needed for _init_clock
 #include "elecanisms.h"
 #include "i2c_reg.h"
 #include "followertest.h"
 
 
 #define SLAVE_ADDR 0x60
-// #define datasend 0x18
 
 uint16_t waitwritedata;
 uint16_t sendreaddata;
@@ -22,20 +20,10 @@ typedef enum  {
 
 volatile STATE e_mystate = STATE_WAIT_FOR_ADDR;
 
-void clearRCV(void){
-    uint8_t bs;
-    bs = I2C3RCV;
-}
-
-void ledoff(void){
-    LED1 = 0;
-    LED2 = 0;
-    LED3 = 0;
-}
+void ledoff(void){ LED1 = 0; LED2 = 0; LED3 = 0; }
 
 // void _ISRFAST _SI2C3Interrupt(void) {
 void __attribute__((interrupt, auto_psv)) _SI2C3Interrupt(void) {
-    // LED1 = 1;
     uint8_t u8_c;
     _SI2C3IF = 0;
 
