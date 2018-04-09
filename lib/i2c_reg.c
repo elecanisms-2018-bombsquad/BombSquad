@@ -70,7 +70,7 @@ void reset_i2c_bus(void){
    I2C3STATbits.IWCOL = 0;
    I2C3STATbits.BCL = 0;
    // delay_by_nop(10);
-   delay_by_nop(10);
+   delay_by_nop(20);
 }
 
 
@@ -139,7 +139,7 @@ char i2c_read_nack(void){	//does not reset bus!!!
       if (i > 2000) break;}
 
    data = I2C3RCV;               //get data from I2C3RCV register
-   I2C3CONbits.ACKDT = 1;        // set mastrer to nack instead of ack 
+   I2C3CONbits.ACKDT = 1;        // set mastrer to nack instead of ack
    I2C3CONbits.ACKEN = 1;        //start ack generation
    delay_by_nop(10);             //wait before exiting
    return data;

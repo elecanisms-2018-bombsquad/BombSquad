@@ -2763,7 +2763,7 @@ void sevseg_writeColon(_7SEGMENT* ptr){
     1c34:	8e a0 a9    	bclr.b    0x8e, #0x5
     1c36:	78 e2 a9    	bclr.b    0x278, #0x7
     1c38:	79 42 a9    	bclr.b    0x279, #0x2
-    1c3a:	a0 00 20    	mov.w     #0xa, w0
+    1c3a:	40 01 20    	mov.w     #0x14, w0
     1c3c:	01 00 20    	mov.w     #0x0, w1
     1c3e:	93 ff 07    	rcall     0x1b66 <_delay_by_nop> <.L0> <.LFB0> <.LFE17> <.Letext0> <.Ltext0>
     1c40:	00 80 fa    	ulnk      
