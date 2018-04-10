@@ -28,6 +28,23 @@
 
 uint16_t state;
 
+int a = 169 ;
+int b = 221 ;
+int c = 275 ;
+int d = 327 ;
+int e = 383 ;
+int f = 434 ;
+int g = 488 ;
+int h = 540 ;
+int i = 555 ;
+int j = 606 ;
+int k = 657 ;
+int l = 757 ;
+int m = 802 ;
+int n = 845 ;
+int o = 883 ;
+
+int ab, bc, cd, de, ef, fg, gh, hi, ij, jk, kl, lm, mn, no;
 
 //////////////////////
 
@@ -47,11 +64,6 @@ typedef enum  {
 volatile STATE e_mystate = STATE_WAIT_FOR_ADDR;
 
 void ledoff(void){ LED1 = 0; LED2 = 0; LED3 = 0; }
-
-
-
-
-
 
 void __attribute__((interrupt, auto_psv)) _SI2C3Interrupt(void) {
     uint8_t u8_c;
@@ -85,6 +97,23 @@ void __attribute__((interrupt, auto_psv)) _SI2C3Interrupt(void) {
 }   // end of ISR
 
 int16_t main(void) {
+
+    ab = (b-a) >>1 ;
+    bc = (c-b) >>1  ;
+    cd = (d-c) >>1  ;
+    de = (e-d) >>1  ;
+    ef = (f-e) >>1  ;
+    fg = (g-f) >>1  ;
+    gh = (h-g) >>1  ;
+    hi = (i-h) >>1  ;
+    ij = (j-i) >>1  ;
+    jk = (k-j) >>1  ;
+    kl = (l-k) >>1  ;
+    lm = (m-l) >>1  ;
+    mn = (n-m) >>1  ;
+    no = (o-n) >>1  ;
+
+
     init_elecanisms();
     i2c_init(157);      // Initializes I2C on I2C3
 
@@ -94,56 +123,49 @@ int16_t main(void) {
     // _SI2C1IP = 1;        // Maybe eventially fo this for interrupt priority
 
     _SI2C3IE = 1;       // these two are the same! The underscore is cool.
-    // if(IEC5bits.SI2C3IE == 1){LED2 = 1; }
-    // uint8_t bs;
-    // bs = I2C3RCV;
 
     while (1) {
         uint16_t val = read_analog(A0_AN);
-        // if(val ==0 )              {state = szero;   }
-        if(val > 500 && val < 548){state = s1248;   }   //15
-        if(val > 548 && val < 566){state = s124;    }   //11
-        if(val > 566 && val < 608){state = s128;    }   //12
-        if(val > 608 && val < 629){state = s12;     }   //5
-        if(val > 629 && val < 650){state = s148;    }   //13
-        if(val > 650 && val < 675){state = s14;     }   //6
-        if(val > 675 && val < 691){state = s18;     }   //7
-        if(val > 691 && val < 708){state = s1;      }   //1
-        if(val > 708 && val < 732){state = s248;    }   //14
-        if(val > 732 && val < 765){state = s24;     }   //8
-        if(val > 765 && val < 790){state = s28;     }   //9
-        if(val > 790 && val < 816){state = s2;      }   //1
-        if(val > 816 && val < 842){state = s48;     }   //10
-        if(val > 842 && val < 864){state = s4;      }   //3
-        if(val > 864 && val < 900){state = s8;      }   //4
-        if(val > 900 && val < 920){state = s;       }   //0
-        if(val < 500 )            {state = soops;   }
-        if(val > 920 )            {state = sbig;   }
+
+        if( val < (a+ab) ) {state = s;}                       //b
+        if( val > (b-ab) && val < (b+bc) ) {state = s8;}      //b
+        if( val > (c-bc) && val < (c+cd) ) {state = s4;}      //c
+        if( val > (d-cd) && val < (d+de) ) {state = s48;}     //d
+        if( val > (e-de) && val < (e+ef) ) {state = s2;}      //e
+        if( val > (f-ef) && val < (f+fg) ) {state = s28;}     //f
+        if( val > (g-fg) && val < (g+gh) ) {state = s24;}     //g
+        if( val > (h-gh) && val < (h+hi) ) {state = s248;}    //h
+        if( val > (i-hi) && val < (i+ij) ) {state = s1;}      //i
+        if( val > (j-ij) && val < (j+jk) ) {state = s18;}     //j
+        if( val > (k-jk) && val < (k+kl) ) {state = s14;}     //k
+        if( val > (l-kl) && val < (l+lm) ) {state = s12;}     //l
+        if( val > (m-lm) && val < (m+mn) ) {state = s128;}    //m
+        if( val > (n-mn) && val < (n+no) ) {state = s124;}    //n
+        if( val > (o-no) ) {state = s1248;}                 //o
 
         switch(state){
 
-
             case s1:    ledoff(); LED1 = 1; datasend = 0x01; break;
-            case s2:    ledoff(); LED1 = 1; datasend = 0x01; break;
-            case s4:    ledoff(); LED1 = 1; datasend = 0x01; break;
-            case s8:    ledoff(); LED1 = 1; datasend = 0x01; break;
+            case s2:    ledoff(); LED1 = 1; datasend = 0x02; break;
+            case s4:    ledoff(); LED1 = 1; datasend = 0x03; break;
+            case s8:    ledoff(); LED1 = 1; datasend = 0x04; break;
 
-            case s12:   ledoff(); LED2 = 1; datasend = 0x03; break;
-            case s14:   ledoff(); LED2 = 1; datasend = 0x03; break;
-            case s18:   ledoff(); LED2 = 1; datasend = 0x03; break;
-            case s24:   ledoff(); LED2 = 1; datasend = 0x03; break;
-            case s28:   ledoff(); LED2 = 1; datasend = 0x03; break;
-            case s48:   ledoff(); LED2 = 1; datasend = 0x03; break;
+            case s12:   ledoff(); LED2 = 1; datasend = 0x05; break;
+            case s14:   ledoff(); LED2 = 1; datasend = 0x06; break;
+            case s18:   ledoff(); LED2 = 1; datasend = 0x07; break;
+            case s24:   ledoff(); LED2 = 1; datasend = 0x08; break;
+            case s28:   ledoff(); LED2 = 1; datasend = 0x09; break;
+            case s48:   ledoff(); LED2 = 1; datasend = 0x10; break;
 
-            case s124:  ledoff(); LED3 = 1; datasend = 0x05; break;
-            case s128:  ledoff(); LED3 = 1; datasend = 0x05; break;
-            case s148:  ledoff(); LED3 = 1; datasend = 0x05; break;
-            case s248:  ledoff(); LED3 = 1; datasend = 0x05; break;
-            case s1248: ledoff(); LED3 = 1; datasend = 0x05; break;
+            case s124:  ledoff(); LED3 = 1; datasend = 0x11; break;
+            case s128:  ledoff(); LED3 = 1; datasend = 0x12; break;
+            case s148:  ledoff(); LED3 = 1; datasend = 0x13; break;
+            case s248:  ledoff(); LED3 = 1; datasend = 0x14; break;
+            case s1248: ledoff(); LED3 = 1; datasend = 0x15; break;
 
-            case s:     ledoff(); datasend = 0x06; break;
-            case soops: ledoff(); datasend = 0x06; break;
-            case sbig:  ledoff(); datasend = 0x06; break;
+            case s:     ledoff(); datasend = 0x16; break;
+            case soops: ledoff(); datasend = 0x17; break;
+            case sbig:  ledoff(); datasend = 0x18; break;
 
             // default:
             //     LED1 = 1;
