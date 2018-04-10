@@ -127,7 +127,7 @@ int16_t main(void) {
 
     // drawABCD();
     iterateAlpha();
-    // drawChar(0);
+    // drawChar('%');
 
     delay_by_nop(2666666); // Delay approximately a second (1s / 375ns) = 2666666
     timeleft--;
