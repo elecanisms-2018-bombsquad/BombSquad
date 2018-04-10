@@ -8,6 +8,9 @@
 
 static uint8_t enc_prev_pos = 0;
 static uint8_t enc_flags    = 0;
+static uint8_t screen_pos = 0; //what position the active character is on.
+static uint8_t UP = 1;
+static uint8_t DOWN = 0;
 
 void setup(){
   // set pins as input with internal pull-up resistors enabled
@@ -21,6 +24,17 @@ void setup(){
   // get an initial reading on the encoder pins
   if (digitalRead(PIN_ENCODER_A) == LOW) {enc_prev_pos |= (1 << 0);}
   if (digitalRead(PIN_ENCODER_B) == LOW) {enc_prev_pos |= (1 << 1);}
+
+void SelectChr(){//Locks in the current character on the screen.
+
+
+}
+
+
+void dispChr(uint8_t direction){//Increments/decrements the character on the screen.
+
+
+
 }
 
 void loop(){
@@ -61,10 +75,17 @@ void loop(){
 
     }
   }
+  //Encoder action is basically going up or down.  So basically can use that to increment up and down.
+
+  // Figure out the output from the loop, detect output and convert it to an incrementing table.
+  // Interrupt to select the current character and move on to selecting the next character.
 
   enc_prev_pos = enc_cur_pos;
 
-  if (enc_action > 0) {TrinketHidCombo.pressMultimediaKey(MMKEY_VOL_UP);}
-  else if (enc_action < 0) {TrinketHidCombo.pressMultimediaKey(MMKEY_VOL_DOWN);}
-  else {TrinketHidCombo.poll(); // do nothing, check if USB needs anything done}
+  if (enc_action > 0) {dispChr(UP)}
+  else if (enc_action < 0) {dispChr(DOWN)}
+
+  //if (enc_action > 0) {TrinketHidCombo.pressMultimediaKey(MMKEY_VOL_UP);}
+  //else if (enc_action < 0) {TrinketHidCombo.pressMultimediaKey(MMKEY_VOL_DOWN);}
+  //else {TrinketHidCombo.poll(); // do nothing, check if USB needs anything done}
 }
