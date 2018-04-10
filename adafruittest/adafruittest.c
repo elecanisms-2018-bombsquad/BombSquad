@@ -70,6 +70,25 @@ void drawABCD(void) {
     led_writeDisplay((_ADAFRUIT_LED*)&alpha.super);
 }
 
+// iterate through characters on the alphanumeric displaybuffer
+void iterateAlpha(void) {
+    uint8_t base_char = 0;
+    for(base_char = 0; base_char < 125; base_char++) {
+        alphanum_writeDigitAscii(&alpha, 0, base_char, 0); //pointer, index, character to write, dot
+        alphanum_writeDigitAscii(&alpha, 1, (base_char+1), 0);
+        alphanum_writeDigitAscii(&alpha, 2, (base_char+2), 0);
+        alphanum_writeDigitAscii(&alpha, 3, (base_char+3), 0);
+        led_writeDisplay((_ADAFRUIT_LED*)&alpha.super);
+        delay_by_nop(100000);
+    }
+}
+
+// Draw a single character;
+void drawChar(uint8_t ch) {
+    alphanum_writeDigitAscii(&alpha, 0, ch, 0);
+    led_writeDisplay((_ADAFRUIT_LED*)&alpha.super);
+}
+
 int16_t main(void) {
   init_elecanisms();
 
@@ -106,7 +125,9 @@ int16_t main(void) {
     // col = (col+1) % 4;
     // drawAll(col); // iterate through colors
 
-    drawABCD();
+    // drawABCD();
+    iterateAlpha();
+    // drawChar(0);
 
     delay_by_nop(2666666); // Delay approximately a second (1s / 375ns) = 2666666
     timeleft--;
