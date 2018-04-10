@@ -7,9 +7,10 @@
 #include "adafruit_led.h"
 
 _7SEGMENT matrix;
+_BARGRAPH bar;
 
-const uint8_t target_addr = 0xE0;
-
+const uint8_t matrix_addr = 0xE0;
+const uint8_t bar_addr = 0xE8;
 
 void countup(void) {
   // Draw each digit
@@ -49,6 +50,14 @@ void drawOnce(void) {
   led_writeDisplay((_ADAFRUIT_LED*)&matrix.super);
 }
 
+void drawAll(uint8_t color) {
+    uint8_t i;
+    for(i = 0; i < 24; i++) {
+        bargraph_setBar(&bar, i, color);
+    }
+    led_writeDisplay((_ADAFRUIT_LED*)&bar.super);
+}
+
 int16_t main(void) {
   init_elecanisms();
 
@@ -59,16 +68,20 @@ int16_t main(void) {
   LED2 = ON; // Start LED2 on
   while (LED2) {
     delay_by_nop(300000); // wait to make LED2 visible
-    LED2 = I2Cpoll(target_addr); // turn off LED2 if we've found the display
+    // LED2 = I2Cpoll(matrix_addr); // turn off LED2 if we've found the display
+    LED2 = I2Cpoll(bar_addr); // turn off LED2 if we've found the display
   }
 
-  led_begin((_ADAFRUIT_LED*)&matrix.super, target_addr); // Set up the HT16K33 and start the oscillator
+  // led_begin((_ADAFRUIT_LED*)&matrix.super, matrix_addr); // Set up the HT16K33 and start the oscillator
+  led_begin((_ADAFRUIT_LED*)&bar.super, bar_addr); // Set up the HT16K33 and start the oscillator
 
   uint16_t timeleft = 240;
-
+  uint8_t col = 0;
   while (1){
-    dispSeconds(timeleft);
+    // dispSeconds(timeleft);
     // countup();
+    col = (col+1) % 4;
+    drawAll(col); // iterate through colors
     delay_by_nop(2666666); // Delay approximately a second (1s / 375ns) = 2666666
     timeleft--;
     if (timeleft == 0) {
