@@ -4,411 +4,411 @@ combolock.elf:     file format elf32-pic30
 Disassembly of section .aivt._AltADC1Interrupt:
 
 0000012e <.aivt._AltADC1Interrupt>:
- 12e:	40 14 00    	nop       
+ 12e:	18 14 00    	nop       
 Disassembly of section .aivt._AltAddressError:
 
 00000108 <.aivt._AltAddressError>:
- 108:	40 14 00    	nop       
+ 108:	18 14 00    	nop       
 Disassembly of section .aivt._AltCNInterrupt:
 
 0000013a <.aivt._AltCNInterrupt>:
- 13a:	40 14 00    	nop       
+ 13a:	18 14 00    	nop       
 Disassembly of section .aivt._AltCRCInterrupt:
 
 0000019a <.aivt._AltCRCInterrupt>:
- 19a:	40 14 00    	nop       
+ 19a:	18 14 00    	nop       
 Disassembly of section .aivt._AltCTMUInterrupt:
 
 000001ae <.aivt._AltCTMUInterrupt>:
- 1ae:	40 14 00    	nop       
+ 1ae:	18 14 00    	nop       
 Disassembly of section .aivt._AltCompInterrupt:
 
 00000138 <.aivt._AltCompInterrupt>:
- 138:	40 14 00    	nop       
+ 138:	18 14 00    	nop       
 Disassembly of section .aivt._AltIC1Interrupt:
 
 00000116 <.aivt._AltIC1Interrupt>:
- 116:	40 14 00    	nop       
+ 116:	18 14 00    	nop       
 Disassembly of section .aivt._AltIC2Interrupt:
 
 0000011e <.aivt._AltIC2Interrupt>:
- 11e:	40 14 00    	nop       
+ 11e:	18 14 00    	nop       
 Disassembly of section .aivt._AltIC3Interrupt:
 
 0000015e <.aivt._AltIC3Interrupt>:
- 15e:	40 14 00    	nop       
+ 15e:	18 14 00    	nop       
 Disassembly of section .aivt._AltIC4Interrupt:
 
 00000160 <.aivt._AltIC4Interrupt>:
- 160:	40 14 00    	nop       
+ 160:	18 14 00    	nop       
 Disassembly of section .aivt._AltIC5Interrupt:
 
 00000162 <.aivt._AltIC5Interrupt>:
- 162:	40 14 00    	nop       
+ 162:	18 14 00    	nop       
 Disassembly of section .aivt._AltIC6Interrupt:
 
 00000164 <.aivt._AltIC6Interrupt>:
- 164:	40 14 00    	nop       
+ 164:	18 14 00    	nop       
 Disassembly of section .aivt._AltIC7Interrupt:
 
 00000140 <.aivt._AltIC7Interrupt>:
- 140:	40 14 00    	nop       
+ 140:	18 14 00    	nop       
 Disassembly of section .aivt._AltIC8Interrupt:
 
 00000142 <.aivt._AltIC8Interrupt>:
- 142:	40 14 00    	nop       
+ 142:	18 14 00    	nop       
 Disassembly of section .aivt._AltIC9Interrupt:
 
 000001ce <.aivt._AltIC9Interrupt>:
- 1ce:	40 14 00    	nop       
+ 1ce:	18 14 00    	nop       
 Disassembly of section .aivt._AltINT0Interrupt:
 
 00000114 <.aivt._AltINT0Interrupt>:
- 114:	40 14 00    	nop       
+ 114:	18 14 00    	nop       
 Disassembly of section .aivt._AltINT1Interrupt:
 
 0000013c <.aivt._AltINT1Interrupt>:
- 13c:	40 14 00    	nop       
+ 13c:	18 14 00    	nop       
 Disassembly of section .aivt._AltINT2Interrupt:
 
 0000014e <.aivt._AltINT2Interrupt>:
- 14e:	40 14 00    	nop       
+ 14e:	18 14 00    	nop       
 Disassembly of section .aivt._AltINT3Interrupt:
 
 0000017e <.aivt._AltINT3Interrupt>:
- 17e:	40 14 00    	nop       
+ 17e:	18 14 00    	nop       
 Disassembly of section .aivt._AltINT4Interrupt:
 
 00000180 <.aivt._AltINT4Interrupt>:
- 180:	40 14 00    	nop       
+ 180:	18 14 00    	nop       
 Disassembly of section .aivt._AltInterrupt14:
 
 00000130 <.aivt._AltInterrupt14>:
- 130:	40 14 00    	nop       
+ 130:	18 14 00    	nop       
 Disassembly of section .aivt._AltInterrupt15:
 
 00000132 <.aivt._AltInterrupt15>:
- 132:	40 14 00    	nop       
+ 132:	18 14 00    	nop       
 Disassembly of section .aivt._AltInterrupt21:
 
 0000013e <.aivt._AltInterrupt21>:
- 13e:	40 14 00    	nop       
+ 13e:	18 14 00    	nop       
 Disassembly of section .aivt._AltInterrupt24:
 
 00000144 <.aivt._AltInterrupt24>:
- 144:	40 14 00    	nop       
+ 144:	18 14 00    	nop       
 Disassembly of section .aivt._AltInterrupt34:
 
 00000158 <.aivt._AltInterrupt34>:
- 158:	40 14 00    	nop       
+ 158:	18 14 00    	nop       
 Disassembly of section .aivt._AltInterrupt35:
 
 0000015a <.aivt._AltInterrupt35>:
- 15a:	40 14 00    	nop       
+ 15a:	18 14 00    	nop       
 Disassembly of section .aivt._AltInterrupt36:
 
 0000015c <.aivt._AltInterrupt36>:
- 15c:	40 14 00    	nop       
+ 15c:	18 14 00    	nop       
 Disassembly of section .aivt._AltInterrupt4:
 
 0000011c <.aivt._AltInterrupt4>:
- 11c:	40 14 00    	nop       
+ 11c:	18 14 00    	nop       
 Disassembly of section .aivt._AltInterrupt46:
 
 00000170 <.aivt._AltInterrupt46>:
- 170:	40 14 00    	nop       
+ 170:	18 14 00    	nop       
 Disassembly of section .aivt._AltInterrupt47:
 
 00000172 <.aivt._AltInterrupt47>:
- 172:	40 14 00    	nop       
+ 172:	18 14 00    	nop       
 Disassembly of section .aivt._AltInterrupt48:
 
 00000174 <.aivt._AltInterrupt48>:
- 174:	40 14 00    	nop       
+ 174:	18 14 00    	nop       
 Disassembly of section .aivt._AltInterrupt51:
 
 0000017a <.aivt._AltInterrupt51>:
- 17a:	40 14 00    	nop       
+ 17a:	18 14 00    	nop       
 Disassembly of section .aivt._AltInterrupt52:
 
 0000017c <.aivt._AltInterrupt52>:
- 17c:	40 14 00    	nop       
+ 17c:	18 14 00    	nop       
 Disassembly of section .aivt._AltInterrupt55:
 
 00000182 <.aivt._AltInterrupt55>:
- 182:	40 14 00    	nop       
+ 182:	18 14 00    	nop       
 Disassembly of section .aivt._AltInterrupt56:
 
 00000184 <.aivt._AltInterrupt56>:
- 184:	40 14 00    	nop       
+ 184:	18 14 00    	nop       
 Disassembly of section .aivt._AltInterrupt57:
 
 00000186 <.aivt._AltInterrupt57>:
- 186:	40 14 00    	nop       
+ 186:	18 14 00    	nop       
 Disassembly of section .aivt._AltInterrupt58:
 
 00000188 <.aivt._AltInterrupt58>:
- 188:	40 14 00    	nop       
+ 188:	18 14 00    	nop       
 Disassembly of section .aivt._AltInterrupt59:
 
 0000018a <.aivt._AltInterrupt59>:
- 18a:	40 14 00    	nop       
+ 18a:	18 14 00    	nop       
 Disassembly of section .aivt._AltInterrupt60:
 
 0000018c <.aivt._AltInterrupt60>:
- 18c:	40 14 00    	nop       
+ 18c:	18 14 00    	nop       
 Disassembly of section .aivt._AltInterrupt61:
 
 0000018e <.aivt._AltInterrupt61>:
- 18e:	40 14 00    	nop       
+ 18e:	18 14 00    	nop       
 Disassembly of section .aivt._AltInterrupt63:
 
 00000192 <.aivt._AltInterrupt63>:
- 192:	40 14 00    	nop       
+ 192:	18 14 00    	nop       
 Disassembly of section .aivt._AltInterrupt64:
 
 00000194 <.aivt._AltInterrupt64>:
- 194:	40 14 00    	nop       
+ 194:	18 14 00    	nop       
 Disassembly of section .aivt._AltInterrupt68:
 
 0000019c <.aivt._AltInterrupt68>:
- 19c:	40 14 00    	nop       
+ 19c:	18 14 00    	nop       
 Disassembly of section .aivt._AltInterrupt69:
 
 0000019e <.aivt._AltInterrupt69>:
- 19e:	40 14 00    	nop       
+ 19e:	18 14 00    	nop       
 Disassembly of section .aivt._AltInterrupt70:
 
 000001a0 <.aivt._AltInterrupt70>:
- 1a0:	40 14 00    	nop       
+ 1a0:	18 14 00    	nop       
 Disassembly of section .aivt._AltInterrupt71:
 
 000001a2 <.aivt._AltInterrupt71>:
- 1a2:	40 14 00    	nop       
+ 1a2:	18 14 00    	nop       
 Disassembly of section .aivt._AltInterrupt73:
 
 000001a6 <.aivt._AltInterrupt73>:
- 1a6:	40 14 00    	nop       
+ 1a6:	18 14 00    	nop       
 Disassembly of section .aivt._AltInterrupt74:
 
 000001a8 <.aivt._AltInterrupt74>:
- 1a8:	40 14 00    	nop       
+ 1a8:	18 14 00    	nop       
 Disassembly of section .aivt._AltInterrupt75:
 
 000001aa <.aivt._AltInterrupt75>:
- 1aa:	40 14 00    	nop       
+ 1aa:	18 14 00    	nop       
 Disassembly of section .aivt._AltInterrupt76:
 
 000001ac <.aivt._AltInterrupt76>:
- 1ac:	40 14 00    	nop       
+ 1ac:	18 14 00    	nop       
 Disassembly of section .aivt._AltInterrupt78:
 
 000001b0 <.aivt._AltInterrupt78>:
- 1b0:	40 14 00    	nop       
+ 1b0:	18 14 00    	nop       
 Disassembly of section .aivt._AltInterrupt79:
 
 000001b2 <.aivt._AltInterrupt79>:
- 1b2:	40 14 00    	nop       
+ 1b2:	18 14 00    	nop       
 Disassembly of section .aivt._AltInterrupt80:
 
 000001b4 <.aivt._AltInterrupt80>:
- 1b4:	40 14 00    	nop       
+ 1b4:	18 14 00    	nop       
 Disassembly of section .aivt._AltLVDInterrupt:
 
 000001a4 <.aivt._AltLVDInterrupt>:
- 1a4:	40 14 00    	nop       
+ 1a4:	18 14 00    	nop       
 Disassembly of section .aivt._AltMI2C1Interrupt:
 
 00000136 <.aivt._AltMI2C1Interrupt>:
- 136:	40 14 00    	nop       
+ 136:	18 14 00    	nop       
 Disassembly of section .aivt._AltMI2C2Interrupt:
 
 00000178 <.aivt._AltMI2C2Interrupt>:
- 178:	40 14 00    	nop       
+ 178:	18 14 00    	nop       
 Disassembly of section .aivt._AltMI2C3Interrupt:
 
 000001be <.aivt._AltMI2C3Interrupt>:
- 1be:	40 14 00    	nop       
+ 1be:	18 14 00    	nop       
 Disassembly of section .aivt._AltMathError:
 
 0000010c <.aivt._AltMathError>:
- 10c:	40 14 00    	nop       
+ 10c:	18 14 00    	nop       
 Disassembly of section .aivt._AltOC1Interrupt:
 
 00000118 <.aivt._AltOC1Interrupt>:
- 118:	40 14 00    	nop       
+ 118:	18 14 00    	nop       
 Disassembly of section .aivt._AltOC2Interrupt:
 
 00000120 <.aivt._AltOC2Interrupt>:
- 120:	40 14 00    	nop       
+ 120:	18 14 00    	nop       
 Disassembly of section .aivt._AltOC3Interrupt:
 
 00000146 <.aivt._AltOC3Interrupt>:
- 146:	40 14 00    	nop       
+ 146:	18 14 00    	nop       
 Disassembly of section .aivt._AltOC4Interrupt:
 
 00000148 <.aivt._AltOC4Interrupt>:
- 148:	40 14 00    	nop       
+ 148:	18 14 00    	nop       
 Disassembly of section .aivt._AltOC5Interrupt:
 
 00000166 <.aivt._AltOC5Interrupt>:
- 166:	40 14 00    	nop       
+ 166:	18 14 00    	nop       
 Disassembly of section .aivt._AltOC6Interrupt:
 
 00000168 <.aivt._AltOC6Interrupt>:
- 168:	40 14 00    	nop       
+ 168:	18 14 00    	nop       
 Disassembly of section .aivt._AltOC7Interrupt:
 
 0000016a <.aivt._AltOC7Interrupt>:
- 16a:	40 14 00    	nop       
+ 16a:	18 14 00    	nop       
 Disassembly of section .aivt._AltOC8Interrupt:
 
 0000016c <.aivt._AltOC8Interrupt>:
- 16c:	40 14 00    	nop       
+ 16c:	18 14 00    	nop       
 Disassembly of section .aivt._AltOC9Interrupt:
 
 000001cc <.aivt._AltOC9Interrupt>:
- 1cc:	40 14 00    	nop       
+ 1cc:	18 14 00    	nop       
 Disassembly of section .aivt._AltOscillatorFail:
 
 00000106 <.aivt._AltOscillatorFail>:
- 106:	40 14 00    	nop       
+ 106:	18 14 00    	nop       
 Disassembly of section .aivt._AltPMPInterrupt:
 
 0000016e <.aivt._AltPMPInterrupt>:
- 16e:	40 14 00    	nop       
+ 16e:	18 14 00    	nop       
 Disassembly of section .aivt._AltRTCCInterrupt:
 
 00000190 <.aivt._AltRTCCInterrupt>:
- 190:	40 14 00    	nop       
+ 190:	18 14 00    	nop       
 Disassembly of section .aivt._AltReservedTrap0:
 
 00000104 <.aivt._AltReservedTrap0>:
- 104:	40 14 00    	nop       
+ 104:	18 14 00    	nop       
 Disassembly of section .aivt._AltReservedTrap5:
 
 0000010e <.aivt._AltReservedTrap5>:
- 10e:	40 14 00    	nop       
+ 10e:	18 14 00    	nop       
 Disassembly of section .aivt._AltReservedTrap6:
 
 00000110 <.aivt._AltReservedTrap6>:
- 110:	40 14 00    	nop       
+ 110:	18 14 00    	nop       
 Disassembly of section .aivt._AltReservedTrap7:
 
 00000112 <.aivt._AltReservedTrap7>:
- 112:	40 14 00    	nop       
+ 112:	18 14 00    	nop       
 Disassembly of section .aivt._AltSI2C1Interrupt:
 
 00000134 <.aivt._AltSI2C1Interrupt>:
- 134:	40 14 00    	nop       
+ 134:	18 14 00    	nop       
 Disassembly of section .aivt._AltSI2C2Interrupt:
 
 00000176 <.aivt._AltSI2C2Interrupt>:
- 176:	40 14 00    	nop       
+ 176:	18 14 00    	nop       
 Disassembly of section .aivt._AltSI2C3Interrupt:
 
 000001bc <.aivt._AltSI2C3Interrupt>:
- 1bc:	40 14 00    	nop       
+ 1bc:	18 14 00    	nop       
 Disassembly of section .aivt._AltSPI1ErrInterrupt:
 
 00000126 <.aivt._AltSPI1ErrInterrupt>:
- 126:	40 14 00    	nop       
+ 126:	18 14 00    	nop       
 Disassembly of section .aivt._AltSPI1Interrupt:
 
 00000128 <.aivt._AltSPI1Interrupt>:
- 128:	40 14 00    	nop       
+ 128:	18 14 00    	nop       
 Disassembly of section .aivt._AltSPI2ErrInterrupt:
 
 00000154 <.aivt._AltSPI2ErrInterrupt>:
- 154:	40 14 00    	nop       
+ 154:	18 14 00    	nop       
 Disassembly of section .aivt._AltSPI2Interrupt:
 
 00000156 <.aivt._AltSPI2Interrupt>:
- 156:	40 14 00    	nop       
+ 156:	18 14 00    	nop       
 Disassembly of section .aivt._AltSPI3ErrInterrupt:
 
 000001c8 <.aivt._AltSPI3ErrInterrupt>:
- 1c8:	40 14 00    	nop       
+ 1c8:	18 14 00    	nop       
 Disassembly of section .aivt._AltSPI3Interrupt:
 
 000001ca <.aivt._AltSPI3Interrupt>:
- 1ca:	40 14 00    	nop       
+ 1ca:	18 14 00    	nop       
 Disassembly of section .aivt._AltStackError:
 
 0000010a <.aivt._AltStackError>:
- 10a:	40 14 00    	nop       
+ 10a:	18 14 00    	nop       
 Disassembly of section .aivt._AltT1Interrupt:
 
 0000011a <.aivt._AltT1Interrupt>:
- 11a:	40 14 00    	nop       
+ 11a:	18 14 00    	nop       
 Disassembly of section .aivt._AltT2Interrupt:
 
 00000122 <.aivt._AltT2Interrupt>:
- 122:	40 14 00    	nop       
+ 122:	18 14 00    	nop       
 Disassembly of section .aivt._AltT3Interrupt:
 
 00000124 <.aivt._AltT3Interrupt>:
- 124:	40 14 00    	nop       
+ 124:	18 14 00    	nop       
 Disassembly of section .aivt._AltT4Interrupt:
 
 0000014a <.aivt._AltT4Interrupt>:
- 14a:	40 14 00    	nop       
+ 14a:	18 14 00    	nop       
 Disassembly of section .aivt._AltT5Interrupt:
 
 0000014c <.aivt._AltT5Interrupt>:
- 14c:	40 14 00    	nop       
+ 14c:	18 14 00    	nop       
 Disassembly of section .aivt._AltU1ErrInterrupt:
 
 00000196 <.aivt._AltU1ErrInterrupt>:
- 196:	40 14 00    	nop       
+ 196:	18 14 00    	nop       
 Disassembly of section .aivt._AltU1RXInterrupt:
 
 0000012a <.aivt._AltU1RXInterrupt>:
- 12a:	40 14 00    	nop       
+ 12a:	18 14 00    	nop       
 Disassembly of section .aivt._AltU1TXInterrupt:
 
 0000012c <.aivt._AltU1TXInterrupt>:
- 12c:	40 14 00    	nop       
+ 12c:	18 14 00    	nop       
 Disassembly of section .aivt._AltU2ErrInterrupt:
 
 00000198 <.aivt._AltU2ErrInterrupt>:
- 198:	40 14 00    	nop       
+ 198:	18 14 00    	nop       
 Disassembly of section .aivt._AltU2RXInterrupt:
 
 00000150 <.aivt._AltU2RXInterrupt>:
- 150:	40 14 00    	nop       
+ 150:	18 14 00    	nop       
 Disassembly of section .aivt._AltU2TXInterrupt:
 
 00000152 <.aivt._AltU2TXInterrupt>:
- 152:	40 14 00    	nop       
+ 152:	18 14 00    	nop       
 Disassembly of section .aivt._AltU3ErrInterrupt:
 
 000001b6 <.aivt._AltU3ErrInterrupt>:
- 1b6:	40 14 00    	nop       
+ 1b6:	18 14 00    	nop       
 Disassembly of section .aivt._AltU3RXInterrupt:
 
 000001b8 <.aivt._AltU3RXInterrupt>:
- 1b8:	40 14 00    	nop       
+ 1b8:	18 14 00    	nop       
 Disassembly of section .aivt._AltU3TXInterrupt:
 
 000001ba <.aivt._AltU3TXInterrupt>:
- 1ba:	40 14 00    	nop       
+ 1ba:	18 14 00    	nop       
 Disassembly of section .aivt._AltU4ErrInterrupt:
 
 000001c2 <.aivt._AltU4ErrInterrupt>:
- 1c2:	40 14 00    	nop       
+ 1c2:	18 14 00    	nop       
 Disassembly of section .aivt._AltU4RXInterrupt:
 
 000001c4 <.aivt._AltU4RXInterrupt>:
- 1c4:	40 14 00    	nop       
+ 1c4:	18 14 00    	nop       
 Disassembly of section .aivt._AltU4TXInterrupt:
 
 000001c6 <.aivt._AltU4TXInterrupt>:
- 1c6:	40 14 00    	nop       
+ 1c6:	18 14 00    	nop       
 Disassembly of section .aivt._AltUSB1Interrupt:
 
 000001c0 <.aivt._AltUSB1Interrupt>:
- 1c0:	40 14 00    	nop       
+ 1c0:	18 14 00    	nop       
 Disassembly of section .reset:
 
 00000000 <.reset>:
@@ -417,7 +417,7 @@ Disassembly of section .reset:
 Disassembly of section .text:
 
 00001110 <__reset>:
-    1110:	6f 80 20    	mov.w     #0x806, w15
+    1110:	8f 80 20    	mov.w     #0x808, w15
     1112:	0e ff 27    	mov.w     #0x7ff0, w14
     1114:	0e 01 88    	mov.w     w14, 0x20
     1116:	00 00 00    	nop       
@@ -432,7 +432,7 @@ Disassembly of section .text:
     1124:	79 00 07    	rcall     0x1218 <__crt_start_mode> <__crt_start_mode_normal>
     1126:	00 00 e0    	cp0.w     w0
     1128:	03 00 3a    	bra       NZ, 0x1130 <L11>
-    112a:	00 43 21    	mov.w     #0x1430, w0
+    112a:	80 40 21    	mov.w     #0x1408, w0
     112c:	01 00 20    	mov.w     #0x0, w1
     112e:	02 00 37    	bra       0x1134 <L21>
 
@@ -595,7 +595,7 @@ Disassembly of section .text:
     1212:	ee ff 37    	bra       0x11f0 <L34>
 
 00001214 <.handle>:
-    1214:	a0 12 04    	goto      0x12a0 <_loop>
+    1214:	c0 12 04    	goto      0x12c0 <_loop>
     1216:	00 00 00 
 
 00001218 <__crt_start_mode>:
@@ -605,141 +605,141 @@ Disassembly of section .application_ivt:
 00001000 <__DEFAULT_VECTOR-0x10c>:
     1000:	10 11 04    	goto      0x1110 <__reset>
     1002:	00 00 00 
-    1004:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    1004:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     1006:	00 00 00 
-    1008:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    1008:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     100a:	00 00 00 
-    100c:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    100c:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     100e:	00 00 00 
-    1010:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    1010:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     1012:	00 00 00 
-    1014:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    1014:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     1016:	00 00 00 
-    1018:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    1018:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     101a:	00 00 00 
-    101c:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    101c:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     101e:	00 00 00 
-    1020:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    1020:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     1022:	00 00 00 
-    1024:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    1024:	d4 12 04    	goto      0x12d4 <__T1Interrupt>
     1026:	00 00 00 
-    1028:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    1028:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     102a:	00 00 00 
-    102c:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    102c:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     102e:	00 00 00 
-    1030:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    1030:	3e 13 04    	goto      0x133e <__T2Interrupt>
     1032:	00 00 00 
-    1034:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    1034:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     1036:	00 00 00 
-    1038:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    1038:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     103a:	00 00 00 
-    103c:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    103c:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     103e:	00 00 00 
-    1040:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    1040:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     1042:	00 00 00 
-    1044:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    1044:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     1046:	00 00 00 
-    1048:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    1048:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     104a:	00 00 00 
-    104c:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    104c:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     104e:	00 00 00 
-    1050:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    1050:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     1052:	00 00 00 
-    1054:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    1054:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     1056:	00 00 00 
-    1058:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    1058:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     105a:	00 00 00 
-    105c:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    105c:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     105e:	00 00 00 
-    1060:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    1060:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     1062:	00 00 00 
-    1064:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    1064:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     1066:	00 00 00 
-    1068:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    1068:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     106a:	00 00 00 
-    106c:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    106c:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     106e:	00 00 00 
-    1070:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    1070:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     1072:	00 00 00 
-    1074:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    1074:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     1076:	00 00 00 
-    1078:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    1078:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     107a:	00 00 00 
-    107c:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    107c:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     107e:	00 00 00 
-    1080:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    1080:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     1082:	00 00 00 
-    1084:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    1084:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     1086:	00 00 00 
-    1088:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    1088:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     108a:	00 00 00 
-    108c:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    108c:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     108e:	00 00 00 
-    1090:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    1090:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     1092:	00 00 00 
-    1094:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    1094:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     1096:	00 00 00 
-    1098:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    1098:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     109a:	00 00 00 
-    109c:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    109c:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     109e:	00 00 00 
-    10a0:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    10a0:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     10a2:	00 00 00 
-    10a4:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    10a4:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     10a6:	00 00 00 
-    10a8:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    10a8:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     10aa:	00 00 00 
-    10ac:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    10ac:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     10ae:	00 00 00 
-    10b0:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    10b0:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     10b2:	00 00 00 
-    10b4:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    10b4:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     10b6:	00 00 00 
-    10b8:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    10b8:	6c 13 04    	goto      0x136c <__INT3Interrupt>
     10ba:	00 00 00 
-    10bc:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    10bc:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     10be:	00 00 00 
-    10c0:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    10c0:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     10c2:	00 00 00 
-    10c4:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    10c4:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     10c6:	00 00 00 
-    10c8:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    10c8:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     10ca:	00 00 00 
-    10cc:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    10cc:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     10ce:	00 00 00 
-    10d0:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    10d0:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     10d2:	00 00 00 
-    10d4:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    10d4:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     10d6:	00 00 00 
-    10d8:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    10d8:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     10da:	00 00 00 
-    10dc:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    10dc:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     10de:	00 00 00 
-    10e0:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    10e0:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     10e2:	00 00 00 
-    10e4:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    10e4:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     10e6:	00 00 00 
-    10e8:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    10e8:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     10ea:	00 00 00 
-    10ec:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    10ec:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     10ee:	00 00 00 
-    10f0:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    10f0:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     10f2:	00 00 00 
-    10f4:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    10f4:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     10f6:	00 00 00 
-    10f8:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    10f8:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     10fa:	00 00 00 
-    10fc:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    10fc:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     10fe:	00 00 00 
-    1100:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    1100:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     1102:	00 00 00 
-    1104:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    1104:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     1106:	00 00 00 
-    1108:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    1108:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     110a:	00 00 00 
 
 0000110c <__DEFAULT_VECTOR>:
-    110c:	40 14 04    	goto      0x1440 <__DefaultInterrupt>
+    110c:	18 14 04    	goto      0x1418 <__DefaultInterrupt>
     110e:	00 00 00 
 Disassembly of section .ivt:
 
@@ -873,14 +873,14 @@ Disassembly of section .ivt:
 Disassembly of section .text:
 
 0000121a <_main>:
-static uint8_t screen_pos = 0; //what position the active character is on.
-static uint8_t UP = 1;
-static uint8_t DOWN = 0;
-//
+    IFS0bits.T2IF = 0;        // lower Timer2 Interrupt flag
+    T2CONbits.TON = 1;        // start Timer2
+}
+
 int16_t main(void){
     121a:	00 00 fa    	lnk       #0x0
     init_elecanisms();
-    121c:	cc 00 07    	rcall     0x13b6 <_init_elecanisms> <.L0> <.LFB0> <.LFE4> <.Letext0> <.Ltext0>
+    121c:	b8 00 07    	rcall     0x138e <.LFE2> <_init_elecanisms> <.L0> <.LFB0> <.Ltext0>
     // set pins as input with internal pull-up resistors enabled
     //pinMode -> use elecanisms.h, use the function i.e. D0_DIR = OUT
     D0_DIR = IN; /* This is an arduino function, use DX_DIR = X; */
@@ -888,7 +888,7 @@ int16_t main(void){
     D1_DIR = IN;
     1220:	d8 82 a8    	bset.b    0x2d8, #0x4
     PIN_ENCODER_A = ON; /* This is an arduino function, use DX = ON/OFF; */
-    1222:	da a2 a8    	bset.b    0x2da, #0x5
+    1222:	db 42 a8    	bset.b    0x2db, #0x2
     PIN_ENCODER_B = ON;
     1224:	da 82 a8    	bset.b    0x2da, #0x4
 
@@ -898,365 +898,235 @@ int16_t main(void){
 
     //Copied the debounce/timer stuff from blink.c
 
-    T1CON = 0x0030;         // set Timer1 period to 0.5s
+    // Timer 1 Setup
+        T1CON = 0x0030;         // set Timer1 period to 0.25s, prescaler 256 match 15624
     1228:	00 03 20    	mov.w     #0x30, w0
     122a:	20 08 88    	mov.w     w0, 0x104
-    PR1 = 0x7A11;
-    122c:	10 a1 27    	mov.w     #0x7a11, w0
+        PR1 = 0x3D08;
+    122c:	80 d0 23    	mov.w     #0x3d08, w0
     122e:	10 08 88    	mov.w     w0, 0x102
 
-    TMR1 = 0;               // set Timer1 count to 0
+        TMR1 = 0;               // set Timer1 count to 0
     1230:	00 21 ef    	clr.w     0x100
-    IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
+        IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
     1232:	84 60 a9    	bclr.b    0x84, #0x3
-    IEC0bits.T1IE = 1;      // enable Timer1 interrupt
+        IEC0bits.T1IE = 1;      // enable Timer1 interrupt
     1234:	94 60 a8    	bset.b    0x94, #0x3
-    T1CONbits.TON = 1;      // turn on Timer1
+        T1CONbits.TON = 1;      // turn on Timer1
     1236:	05 e1 a8    	bset.b    0x105, #0x7
+
+    // Timer 2 Setup
+        T2CON = 0x0020;         // set Timer2 period to 10 ms for debounce
+    1238:	00 02 20    	mov.w     #0x20, w0
+    123a:	80 08 88    	mov.w     w0, 0x110
+        PR2 = 0x2710;           // prescaler 16, match value 10000
+    123c:	00 71 22    	mov.w     #0x2710, w0
+    123e:	60 08 88    	mov.w     w0, 0x10c
+
+        TMR2 = 0;               // set Timer2 to 0
+    1240:	06 21 ef    	clr.w     0x106
+        IFS0bits.T2IF = 0;      // lower T2 interrupt flag
+    1242:	84 e0 a9    	bclr.b    0x84, #0x7
+        IEC0bits.T2IE = 1;      // enable T2 interrupt
+    1244:	94 e0 a8    	bset.b    0x94, #0x7
+        T2CONbits.TON = 0;      // make sure T2 isn't on
+    1246:	11 e1 a9    	bclr.b    0x111, #0x7
+
+    // INT3 Setup
+        RPINR1bits.INT3R = INT3_RP; // Configure interrupt 3 on RP3, pin D9 on board
+    1248:	11 34 80    	mov.w     0x682, w1
+    124a:	f0 0f 2c    	mov.w     #0xc0ff, w0
+    124c:	80 80 60    	and.w     w1, w0, w1
+    124e:	00 30 20    	mov.w     #0x300, w0
+    1250:	01 00 70    	ior.w     w0, w1, w0
+    1252:	10 34 88    	mov.w     w0, 0x682
+
+        IFS3bits.INT3IF = 0;    // lower interrupt flag for INT3
+    1254:	8a a0 a9    	bclr.b    0x8a, #0x5
+        IEC3bits.INT3IE = 1;    // enable INT3 interrupt
+    1256:	9a a0 a8    	bset.b    0x9a, #0x5
 
     // get an initial reading on the encoder pins
     if (PIN_ENCODER_A == 0) {enc_prev_pos |= (1 << 0);} /* Also arduino */
-    1238:	d1 16 80    	mov.w     0x2da, w1
-    123a:	00 02 20    	mov.w     #0x20, w0
-    123c:	00 80 60    	and.w     w1, w0, w0
-    123e:	00 00 e0    	cp0.w     w0
-    1240:	03 00 3a    	bra       NZ, 0x1248 <.L2>
-    1242:	00 c8 bf    	mov.b     0x800, WREG
-    1244:	00 04 a0    	bset.b    w0, #0x0
-    1246:	00 e8 b7    	mov.b     WREG, 0x800
+    1258:	d1 16 80    	mov.w     0x2da, w1
+    125a:	00 40 20    	mov.w     #0x400, w0
+    125c:	00 80 60    	and.w     w1, w0, w0
+    125e:	00 00 e0    	cp0.w     w0
+    1260:	03 00 3a    	bra       NZ, 0x1268 <.L10>
+    1262:	00 c8 bf    	mov.b     0x800, WREG
+    1264:	00 04 a0    	bset.b    w0, #0x0
+    1266:	00 e8 b7    	mov.b     WREG, 0x800
 
-00001248 <.L2>:
+00001268 <.L10>:
     if (PIN_ENCODER_B == 0) {enc_prev_pos |= (1 << 1);}
-    1248:	d0 16 80    	mov.w     0x2da, w0
-    124a:	70 00 60    	and.w     w0, #0x10, w0
-    124c:	00 00 e0    	cp0.w     w0
-    124e:	03 00 3a    	bra       NZ, 0x1256 <.L3> <.LBB2>
-    1250:	00 c8 bf    	mov.b     0x800, WREG
-    1252:	00 14 a0    	bset.b    w0, #0x1
-    1254:	00 e8 b7    	mov.b     WREG, 0x800
+    1268:	d0 16 80    	mov.w     0x2da, w0
+    126a:	70 00 60    	and.w     w0, #0x10, w0
+    126c:	00 00 e0    	cp0.w     w0
+    126e:	03 00 3a    	bra       NZ, 0x1276 <.L11> <.LBB2>
+    1270:	00 c8 bf    	mov.b     0x800, WREG
+    1272:	00 14 a0    	bset.b    w0, #0x1
+    1274:	00 e8 b7    	mov.b     WREG, 0x800
 
-00001256 <.L3>:
+00001276 <.L11>:
 
     while (1){
       loop();
-    1256:	00 2a 21    	mov.w     #0x12a0, w0
-    1258:	00 00 01    	call      w0
+    1276:	00 2c 21    	mov.w     #0x12c0, w0
+    1278:	00 00 01    	call      w0
 
-0000125a <.LBE2>:
+0000127a <.LBE2>:
     }
-    125a:	fd ff 37    	bra       0x1256 <.L3> <.LBB2>
+    127a:	fd ff 37    	bra       0x1276 <.L11> <.LBB2>
 
-0000125c <_SelectChr>:
+0000127c <_SelectChr>:
 }
 
 void SelectChr(){//Locks in the current character on the screen.
-    125c:	00 00 fa    	lnk       #0x0
+    127c:	00 00 fa    	lnk       #0x0
 
 }
-    125e:	00 80 fa    	ulnk      
-    1260:	00 00 06    	return    
+    127e:	00 80 fa    	ulnk      
+    1280:	00 00 06    	return    
 
-00001262 <_test_LED>:
+00001282 <_test_LED>:
 
 void test_LED(){
-    1262:	00 00 fa    	lnk       #0x0
+    1282:	00 00 fa    	lnk       #0x0
 
-00001264 <.L6>:
+00001284 <.L14>:
   while (1){LED1 = ON;}
-    1264:	dc e2 a8    	bset.b    0x2dc, #0x7
-    1266:	fe ff 37    	bra       0x1264 <.L6>
+    1284:	dc e2 a8    	bset.b    0x2dc, #0x7
+    1286:	fe ff 37    	bra       0x1284 <.L14>
 
-00001268 <_dispChr>:
+00001288 <_dispChr>:
 }
 
 void dispChr(uint8_t direction){//Increments/decrements the character on the screen.
-    1268:	02 00 fa    	lnk       #0x2
-    126a:	00 4f 78    	mov.b     w0, [w14]
+    1288:	02 00 fa    	lnk       #0x2
+    128a:	00 4f 78    	mov.b     w0, [w14]
   if (direction == UP){
-    126c:	04 c8 bf    	mov.b     0x804, WREG
-    126e:	9e 40 78    	mov.b     [w14], w1
-    1270:	80 cf 50    	sub.b     w1, w0, [w15]
-    1272:	09 00 3a    	bra       NZ, 0x1286 <.L8>
+    128c:	06 c8 bf    	mov.b     0x806, WREG
+    128e:	9e 40 78    	mov.b     [w14], w1
+    1290:	80 cf 50    	sub.b     w1, w0, [w15]
+    1292:	09 00 3a    	bra       NZ, 0x12a6 <.L16>
     if (LED1 == ON){LED1 = OFF;}
-    1274:	e1 16 80    	mov.w     0x2dc, w1
-    1276:	00 08 20    	mov.w     #0x80, w0
-    1278:	00 80 60    	and.w     w1, w0, w0
-    127a:	00 00 e0    	cp0.w     w0
-    127c:	02 00 32    	bra       Z, 0x1282 <.L9>
-    127e:	dc e2 a9    	bclr.b    0x2dc, #0x7
-    1280:	0d 00 37    	bra       0x129c <.L7>
+    1294:	e1 16 80    	mov.w     0x2dc, w1
+    1296:	00 08 20    	mov.w     #0x80, w0
+    1298:	00 80 60    	and.w     w1, w0, w0
+    129a:	00 00 e0    	cp0.w     w0
+    129c:	02 00 32    	bra       Z, 0x12a2 <.L17>
+    129e:	dc e2 a9    	bclr.b    0x2dc, #0x7
+    12a0:	0d 00 37    	bra       0x12bc <.L15>
 
-00001282 <.L9>:
+000012a2 <.L17>:
     else {LED1 = ON;}
-    1282:	dc e2 a8    	bset.b    0x2dc, #0x7
-    1284:	0b 00 37    	bra       0x129c <.L7>
+    12a2:	dc e2 a8    	bset.b    0x2dc, #0x7
+    12a4:	0b 00 37    	bra       0x12bc <.L15>
 
-00001286 <.L8>:
+000012a6 <.L16>:
     }
   else if (direction == DOWN){
-    1286:	03 c8 bf    	mov.b     0x803, WREG
-    1288:	9e 40 78    	mov.b     [w14], w1
-    128a:	80 cf 50    	sub.b     w1, w0, [w15]
-    128c:	07 00 3a    	bra       NZ, 0x129c <.L7>
+    12a6:	03 c8 bf    	mov.b     0x803, WREG
+    12a8:	9e 40 78    	mov.b     [w14], w1
+    12aa:	80 cf 50    	sub.b     w1, w0, [w15]
+    12ac:	07 00 3a    	bra       NZ, 0x12bc <.L15>
     if (LED3 == ON){LED3 = OFF;}
-    128e:	60 17 80    	mov.w     0x2ec, w0
-    1290:	62 00 60    	and.w     w0, #0x2, w0
-    1292:	00 00 e0    	cp0.w     w0
-    1294:	02 00 32    	bra       Z, 0x129a <.L11>
-    1296:	ec 22 a9    	bclr.b    0x2ec, #0x1
-    1298:	01 00 37    	bra       0x129c <.L7>
+    12ae:	60 17 80    	mov.w     0x2ec, w0
+    12b0:	62 00 60    	and.w     w0, #0x2, w0
+    12b2:	00 00 e0    	cp0.w     w0
+    12b4:	02 00 32    	bra       Z, 0x12ba <.L19>
+    12b6:	ec 22 a9    	bclr.b    0x2ec, #0x1
+    12b8:	01 00 37    	bra       0x12bc <.L15>
 
-0000129a <.L11>:
+000012ba <.L19>:
     else {LED3 = ON;}
-    129a:	ec 22 a8    	bset.b    0x2ec, #0x1
+    12ba:	ec 22 a8    	bset.b    0x2ec, #0x1
 
-0000129c <.L7>:
+000012bc <.L15>:
     }
   else {;}
 }
-    129c:	00 80 fa    	ulnk      
-    129e:	00 00 06    	return    
+    12bc:	00 80 fa    	ulnk      
+    12be:	00 00 06    	return    
 
-000012a0 <_loop>:
+000012c0 <_loop>:
+
 //
 void loop(){
-    12a0:	02 00 fa    	lnk       #0x2
+    12c0:	02 00 fa    	lnk       #0x2
   int8_t enc_action = 0; // 1 or -1 if moved, sign is direction
-    12a2:	00 40 eb    	clr.b     w0
-    12a4:	10 47 98    	mov.b     w0, [w14+1]
+    12c2:	00 40 eb    	clr.b     w0
+    12c4:	00 4f 78    	mov.b     w0, [w14]
   uint8_t enc_cur_pos = 0;
-    12a6:	00 40 eb    	clr.b     w0
-    12a8:	00 4f 78    	mov.b     w0, [w14]
+    12c6:	00 40 eb    	clr.b     w0
+    12c8:	10 47 98    	mov.b     w0, [w14+1]
 //
-//   /*The original code referenced a bitwise connection between "Trinket_PINx" (defined as "PINB") and also
-//   PIN_ENCODER whatever.  What the hell is PINB?*/
 
-//if (bit_is_clear(TRINKET_PINx, PIN_ENCODER_A)) {enc_cur_pos |= (1 << 0);}// read in the encoder state first
-//if (bit_is_clear(TRINKET_PINx, PIN_ENCODER_B)) {enc_cur_pos |= (1 << 1);}  /* Arduino function as well */
+  //Ground state of the pins is 1.  Therefore 0 means a change.
+  /*Can use A as the clock.  Whenever a rising edge of A is detected, check state of B.
+  So when A is "0", if B is 0, then that means it's one direction, and if B is one, then
+  it's another direction.
 
 
+  Add in interrupt so can control the system through that instead of polling.
+  /*
   if (PIN_ENCODER_A == 0){
-    12aa:	d1 16 80    	mov.w     0x2da, w1
-    12ac:	00 02 20    	mov.w     #0x20, w0
-    12ae:	00 80 60    	and.w     w1, w0, w0
-    12b0:	00 00 e0    	cp0.w     w0
-    12b2:	02 00 3a    	bra       NZ, 0x12b8 <.L13>
     enc_cur_pos |= (1 <<0);
-    12b4:	1e 04 a0    	bset.b    [w14], #0x0
-    test_LED();
-    12b6:	d5 ff 07    	rcall     0x1262 <_test_LED> <.LFB2> <.LFE1>
 
-000012b8 <.L13>:
     } //Read Encoder_Pin_A?
   if (PIN_ENCODER_B == 0){enc_cur_pos |= (1 <<1);} //Read Encoder_Pin_B?
-    12b8:	d0 16 80    	mov.w     0x2da, w0
-    12ba:	70 00 60    	and.w     w0, #0x10, w0
-    12bc:	00 00 e0    	cp0.w     w0
-    12be:	01 00 3a    	bra       NZ, 0x12c2 <.L14>
-    12c0:	1e 14 a0    	bset.b    [w14], #0x1
-
-000012c2 <.L14>:
   //if (enc_cur_pos != 0){test_LED();}
+  */
+
 
 
 
 //   // if any rotation at all
-  if (enc_cur_pos != enc_prev_pos){
-    12c2:	00 c8 bf    	mov.b     0x800, WREG
-    12c4:	9e 40 78    	mov.b     [w14], w1
-    12c6:	80 cf 50    	sub.b     w1, w0, [w15]
-    12c8:	27 00 32    	bra       Z, 0x1318 <.L15>
-    if (enc_prev_pos == 0x00) {
-    12ca:	00 c8 bf    	mov.b     0x800, WREG
-    12cc:	00 04 e0    	cp0.b     w0
-    12ce:	0d 00 3a    	bra       NZ, 0x12ea <.L16>
-      if (enc_cur_pos == 0x01) {enc_flags |= (1 << 0);}        // this is the first edge
-    12d0:	1e 40 78    	mov.b     [w14], w0
-    12d2:	e1 4f 50    	sub.b     w0, #0x1, [w15]
-    12d4:	04 00 3a    	bra       NZ, 0x12de <.L17>
-    12d6:	01 c8 bf    	mov.b     0x801, WREG
-    12d8:	00 04 a0    	bset.b    w0, #0x0
-    12da:	01 e8 b7    	mov.b     WREG, 0x801
-    12dc:	06 00 37    	bra       0x12ea <.L16>
-
-000012de <.L17>:
-      else if (enc_cur_pos == 0x02) {enc_flags |= (1 << 1);}
-    12de:	1e 40 78    	mov.b     [w14], w0
-    12e0:	e2 4f 50    	sub.b     w0, #0x2, [w15]
-    12e2:	03 00 3a    	bra       NZ, 0x12ea <.L16>
-    12e4:	01 c8 bf    	mov.b     0x801, WREG
-    12e6:	00 14 a0    	bset.b    w0, #0x1
-    12e8:	01 e8 b7    	mov.b     WREG, 0x801
-
-000012ea <.L16>:
-    }
-
-    if (enc_cur_pos == 0x03){enc_flags |= (1 << 4);}   // this is when the encoder is in the middle of a "step"
-    12ea:	1e 40 78    	mov.b     [w14], w0
-    12ec:	e3 4f 50    	sub.b     w0, #0x3, [w15]
-    12ee:	04 00 3a    	bra       NZ, 0x12f8 <.L18>
-    12f0:	01 c8 bf    	mov.b     0x801, WREG
-    12f2:	00 44 a0    	bset.b    w0, #0x4
-    12f4:	01 e8 b7    	mov.b     WREG, 0x801
-    12f6:	10 00 37    	bra       0x1318 <.L15>
-
-000012f8 <.L18>:
-    else if (enc_cur_pos == 0x00){
-    12f8:	1e 40 78    	mov.b     [w14], w0
-    12fa:	00 04 e0    	cp0.b     w0
-    12fc:	0d 00 3a    	bra       NZ, 0x1318 <.L15>
-      if (enc_prev_pos == 0x02) {enc_flags |= (1 << 2);}     // this is the final edge
-    12fe:	00 c8 bf    	mov.b     0x800, WREG
-    1300:	e2 4f 50    	sub.b     w0, #0x2, [w15]
-    1302:	04 00 3a    	bra       NZ, 0x130c <.L19>
-    1304:	01 c8 bf    	mov.b     0x801, WREG
-    1306:	00 24 a0    	bset.b    w0, #0x2
-    1308:	01 e8 b7    	mov.b     WREG, 0x801
-    130a:	06 00 37    	bra       0x1318 <.L15>
-
-0000130c <.L19>:
-      else if (enc_prev_pos == 0x01) {enc_flags |= (1 << 3);}
-    130c:	00 c8 bf    	mov.b     0x800, WREG
-    130e:	e1 4f 50    	sub.b     w0, #0x1, [w15]
-    1310:	03 00 3a    	bra       NZ, 0x1318 <.L15>
-    1312:	01 c8 bf    	mov.b     0x801, WREG
-    1314:	00 34 a0    	bset.b    w0, #0x3
-    1316:	01 e8 b7    	mov.b     WREG, 0x801
-
-00001318 <.L15>:
-    }
-  }
+  // if (enc_cur_pos != enc_prev_pos){
+  //   if (enc_prev_pos == 0x00) {
+  //     if (enc_cur_pos == 0x01) {enc_flags |= (1 << 0);}        // this is the first edge
+  //     else if (enc_cur_pos == 0x02) {enc_flags |= (1 << 1);}
+  //   }
+  //
+  //   if (enc_cur_pos == 0x03){enc_flags |= (1 << 4);}   // this is when the encoder is in the middle of a "step"
+  //   else if (enc_cur_pos == 0x00){
+  //     if (enc_prev_pos == 0x02) {enc_flags |= (1 << 2);}     // this is the final edge
+  //     else if (enc_prev_pos == 0x01) {enc_flags |= (1 << 3);}
+  //   }
+  //}
 // check the first and last edge
 // or maybe one edge is missing, if missing then require the middle state
 // this will reject bounces and false movements
 
-//       if (bit_is_set(enc_flags, 0) && (bit_is_set(enc_flags, 2) || bit_is_set(enc_flags, 4))) {
-//         enc_action = 1;}
-
-  if ((enc_flags & (1 << 0)) && enc_flags & (1 << 2) || (enc_flags & (1 << 4))){
-    1318:	01 c8 bf    	mov.b     0x801, WREG
-    131a:	00 80 fb    	ze        w0, w0
-    131c:	61 00 60    	and.w     w0, #0x1, w0
-    131e:	00 40 78    	mov.b     w0, w0
-    1320:	00 04 e0    	cp0.b     w0
-    1322:	05 00 32    	bra       Z, 0x132e <.L20>
-    1324:	01 c8 bf    	mov.b     0x801, WREG
-    1326:	00 80 fb    	ze        w0, w0
-    1328:	64 00 60    	and.w     w0, #0x4, w0
-    132a:	00 00 e0    	cp0.w     w0
-    132c:	05 00 3a    	bra       NZ, 0x1338 <.L21>
-
-0000132e <.L20>:
-    132e:	01 c8 bf    	mov.b     0x801, WREG
-    1330:	00 80 fb    	ze        w0, w0
-    1332:	70 00 60    	and.w     w0, #0x10, w0
-    1334:	00 00 e0    	cp0.w     w0
-    1336:	03 00 32    	bra       Z, 0x133e <.L22>
-
-00001338 <.L21>:
-        enc_action = 1;
-    1338:	10 c0 b3    	mov.b     #0x1, w0
-    133a:	10 47 98    	mov.b     w0, [w14+1]
-    133c:	36 00 37    	bra       0x13aa <.L23>
-
-0000133e <.L22>:
-  }
+// //       if (bit_is_set(enc_flags, 0) && (bit_is_set(enc_flags, 2) || bit_is_set(enc_flags, 4))) {
+// //         enc_action = 1;}
 //
-//       else if (bit_is_set(enc_flags, 2) && (bit_is_set(enc_flags, 0) || bit_is_set(enc_flags, 4))) {
-//         enc_action = 1;}
-
-  else if ((enc_flags & (1 << 2)) && enc_flags & (1 << 0) || (enc_flags & (1 << 4))){
-    133e:	01 c8 bf    	mov.b     0x801, WREG
-    1340:	00 80 fb    	ze        w0, w0
-    1342:	64 00 60    	and.w     w0, #0x4, w0
-    1344:	00 00 e0    	cp0.w     w0
-    1346:	06 00 32    	bra       Z, 0x1354 <.L24>
-    1348:	01 c8 bf    	mov.b     0x801, WREG
-    134a:	00 80 fb    	ze        w0, w0
-    134c:	61 00 60    	and.w     w0, #0x1, w0
-    134e:	00 40 78    	mov.b     w0, w0
-    1350:	00 04 e0    	cp0.b     w0
-    1352:	05 00 3a    	bra       NZ, 0x135e <.L25>
-
-00001354 <.L24>:
-    1354:	01 c8 bf    	mov.b     0x801, WREG
-    1356:	00 80 fb    	ze        w0, w0
-    1358:	70 00 60    	and.w     w0, #0x10, w0
-    135a:	00 00 e0    	cp0.w     w0
-    135c:	03 00 32    	bra       Z, 0x1364 <.L26>
-
-0000135e <.L25>:
-    enc_action = 1;
-    135e:	10 c0 b3    	mov.b     #0x1, w0
-    1360:	10 47 98    	mov.b     w0, [w14+1]
-    1362:	23 00 37    	bra       0x13aa <.L23>
-
-00001364 <.L26>:
-  }
+//   if ((enc_flags & (1 << 0)) && enc_flags & (1 << 2) || (enc_flags & (1 << 4))){
+//         enc_action = 1;
+//   }
+// //
+// //       else if (bit_is_set(enc_flags, 2) && (bit_is_set(enc_flags, 0) || bit_is_set(enc_flags, 4))) {
+// //         enc_action = 1;}
 //
-//       else if (bit_is_set(enc_flags, 1) && (bit_is_set(enc_flags, 3) || bit_is_set(enc_flags, 4))) {
-//         enc_action = -1;}
-
-  else if ((enc_flags & (1 << 1)) && enc_flags & (1 << 3) || (enc_flags & (1 << 4))){
-    1364:	01 c8 bf    	mov.b     0x801, WREG
-    1366:	00 80 fb    	ze        w0, w0
-    1368:	62 00 60    	and.w     w0, #0x2, w0
-    136a:	00 00 e0    	cp0.w     w0
-    136c:	05 00 32    	bra       Z, 0x1378 <.L27>
-    136e:	01 c8 bf    	mov.b     0x801, WREG
-    1370:	00 80 fb    	ze        w0, w0
-    1372:	68 00 60    	and.w     w0, #0x8, w0
-    1374:	00 00 e0    	cp0.w     w0
-    1376:	05 00 3a    	bra       NZ, 0x1382 <.L28>
-
-00001378 <.L27>:
-    1378:	01 c8 bf    	mov.b     0x801, WREG
-    137a:	00 80 fb    	ze        w0, w0
-    137c:	70 00 60    	and.w     w0, #0x10, w0
-    137e:	00 00 e0    	cp0.w     w0
-    1380:	03 00 32    	bra       Z, 0x1388 <.L29>
-
-00001382 <.L28>:
-      enc_action = -1;
-    1382:	00 c0 eb    	setm.b    w0
-    1384:	10 47 98    	mov.b     w0, [w14+1]
-    1386:	11 00 37    	bra       0x13aa <.L23>
-
-00001388 <.L29>:
-  }
-
-//       else if (bit_is_set(enc_flags, 3) && (bit_is_set(enc_flags, 1) || bit_is_set(enc_flags, 4))) {
-//         enc_action = -1;}
-
-  else if ((enc_flags & (1 << 3)) && enc_flags & (1 << 1) || (enc_flags & (1 << 4))){
-    1388:	01 c8 bf    	mov.b     0x801, WREG
-    138a:	00 80 fb    	ze        w0, w0
-    138c:	68 00 60    	and.w     w0, #0x8, w0
-    138e:	00 00 e0    	cp0.w     w0
-    1390:	05 00 32    	bra       Z, 0x139c <.L30>
-    1392:	01 c8 bf    	mov.b     0x801, WREG
-    1394:	00 80 fb    	ze        w0, w0
-    1396:	62 00 60    	and.w     w0, #0x2, w0
-    1398:	00 00 e0    	cp0.w     w0
-    139a:	05 00 3a    	bra       NZ, 0x13a6 <.L31>
-
-0000139c <.L30>:
-    139c:	01 c8 bf    	mov.b     0x801, WREG
-    139e:	00 80 fb    	ze        w0, w0
-    13a0:	70 00 60    	and.w     w0, #0x10, w0
-    13a2:	00 00 e0    	cp0.w     w0
-    13a4:	02 00 32    	bra       Z, 0x13aa <.L23>
-
-000013a6 <.L31>:
-      enc_action = 1;
-    13a6:	10 c0 b3    	mov.b     #0x1, w0
-    13a8:	10 47 98    	mov.b     w0, [w14+1]
-
-000013aa <.L23>:
-  }
+//   else if ((enc_flags & (1 << 2)) && enc_flags & (1 << 0) || (enc_flags & (1 << 4))){
+//     enc_action = 1;
+//   }
+// //
+// //       else if (bit_is_set(enc_flags, 1) && (bit_is_set(enc_flags, 3) || bit_is_set(enc_flags, 4))) {
+// //         enc_action = -1;}
 //
-  enc_flags = 0; // reset for next time
-    13aa:	01 68 ef    	clr.b     0x801
+//   else if ((enc_flags & (1 << 1)) && enc_flags & (1 << 3) || (enc_flags & (1 << 4))){
+//       enc_action = -1;
+//   }
+//
+// //       else if (bit_is_set(enc_flags, 3) && (bit_is_set(enc_flags, 1) || bit_is_set(enc_flags, 4))) {
+// //         enc_action = -1;}
+//
+//   else if ((enc_flags & (1 << 3)) && enc_flags & (1 << 1) || (enc_flags & (1 << 4))){
+//       enc_action = 1;
+//   }
+// //
+//   enc_flags = 0; // reset for next time
 //
 //     }
 //   }
@@ -1267,85 +1137,224 @@ void loop(){
 
 
   enc_prev_pos = enc_cur_pos;
-    13ac:	1e 41 78    	mov.b     [w14], w2
-    13ae:	01 80 20    	mov.w     #0x800, w1
-    13b0:	82 48 78    	mov.b     w2, [w1]
+    12ca:	1e 41 90    	mov.b     [w14+1], w2
+    12cc:	01 80 20    	mov.w     #0x800, w1
+    12ce:	82 48 78    	mov.b     w2, [w1]
 
 
   //if (enc_action > 0) {dispChr(UP);}
   //else if (enc_action < 0) {dispChr(DOWN);}
 }
-    13b2:	00 80 fa    	ulnk      
-    13b4:	00 00 06    	return    
+    12d0:	00 80 fa    	ulnk      
+    12d2:	00 00 06    	return    
+Disassembly of section .isr.text:
 
-000013b6 <_init_elecanisms>:
+000012d4 <__T1Interrupt>:
+
+volatile uint16_t current_led = 0;
+//
+
+void __attribute__((interrupt, auto_psv)) _T1Interrupt(void) {
+    12d4:	80 9f be    	mov.d     w0, [w15++]
+    12d6:	82 1f 78    	mov.w     w2, [w15++]
+    12d8:	32 00 f8    	push      0x32
+    12da:	34 00 f8    	push      0x34
+    12dc:	10 00 20    	mov.w     #0x1, w0
+    12de:	a0 01 88    	mov.w     w0, 0x34
+    12e0:	10 00 20    	mov.w     #0x1, w0
+    12e2:	90 01 88    	mov.w     w0, 0x32
+    12e4:	00 00 fa    	lnk       #0x0
+    IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
+    12e6:	84 60 a9    	bclr.b    0x84, #0x3
+    switch (current_led) {  // Toggle whichever LED is the current one
+    12e8:	20 40 80    	mov.w     0x804, w0
+    12ea:	e1 0f 50    	sub.w     w0, #0x1, [w15]
+    12ec:	12 00 3a    	bra       NZ, 0x1312 <.L5>
+      case 1 :
+        LED1 = !LED1;
+    12ee:	e1 16 80    	mov.w     0x2dc, w1
+    12f0:	00 08 20    	mov.w     #0x80, w0
+    12f2:	00 80 60    	and.w     w1, w0, w0
+    12f4:	00 f0 a7    	btsc.w    w0, #0xf
+    12f6:	00 00 ea    	neg.w     w0, w0
+    12f8:	00 00 e9    	dec.w     w0, w0
+    12fa:	4f 00 de    	lsr.w     w0, #0xf, w0
+    12fc:	00 40 78    	mov.b     w0, w0
+    12fe:	00 80 fb    	ze        w0, w0
+    1300:	61 00 60    	and.w     w0, #0x1, w0
+    1302:	47 00 dd    	sl.w      w0, #0x7, w0
+    1304:	e2 16 80    	mov.w     0x2dc, w2
+    1306:	f1 f7 2f    	mov.w     #0xff7f, w1
+    1308:	81 00 61    	and.w     w2, w1, w1
+    130a:	01 00 70    	ior.w     w0, w1, w0
+    130c:	e0 16 88    	mov.w     w0, 0x2dc
+        LED2 = 0;
+    130e:	ec 02 a9    	bclr.b    0x2ec, #0x0
+        break;
+    1310:	10 00 37    	bra       0x1332 <.L1>
+
+00001312 <.L5>:
+      default :
+        LED2 = !LED2;
+    1312:	60 17 80    	mov.w     0x2ec, w0
+    1314:	61 00 60    	and.w     w0, #0x1, w0
+    1316:	00 f0 a7    	btsc.w    w0, #0xf
+    1318:	00 00 ea    	neg.w     w0, w0
+    131a:	00 00 e9    	dec.w     w0, w0
+    131c:	4f 00 de    	lsr.w     w0, #0xf, w0
+    131e:	00 40 78    	mov.b     w0, w0
+    1320:	00 80 fb    	ze        w0, w0
+    1322:	61 00 60    	and.w     w0, #0x1, w0
+    1324:	62 17 80    	mov.w     0x2ec, w2
+    1326:	e1 ff 2f    	mov.w     #0xfffe, w1
+    1328:	81 00 61    	and.w     w2, w1, w1
+    132a:	01 00 70    	ior.w     w0, w1, w0
+    132c:	60 17 88    	mov.w     w0, 0x2ec
+        LED1 = 0;
+    132e:	dc e2 a9    	bclr.b    0x2dc, #0x7
+        break;
+    1330:	00 00 00    	nop       
+
+00001332 <.L1>:
+    }
+}
+    1332:	00 80 fa    	ulnk      
+    1334:	34 00 f9    	pop       0x34
+    1336:	32 00 f9    	pop       0x32
+    1338:	4f 01 78    	mov.w     [--w15], w2
+    133a:	4f 00 be    	mov.d     [--w15], w0
+    133c:	00 40 06    	retfie    
+
+0000133e <__T2Interrupt>:
+
+void __attribute__((interrupt, auto_psv)) _T2Interrupt(void) {
+    133e:	80 9f be    	mov.d     w0, [w15++]
+    1340:	32 00 f8    	push      0x32
+    1342:	34 00 f8    	push      0x34
+    1344:	10 00 20    	mov.w     #0x1, w0
+    1346:	a0 01 88    	mov.w     w0, 0x34
+    1348:	10 00 20    	mov.w     #0x1, w0
+    134a:	90 01 88    	mov.w     w0, 0x32
+    134c:	00 00 fa    	lnk       #0x0
+    IFS0bits.T2IF = 0;      // lower Timer2 interrupt flag
+    134e:	84 e0 a9    	bclr.b    0x84, #0x7
+    T2CONbits.TON = 0;      // turn off timer
+    1350:	11 e1 a9    	bclr.b    0x111, #0x7
+    if (PORTDbits.RD10 == 1) {          // Sample D9 after debounce
+    1352:	d1 16 80    	mov.w     0x2da, w1
+    1354:	00 40 20    	mov.w     #0x400, w0
+    1356:	00 80 60    	and.w     w1, w0, w0
+    1358:	00 00 e0    	cp0.w     w0
+    135a:	03 00 32    	bra       Z, 0x1362 <.L6>
+      current_led ^= 1;
+    135c:	20 40 80    	mov.w     0x804, w0
+    135e:	00 00 a2    	btg.w     w0, #0x0
+    1360:	20 40 88    	mov.w     w0, 0x804
+
+00001362 <.L6>:
+    }
+}
+    1362:	00 80 fa    	ulnk      
+    1364:	34 00 f9    	pop       0x34
+    1366:	32 00 f9    	pop       0x32
+    1368:	4f 00 be    	mov.d     [--w15], w0
+    136a:	00 40 06    	retfie    
+
+0000136c <__INT3Interrupt>:
+
+void __attribute__((interrupt, auto_psv)) _INT3Interrupt(void) {
+    136c:	32 00 f8    	push      0x32
+    136e:	34 00 f8    	push      0x34
+    1370:	88 1f 78    	mov.w     w8, [w15++]
+    1372:	18 00 20    	mov.w     #0x1, w8
+    1374:	a8 01 88    	mov.w     w8, 0x34
+    1376:	18 00 20    	mov.w     #0x1, w8
+    1378:	98 01 88    	mov.w     w8, 0x32
+    137a:	4f 04 78    	mov.w     [--w15], w8
+    137c:	00 00 fa    	lnk       #0x0
+    IFS3bits.INT3IF = 0;      // lower INT3 interrupt flag
+    137e:	8a a0 a9    	bclr.b    0x8a, #0x5
+    TMR2 = 0;                 // reset debounce Timer2
+    1380:	06 21 ef    	clr.w     0x106
+    IFS0bits.T2IF = 0;        // lower Timer2 Interrupt flag
+    1382:	84 e0 a9    	bclr.b    0x84, #0x7
+    T2CONbits.TON = 1;        // start Timer2
+    1384:	11 e1 a8    	bset.b    0x111, #0x7
+}
+    1386:	00 80 fa    	ulnk      
+    1388:	34 00 f9    	pop       0x34
+    138a:	32 00 f9    	pop       0x32
+    138c:	00 40 06    	retfie    
+Disassembly of section .text:
+
+0000138e <_init_elecanisms>:
 */
 
 #include "elecanisms.h"
 
 void init_elecanisms(void) {
-    13b6:	00 00 fa    	lnk       #0x0
+    138e:	00 00 fa    	lnk       #0x0
     CLKDIV = 0x0100;        // RCDIV = 001 (4MHz, div2), 
-    13b8:	00 10 20    	mov.w     #0x100, w0
-    13ba:	20 3a 88    	mov.w     w0, 0x744
+    1390:	00 10 20    	mov.w     #0x100, w0
+    1392:	20 3a 88    	mov.w     w0, 0x744
                             // CPDIV = 00 (FOSC = 32MHz, FCY = 16MHz)
 
     // Configure all pins on the digital headers to be inputs
     D0_DIR = IN;
-    13bc:	d8 a2 a8    	bset.b    0x2d8, #0x5
+    1394:	d8 a2 a8    	bset.b    0x2d8, #0x5
     D1_DIR = IN;
-    13be:	d8 82 a8    	bset.b    0x2d8, #0x4
+    1396:	d8 82 a8    	bset.b    0x2d8, #0x4
     D2_DIR = IN;
-    13c0:	e8 82 a8    	bset.b    0x2e8, #0x4
+    1398:	e8 82 a8    	bset.b    0x2e8, #0x4
     D3_DIR = IN;
-    13c2:	e8 a2 a8    	bset.b    0x2e8, #0x5
+    139a:	e8 a2 a8    	bset.b    0x2e8, #0x5
     D4_DIR = IN;
-    13c4:	c9 e2 a8    	bset.b    0x2c9, #0x7
+    139c:	c9 e2 a8    	bset.b    0x2c9, #0x7
     D5_DIR = IN;
-    13c6:	e8 62 a8    	bset.b    0x2e8, #0x3
+    139e:	e8 62 a8    	bset.b    0x2e8, #0x3
     D6_DIR = IN;
-    13c8:	d9 02 a8    	bset.b    0x2d9, #0x0
+    13a0:	d9 02 a8    	bset.b    0x2d9, #0x0
     D7_DIR = IN;
-    13ca:	d9 62 a8    	bset.b    0x2d9, #0x3
+    13a2:	d9 62 a8    	bset.b    0x2d9, #0x3
     D8_DIR = IN;
-    13cc:	d9 22 a8    	bset.b    0x2d9, #0x1
+    13a4:	d9 22 a8    	bset.b    0x2d9, #0x1
     D9_DIR = IN;
-    13ce:	d9 42 a8    	bset.b    0x2d9, #0x2
+    13a6:	d9 42 a8    	bset.b    0x2d9, #0x2
     D10_DIR = IN;
-    13d0:	d8 02 a8    	bset.b    0x2d8, #0x0
+    13a8:	d8 02 a8    	bset.b    0x2d8, #0x0
     D11_DIR = IN;
-    13d2:	d8 22 a8    	bset.b    0x2d8, #0x1
+    13aa:	d8 22 a8    	bset.b    0x2d8, #0x1
     D12_DIR = IN;
-    13d4:	d8 42 a8    	bset.b    0x2d8, #0x2
+    13ac:	d8 42 a8    	bset.b    0x2d8, #0x2
     D13_DIR = IN;
-    13d6:	d8 62 a8    	bset.b    0x2d8, #0x3
+    13ae:	d8 62 a8    	bset.b    0x2d8, #0x3
 
     // Configure all pins on the analog header to be inputs
     A0_DIR = IN;
-    13d8:	c8 a2 a8    	bset.b    0x2c8, #0x5
+    13b0:	c8 a2 a8    	bset.b    0x2c8, #0x5
     A1_DIR = IN;
-    13da:	c8 82 a8    	bset.b    0x2c8, #0x4
+    13b2:	c8 82 a8    	bset.b    0x2c8, #0x4
     A2_DIR = IN;
-    13dc:	c8 62 a8    	bset.b    0x2c8, #0x3
+    13b4:	c8 62 a8    	bset.b    0x2c8, #0x3
     A3_DIR = IN;
-    13de:	c8 42 a8    	bset.b    0x2c8, #0x2
+    13b6:	c8 42 a8    	bset.b    0x2c8, #0x2
     A4_DIR = IN;
-    13e0:	c8 22 a8    	bset.b    0x2c8, #0x1
+    13b8:	c8 22 a8    	bset.b    0x2c8, #0x1
     A5_DIR = IN;
-    13e2:	c8 02 a8    	bset.b    0x2c8, #0x0
+    13ba:	c8 02 a8    	bset.b    0x2c8, #0x0
 
     // Make all pins digital I/Os except for A0,...,A5
     ANSB = 0x003F;
-    13e4:	f0 03 20    	mov.w     #0x3f, w0
-    13e6:	10 27 88    	mov.w     w0, 0x4e2
+    13bc:	f0 03 20    	mov.w     #0x3f, w0
+    13be:	10 27 88    	mov.w     w0, 0x4e2
     ANSC = 0;
-    13e8:	e4 24 ef    	clr.w     0x4e4
+    13c0:	e4 24 ef    	clr.w     0x4e4
     ANSD = 0;
-    13ea:	e6 24 ef    	clr.w     0x4e6
+    13c2:	e6 24 ef    	clr.w     0x4e6
     ANSF = 0;
-    13ec:	ea 24 ef    	clr.w     0x4ea
+    13c4:	ea 24 ef    	clr.w     0x4ea
     ANSG = 0;
-    13ee:	ec 24 ef    	clr.w     0x4ec
+    13c6:	ec 24 ef    	clr.w     0x4ec
 
     // Configure and enable the ADC module: 
     //   set output data format to integer (FORM<1:0> = 0b00)
@@ -1355,77 +1364,77 @@ void init_elecanisms(void) {
     //   set conversion clock select bits to 64*TCY (ADCS<7:0> = 64)
     //   set initial channel selection to A0
     AD1CON1 = 0x00E0; 
-    13f0:	00 0e 20    	mov.w     #0xe0, w0
-    13f2:	00 19 88    	mov.w     w0, 0x320
+    13c8:	00 0e 20    	mov.w     #0xe0, w0
+    13ca:	00 19 88    	mov.w     w0, 0x320
     AD1CON2 = 0;
-    13f4:	22 23 ef    	clr.w     0x322
+    13cc:	22 23 ef    	clr.w     0x322
     AD1CON3 = 0x0C40;
-    13f6:	00 c4 20    	mov.w     #0xc40, w0
-    13f8:	20 19 88    	mov.w     w0, 0x324
+    13ce:	00 c4 20    	mov.w     #0xc40, w0
+    13d0:	20 19 88    	mov.w     w0, 0x324
     AD1CHS = A0_AN;
-    13fa:	50 00 20    	mov.w     #0x5, w0
-    13fc:	40 19 88    	mov.w     w0, 0x328
+    13d2:	50 00 20    	mov.w     #0x5, w0
+    13d4:	40 19 88    	mov.w     w0, 0x328
     AD1CON1bits.ADON = 1;
-    13fe:	21 e3 a8    	bset.b    0x321, #0x7
+    13d6:	21 e3 a8    	bset.b    0x321, #0x7
 
     // Configure LED pins as outputs, set to low (off)
     LED1_DIR = OUT; LED1 = 0;
-    1400:	d8 e2 a9    	bclr.b    0x2d8, #0x7
-    1402:	dc e2 a9    	bclr.b    0x2dc, #0x7
+    13d8:	d8 e2 a9    	bclr.b    0x2d8, #0x7
+    13da:	dc e2 a9    	bclr.b    0x2dc, #0x7
     LED2_DIR = OUT; LED2 = 0;
-    1404:	e8 02 a9    	bclr.b    0x2e8, #0x0
-    1406:	ec 02 a9    	bclr.b    0x2ec, #0x0
+    13dc:	e8 02 a9    	bclr.b    0x2e8, #0x0
+    13de:	ec 02 a9    	bclr.b    0x2ec, #0x0
     LED3_DIR = OUT; LED3 = 0;
-    1408:	e8 22 a9    	bclr.b    0x2e8, #0x1
-    140a:	ec 22 a9    	bclr.b    0x2ec, #0x1
+    13e0:	e8 22 a9    	bclr.b    0x2e8, #0x1
+    13e2:	ec 22 a9    	bclr.b    0x2ec, #0x1
 
     // Configure SW pins as inputs
     SW1_DIR = IN;
-    140c:	d1 e2 a8    	bset.b    0x2d1, #0x7
+    13e4:	d1 e2 a8    	bset.b    0x2d1, #0x7
     SW2_DIR = IN;
-    140e:	d1 82 a8    	bset.b    0x2d1, #0x4
+    13e6:	d1 82 a8    	bset.b    0x2d1, #0x4
     SW3_DIR = IN;
-    1410:	c9 82 a8    	bset.b    0x2c9, #0x4
+    13e8:	c9 82 a8    	bset.b    0x2c9, #0x4
 }
-    1412:	00 80 fa    	ulnk      
-    1414:	00 00 06    	return    
+    13ea:	00 80 fa    	ulnk      
+    13ec:	00 00 06    	return    
 
-00001416 <_read_analog>:
+000013ee <_read_analog>:
 
 uint16_t read_analog(uint16_t pin_an) {
-    1416:	02 00 fa    	lnk       #0x2
-    1418:	00 0f 78    	mov.w     w0, [w14]
+    13ee:	02 00 fa    	lnk       #0x2
+    13f0:	00 0f 78    	mov.w     w0, [w14]
     AD1CHS = pin_an;
-    141a:	9e 00 78    	mov.w     [w14], w1
-    141c:	41 19 88    	mov.w     w1, 0x328
+    13f2:	9e 00 78    	mov.w     [w14], w1
+    13f4:	41 19 88    	mov.w     w1, 0x328
     AD1CON1bits.SAMP = 1;
-    141e:	20 23 a8    	bset.b    0x320, #0x1
+    13f6:	20 23 a8    	bset.b    0x320, #0x1
     while (AD1CON1bits.DONE == 0) {}
-    1420:	00 00 00    	nop       
+    13f8:	00 00 00    	nop       
 
-00001422 <.L3>:
-    1422:	00 19 80    	mov.w     0x320, w0
-    1424:	61 00 60    	and.w     w0, #0x1, w0
-    1426:	00 00 e0    	cp0.w     w0
-    1428:	fc ff 32    	bra       Z, 0x1422 <.L3>
+000013fa <.L3>:
+    13fa:	00 19 80    	mov.w     0x320, w0
+    13fc:	61 00 60    	and.w     w0, #0x1, w0
+    13fe:	00 00 e0    	cp0.w     w0
+    1400:	fc ff 32    	bra       Z, 0x13fa <.L3>
     return ADC1BUF0;
-    142a:	00 18 80    	mov.w     0x300, w0
+    1402:	00 18 80    	mov.w     0x300, w0
 }
-    142c:	00 80 fa    	ulnk      
-    142e:	00 00 06    	return    
+    1404:	00 80 fa    	ulnk      
+    1406:	00 00 06    	return    
 Disassembly of section .dinit:
 
-00001430 <.dinit>:
-    1430:	00 08 00    	nop       
-    1432:	04 00 00    	nop       
-    1434:	80 00 00    	nop       
-    1436:	04 08 00    	nop       
-    1438:	02 00 00    	nop       
-    143a:	82 00 00    	nop       
-    143c:	01 00 00    	nop       
-    143e:	00 00 00    	nop       
+00001408 <.dinit>:
+    1408:	00 08 00    	nop       
+    140a:	06 00 00    	nop       
+    140c:	80 00 00    	nop       
+    140e:	06 08 00    	nop       
+    1410:	02 00 00    	nop       
+    1412:	82 00 00    	nop       
+    1414:	01 00 00    	nop       
+    1416:	00 00 00    	nop       
 Disassembly of section .isr:
 
-00001440 <__DefaultInterrupt>:
-    1440:	00 40 da    	break     
-    1442:	00 00 fe    	reset     
+00001418 <__DefaultInterrupt>:
+    1418:	00 40 da    	break     
+    141a:	00 00 fe    	reset     
