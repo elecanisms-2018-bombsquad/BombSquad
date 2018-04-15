@@ -10,7 +10,7 @@
 #include "i2c_reg.h"
 #include "codeword.h"
 
-#define WORD_LENGTH 8
+#define WORD_LENGTH 5
 
 char* dispptr;
 char* codeword;
@@ -29,7 +29,7 @@ void main(void) {
     lcd_print2(&lcd1,"Code word","Module");
     delay_by_nop(30000);
 
-    char cw[WORD_LENGTH + 1] = "strength";
+    char cw[WORD_LENGTH + 1] = "sword";
     codeword = cw;
 
     char dispstring[17] = "     ooooo     ";
@@ -45,11 +45,11 @@ void main(void) {
     IEC0bits.T2IE = 1;      // enable T2 interrupt
     T2CONbits.TON = 0;      // make sure T2 isn't on
 
-    i0 = 0;
-    i1 = 0;
-    i2 = 0;
+    i0 = 4;
+    i1 = 2;
+    i2 = 3;
     i3 = 0;
-    i4 = 0;
+    i4 = 1;
 
     updateDisplay();
 
