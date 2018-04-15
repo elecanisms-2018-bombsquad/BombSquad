@@ -14,25 +14,42 @@
 
 char* dispptr;
 char* codeword;
+char* codeword_sc;
 uint8_t i0, i1, i2, i3, i4;
+uint16_t rand_val;
 
 void main(void) {
     init_elecanisms();
     // Setup rocker pins as inputs and set pull-up resistors
     toggleSwitchSetup();
-    // Initializes I2C on I2C3
     i2c_init(1e3);
     // Initializes LCD structs with addresses
     _LCD lcd1;
     lcd_init(&lcd1, 0x06, 'A');
     lcd_clear(&lcd1);  // Clears _LCD objects from previous array
-    lcd_print2(&lcd1,"Code word","Module");
-    delay_by_nop(30000);
 
-    char cw[WORD_LENGTH + 1] = "sword";
-    codeword = cw;
+    rand_val = read_analog(A0);
+    uint8_t i;
+    for (i=0; i<20+read_analog(A0); i++) {
+        rand_next();
+    }
 
-    char dispstring[17] = "     ooooo     ";
+    // set codeword and initial index
+    codeword = words[rand_val%35];
+    // scramble codeword so you can't just see it when you scroll through
+    char tmp[6] = {codeword[4], codeword[1], codeword[3], codeword[0], codeword[2], '\0'};
+    codeword_sc = tmp;
+    i0 = rand_val%5;
+    rand_next();
+    i1 = rand_val%5;
+    rand_next();
+    i2 = rand_val%5;
+    rand_next();
+    i3 = rand_val%5;
+    rand_next();
+    i4 = rand_val%5;
+
+    char dispstring[17] = " o  o  o  o  o ";
     dispptr = dispstring;
     lcd_print2(&lcd1, dispptr, "");
 
@@ -45,17 +62,22 @@ void main(void) {
     IEC0bits.T2IE = 1;      // enable T2 interrupt
     T2CONbits.TON = 0;      // make sure T2 isn't on
 
-    i0 = 4;
-    i1 = 2;
-    i2 = 3;
-    i3 = 0;
-    i4 = 1;
-
     updateDisplay();
 
 
     while (1) {
-        lcd_print2(&lcd1, dispptr, "");
+
+        if ((codeword_sc[i0] == codeword[0]) &&
+            (codeword_sc[i1] == codeword[1]) &&
+            (codeword_sc[i2] == codeword[2]) &&
+            (codeword_sc[i3] == codeword[3]) &&
+            (codeword_sc[i4] == codeword[4])) {
+            LED3 = ON;
+            lcd_print2(&lcd1, dispptr, "  --CORRECT--  ");
+        } else {
+            LED3 = OFF;
+            lcd_print2(&lcd1, dispptr, "");
+        }
         delay_by_nop(30000);
     }
 }
@@ -100,11 +122,11 @@ void __attribute__((interrupt, auto_psv)) _T2Interrupt(void) {
 }
 
 void updateDisplay(void) {
-    dispptr[5] = codeword[i0];
-    dispptr[6] = codeword[i1];
-    dispptr[7] = codeword[i2];
-    dispptr[8] = codeword[i3];
-    dispptr[9] = codeword[i4];
+    dispptr[1] = codeword_sc[i0];
+    dispptr[4] = codeword_sc[i1];
+    dispptr[7] = codeword_sc[i2];
+    dispptr[10] = codeword_sc[i3];
+    dispptr[13] = codeword_sc[i4];
 }
 
 void toggleSwitchSetup(void) {
@@ -144,4 +166,12 @@ void toggleSwitchSetup(void) {
 
     IFS1bits.CNIF = 0; // lower CN interrupt flag
     IEC1bits.CNIE = 1; // Enable CN interrupt module
+}
+
+void rand_next(void) {
+    uint16_t val;
+
+    // See "A List of Maximum Period NLFSRs" by Elena Dubrova, p. 7
+    val = (rand_val ^ (rand_val >> 2) ^ (rand_val >> 13) ^ ((rand_val >> 2) & (rand_val >> 3))) & 1;
+    rand_val = (rand_val >> 1) | (val << 15);
 }

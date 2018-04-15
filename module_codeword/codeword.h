@@ -8,5 +8,44 @@
 
 void updateDisplay(void);
 void toggleSwitchSetup(void);
+void rand_next(void);
+
+const char words[35][6] = {
+    "about",
+    "every",
+    "large",
+    "plant",
+    "spell",
+    "these",
+    "where",
+    "after",
+    "first",
+    "learn",
+    "point",
+    "still",
+    "thing",
+    "which",
+    "again",
+    "found",
+    "never",
+    "right",
+    "study",
+    "think",
+    "world",
+    "below",
+    "great",
+    "other",
+    "small",
+    "their",
+    "three",
+    "would",
+    "could",
+    "house",
+    "place",
+    "sound",
+    "there",
+    "water",
+    "write"
+};
 
 #endif
