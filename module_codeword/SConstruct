@@ -22,11 +22,11 @@ list = Builder(action = 'xc16-objdump -S -D $SOURCE > $TARGET',
                src_suffix = 'elf')
 env.Append(BUILDERS = {'List' : list})
 
-env.Program('master', ['master.c',
+env.Program('codeword', ['codeword.c',
+                        '../lib/lcd.c',
                         '../lib/i2c_reg.c',
-                        '../lib/adafruit_led.c',
-                        '../lib/common.c',
-                        '../lib/elecanisms.c'])
+                        '../lib/elecanisms.c',
+                        '../lib/common.c'])
 
 #print('Creating builder to load hex file via bootloader...')
 # def load_function(target, source, env):
@@ -43,8 +43,8 @@ env.Program('master', ['master.c',
 #
 # env.Append(BUILDERS = {'Load' : load})
 
-env.Hex('master')
-env.List('master')
+env.Hex('codeword')
+env.List('codeword')
 # To automatically load the hex file, you need to run scons like this:
 # >scons --site-dir ../site_scons
-# env.Load('adafruittest') # Uncomment this line to automatically load the hex file
+# env.Load('lcdtest') # Uncomment this line to automatically load the hex file
