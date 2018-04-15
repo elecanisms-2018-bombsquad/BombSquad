@@ -6,7 +6,6 @@
 #include <stdint.h>
 #include "elecanisms.h"
 #include "i2c_reg.h"
-// #include "leadertest.h"
 
 #define SLAVE_ADDR 0x60
 
@@ -28,20 +27,30 @@ int main(void) {
         i2c_start();
         send_i2c_byte(SLAVE_ADDR | 1);  // init a read, last to 1
         datareturned = i2c_read_nack();
-        if(datareturned > 1) {LED1 = 1;}
-        if(datareturned == 3){LED2 = 1;}
-        if(datareturned == 5){LED3 = 1;}
+        // if(datareturned > 1) {LED1 = 1;}
+        if(datareturned == 0b10000000) {LED2 = 1;}
+        if(datareturned == 0b00000000) {LED3 = 1;}
         reset_i2c_bus();
 
-        delay_by_nop(30000);
+        delay_by_nop(1000000);
+        LED1 = 0; LED2 = 0; LED3 = 0;
+        delay_by_nop(1000000);
+
+
+        LED1 = 1;
+        i2c_start();
+        send_i2c_byte(SLAVE_ADDR | 0);
+        delay_by_nop(50);
+        send_i2c_byte(0b10000000);
+        reset_i2c_bus();
+        delay_by_nop(1000000);
+
         LED1 = 0; LED2 = 0; LED3 = 0;
 
 
+
+
         // datareturned = I2Cread(SLAVE_ADDR, 1);
-
-        // if(datareturned == 0){LED1 = 1;}
-        // if(datareturned > 0){LED3 = 1;}
-
         // writeNI2C1(SLAVE_I2C_ADDR,(uint8_t *)sz_1,u16_len);   //send the string
         // readNI2C1(SLAVE_I2C_ADDR, (uint8_t *) sz_1,u16_len) ;  //read the reversed string
 

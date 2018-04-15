@@ -1,10 +1,8 @@
-#include <p24FJ128GB206.h>
-#include <stdint.h>
+// #include <p24FJ128GB206.h>
+// #include <stdint.h>
 #include "elecanisms.h"
 #include "i2c_reg.h"
 // #include "followertest.h"
-
-
 
 #define s1248       0   // 539
 #define s124        1   // 556
@@ -50,7 +48,7 @@ int ab, bc, cd, de, ef, fg, gh, hi, ij, jk, kl, lm, mn, no;
 
 #define SLAVE_ADDR 0x60
 
-uint16_t waitwritedata;
+uint16_t data_from_master;
 uint16_t sendreaddata;
 uint16_t datasend = 0x05;
 
@@ -82,7 +80,7 @@ void __attribute__((interrupt, auto_psv)) _SI2C3Interrupt(void) {
         break;
 
     case STATE_WAIT_FOR_WRITE_DATA:     // write transaction state    //character arrived, place in buffer
-        waitwritedata = I2C3RCV;        //read the byte
+        data_from_master = I2C3RCV;        //read the byte
         e_mystate = STATE_WAIT_FOR_ADDR;    // go to wait for next transaction
         break;
 
@@ -229,7 +227,7 @@ uint16_t state;
 
 #define SLAVE_ADDR 0x08
 
-uint16_t waitwritedata;
+uint16_t data_from_master;
 uint16_t sendreaddata;
 volatile uint16_t datasend;
 
@@ -261,7 +259,7 @@ void __attribute__((interrupt, auto_psv)) _SI2C3Interrupt(void) {
         break;
 
     case STATE_WAIT_FOR_WRITE_DATA:     // write transaction state    //character arrived, place in buffer
-        waitwritedata = I2C3RCV;        //read the byte
+        data_from_master = I2C3RCV;        //read the byte
         e_mystate = STATE_WAIT_FOR_ADDR;    // go to wait for next transaction
         break;
 

@@ -4,411 +4,411 @@ auxmaster_test.elf:     file format elf32-pic30
 Disassembly of section .aivt._AltADC1Interrupt:
 
 0000012e <.aivt._AltADC1Interrupt>:
- 12e:	82 15 00    	nop       
+ 12e:	a2 15 00    	nop       
 Disassembly of section .aivt._AltAddressError:
 
 00000108 <.aivt._AltAddressError>:
- 108:	82 15 00    	nop       
+ 108:	a2 15 00    	nop       
 Disassembly of section .aivt._AltCNInterrupt:
 
 0000013a <.aivt._AltCNInterrupt>:
- 13a:	82 15 00    	nop       
+ 13a:	a2 15 00    	nop       
 Disassembly of section .aivt._AltCRCInterrupt:
 
 0000019a <.aivt._AltCRCInterrupt>:
- 19a:	82 15 00    	nop       
+ 19a:	a2 15 00    	nop       
 Disassembly of section .aivt._AltCTMUInterrupt:
 
 000001ae <.aivt._AltCTMUInterrupt>:
- 1ae:	82 15 00    	nop       
+ 1ae:	a2 15 00    	nop       
 Disassembly of section .aivt._AltCompInterrupt:
 
 00000138 <.aivt._AltCompInterrupt>:
- 138:	82 15 00    	nop       
+ 138:	a2 15 00    	nop       
 Disassembly of section .aivt._AltIC1Interrupt:
 
 00000116 <.aivt._AltIC1Interrupt>:
- 116:	82 15 00    	nop       
+ 116:	a2 15 00    	nop       
 Disassembly of section .aivt._AltIC2Interrupt:
 
 0000011e <.aivt._AltIC2Interrupt>:
- 11e:	82 15 00    	nop       
+ 11e:	a2 15 00    	nop       
 Disassembly of section .aivt._AltIC3Interrupt:
 
 0000015e <.aivt._AltIC3Interrupt>:
- 15e:	82 15 00    	nop       
+ 15e:	a2 15 00    	nop       
 Disassembly of section .aivt._AltIC4Interrupt:
 
 00000160 <.aivt._AltIC4Interrupt>:
- 160:	82 15 00    	nop       
+ 160:	a2 15 00    	nop       
 Disassembly of section .aivt._AltIC5Interrupt:
 
 00000162 <.aivt._AltIC5Interrupt>:
- 162:	82 15 00    	nop       
+ 162:	a2 15 00    	nop       
 Disassembly of section .aivt._AltIC6Interrupt:
 
 00000164 <.aivt._AltIC6Interrupt>:
- 164:	82 15 00    	nop       
+ 164:	a2 15 00    	nop       
 Disassembly of section .aivt._AltIC7Interrupt:
 
 00000140 <.aivt._AltIC7Interrupt>:
- 140:	82 15 00    	nop       
+ 140:	a2 15 00    	nop       
 Disassembly of section .aivt._AltIC8Interrupt:
 
 00000142 <.aivt._AltIC8Interrupt>:
- 142:	82 15 00    	nop       
+ 142:	a2 15 00    	nop       
 Disassembly of section .aivt._AltIC9Interrupt:
 
 000001ce <.aivt._AltIC9Interrupt>:
- 1ce:	82 15 00    	nop       
+ 1ce:	a2 15 00    	nop       
 Disassembly of section .aivt._AltINT0Interrupt:
 
 00000114 <.aivt._AltINT0Interrupt>:
- 114:	82 15 00    	nop       
+ 114:	a2 15 00    	nop       
 Disassembly of section .aivt._AltINT1Interrupt:
 
 0000013c <.aivt._AltINT1Interrupt>:
- 13c:	82 15 00    	nop       
+ 13c:	a2 15 00    	nop       
 Disassembly of section .aivt._AltINT2Interrupt:
 
 0000014e <.aivt._AltINT2Interrupt>:
- 14e:	82 15 00    	nop       
+ 14e:	a2 15 00    	nop       
 Disassembly of section .aivt._AltINT3Interrupt:
 
 0000017e <.aivt._AltINT3Interrupt>:
- 17e:	82 15 00    	nop       
+ 17e:	a2 15 00    	nop       
 Disassembly of section .aivt._AltINT4Interrupt:
 
 00000180 <.aivt._AltINT4Interrupt>:
- 180:	82 15 00    	nop       
+ 180:	a2 15 00    	nop       
 Disassembly of section .aivt._AltInterrupt14:
 
 00000130 <.aivt._AltInterrupt14>:
- 130:	82 15 00    	nop       
+ 130:	a2 15 00    	nop       
 Disassembly of section .aivt._AltInterrupt15:
 
 00000132 <.aivt._AltInterrupt15>:
- 132:	82 15 00    	nop       
+ 132:	a2 15 00    	nop       
 Disassembly of section .aivt._AltInterrupt21:
 
 0000013e <.aivt._AltInterrupt21>:
- 13e:	82 15 00    	nop       
+ 13e:	a2 15 00    	nop       
 Disassembly of section .aivt._AltInterrupt24:
 
 00000144 <.aivt._AltInterrupt24>:
- 144:	82 15 00    	nop       
+ 144:	a2 15 00    	nop       
 Disassembly of section .aivt._AltInterrupt34:
 
 00000158 <.aivt._AltInterrupt34>:
- 158:	82 15 00    	nop       
+ 158:	a2 15 00    	nop       
 Disassembly of section .aivt._AltInterrupt35:
 
 0000015a <.aivt._AltInterrupt35>:
- 15a:	82 15 00    	nop       
+ 15a:	a2 15 00    	nop       
 Disassembly of section .aivt._AltInterrupt36:
 
 0000015c <.aivt._AltInterrupt36>:
- 15c:	82 15 00    	nop       
+ 15c:	a2 15 00    	nop       
 Disassembly of section .aivt._AltInterrupt4:
 
 0000011c <.aivt._AltInterrupt4>:
- 11c:	82 15 00    	nop       
+ 11c:	a2 15 00    	nop       
 Disassembly of section .aivt._AltInterrupt46:
 
 00000170 <.aivt._AltInterrupt46>:
- 170:	82 15 00    	nop       
+ 170:	a2 15 00    	nop       
 Disassembly of section .aivt._AltInterrupt47:
 
 00000172 <.aivt._AltInterrupt47>:
- 172:	82 15 00    	nop       
+ 172:	a2 15 00    	nop       
 Disassembly of section .aivt._AltInterrupt48:
 
 00000174 <.aivt._AltInterrupt48>:
- 174:	82 15 00    	nop       
+ 174:	a2 15 00    	nop       
 Disassembly of section .aivt._AltInterrupt51:
 
 0000017a <.aivt._AltInterrupt51>:
- 17a:	82 15 00    	nop       
+ 17a:	a2 15 00    	nop       
 Disassembly of section .aivt._AltInterrupt52:
 
 0000017c <.aivt._AltInterrupt52>:
- 17c:	82 15 00    	nop       
+ 17c:	a2 15 00    	nop       
 Disassembly of section .aivt._AltInterrupt55:
 
 00000182 <.aivt._AltInterrupt55>:
- 182:	82 15 00    	nop       
+ 182:	a2 15 00    	nop       
 Disassembly of section .aivt._AltInterrupt56:
 
 00000184 <.aivt._AltInterrupt56>:
- 184:	82 15 00    	nop       
+ 184:	a2 15 00    	nop       
 Disassembly of section .aivt._AltInterrupt57:
 
 00000186 <.aivt._AltInterrupt57>:
- 186:	82 15 00    	nop       
+ 186:	a2 15 00    	nop       
 Disassembly of section .aivt._AltInterrupt58:
 
 00000188 <.aivt._AltInterrupt58>:
- 188:	82 15 00    	nop       
+ 188:	a2 15 00    	nop       
 Disassembly of section .aivt._AltInterrupt59:
 
 0000018a <.aivt._AltInterrupt59>:
- 18a:	82 15 00    	nop       
+ 18a:	a2 15 00    	nop       
 Disassembly of section .aivt._AltInterrupt60:
 
 0000018c <.aivt._AltInterrupt60>:
- 18c:	82 15 00    	nop       
+ 18c:	a2 15 00    	nop       
 Disassembly of section .aivt._AltInterrupt61:
 
 0000018e <.aivt._AltInterrupt61>:
- 18e:	82 15 00    	nop       
+ 18e:	a2 15 00    	nop       
 Disassembly of section .aivt._AltInterrupt63:
 
 00000192 <.aivt._AltInterrupt63>:
- 192:	82 15 00    	nop       
+ 192:	a2 15 00    	nop       
 Disassembly of section .aivt._AltInterrupt64:
 
 00000194 <.aivt._AltInterrupt64>:
- 194:	82 15 00    	nop       
+ 194:	a2 15 00    	nop       
 Disassembly of section .aivt._AltInterrupt68:
 
 0000019c <.aivt._AltInterrupt68>:
- 19c:	82 15 00    	nop       
+ 19c:	a2 15 00    	nop       
 Disassembly of section .aivt._AltInterrupt69:
 
 0000019e <.aivt._AltInterrupt69>:
- 19e:	82 15 00    	nop       
+ 19e:	a2 15 00    	nop       
 Disassembly of section .aivt._AltInterrupt70:
 
 000001a0 <.aivt._AltInterrupt70>:
- 1a0:	82 15 00    	nop       
+ 1a0:	a2 15 00    	nop       
 Disassembly of section .aivt._AltInterrupt71:
 
 000001a2 <.aivt._AltInterrupt71>:
- 1a2:	82 15 00    	nop       
+ 1a2:	a2 15 00    	nop       
 Disassembly of section .aivt._AltInterrupt73:
 
 000001a6 <.aivt._AltInterrupt73>:
- 1a6:	82 15 00    	nop       
+ 1a6:	a2 15 00    	nop       
 Disassembly of section .aivt._AltInterrupt74:
 
 000001a8 <.aivt._AltInterrupt74>:
- 1a8:	82 15 00    	nop       
+ 1a8:	a2 15 00    	nop       
 Disassembly of section .aivt._AltInterrupt75:
 
 000001aa <.aivt._AltInterrupt75>:
- 1aa:	82 15 00    	nop       
+ 1aa:	a2 15 00    	nop       
 Disassembly of section .aivt._AltInterrupt76:
 
 000001ac <.aivt._AltInterrupt76>:
- 1ac:	82 15 00    	nop       
+ 1ac:	a2 15 00    	nop       
 Disassembly of section .aivt._AltInterrupt78:
 
 000001b0 <.aivt._AltInterrupt78>:
- 1b0:	82 15 00    	nop       
+ 1b0:	a2 15 00    	nop       
 Disassembly of section .aivt._AltInterrupt79:
 
 000001b2 <.aivt._AltInterrupt79>:
- 1b2:	82 15 00    	nop       
+ 1b2:	a2 15 00    	nop       
 Disassembly of section .aivt._AltInterrupt80:
 
 000001b4 <.aivt._AltInterrupt80>:
- 1b4:	82 15 00    	nop       
+ 1b4:	a2 15 00    	nop       
 Disassembly of section .aivt._AltLVDInterrupt:
 
 000001a4 <.aivt._AltLVDInterrupt>:
- 1a4:	82 15 00    	nop       
+ 1a4:	a2 15 00    	nop       
 Disassembly of section .aivt._AltMI2C1Interrupt:
 
 00000136 <.aivt._AltMI2C1Interrupt>:
- 136:	82 15 00    	nop       
+ 136:	a2 15 00    	nop       
 Disassembly of section .aivt._AltMI2C2Interrupt:
 
 00000178 <.aivt._AltMI2C2Interrupt>:
- 178:	82 15 00    	nop       
+ 178:	a2 15 00    	nop       
 Disassembly of section .aivt._AltMI2C3Interrupt:
 
 000001be <.aivt._AltMI2C3Interrupt>:
- 1be:	82 15 00    	nop       
+ 1be:	a2 15 00    	nop       
 Disassembly of section .aivt._AltMathError:
 
 0000010c <.aivt._AltMathError>:
- 10c:	82 15 00    	nop       
+ 10c:	a2 15 00    	nop       
 Disassembly of section .aivt._AltOC1Interrupt:
 
 00000118 <.aivt._AltOC1Interrupt>:
- 118:	82 15 00    	nop       
+ 118:	a2 15 00    	nop       
 Disassembly of section .aivt._AltOC2Interrupt:
 
 00000120 <.aivt._AltOC2Interrupt>:
- 120:	82 15 00    	nop       
+ 120:	a2 15 00    	nop       
 Disassembly of section .aivt._AltOC3Interrupt:
 
 00000146 <.aivt._AltOC3Interrupt>:
- 146:	82 15 00    	nop       
+ 146:	a2 15 00    	nop       
 Disassembly of section .aivt._AltOC4Interrupt:
 
 00000148 <.aivt._AltOC4Interrupt>:
- 148:	82 15 00    	nop       
+ 148:	a2 15 00    	nop       
 Disassembly of section .aivt._AltOC5Interrupt:
 
 00000166 <.aivt._AltOC5Interrupt>:
- 166:	82 15 00    	nop       
+ 166:	a2 15 00    	nop       
 Disassembly of section .aivt._AltOC6Interrupt:
 
 00000168 <.aivt._AltOC6Interrupt>:
- 168:	82 15 00    	nop       
+ 168:	a2 15 00    	nop       
 Disassembly of section .aivt._AltOC7Interrupt:
 
 0000016a <.aivt._AltOC7Interrupt>:
- 16a:	82 15 00    	nop       
+ 16a:	a2 15 00    	nop       
 Disassembly of section .aivt._AltOC8Interrupt:
 
 0000016c <.aivt._AltOC8Interrupt>:
- 16c:	82 15 00    	nop       
+ 16c:	a2 15 00    	nop       
 Disassembly of section .aivt._AltOC9Interrupt:
 
 000001cc <.aivt._AltOC9Interrupt>:
- 1cc:	82 15 00    	nop       
+ 1cc:	a2 15 00    	nop       
 Disassembly of section .aivt._AltOscillatorFail:
 
 00000106 <.aivt._AltOscillatorFail>:
- 106:	82 15 00    	nop       
+ 106:	a2 15 00    	nop       
 Disassembly of section .aivt._AltPMPInterrupt:
 
 0000016e <.aivt._AltPMPInterrupt>:
- 16e:	82 15 00    	nop       
+ 16e:	a2 15 00    	nop       
 Disassembly of section .aivt._AltRTCCInterrupt:
 
 00000190 <.aivt._AltRTCCInterrupt>:
- 190:	82 15 00    	nop       
+ 190:	a2 15 00    	nop       
 Disassembly of section .aivt._AltReservedTrap0:
 
 00000104 <.aivt._AltReservedTrap0>:
- 104:	82 15 00    	nop       
+ 104:	a2 15 00    	nop       
 Disassembly of section .aivt._AltReservedTrap5:
 
 0000010e <.aivt._AltReservedTrap5>:
- 10e:	82 15 00    	nop       
+ 10e:	a2 15 00    	nop       
 Disassembly of section .aivt._AltReservedTrap6:
 
 00000110 <.aivt._AltReservedTrap6>:
- 110:	82 15 00    	nop       
+ 110:	a2 15 00    	nop       
 Disassembly of section .aivt._AltReservedTrap7:
 
 00000112 <.aivt._AltReservedTrap7>:
- 112:	82 15 00    	nop       
+ 112:	a2 15 00    	nop       
 Disassembly of section .aivt._AltSI2C1Interrupt:
 
 00000134 <.aivt._AltSI2C1Interrupt>:
- 134:	82 15 00    	nop       
+ 134:	a2 15 00    	nop       
 Disassembly of section .aivt._AltSI2C2Interrupt:
 
 00000176 <.aivt._AltSI2C2Interrupt>:
- 176:	82 15 00    	nop       
+ 176:	a2 15 00    	nop       
 Disassembly of section .aivt._AltSI2C3Interrupt:
 
 000001bc <.aivt._AltSI2C3Interrupt>:
- 1bc:	82 15 00    	nop       
+ 1bc:	a2 15 00    	nop       
 Disassembly of section .aivt._AltSPI1ErrInterrupt:
 
 00000126 <.aivt._AltSPI1ErrInterrupt>:
- 126:	82 15 00    	nop       
+ 126:	a2 15 00    	nop       
 Disassembly of section .aivt._AltSPI1Interrupt:
 
 00000128 <.aivt._AltSPI1Interrupt>:
- 128:	82 15 00    	nop       
+ 128:	a2 15 00    	nop       
 Disassembly of section .aivt._AltSPI2ErrInterrupt:
 
 00000154 <.aivt._AltSPI2ErrInterrupt>:
- 154:	82 15 00    	nop       
+ 154:	a2 15 00    	nop       
 Disassembly of section .aivt._AltSPI2Interrupt:
 
 00000156 <.aivt._AltSPI2Interrupt>:
- 156:	82 15 00    	nop       
+ 156:	a2 15 00    	nop       
 Disassembly of section .aivt._AltSPI3ErrInterrupt:
 
 000001c8 <.aivt._AltSPI3ErrInterrupt>:
- 1c8:	82 15 00    	nop       
+ 1c8:	a2 15 00    	nop       
 Disassembly of section .aivt._AltSPI3Interrupt:
 
 000001ca <.aivt._AltSPI3Interrupt>:
- 1ca:	82 15 00    	nop       
+ 1ca:	a2 15 00    	nop       
 Disassembly of section .aivt._AltStackError:
 
 0000010a <.aivt._AltStackError>:
- 10a:	82 15 00    	nop       
+ 10a:	a2 15 00    	nop       
 Disassembly of section .aivt._AltT1Interrupt:
 
 0000011a <.aivt._AltT1Interrupt>:
- 11a:	82 15 00    	nop       
+ 11a:	a2 15 00    	nop       
 Disassembly of section .aivt._AltT2Interrupt:
 
 00000122 <.aivt._AltT2Interrupt>:
- 122:	82 15 00    	nop       
+ 122:	a2 15 00    	nop       
 Disassembly of section .aivt._AltT3Interrupt:
 
 00000124 <.aivt._AltT3Interrupt>:
- 124:	82 15 00    	nop       
+ 124:	a2 15 00    	nop       
 Disassembly of section .aivt._AltT4Interrupt:
 
 0000014a <.aivt._AltT4Interrupt>:
- 14a:	82 15 00    	nop       
+ 14a:	a2 15 00    	nop       
 Disassembly of section .aivt._AltT5Interrupt:
 
 0000014c <.aivt._AltT5Interrupt>:
- 14c:	82 15 00    	nop       
+ 14c:	a2 15 00    	nop       
 Disassembly of section .aivt._AltU1ErrInterrupt:
 
 00000196 <.aivt._AltU1ErrInterrupt>:
- 196:	82 15 00    	nop       
+ 196:	a2 15 00    	nop       
 Disassembly of section .aivt._AltU1RXInterrupt:
 
 0000012a <.aivt._AltU1RXInterrupt>:
- 12a:	82 15 00    	nop       
+ 12a:	a2 15 00    	nop       
 Disassembly of section .aivt._AltU1TXInterrupt:
 
 0000012c <.aivt._AltU1TXInterrupt>:
- 12c:	82 15 00    	nop       
+ 12c:	a2 15 00    	nop       
 Disassembly of section .aivt._AltU2ErrInterrupt:
 
 00000198 <.aivt._AltU2ErrInterrupt>:
- 198:	82 15 00    	nop       
+ 198:	a2 15 00    	nop       
 Disassembly of section .aivt._AltU2RXInterrupt:
 
 00000150 <.aivt._AltU2RXInterrupt>:
- 150:	82 15 00    	nop       
+ 150:	a2 15 00    	nop       
 Disassembly of section .aivt._AltU2TXInterrupt:
 
 00000152 <.aivt._AltU2TXInterrupt>:
- 152:	82 15 00    	nop       
+ 152:	a2 15 00    	nop       
 Disassembly of section .aivt._AltU3ErrInterrupt:
 
 000001b6 <.aivt._AltU3ErrInterrupt>:
- 1b6:	82 15 00    	nop       
+ 1b6:	a2 15 00    	nop       
 Disassembly of section .aivt._AltU3RXInterrupt:
 
 000001b8 <.aivt._AltU3RXInterrupt>:
- 1b8:	82 15 00    	nop       
+ 1b8:	a2 15 00    	nop       
 Disassembly of section .aivt._AltU3TXInterrupt:
 
 000001ba <.aivt._AltU3TXInterrupt>:
- 1ba:	82 15 00    	nop       
+ 1ba:	a2 15 00    	nop       
 Disassembly of section .aivt._AltU4ErrInterrupt:
 
 000001c2 <.aivt._AltU4ErrInterrupt>:
- 1c2:	82 15 00    	nop       
+ 1c2:	a2 15 00    	nop       
 Disassembly of section .aivt._AltU4RXInterrupt:
 
 000001c4 <.aivt._AltU4RXInterrupt>:
- 1c4:	82 15 00    	nop       
+ 1c4:	a2 15 00    	nop       
 Disassembly of section .aivt._AltU4TXInterrupt:
 
 000001c6 <.aivt._AltU4TXInterrupt>:
- 1c6:	82 15 00    	nop       
+ 1c6:	a2 15 00    	nop       
 Disassembly of section .aivt._AltUSB1Interrupt:
 
 000001c0 <.aivt._AltUSB1Interrupt>:
- 1c0:	82 15 00    	nop       
+ 1c0:	a2 15 00    	nop       
 Disassembly of section .reset:
 
 00000000 <.reset>:
@@ -432,7 +432,7 @@ Disassembly of section .text:
     1124:	77 00 07    	rcall     0x1214 <__crt_start_mode> <__crt_start_mode_normal>
     1126:	00 00 e0    	cp0.w     w0
     1128:	03 00 3a    	bra       NZ, 0x1130 <L11>
-    112a:	a0 57 21    	mov.w     #0x157a, w0
+    112a:	a0 59 21    	mov.w     #0x159a, w0
     112c:	01 00 20    	mov.w     #0x0, w1
     112e:	02 00 37    	bra       0x1134 <L21>
 
@@ -601,141 +601,141 @@ Disassembly of section .application_ivt:
 00001000 <__DEFAULT_VECTOR-0x10c>:
     1000:	10 11 04    	goto      0x1110 <__reset>
     1002:	00 00 00 
-    1004:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    1004:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     1006:	00 00 00 
-    1008:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    1008:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     100a:	00 00 00 
-    100c:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    100c:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     100e:	00 00 00 
-    1010:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    1010:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     1012:	00 00 00 
-    1014:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    1014:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     1016:	00 00 00 
-    1018:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    1018:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     101a:	00 00 00 
-    101c:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    101c:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     101e:	00 00 00 
-    1020:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    1020:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     1022:	00 00 00 
-    1024:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    1024:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     1026:	00 00 00 
-    1028:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    1028:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     102a:	00 00 00 
-    102c:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    102c:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     102e:	00 00 00 
-    1030:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    1030:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     1032:	00 00 00 
-    1034:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    1034:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     1036:	00 00 00 
-    1038:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    1038:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     103a:	00 00 00 
-    103c:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    103c:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     103e:	00 00 00 
-    1040:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    1040:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     1042:	00 00 00 
-    1044:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    1044:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     1046:	00 00 00 
-    1048:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    1048:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     104a:	00 00 00 
-    104c:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    104c:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     104e:	00 00 00 
-    1050:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    1050:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     1052:	00 00 00 
-    1054:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    1054:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     1056:	00 00 00 
-    1058:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    1058:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     105a:	00 00 00 
-    105c:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    105c:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     105e:	00 00 00 
-    1060:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    1060:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     1062:	00 00 00 
-    1064:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    1064:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     1066:	00 00 00 
-    1068:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    1068:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     106a:	00 00 00 
-    106c:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    106c:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     106e:	00 00 00 
-    1070:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    1070:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     1072:	00 00 00 
-    1074:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    1074:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     1076:	00 00 00 
-    1078:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    1078:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     107a:	00 00 00 
-    107c:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    107c:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     107e:	00 00 00 
-    1080:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    1080:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     1082:	00 00 00 
-    1084:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    1084:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     1086:	00 00 00 
-    1088:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    1088:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     108a:	00 00 00 
-    108c:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    108c:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     108e:	00 00 00 
-    1090:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    1090:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     1092:	00 00 00 
-    1094:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    1094:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     1096:	00 00 00 
-    1098:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    1098:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     109a:	00 00 00 
-    109c:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    109c:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     109e:	00 00 00 
-    10a0:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    10a0:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     10a2:	00 00 00 
-    10a4:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    10a4:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     10a6:	00 00 00 
-    10a8:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    10a8:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     10aa:	00 00 00 
-    10ac:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    10ac:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     10ae:	00 00 00 
-    10b0:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    10b0:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     10b2:	00 00 00 
-    10b4:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    10b4:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     10b6:	00 00 00 
-    10b8:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    10b8:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     10ba:	00 00 00 
-    10bc:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    10bc:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     10be:	00 00 00 
-    10c0:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    10c0:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     10c2:	00 00 00 
-    10c4:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    10c4:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     10c6:	00 00 00 
-    10c8:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    10c8:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     10ca:	00 00 00 
-    10cc:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    10cc:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     10ce:	00 00 00 
-    10d0:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    10d0:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     10d2:	00 00 00 
-    10d4:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    10d4:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     10d6:	00 00 00 
-    10d8:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    10d8:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     10da:	00 00 00 
-    10dc:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    10dc:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     10de:	00 00 00 
-    10e0:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    10e0:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     10e2:	00 00 00 
-    10e4:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    10e4:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     10e6:	00 00 00 
-    10e8:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    10e8:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     10ea:	00 00 00 
-    10ec:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    10ec:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     10ee:	00 00 00 
-    10f0:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    10f0:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     10f2:	00 00 00 
-    10f4:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    10f4:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     10f6:	00 00 00 
-    10f8:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    10f8:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     10fa:	00 00 00 
-    10fc:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    10fc:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     10fe:	00 00 00 
-    1100:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    1100:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     1102:	00 00 00 
-    1104:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    1104:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     1106:	00 00 00 
-    1108:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    1108:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     110a:	00 00 00 
 
 0000110c <__DEFAULT_VECTOR>:
-    110c:	82 15 04    	goto      0x1582 <__DefaultInterrupt>
+    110c:	a2 15 04    	goto      0x15a2 <__DefaultInterrupt>
     110e:	00 00 00 
 Disassembly of section .ivt:
 
@@ -1083,8 +1083,8 @@ void reset_i2c_bus(void){
    I2C3STATbits.BCL = 0;
     12e8:	79 42 a9    	bclr.b    0x279, #0x2
    // delay_by_nop(10);
-   delay_by_nop(10);
-    12ea:	a0 00 20    	mov.w     #0xa, w0
+   delay_by_nop(20);
+    12ea:	40 01 20    	mov.w     #0x14, w0
     12ec:	01 00 20    	mov.w     #0x0, w1
     12ee:	93 ff 07    	rcall     0x1216 <_delay_by_nop> <.L0> <.LFB0> <.Ltext0>
 }
@@ -1323,7 +1323,7 @@ char i2c_read_nack(void){	//does not reset bus!!!
    data = I2C3RCV;               //get data from I2C3RCV register
     13dc:	80 13 80    	mov.w     0x270, w0
     13de:	20 47 98    	mov.b     w0, [w14+2]
-   I2C3CONbits.ACKDT = 1;        // set mastrer to nack instead of ack 
+   I2C3CONbits.ACKDT = 1;        // set mastrer to nack instead of ack
     13e0:	76 a2 a8    	bset.b    0x276, #0x5
    I2C3CONbits.ACKEN = 1;        //start ack generation
     13e2:	76 82 a8    	bset.b    0x276, #0x4
@@ -1641,7 +1641,7 @@ uint16_t read_analog(uint16_t pin_an) {
     153a:	01 00 20    	mov.w     #0x0, w1
     153c:	6c fe 07    	rcall     0x1216 <_delay_by_nop> <.L0> <.LFB0> <.Ltext0>
 
-0000153e <.L5>:
+0000153e <.L4>:
     153e:	00 28 ef    	clr.w     0x800
     1540:	40 1f 20    	mov.w     #0x1f4, w0
     1542:	01 00 20    	mov.w     #0x0, w1
@@ -1652,41 +1652,55 @@ uint16_t read_analog(uint16_t pin_an) {
     154c:	35 ff 07    	rcall     0x13b8 <_i2c_read_nack> <.LFB8> <.LFE7>
     154e:	00 00 fb    	se        w0, w0
     1550:	00 40 88    	mov.w     w0, 0x800
-    1552:	00 40 80    	mov.w     0x800, w0
-    1554:	e1 0f 50    	sub.w     w0, #0x1, [w15]
-    1556:	01 00 36    	bra       LEU, 0x155a <.L2>
-    1558:	dc e2 a8    	bset.b    0x2dc, #0x7
+    1552:	01 40 80    	mov.w     0x800, w1
+    1554:	00 08 20    	mov.w     #0x80, w0
+    1556:	80 8f 50    	sub.w     w1, w0, [w15]
+    1558:	01 00 3a    	bra       NZ, 0x155c <.L2>
+    155a:	ec 02 a8    	bset.b    0x2ec, #0x0
 
-0000155a <.L2>:
-    155a:	00 40 80    	mov.w     0x800, w0
-    155c:	e3 0f 50    	sub.w     w0, #0x3, [w15]
-    155e:	01 00 3a    	bra       NZ, 0x1562 <.L3>
-    1560:	ec 02 a8    	bset.b    0x2ec, #0x0
+0000155c <.L2>:
+    155c:	00 40 80    	mov.w     0x800, w0
+    155e:	00 00 e0    	cp0.w     w0
+    1560:	01 00 3a    	bra       NZ, 0x1564 <.L3>
+    1562:	ec 22 a8    	bset.b    0x2ec, #0x1
 
-00001562 <.L3>:
-    1562:	00 40 80    	mov.w     0x800, w0
-    1564:	e5 0f 50    	sub.w     w0, #0x5, [w15]
-    1566:	01 00 3a    	bra       NZ, 0x156a <.L4>
-    1568:	ec 22 a8    	bset.b    0x2ec, #0x1
-
-0000156a <.L4>:
-    156a:	a9 fe 07    	rcall     0x12be <_reset_i2c_bus> <.LFB4> <.LFE3>
-    156c:	00 53 27    	mov.w     #0x7530, w0
-    156e:	01 00 20    	mov.w     #0x0, w1
-    1570:	52 fe 07    	rcall     0x1216 <_delay_by_nop> <.L0> <.LFB0> <.Ltext0>
-    1572:	dc e2 a9    	bclr.b    0x2dc, #0x7
-    1574:	ec 02 a9    	bclr.b    0x2ec, #0x0
-    1576:	ec 22 a9    	bclr.b    0x2ec, #0x1
-    1578:	e2 ff 37    	bra       0x153e <.L5>
+00001564 <.L3>:
+    1564:	ac fe 07    	rcall     0x12be <_reset_i2c_bus> <.LFB4> <.LFE3>
+    1566:	00 24 24    	mov.w     #0x4240, w0
+    1568:	f1 00 20    	mov.w     #0xf, w1
+    156a:	55 fe 07    	rcall     0x1216 <_delay_by_nop> <.L0> <.LFB0> <.Ltext0>
+    156c:	dc e2 a9    	bclr.b    0x2dc, #0x7
+    156e:	ec 02 a9    	bclr.b    0x2ec, #0x0
+    1570:	ec 22 a9    	bclr.b    0x2ec, #0x1
+    1572:	00 24 24    	mov.w     #0x4240, w0
+    1574:	f1 00 20    	mov.w     #0xf, w1
+    1576:	4f fe 07    	rcall     0x1216 <_delay_by_nop> <.L0> <.LFB0> <.Ltext0>
+    1578:	dc e2 a8    	bset.b    0x2dc, #0x7
+    157a:	6d fe 07    	rcall     0x1256 <_i2c_start> <.LFB2> <.LFE1>
+    157c:	00 06 20    	mov.w     #0x60, w0
+    157e:	ba fe 07    	rcall     0x12f4 <_send_i2c_byte> <.LFB5> <.LFE4>
+    1580:	20 03 20    	mov.w     #0x32, w0
+    1582:	01 00 20    	mov.w     #0x0, w1
+    1584:	48 fe 07    	rcall     0x1216 <_delay_by_nop> <.L0> <.LFB0> <.Ltext0>
+    1586:	00 08 20    	mov.w     #0x80, w0
+    1588:	b5 fe 07    	rcall     0x12f4 <_send_i2c_byte> <.LFB5> <.LFE4>
+    158a:	99 fe 07    	rcall     0x12be <_reset_i2c_bus> <.LFB4> <.LFE3>
+    158c:	00 24 24    	mov.w     #0x4240, w0
+    158e:	f1 00 20    	mov.w     #0xf, w1
+    1590:	42 fe 07    	rcall     0x1216 <_delay_by_nop> <.L0> <.LFB0> <.Ltext0>
+    1592:	dc e2 a9    	bclr.b    0x2dc, #0x7
+    1594:	ec 02 a9    	bclr.b    0x2ec, #0x0
+    1596:	ec 22 a9    	bclr.b    0x2ec, #0x1
+    1598:	d2 ff 37    	bra       0x153e <.L4>
 Disassembly of section .dinit:
 
-0000157a <.dinit>:
-    157a:	00 08 00    	nop       
-    157c:	02 00 00    	nop       
-    157e:	80 00 00    	nop       
-    1580:	00 00 00    	nop       
+0000159a <.dinit>:
+    159a:	00 08 00    	nop       
+    159c:	02 00 00    	nop       
+    159e:	80 00 00    	nop       
+    15a0:	00 00 00    	nop       
 Disassembly of section .isr:
 
-00001582 <__DefaultInterrupt>:
-    1582:	00 40 da    	break     
-    1584:	00 00 fe    	reset     
+000015a2 <__DefaultInterrupt>:
+    15a2:	00 40 da    	break     
+    15a4:	00 00 fe    	reset     
