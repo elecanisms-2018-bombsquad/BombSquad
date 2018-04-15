@@ -82,6 +82,51 @@
 #define D12_DIR             TRISDbits.TRISD2
 #define D13_DIR             TRISDbits.TRISD3
 
+#define D0_PUE              CNPU1bits.CN14PUE
+#define D1_PUE              CNPU1bits.CN13PUE
+#define D2_PUE              CNPU2bits.CN17PUE
+#define D3_PUE              CNPU2bits.CN18PUE
+#define D4_PUE              CNPU1bits.CN12PUE
+#define D5_PUE              CNPU5bits.CN71PUE
+#define D6_PUE              CNPU4bits.CN53PUE
+#define D7_PUE              CNPU4bits.CN56PUE
+#define D8_PUE              CNPU4bits.CN54PUE
+#define D9_PUE              CNPU4bits.CN55PUE
+#define D10_PUE             CNPU4bits.CN49PUE
+#define D11_PUE             CNPU3bits.CN46PUE
+#define D12_PUE             CNPU4bits.CN51PUE
+#define D13_PUE             CNPU4bits.CN52PUE
+
+#define D0_PDE              CNPD1bits.CN14PDE
+#define D1_PDE              CNPD1bits.CN13PDE
+#define D2_PDE              CNPD2bits.CN17PDE
+#define D3_PDE              CNPD2bits.CN18PDE
+#define D4_PDE              CNPD1bits.CN12PDE
+#define D5_PDE              CNPD5bits.CN71PDE
+#define D6_PDE              CNPD4bits.CN53PDE
+#define D7_PDE              CNPD4bits.CN56PDE
+#define D8_PDE              CNPD4bits.CN54PDE
+#define D9_PDE              CNPD4bits.CN55PDE
+#define D10_PDE             CNPD4bits.CN49PDE
+#define D11_PDE             CNPD3bits.CN46PDE
+#define D12_PDE             CNPD4bits.CN51PDE
+#define D13_PDE             CNPD4bits.CN52PDE
+
+#define D0_CNEN              CNEN1bits.CN14IE
+#define D1_CNEN              CNEN1bits.CN13IE
+#define D2_CNEN              CNEN2bits.CN17IE
+#define D3_CNEN              CNEN2bits.CN18IE
+#define D4_CNEN              CNEN1bits.CN12IE
+#define D5_CNEN              CNEN5bits.CN71IE
+#define D6_CNEN              CNEN4bits.CN53IE
+#define D7_CNEN              CNEN4bits.CN56IE
+#define D8_CNEN              CNEN4bits.CN54IE
+#define D9_CNEN              CNEN4bits.CN55IE
+#define D10_CNEN             CNEN4bits.CN49IE
+#define D11_CNEN             CNEN3bits.CN46IE
+#define D12_CNEN             CNEN4bits.CN51IE
+#define D13_CNEN             CNEN4bits.CN52IE
+
 #define D0_RP               20
 #define D1_RP               25
 #define D2_RP               10
