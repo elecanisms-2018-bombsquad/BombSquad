@@ -8,8 +8,58 @@
 #include "elecanisms.h"
 #include "lcd.h"
 #include "i2c_reg.h"
+#include "codeword.h"
+
+#define WORD_LENGTH 8
 
 char* dispptr;
+char* codeword;
+uint8_t i0, i1, i2, i3, i4;
+
+void main(void) {
+    init_elecanisms();
+    // Setup rocker pins as inputs and set pull-up resistors
+    toggleSwitchSetup();
+    // Initializes I2C on I2C3
+    i2c_init(1e3);
+    // Initializes LCD structs with addresses
+    _LCD lcd1;
+    lcd_init(&lcd1, 0x06, 'A');
+    lcd_clear(&lcd1);  // Clears _LCD objects from previous array
+    lcd_print2(&lcd1,"Code word","Module");
+    delay_by_nop(30000);
+
+    char cw[WORD_LENGTH + 1] = "strength";
+    codeword = cw;
+
+    char dispstring[17] = "     ooooo     ";
+    dispptr = dispstring;
+    lcd_print2(&lcd1, dispptr, "");
+
+    // Timer 2 Setup
+    T2CON = 0x0020;         // set Timer2 period to 10 ms for debounce
+    PR2 = 0x2710;           // prescaler 16, match value 10000
+
+    TMR2 = 0;               // set Timer2 to 0
+    IFS0bits.T2IF = 0;      // lower T2 interrupt flag
+    IEC0bits.T2IE = 1;      // enable T2 interrupt
+    T2CONbits.TON = 0;      // make sure T2 isn't on
+
+    i0 = 0;
+    i1 = 0;
+    i2 = 0;
+    i3 = 0;
+    i4 = 0;
+
+    updateDisplay();
+
+
+    while (1) {
+        lcd_print2(&lcd1, dispptr, "");
+        delay_by_nop(30000);
+    }
+}
+
 
 void __attribute__((interrupt, auto_psv)) _CNInterrupt(void) {
     IFS1bits.CNIF = 0;      // lower INT3 interrupt flag
@@ -24,22 +74,37 @@ void __attribute__((interrupt, auto_psv)) _T2Interrupt(void) {
     T2CONbits.TON = 0;      // turn off timer
     LED1 = OFF;
 
-    // Sample pins
-    if(!D0) {dispptr[5] = '^';} else
-    if(!D1) {dispptr[5] = 'v';}
-    else {dispptr[5] = 'o';}
-    if(!D2) {dispptr[6] = '^';} else
-    if(!D3) {dispptr[6] = 'v';}
-    else {dispptr[6] = 'o';}
-    if(!D4) {dispptr[7] = 'v';} else
-    if(!D5) {dispptr[7] = '^';}
-    else {dispptr[7] = 'o';}
-    if(!D6) {dispptr[8] = 'v';} else
-    if(!D7) {dispptr[8] = '^';}
-    else {dispptr[8] = 'o';}
-    if(!D8) {dispptr[9] = 'v';} else
-    if(!D9) {dispptr[9] = '^';}
-    else {dispptr[9] = 'o';}
+    // Sample pins and increment/decrement index of character displayed
+    if(!D0) {i0 = (i0+1)% WORD_LENGTH;} else
+    if(!D1) {i0 = (i0 - 1);
+        if(i0 == -1) {i0 = WORD_LENGTH - 1;}
+    }
+
+    if(!D2) {i1 = (i1+1)% WORD_LENGTH;} else
+    if(!D3) {i1 = (i1 - 1);}
+    if(i1 < 0) {i1 += WORD_LENGTH;}
+
+    if(!D4) {i2 = (i2+1)% WORD_LENGTH;} else
+    if(!D5) {i2 = (i2 - 1);}
+    if(i2 < 0) {i2 += WORD_LENGTH;}
+
+    if(!D6) {i3 = (i3+1)% WORD_LENGTH;} else
+    if(!D7) {i3 = (i3 - 1);}
+    if(i3 < 0) {i3 += WORD_LENGTH;}
+
+    if(!D8) {i4 = (i4+1)% WORD_LENGTH;} else
+    if(!D9) {i4 = (i4 - 1);}
+    if(i4 < 0) {i4 += WORD_LENGTH;}
+
+    updateDisplay();
+}
+
+void updateDisplay(void) {
+    dispptr[5] = codeword[i0];
+    dispptr[6] = codeword[i1];
+    dispptr[7] = codeword[i2];
+    dispptr[8] = codeword[i3];
+    dispptr[9] = codeword[i4];
 }
 
 void toggleSwitchSetup(void) {
@@ -79,40 +144,4 @@ void toggleSwitchSetup(void) {
 
     IFS1bits.CNIF = 0; // lower CN interrupt flag
     IEC1bits.CNIE = 1; // Enable CN interrupt module
-}
-
-void main(void) {
-    init_elecanisms();
-    // Setup rocker pins as inputs and set pull-up resistors
-    toggleSwitchSetup();
-    // Initializes I2C on I2C3
-    i2c_init(1e3);
-    // Initializes LCD structs with addresses
-    _LCD lcd1;
-    lcd_init(&lcd1, 0x06, 'A');
-    lcd_clear(&lcd1);  // Clears _LCD objects from previous array
-    lcd_print2(&lcd1,"Code word","Module");
-    delay_by_nop(30000);
-
-
-    char dispstring[17] = "     ooooo     ";
-    dispptr = dispstring;
-    lcd_print2(&lcd1, dispptr, "");
-
-    // Timer 2 Setup
-    T2CON = 0x0020;         // set Timer2 period to 1 ms for debounce
-    PR2 = 0x3e8;           // prescaler 16, match value 1000
-
-    TMR2 = 0;               // set Timer2 to 0
-    IFS0bits.T2IF = 0;      // lower T2 interrupt flag
-    IEC0bits.T2IE = 1;      // enable T2 interrupt
-    T2CONbits.TON = 0;      // make sure T2 isn't on
-
-
-
-    while (1) {
-        lcd_print2(&lcd1, dispptr, "");
-        delay_by_nop(3000);
-    }
-
 }
