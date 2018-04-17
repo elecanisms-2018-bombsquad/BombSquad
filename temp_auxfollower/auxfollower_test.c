@@ -24,6 +24,9 @@
 #define szero       17  // other
 #define sbig        18  // other
 
+#define RED_LED D1
+#define GREEN_LED D0
+
 uint16_t state;
 
 int a = 169 ;
@@ -61,7 +64,9 @@ typedef enum  {
 
 volatile STATE e_mystate = STATE_WAIT_FOR_ADDR;
 
-void ledoff(void){ LED1 = 0; LED2 = 0; LED3 = 0; }
+void ledoff(void){ LED1 = 0; LED2 = 0; LED3 = 0;}
+void setred(void){ RED_LED = 1; __asm__("nop"); GREEN_LED = 0;}
+void setgrn(void){ RED_LED = 0; __asm__("nop"); GREEN_LED = 1;}
 
 void __attribute__((interrupt, auto_psv)) _SI2C3Interrupt(void) {
     uint8_t u8_c;
@@ -96,6 +101,11 @@ void __attribute__((interrupt, auto_psv)) _SI2C3Interrupt(void) {
 
 int16_t main(void) {
 
+    setred();
+    delay_by_nop(300000);
+    setgrn();
+    delay_by_nop(300000);
+
     ab = (b-a) >>1 ;
     bc = (c-b) >>1  ;
     cd = (d-c) >>1  ;
@@ -111,18 +121,25 @@ int16_t main(void) {
     mn = (n-m) >>1  ;
     no = (o-n) >>1  ;
 
-
     init_elecanisms();
     i2c_init(157);      // Initializes I2C on I2C3
 
     I2C3ADD = SLAVE_ADDR>>1;   //initialize the address register
     I2C3MSK = 0;
 
+    D1_DIR = OUT;
+    D0_DIR = OUT;
+
+    setred();
     // _SI2C1IP = 1;        // Maybe eventially fo this for interrupt priority
 
     _SI2C3IE = 1;       // these two are the same! The underscore is cool.
 
     while (1) {
+        if (LED1 == 1){setgrn();}
+        if (LED2 == 1){setred();}
+        if (LED3 == 1){setred();}
+
         uint16_t val = read_analog(A0_AN);
 
         if( val < (a+ab) ) {state = s;}                       //b
