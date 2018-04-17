@@ -25,6 +25,7 @@ env.Append(BUILDERS = {'List' : list})
 env.Program('codeword', ['codeword.c',
                         '../lib/lcd.c',
                         '../lib/i2c_reg.c',
+                        '../lib/peripheral_core.c',
                         '../lib/elecanisms.c',
                         '../lib/common.c'])
 

@@ -9,14 +9,32 @@
 #include "lcd.h"
 #include "i2c_reg.h"
 #include "codeword.h"
+#include "peripheral_core.h"
 
-#define WORD_LENGTH 5
+#define WORD_LENGTH         5
+#define MODULE_LED_RED      D10
+#define MODULE_LED_GREEN    D11
 
 char* dispptr;
+char *codeSet;
+char *set0, *set1, *set2, *set3, *set4;
 char* codeword;
-char* codeword_sc;
 uint8_t i0, i1, i2, i3, i4;
 uint16_t rand_val;
+
+typedef void (*STATE_HANDLER_T)(void);
+
+// forward declaration of module modes
+void setup(void);
+void run(void);
+void solved(void);
+void end_win(void);
+void end_fail(void);
+
+STATE_HANDLER_T state, last_state;
+uint16_t counter;
+
+_LCD lcd1;
 
 void main(void) {
     init_elecanisms();
@@ -24,7 +42,7 @@ void main(void) {
     toggleSwitchSetup();
     i2c_init(1e3);
     // Initializes LCD structs with addresses
-    _LCD lcd1;
+
     lcd_init(&lcd1, 0x06, 'A');
     lcd_clear(&lcd1);  // Clears _LCD objects from previous array
 
@@ -34,11 +52,51 @@ void main(void) {
         rand_next();
     }
 
-    // set codeword and initial index
-    codeword = words[rand_val%35];
-    // scramble codeword so you can't just see it when you scroll through
-    char tmp[6] = {codeword[4], codeword[1], codeword[3], codeword[0], codeword[2], '\0'};
-    codeword_sc = tmp;
+    // set codeword and set of letters
+    char _codeSet[36];
+    for(i=0; i < 36; i++) {
+        codeSet[i] = letterSets[i][rand_val%15];
+    }
+    codeSet = "WORLDGWQAPNWEOKMQQWRZYJPDLJBINSICDH";
+
+    char tmp[7] = " ";
+    for (i=0; i<5; i++){
+        tmp[i] = codeSet[i];
+    }
+    codeword = tmp;
+
+    // setup column sets of letters
+    char _set0[7] = " ";
+    for (i=0; i<6; i++){
+        _set0[i] = codeSet[i+5];
+    }
+    set0 = _set0;
+
+    char _set1[7] = " ";
+    for (i=0; i<6; i++){
+        _set1[i] = codeSet[i+11];
+    }
+    set1 = _set1;
+
+    char _set2[7] = " ";
+    for (i=0; i<6; i++){
+        _set2[i] = codeSet[i+17];
+    }
+    set2 = _set2;
+
+    char _set3[7] = " ";
+    for (i=0; i<6; i++){
+        _set3[i] = codeSet[i+23];
+    }
+    set3 = _set3;
+
+    char _set4[7] = " ";
+    for (i=0; i<6; i++){
+        _set4[i] = codeSet[i+29];
+    }
+    set4 = _set4;
+
+    // initialize indices of each column
     i0 = rand_val%5;
     rand_next();
     i1 = rand_val%5;
@@ -62,26 +120,135 @@ void main(void) {
     IEC0bits.T2IE = 1;      // enable T2 interrupt
     T2CONbits.TON = 0;      // make sure T2 isn't on
 
-    updateDisplay();
-
+    state = run;
 
     while (1) {
-
-        if ((codeword_sc[i0] == codeword[0]) &&
-            (codeword_sc[i1] == codeword[1]) &&
-            (codeword_sc[i2] == codeword[2]) &&
-            (codeword_sc[i3] == codeword[3]) &&
-            (codeword_sc[i4] == codeword[4])) {
-            LED3 = ON;
-            lcd_print2(&lcd1, dispptr, "  --CORRECT--  ");
-        } else {
-            LED3 = OFF;
-            lcd_print2(&lcd1, dispptr, "");
-        }
-        delay_by_nop(30000);
+        state();
     }
 }
 
+// STATE MACHINE FUNCTIONS /////////////////////////////////////////////////////
+
+void setup(void) { // Waits for master module to start the game
+    // State Setup
+    if (state != last_state) {
+        last_state = state;
+        // setup state here
+    }
+
+    // Perform state tasks
+
+    // Check for state transitions
+    if ((start_flag == 1) || (SW2 == 0)){
+        state = run;
+    }
+
+    // State Cleanup
+    if (state != last_state) {
+        // cleanup state here
+    }
+}
+
+void run(void) { // Plays the game
+    // State Setup
+    if (state != last_state) {
+        last_state = state;
+        // setup state here
+
+    }
+
+    // Perform state tasks
+    updateDisplay();
+    if ((set0[i0] == codeword[0]) &&
+        (set1[i1] == codeword[1]) &&
+        (set2[i2] == codeword[2]) &&
+        (set3[i3] == codeword[3]) &&
+        (set4[i4] == codeword[4])) {
+        LED3 = ON;
+        lcd_print2(&lcd1, dispptr, "  --CORRECT--  ");
+    } else {
+        LED3 = OFF;
+        lcd_print2(&lcd1, dispptr, "");
+    }
+    delay_by_nop(30000);
+
+    // Check for state transitions
+    if (win_flag == 1) {
+        state = end_win;
+    } else if (lose_flag == 1) {
+        state = end_fail;
+    }
+
+    // State Cleanup
+    if (state != last_state) {
+        // cleanup state here
+    }
+}
+
+void solved(void) { // The puzzle on this module is finished
+    // State Setup
+    if (state != last_state) {
+        last_state = state;
+
+        // setup state here
+    }
+
+    // Perform state tasks
+
+    // Check for state transitions
+    if (win_flag == 1) {
+        state = end_win;
+    } else if (lose_flag == 1) {
+        state = end_fail;
+    }
+
+    // State Cleanup
+    if (state != last_state) {
+        // cleanup state here
+    }
+}
+
+void end_win(void) { // The master module said the game was won
+    // State Setup
+    if (state != last_state) {
+        last_state = state;
+        // setup state here
+    }
+
+    // Perform state tasks
+
+    // Check for state transitions
+    if (start_flag == 1) {
+        state = run;
+    }
+
+    // State Cleanup
+    if (state != last_state) {
+        // cleanup state here
+    }
+}
+
+void end_fail(void) { // The master module said the game was lost
+    // State Setup
+    if (state != last_state) {
+        last_state = state;
+        // setup state here
+    }
+
+    // Perform state tasks
+
+    // Check for state transitions
+    if (start_flag == 1) {
+        state = run;
+    }
+
+    // State Cleanup
+    if (state != last_state) {
+        // cleanup state here
+    }
+}
+
+// ISRs ////////////////////////////////////////////////////////////////////////
 
 void __attribute__((interrupt, auto_psv)) _CNInterrupt(void) {
     IFS1bits.CNIF = 0;      // lower INT3 interrupt flag
@@ -121,12 +288,15 @@ void __attribute__((interrupt, auto_psv)) _T2Interrupt(void) {
     updateDisplay();
 }
 
+
+// HELPER FUNCTIONS ////////////////////////////////////////////////////////////
+
 void updateDisplay(void) {
-    dispptr[1] = codeword_sc[i0];
-    dispptr[4] = codeword_sc[i1];
-    dispptr[7] = codeword_sc[i2];
-    dispptr[10] = codeword_sc[i3];
-    dispptr[13] = codeword_sc[i4];
+    dispptr[1] = set0[i0];
+    dispptr[4] = set1[i1];
+    dispptr[7] = set2[i2];
+    dispptr[10] = set3[i3];
+    dispptr[13] = set4[i4];
 }
 
 void toggleSwitchSetup(void) {
