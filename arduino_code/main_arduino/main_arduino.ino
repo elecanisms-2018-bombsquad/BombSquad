@@ -1,7 +1,7 @@
 
 
 const int buttonPin = 2;    // the number of the pushbutton pin
-const int ledPin = 13;      // the number of the LED pin
+const int ledPin = 12;      // the number of the LED pin
 
 int ledState = LOW;         // the current state of the output pin
 int buttonState;             // the current reading from the input pin
