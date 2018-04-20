@@ -120,7 +120,7 @@ void main(void) {
     IEC0bits.T2IE = 1;      // enable T2 interrupt
     T2CONbits.TON = 0;      // make sure T2 isn't on
 
-    state = run;
+    state = setup;
 
     while (1) {
         state();
@@ -133,19 +133,22 @@ void setup(void) { // Waits for master module to start the game
     // State Setup
     if (state != last_state) {
         last_state = state;
+        MODULE_LED_GREEN = ON;
         // setup state here
     }
 
     // Perform state tasks
 
     // Check for state transitions
-    if ((start_flag == 1) || (SW2 == 0)){
-        state = run;
-    }
+    // if ((start_flag == 1) || (SW2 == 0)){
+    //     state = run;
+    // }
+    state = run;
 
     // State Cleanup
     if (state != last_state) {
         // cleanup state here
+        MODULE_LED_GREEN = OFF;
     }
 }
 
@@ -154,7 +157,7 @@ void run(void) { // Plays the game
     if (state != last_state) {
         last_state = state;
         // setup state here
-
+        MODULE_LED_RED = ON;
     }
 
     // Perform state tasks
@@ -164,8 +167,7 @@ void run(void) { // Plays the game
         (set2[i2] == codeword[2]) &&
         (set3[i3] == codeword[3]) &&
         (set4[i4] == codeword[4])) {
-        LED3 = ON;
-        lcd_print2(&lcd1, dispptr, "  --CORRECT--  ");
+        state = solved;
     } else {
         LED3 = OFF;
         lcd_print2(&lcd1, dispptr, "");
@@ -189,11 +191,13 @@ void solved(void) { // The puzzle on this module is finished
     // State Setup
     if (state != last_state) {
         last_state = state;
-
+        LED3 = ON;
         // setup state here
     }
 
     // Perform state tasks
+    lcd_print2(&lcd1, dispptr, "  --CORRECT--  ");
+    delay_by_nop(30000);
 
     // Check for state transitions
     if (win_flag == 1) {
@@ -205,6 +209,7 @@ void solved(void) { // The puzzle on this module is finished
     // State Cleanup
     if (state != last_state) {
         // cleanup state here
+        LED3 = OFF;
     }
 }
 
