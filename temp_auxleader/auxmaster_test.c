@@ -6,6 +6,7 @@
 #include <stdint.h>
 #include "elecanisms.h"
 #include "i2c_reg.h"
+#include "ajuart.h"
 
 #define SLAVE_ADDR 0x60
 
@@ -15,6 +16,7 @@ uint8_t datareturned;
 
 int main(void) {
     init_elecanisms();
+    init_ajuart();
     uint16_t u16_len;
     uint16_t pollval;
     int16_t i = 0;
@@ -36,7 +38,8 @@ int main(void) {
         if(datareturned == 0b00000000) {LED3 = 1;delay_by_nop(1);}
         reset_i2c2_bus();
 
-
+        U1_putc(datareturned);
+        U1_flush_tx_buffer();
 
         delay_by_nop(1000000);
         LED1 = 0;delay_by_nop(1); LED2 = 0; delay_by_nop(1); LED3 = 0; delay_by_nop(1); D0 = OFF;
