@@ -15,9 +15,9 @@ list = Builder(action = 'xc16-objdump -S -D $SOURCE > $TARGET',
                src_suffix = 'elf')
 env.Append(BUILDERS = {'List' : list})
 
-env.Program('button_module', ['button_module.c',
+env.Program('button', ['button.c',
                         '../lib/i2c_reg.c',
                         '../lib/elecanisms.c',
                         '../lib/lcd.c'])
-env.Hex('button_module')
-env.List('button_module')
+env.Hex('button')
+env.List('button')
