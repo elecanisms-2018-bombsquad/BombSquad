@@ -1,5 +1,6 @@
+
 env = Environment(tools = ['gcc', 'gnulink', 'ar', 'zip'],
-                  PIC = '24FJ128GB206',
+                    PIC = '24FJ128GB206',
                   CC = 'xc16-gcc',
                   PROGSUFFIX = '.elf',
                   CFLAGS = '-g -omf=elf -x c -mcpu=$PIC',
@@ -15,8 +16,10 @@ list = Builder(action = 'xc16-objdump -S -D $SOURCE > $TARGET',
                src_suffix = 'elf')
 env.Append(BUILDERS = {'List' : list})
 
-env.Program('leadertest', ['leadertest.c',
-                        '../lib/i2c_reg.c',
-                        '../lib/elecanisms.c'])
-env.Hex('leadertest')
-env.List('leadertest')
+env.Program('auxfollower_test', ['auxfollower_test.c',
+                        # 'descriptors.c',
+                        # '../lib/usb.c',
+                        '../../lib/i2c_reg.c',
+                        '../../lib/elecanisms.c'])
+env.Hex('auxfollower_test')
+env.List('auxfollower_test')
