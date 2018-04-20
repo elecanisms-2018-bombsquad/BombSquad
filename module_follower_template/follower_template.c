@@ -20,10 +20,11 @@ uint16_t state;
 int16_t main(void) {
 
     init_elecanisms();
-    i2c_init(157);      // Initializes I2C on I2C3
-    I2C3ADD = SLAVE_ADDR>>1;   //initialize the address register
-    I2C3MSK = 0;
-    _SI2C3IE = 1;       // these two are the same! The underscore is cool
+    init_ajuart();
+    i2c2_init(157);      // Initializes I2C on I2C3
+    I2C2ADD = SLAVE_ADDR>>1;   //initialize the address register
+    I2C2MSK = 0;
+    _SI2C2IE = 1;       // these two are the same! The underscore is cool
 
 
     while (1) {
@@ -37,8 +38,8 @@ int16_t main(void) {
 
         switch(state){
 
-            case son: complete_flag = 0x01; break;
-            case soff: complete_flag = 0x00; break;
+            case son: complete_flag = 0x01; LED1 = ON; delay_by_nop(1); LED2 = OFF; break;
+            case soff: complete_flag = 0x00; LED1 = OFF; delay_by_nop(1); LED2 = ON; break;
 
 
 

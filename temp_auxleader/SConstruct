@@ -20,6 +20,7 @@ env.Program('auxmaster_test', ['auxmaster_test.c',
                         # 'descriptors.c',
                         # '../lib/usb.c',
                         '../lib/i2c_reg.c',
+                        '../lib/ajuart.c',
                         '../lib/elecanisms.c'])
 env.Hex('auxmaster_test')
 env.List('auxmaster_test')
