@@ -11,7 +11,7 @@
 #include "codeword.h"
 #include "peripheral_core.h"
 
-#define WORD_LENGTH         5
+#define LETTERS_PER_COLUMN  6
 #define MODULE_LED_RED      D10
 #define MODULE_LED_GREEN    D11
 
@@ -41,9 +41,8 @@ void main(void) {
     // Setup rocker pins as inputs and set pull-up resistors
     toggleSwitchSetup();
     i2c_init(1e3);
-    // Initializes LCD structs with addresses
 
-    lcd_init(&lcd1, 0x06, 'A');
+    lcd_init(&lcd1, 0x06, 'A'); //Setup LCD screen (type A i/o extender)
     lcd_clear(&lcd1);  // Clears _LCD objects from previous array
 
     rand_val = read_analog(A0);
@@ -55,9 +54,9 @@ void main(void) {
     // set codeword and set of letters
     char _codeSet[36];
     for(i=0; i < 36; i++) {
-        codeSet[i] = letterSets[i][rand_val%15];
+        _codeSet[i] = letterSets[rand_val%15][i];
     }
-    codeSet = "WORLDGWQAPNWEOKMQQWRZYJPDLJBINSICDH";
+    codeSet = _codeSet;
 
     char tmp[7] = " ";
     for (i=0; i<5; i++){
@@ -269,26 +268,26 @@ void __attribute__((interrupt, auto_psv)) _T2Interrupt(void) {
     LED1 = OFF;
 
     // Sample pins and increment/decrement index of character displayed
-    if(!D0) {i0 = (i0+1)% WORD_LENGTH;} else
+    if(!D0) {i0 = (i0+1)% LETTERS_PER_COLUMN;} else
     if(!D1) {i0 = (i0 - 1);
-        if(i0 == -1) {i0 = WORD_LENGTH - 1;}
+        if(i0 > 5) {i0 = LETTERS_PER_COLUMN - 1;}
     }
 
-    if(!D2) {i1 = (i1+1)% WORD_LENGTH;} else
+    if(!D2) {i1 = (i1+1)% LETTERS_PER_COLUMN;} else
     if(!D3) {i1 = (i1 - 1);}
-    if(i1 < 0) {i1 += WORD_LENGTH;}
+    if(i1 > 5) {i1 += LETTERS_PER_COLUMN;}
 
-    if(!D4) {i2 = (i2+1)% WORD_LENGTH;} else
+    if(!D4) {i2 = (i2+1)% LETTERS_PER_COLUMN;} else
     if(!D5) {i2 = (i2 - 1);}
-    if(i2 < 0) {i2 += WORD_LENGTH;}
+    if(i2 > 5) {i2 += LETTERS_PER_COLUMN;}
 
-    if(!D6) {i3 = (i3+1)% WORD_LENGTH;} else
+    if(!D6) {i3 = (i3+1)% LETTERS_PER_COLUMN;} else
     if(!D7) {i3 = (i3 - 1);}
-    if(i3 < 0) {i3 += WORD_LENGTH;}
+    if(i3 > 5) {i3 += LETTERS_PER_COLUMN;}
 
-    if(!D8) {i4 = (i4+1)% WORD_LENGTH;} else
+    if(!D8) {i4 = (i4+1)% LETTERS_PER_COLUMN;} else
     if(!D9) {i4 = (i4 - 1);}
-    if(i4 < 0) {i4 += WORD_LENGTH;}
+    if(i4 > 5) {i4 += LETTERS_PER_COLUMN;}
 
     updateDisplay();
 }
