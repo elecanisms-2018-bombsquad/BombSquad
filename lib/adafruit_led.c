@@ -280,23 +280,23 @@ void bargraph_setBar(_BARGRAPH* ptr, uint8_t bar, uint8_t color){
 
 // 7SEGMENT ********************************************************************
 
-uint8_t write(_7SEGMENT* ptr, uint8_t c){
-
-  uint8_t r = 0;
-
-  if (c == '\n') ptr->position = 0;
-  if (c == '\r') ptr->position = 0;
-
-  if ((c >= '0') && (c <= '9')) {
-    sevseg_writeDigitNum(ptr, ptr->position, c-'0', 0);
-    r = 1;
-  }
-
-  ptr->position++;
-  if (ptr->position == 2) ptr->position++;
-
-  return r;
-}
+// uint8_t write(_7SEGMENT* ptr, uint8_t c){
+//
+//   uint8_t r = 0;
+//
+//   if (c == '\n') ptr->position = 0;
+//   if (c == '\r') ptr->position = 0;
+//
+//   if ((c >= '0') && (c <= '9')) {
+//     sevseg_writeDigitNum(ptr, ptr->position, c-'0', 0);
+//     r = 1;
+//   }
+//
+//   ptr->position++;
+//   if (ptr->position == 2) ptr->position++;
+//
+//   return r;
+// }
 
 void sevseg_writeDigitRaw(_7SEGMENT* ptr, uint8_t x, uint16_t bitmask){
   if (x > 4) return;
