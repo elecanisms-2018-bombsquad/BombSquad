@@ -10,6 +10,7 @@
 #include "i2c_reg.h"
 #include "codeword.h"
 #include "peripheral_core.h"
+#include "i2c_address_space.h"
 
 #define LETTERS_PER_COLUMN  6
 #define MODULE_LED_RED      D10
@@ -40,10 +41,15 @@ void main(void) {
     init_elecanisms();
     // Setup rocker pins as inputs and set pull-up resistors
     toggleSwitchSetup();
-    i2c_init(1e3);
 
+    i2c_init(1e3);
     lcd_init(&lcd1, 0x06, 'A'); //Setup LCD screen (type A i/o extender)
     lcd_clear(&lcd1);  // Clears _LCD objects from previous array
+
+    i2c2_init(157);                      // Initializes I2C on I2C2
+    I2C2ADD = TEST_PERIPHERAL_ADDR>>1;   // Set the device address (7-bit register)
+    I2C2MSK = 0;                         // Set mask to 0 (only this address matters)
+    _SI2C2IE = 1;                        // Enable i2c slave interrupt
 
     rand_val = read_analog(A0);
     uint8_t i;
@@ -183,6 +189,7 @@ void run(void) { // Plays the game
     // State Cleanup
     if (state != last_state) {
         // cleanup state here
+        MODULE_LED_RED = OFF;
     }
 }
 
@@ -192,6 +199,7 @@ void solved(void) { // The puzzle on this module is finished
         last_state = state;
         LED3 = ON;
         // setup state here
+        MODULE_LED_GREEN = ON;
     }
 
     // Perform state tasks
@@ -209,6 +217,7 @@ void solved(void) { // The puzzle on this module is finished
     if (state != last_state) {
         // cleanup state here
         LED3 = OFF;
+        MODULE_LED_GREEN = OFF;
     }
 }
 
@@ -273,8 +282,8 @@ void __attribute__((interrupt, auto_psv)) _T2Interrupt(void) {
         if(i0 > 5) {i0 = LETTERS_PER_COLUMN - 1;}
     }
 
-    if(!D2) {i1 = (i1+1)% LETTERS_PER_COLUMN;} else
-    if(!D3) {i1 = (i1 - 1);}
+    if(!D12) {i1 = (i1+1)% LETTERS_PER_COLUMN;} else
+    if(!D13) {i1 = (i1 - 1);}
     if(i1 > 5) {i1 += LETTERS_PER_COLUMN;}
 
     if(!D4) {i2 = (i2+1)% LETTERS_PER_COLUMN;} else
@@ -307,36 +316,41 @@ void toggleSwitchSetup(void) {
     // Initialize pins as inputs
     D0_DIR = 1; //D0 as input
     D1_DIR = 1; //D1 as input
-    D2_DIR = 1; //D2 as input
-    D3_DIR = 1; //D3 as input
+
     D4_DIR = 1; //D4 as input
     D5_DIR = 1; //D5 as input
     D6_DIR = 1; //D6 as input
     D7_DIR = 1; //D7 as input
     D8_DIR = 1; //D8 as input
     D9_DIR = 1; //D9 as input
+    D10_DIR = 0; // D10 and D11 are module LEDs
+    D11_DIR = 0;
+    D12_DIR = 1;//D12 as input
+    D13_DIR = 1;//D13 as input
 
     D0_PUE = 1; //D0 pullup enable
     D1_PUE = 1; //D1 pullup enable
-    D2_PUE = 1; //D2 pullup enable
-    D3_PUE = 1; //D3 pullup enable
+
     D4_PUE = 1; //D4 pullup enable
     D5_PUE = 1; //D5 pullup enable
     D6_PUE = 1; //D6 pullup enable
     D7_PUE = 1; //D7 pullup enable
     D8_PUE = 1; //D8 pullup enable
     D9_PUE = 1; //D9 pullup enable
+    D12_PUE = 1;//D12 pullup enable
+    D13_PUE = 1;//D13 pullup enable
 
     D0_CNEN = 1; //D0 interrupt enable
     D1_CNEN = 1; //D1 interrupt enable
-    D2_CNEN = 1; //D2 interrupt enable
-    D3_CNEN = 1; //D3 interrupt enable
+
     D4_CNEN = 1; //D4 interrupt enable
     D5_CNEN = 1; //D5 interrupt enable
     D6_CNEN = 1; //D6 interrupt enable
     D7_CNEN = 1; //D7 interrupt enable
     D8_CNEN = 1; //D8 interrupt enable
     D9_CNEN = 1; //D9 interrupt enable
+    D12_CNEN = 1;//D12 interrupt enable
+    D13_CNEN = 1;//D13 interrupt enable
 
     IFS1bits.CNIF = 0; // lower CN interrupt flag
     IEC1bits.CNIE = 1; // Enable CN interrupt module
