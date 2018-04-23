@@ -47,7 +47,7 @@ void main(void) {
     lcd_clear(&lcd1);  // Clears _LCD objects from previous array
 
     i2c2_init(157);                      // Initializes I2C on I2C2
-    I2C2ADD = TEST_PERIPHERAL_ADDR>>1;   // Set the device address (7-bit register)
+    I2C2ADD = MODULE_CODEWORD_ADDR>>1;   // Set the device address (7-bit register)
     I2C2MSK = 0;                         // Set mask to 0 (only this address matters)
     _SI2C2IE = 1;                        // Enable i2c slave interrupt
 
@@ -148,6 +148,7 @@ void setup(void) { // Waits for master module to start the game
     // if ((start_flag == 1) || (SW2 == 0)){
     //     state = run;
     // }
+    complete_flag = 0;
     state = run;
 
     // State Cleanup
@@ -162,6 +163,7 @@ void run(void) { // Plays the game
     if (state != last_state) {
         last_state = state;
         // setup state here
+        LED1 = ON; delay_by_nop(1);
         MODULE_LED_RED = ON;
     }
 
@@ -189,6 +191,7 @@ void run(void) { // Plays the game
     // State Cleanup
     if (state != last_state) {
         // cleanup state here
+        LED1=OFF; delay_by_nop(1);
         MODULE_LED_RED = OFF;
     }
 }
@@ -196,9 +199,10 @@ void run(void) { // Plays the game
 void solved(void) { // The puzzle on this module is finished
     // State Setup
     if (state != last_state) {
+        // setup state here
         last_state = state;
         LED3 = ON;
-        // setup state here
+        complete_flag = 1;
         MODULE_LED_GREEN = ON;
     }
 
@@ -217,6 +221,7 @@ void solved(void) { // The puzzle on this module is finished
     if (state != last_state) {
         // cleanup state here
         LED3 = OFF;
+        complete_flag = 0;
         MODULE_LED_GREEN = OFF;
     }
 }
@@ -225,6 +230,7 @@ void end_win(void) { // The master module said the game was won
     // State Setup
     if (state != last_state) {
         last_state = state;
+        MODULE_LED_GREEN = ON;
         // setup state here
     }
 
@@ -238,14 +244,16 @@ void end_win(void) { // The master module said the game was won
     // State Cleanup
     if (state != last_state) {
         // cleanup state here
+        MODULE_LED_GREEN = OFF;
     }
 }
 
 void end_fail(void) { // The master module said the game was lost
     // State Setup
     if (state != last_state) {
-        last_state = state;
         // setup state here
+        last_state = state;
+        MODULE_LED_RED = ON;
     }
 
     // Perform state tasks
@@ -258,6 +266,7 @@ void end_fail(void) { // The master module said the game was lost
     // State Cleanup
     if (state != last_state) {
         // cleanup state here
+        MODULE_LED_RED = OFF;
     }
 }
 

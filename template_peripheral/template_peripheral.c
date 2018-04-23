@@ -99,11 +99,11 @@ void run(void) { // Plays the game
 void solved(void) { // The puzzle on this module is finished
     // State Setup
     if (state != last_state) {
+        // setup state here
         last_state = state;
         LED3 = ON;
         complete_flag = 1;
         MODULE_LED_GREEN = ON;
-        // setup state here
     }
 
     // Perform state tasks
@@ -150,6 +150,7 @@ void end_win(void) { // The master module said the game was won
 void end_fail(void) { // The master module said the game was lost
     // State Setup
     if (state != last_state) {
+        // setup state here
         last_state = state;
         MODULE_LED_RED = ON;
     }
