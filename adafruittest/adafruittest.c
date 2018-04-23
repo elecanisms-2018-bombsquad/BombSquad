@@ -102,9 +102,9 @@ int16_t main(void) {
     delay_by_nop(300000); // wait to make LED2 visible
 
     /* Select device to test here'  */
-    // LED2 = I2Cpoll(matrix_addr); // turn off LED2 if we've found the display
-    // LED2 = I2Cpoll(bar_addr); // turn off LED2 if we've found the display
-    LED2 = I2Cpoll(alpha_addr); // turn off LED2 if we've found the display
+    // if( I2Cpoll(matrix_addr)) LED2 = OFF; // turn off LED2 if we've found the display
+    // if( I2Cpoll(bar_addr)) LED2 = OFF; // turn off LED2 if we've found the display
+    if( I2Cpoll(alpha_addr)) LED2 = OFF; // turn off LED2 if we've found the display
 
   }
 

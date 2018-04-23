@@ -171,13 +171,15 @@ char I2Cread(char addr, char subaddr){
 }
 
 // function checks if device at addr is on bus
-// 1 means it is not there, 0 means it is there
+// 1 means it is there, 0 means it is not there
 unsigned char I2Cpoll(char addr){
-   unsigned char temp = 0;
-   i2c_start();
-   temp = send_i2c_byte((addr) & (0xfffe)); // set /W bit
-   reset_i2c_bus();
-   return temp;
+    unsigned char temp = 0;
+    i2c_start();
+    temp = send_i2c_byte((addr) & (0xfffe)); // set /W bit
+    reset_i2c_bus();
+    if (temp == 0) {
+        return 1; // We found it, no error
+    } else return 0;
 }
 
 // function writes a byte array over i2c
@@ -332,12 +334,14 @@ char i2c2_read_nack(void){	//does not reset bus!!!
    return data;
 }
 
-// function checks if device at addr is on bus
-// 1 means it is not there, 0 means it is there
+// function checks if device at addr i bus
+// 1 means it is not there, 0 means it is not there
 unsigned char I2C2poll(char addr){
    unsigned char temp = 0;
    i2c2_start();
    temp = send_i2c2_byte((addr) & (0xfffe)); // set /W bit
    reset_i2c2_bus();
-   return temp;
+   if (temp == 0) {
+       return 1; // We found it, no error
+   } else return 0;
 }
