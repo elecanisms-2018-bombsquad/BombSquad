@@ -1,56 +1,169 @@
 #include "elecanisms.h"
 #include "peripheral_core.h"
+#include "i2c_address_space.h"
 
-#define son       1
-#define soff      0
+#define MODULE_LED_RED      D0
+#define MODULE_LED_GREEN    D1
 
-#define SLAVE_ADDR 0x60
+typedef void (*STATE_HANDLER_T)(void);
 
-uint16_t state;
+// forward declaration of module modes
+void setup(void);
+void run(void);
+void solved(void);
+void end_win(void);
+void end_fail(void);
 
-//////////////////////
+STATE_HANDLER_T state, last_state;
 
 void ledoff(void) {
-    LED1 = 0;delay_by_nop(1);
+    LED1 = 0; delay_by_nop(1);
     LED2 = 0; delay_by_nop(1);
     LED3 = 0; delay_by_nop(1);
     D0 = OFF;
 }
 
 int16_t main(void) {
-
     init_elecanisms();
-    init_ajuart();
-    i2c2_init(157);      // Initializes I2C on I2C3
-    I2C2ADD = SLAVE_ADDR>>1;   //initialize the address register
-    I2C2MSK = 0;
-    _SI2C2IE = 1;       // these two are the same! The underscore is cool
+    i2c2_init(157);                      // Initializes I2C on I2C2
+    I2C2ADD = TEST_PERIPHERAL_ADDR>>1;   // Set the device address (7-bit register)
+    I2C2MSK = 0;                         // Set mask to 0 (only this address matters)
+    _SI2C2IE = 1;                        // Enable i2c slave interrupt
 
+    D0_DIR = OUT;
+    D1_DIR = OUT;
+
+    state = setup;
 
     while (1) {
-        delay_by_nop(30000);
-        uint16_t val = read_analog(A0_AN);
-
-        if( val > 500 ) {state = son;}    //n
-        if( val < 500 ) {state = soff;}                 //o
-
-
-
-        switch(state){
-
-            case son:
-                complete_flag = 0x01;
-                ledoff();
-                LED1 = ON;
-                break;
-            case soff:
-                complete_flag = 0x00;
-                ledoff();
-                LED2 = ON;
-                break;
-
-
-
-        } // end of switch statement
-    } // end of while
+        state();
+    }
 } // end of main
+
+// STATE MACHINE FUNCTIONS /////////////////////////////////////////////////////
+
+
+void setup(void) { // Waits for master module to start the game
+    // State Setup
+    if (state != last_state) {
+        last_state = state;
+        MODULE_LED_GREEN = ON;
+        // setup state here
+    }
+
+    // Perform state tasks
+
+    // Check for state transitions
+    // if ((start_flag == 1) || (SW2 == 0)){
+    //     state = run;
+    // }
+    complete_flag = 0;
+    state = run;
+
+    // State Cleanup
+    if (state != last_state) {
+        // cleanup state here
+        MODULE_LED_GREEN = OFF;
+    }
+}
+
+void run(void) { // Plays the game
+    // State Setup
+    if (state != last_state) {
+        last_state = state;
+        // setup state here
+        LED1 = ON; delay_by_nop(1);
+        MODULE_LED_RED = ON;
+    }
+
+    // Perform state tasks
+
+
+    // Check for state transitions
+    if (win_flag == 1) {
+        state = end_win;
+    } else if (lose_flag == 1) {
+        state = end_fail;
+    } else if (SW2 == 0 ) {
+        state = solved;
+    }
+
+    // State Cleanup
+    if (state != last_state) {
+        // cleanup state here
+        LED1=OFF; delay_by_nop(1);
+        MODULE_LED_RED = OFF;
+    }
+}
+
+void solved(void) { // The puzzle on this module is finished
+    // State Setup
+    if (state != last_state) {
+        last_state = state;
+        LED3 = ON;
+        complete_flag = 1;
+        MODULE_LED_GREEN = ON;
+        // setup state here
+    }
+
+    // Perform state tasks
+
+
+    // Check for state transitions
+    if (win_flag == 1) {
+        state = end_win;
+    } else if (lose_flag == 1) {
+        state = end_fail;
+    }
+
+    // State Cleanup
+    if (state != last_state) {
+        // cleanup state here
+        LED3 = OFF;
+        complete_flag = 0;
+        MODULE_LED_GREEN = OFF;
+    }
+}
+
+void end_win(void) { // The master module said the game was won
+    // State Setup
+    if (state != last_state) {
+        last_state = state;
+        MODULE_LED_GREEN = ON;
+        // setup state here
+    }
+
+    // Perform state tasks
+
+    // Check for state transitions
+    if (start_flag == 1) {
+        state = run;
+    }
+
+    // State Cleanup
+    if (state != last_state) {
+        // cleanup state here
+        MODULE_LED_GREEN = OFF;
+    }
+}
+
+void end_fail(void) { // The master module said the game was lost
+    // State Setup
+    if (state != last_state) {
+        last_state = state;
+        MODULE_LED_RED = ON;
+    }
+
+    // Perform state tasks
+
+    // Check for state transitions
+    if (start_flag == 1) {
+        state = run;
+    }
+
+    // State Cleanup
+    if (state != last_state) {
+        // cleanup state here
+        MODULE_LED_RED = OFF;
+    }
+}

@@ -1,8 +1,7 @@
 #include "elecanisms.h"
 #include "i2c_reg.h"
 #include "ajuart.h"
-
-#define SLAVE_ADDR 0x60
+#include "i2c_address_space.h"
 
 uint8_t data_buffer[1024];
 
@@ -32,14 +31,18 @@ int main(void) {
         datareturned = 0;
         delay_by_nop(500);
         i2c2_start();
-        send_i2c2_byte(SLAVE_ADDR | 1);  // init a read, last to 1
+        send_i2c2_byte(TEST_PERIPHERAL_ADDR | 1);  // init a read, last to 1
         datareturned = i2c2_read_nack();
         if(datareturned > 1) {LED1 = 1;}
         if(datareturned == 0b10000000) {D0 = ON; delay_by_nop(1);}
-        if(datareturned == 0b00000000) {LED3 = 1;delay_by_nop(1);}
+        if(datareturned == 0b00000000) {LED3 = 1; delay_by_nop(1);}
         reset_i2c2_bus();
 
+        char str[64] = "Message received from peripheral:";
+        U1_puts(str);
         U1_putc(datareturned);
+        U1_putc('\r');
+        U1_putc('\n');
         U1_flush_tx_buffer();
 
         delay_by_nop(1000000);

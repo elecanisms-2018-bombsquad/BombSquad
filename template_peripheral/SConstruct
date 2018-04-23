@@ -19,8 +19,8 @@ env.Append(BUILDERS = {'List' : list})
 env.Program('template_peripheral', ['template_peripheral.c',
                         # 'descriptors.c',
                         # '../lib/usb.c',
-                        '../../lib/i2c_reg.c',
-                        '../../lib/peripheral_core.c',
-                        '../../lib/elecanisms.c'])
+                        '../lib/i2c_reg.c',
+                        '../lib/peripheral_core.c',
+                        '../lib/elecanisms.c'])
 env.Hex('template_peripheral')
 env.List('template_peripheral')
