@@ -42,7 +42,7 @@ void __attribute__((interrupt, auto_psv)) _SI2C2Interrupt(void) {
             case HEADER_NUM_STRIKES:    // 111
                 num_strikes = _data_from_master & 0b00011111 ;
             break;
-            case HEADER_START_GAME:    // 000
+            case HEADER_START_GAME:    // 110
                 start_flag = 1 ;
             break;
             case HEADER_END_WIN:    // 001
@@ -50,6 +50,9 @@ void __attribute__((interrupt, auto_psv)) _SI2C2Interrupt(void) {
             break;
             case HEADER_END_LOSE:    // 010
                 lose_flag = 1 ;
+            break;
+            case HEADER_RST_FSM:    // 101
+                //this is just to reset the fsm after i2c poll
             break;
 
             default: error_code ++ ;

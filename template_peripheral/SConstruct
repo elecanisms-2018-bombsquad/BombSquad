@@ -20,6 +20,7 @@ env.Program('template_peripheral', ['template_peripheral.c',
                         # 'descriptors.c',
                         # '../lib/usb.c',
                         '../lib/i2c_reg.c',
+                        '../lib/ajuart.c',
                         '../lib/peripheral_core.c',
                         '../lib/elecanisms.c'])
 env.Hex('template_peripheral')

@@ -44,7 +44,15 @@ int main(void) {
     uint8_t i = 0;
     // Poll the peripherals to see who's here
     for (i = 0; i < 6; i++) {
-        peripheral_present[i] = I2C2poll(peripheral_addrs[i]);
+        uint8_t temp = 0;
+
+        i2c2_start();
+        temp = send_i2c2_byte(peripheral_addrs[i]); // set /W bit
+        if (temp == 0) {
+            peripheral_present[i] = 1; // We found it, but we need to reset the FSM for i2c
+            send_i2c2_byte(0xA0); // Send dummy byte to reset FSM
+        }
+        reset_i2c2_bus();
     }
 
     //TODO: Send out parameters
@@ -81,7 +89,7 @@ int main(void) {
                     peripheral_complete[i] = 1;
                 }
                 if (((datareturned & 0b01110000) >> 4) > prev_num_strikes) { //If the module recorded any strikes
-                    num_strikes++;
+                    num_strikes+= ((datareturned & 0b01110000) >> 4);
                 }
                 if ((datareturned & 0b00001111) != 0) {
                     // TODO: implement error codes if necessary
@@ -98,10 +106,12 @@ int main(void) {
         // If we checked all of them and the game is still complete, then count it!
         if (game_complete) {
             for (i = 0; i < 6; i++) {
-                i2c2_start();
-                send_i2c2_byte(peripheral_addrs[i] | 0);  // init a write, last to 0
-                send_i2c2_byte(HEADER_END_WIN << 5); // Broadcast that we won
-                reset_i2c2_bus();
+                if(peripheral_present[i]) {
+                    i2c2_start();
+                    send_i2c2_byte(peripheral_addrs[i] | 0);  // init a write, last to 0
+                    send_i2c2_byte(HEADER_END_WIN << 5); // Broadcast that we won
+                    reset_i2c2_bus();
+                }
             }
             //TODO: Go to 'win' state
         }
@@ -109,19 +119,23 @@ int main(void) {
         //Handles strikes
         if (num_strikes > 2) {
             for (i = 0; i < 6; i++) {
-                i2c2_start();
-                send_i2c2_byte(peripheral_addrs[i] | 0);  // init a write, last to 0
-                send_i2c2_byte(HEADER_END_LOSE << 5); // Broadcast the current number of strikes
-                reset_i2c2_bus();
+                if(peripheral_present[i]) {
+                    i2c2_start();
+                    send_i2c2_byte(peripheral_addrs[i] | 0);  // init a write, last to 0
+                    send_i2c2_byte(HEADER_END_LOSE << 5); // Broadcast the current number of strikes
+                    reset_i2c2_bus();
+                }
             }
             //TODO: Go to 'fail' state
         }
         else if (num_strikes > prev_num_strikes) {
             for (i = 0; i < 6; i++) {
-                i2c2_start();
-                send_i2c2_byte(peripheral_addrs[i] | 0);  // init a write, last to 0
-                send_i2c2_byte((HEADER_NUM_STRIKES<<5) | num_strikes); // Broadcast the current number of strikes
-                reset_i2c2_bus();
+                if (peripheral_present[i]) {
+                    i2c2_start();
+                    send_i2c2_byte(peripheral_addrs[i] | 0);  // init a write, last to 0
+                    send_i2c2_byte((HEADER_NUM_STRIKES<<5) | num_strikes); // Broadcast the current number of strikes
+                    reset_i2c2_bus();
+                }
             }
         }
 
