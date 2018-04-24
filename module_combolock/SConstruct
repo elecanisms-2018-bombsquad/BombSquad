@@ -16,9 +16,11 @@ list = Builder(action = 'xc16-objdump -S -D $SOURCE > $TARGET',
 env.Append(BUILDERS = {'List' : list})
 
 env.Program('combolock', ['combolock.c',
-                        # '../lib/i2c_reg.c',
-                        # '../lib/adafruit_led.c',
-                        # '../lib/common.c',
+                        '../lib/peripheral_core.c',
+                        '../lib/adafruit_led.c',
+                        '../lib/ajuart.c',
+                        '../lib/i2c_reg.c',
+                        # '../lib/i2c_address_space.c',
                         '../lib/elecanisms.c'])
 
 env.Hex('combolock')

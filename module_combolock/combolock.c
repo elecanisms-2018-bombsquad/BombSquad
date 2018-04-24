@@ -1,206 +1,335 @@
-// #include <p24FJ128GB206.h>
-// #include <stdint.h>
-
 #include "elecanisms.h"
-#include "i2c_reg.h"
-//#include "adafruit_led.h"
+#include "peripheral_core.h"
+#include "i2c_address_space.h"
+#include "ajuart.h"
+#include "adafruit_led.h"
+
+#define MODULE_LED_RED      D0
+#define MODULE_LED_GREEN    D1
+
+typedef void (*STATE_HANDLER_T)(void);  // main frame of game
+void setup(void);   // forward declaration of module modes
+void run(void);
+void solved(void);
+void end_win(void);
+void end_fail(void);
+STATE_HANDLER_T state, last_state;
+
+/////////////////////////////////
+
+typedef void (*GAME_STATE)(void);  // the sattes the games goes through
+void firstnum(void);
+void secondnum(void);
+void thirdnum(void);
+GAME_STATE combo_num;
 
 
-//
-//
-#define PIN_ENCODER_A D9
-#define PIN_ENCODER_B D1  /* Remap these to some digital pins from elecanisms.h*/
-//
-static uint8_t enc_prev_pos = 0;
-static uint8_t enc_flags    = 0;
-static uint8_t screen_pos = 0; //what position the active character is on.
-static uint8_t UP = 1;
-static uint8_t DOWN = 0;
+void ledoff(void);
+void dispNumber(uint16_t number);
 
-volatile uint16_t current_led = 0;
-//
+uint8_t current_display = 0;
+uint8_t previous_display = 0;
+
+uint16_t new_debounce_reading = 0;
+uint16_t prev_debounce_reading = 0;
+
+uint16_t eval_reading = 0;
+
+uint8_t combo1, combo2, combo3;
+uint8_t counter = 0;
+uint8_t tempval = 0;
+
+_7SEGMENT matrix;
+
+const uint8_t adafruit_display_addr = 0xE0;
+
 
 void __attribute__((interrupt, auto_psv)) _T1Interrupt(void) {
+    // LED1 = 1;
     IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
-    switch (current_led) {  // Toggle whichever LED is the current one
-      case 1 :
-        LED1 = !LED1;
-        LED2 = 0;
-        break;
-      default :
-        LED2 = !LED2;
-        LED1 = 0;
-        break;
+    prev_debounce_reading = new_debounce_reading;
+    new_debounce_reading = read_analog(A0_AN) >> 5 ;
+    if (new_debounce_reading == prev_debounce_reading) {
+        eval_reading = new_debounce_reading;
+        // LED3 = 1;
+    }
+    if(current_display != eval_reading){
+        previous_display = current_display;
+        current_display = eval_reading;
     }
 }
 
-void __attribute__((interrupt, auto_psv)) _T2Interrupt(void) {
-    IFS0bits.T2IF = 0;      // lower Timer2 interrupt flag
-    T2CONbits.TON = 0;      // turn off timer
-    if (PORTDbits.RD10 == 1) {          // Sample D9 after debounce
-      current_led ^= 1;
-    }
-}
-
-void __attribute__((interrupt, auto_psv)) _INT3Interrupt(void) {
-    IFS3bits.INT3IF = 0;      // lower INT3 interrupt flag
-    TMR2 = 0;                 // reset debounce Timer2
-    IFS0bits.T2IF = 0;        // lower Timer2 Interrupt flag
-    T2CONbits.TON = 1;        // start Timer2
-}
-
-int16_t main(void){
+int16_t main(void) {
     init_elecanisms();
-    // set pins as input with internal pull-up resistors enabled
-    //pinMode -> use elecanisms.h, use the function i.e. D0_DIR = OUT
-    D0_DIR = IN; /* This is an arduino function, use DX_DIR = X; */
-    D1_DIR = IN;
-    PIN_ENCODER_A = ON; /* This is an arduino function, use DX = ON/OFF; */
-    PIN_ENCODER_B = ON;
 
-    //Debug
-    LED1 = OFF;
+    i2c2_init(157);                      // Initializes I2C on I2C2
+    I2C2ADD = TEST_PERIPHERAL_ADDR>>1;   // Set the device address (7-bit register)
+    I2C2MSK = 0;                         // Set mask to 0 (only this address matters)
+    _SI2C2IE = 1;                        // Enable i2c slave interrupt
 
-    //Copied the debounce/timer stuff from blink.c
+    D0_DIR = OUT;
+    D1_DIR = OUT;
 
-    // Timer 1 Setup
-        T1CON = 0x0030;         // set Timer1 period to 0.25s, prescaler 256 match 15624
-        PR1 = 0x3D08;
+    init_ajuart();
+    i2c_init(1e3);      // initializes I2C3 for screen thing
+    led_begin((_ADAFRUIT_LED*)&matrix.super, adafruit_display_addr); // Set up the HT16K33 and start the oscillator
 
-        TMR1 = 0;               // set Timer1 count to 0
-        IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
-        IEC0bits.T1IE = 1;      // enable Timer1 interrupt
-        T1CONbits.TON = 1;      // turn on Timer1
+    T1CON = 0x0020;         // set Timer1cd .. period to 10 ms for debounce
+    PR1 = 0x2710;           // prescaler 16, match value 10000
+    // T1CON = 0x0030; // PR1 = 0x3D08;        // set Timer1 period to 0.25s, prescaler 256 match 15624
+    TMR1 = 0;               // set Timer1 count to 0
+    IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
+    IEC0bits.T1IE = 1;      // enable Timer1 interrupt
+    T1CONbits.TON = 1;      // turn on Timer1
 
-    // Timer 2 Setup
-        T2CON = 0x0020;         // set Timer2 period to 10 ms for debounce
-        PR2 = 0x2710;           // prescaler 16, match value 10000
+    state = setup;
 
-        TMR2 = 0;               // set Timer2 to 0
-        IFS0bits.T2IF = 0;      // lower T2 interrupt flag
-        IEC0bits.T2IE = 1;      // enable T2 interrupt
-        T2CONbits.TON = 0;      // make sure T2 isn't on
+    while (1) {
+        dispNumber(eval_reading);
+        state();
+        // LED2 = 1;
+    } // end of while
+} // end of main
 
-    // INT3 Setup
-        RPINR1bits.INT3R = INT3_RP; // Configure interrupt 3 on RP3, pin D9 on board
 
-        IFS3bits.INT3IF = 0;    // lower interrupt flag for INT3
-        IEC3bits.INT3IE = 1;    // enable INT3 interrupt
 
-    // get an initial reading on the encoder pins
-    if (PIN_ENCODER_A == 0) {enc_prev_pos |= (1 << 0);} /* Also arduino */
-    if (PIN_ENCODER_B == 0) {enc_prev_pos |= (1 << 1);}
 
-    while (1){
-      loop();
+///////////////////////////////////////////////////////////////////////////
+///////////////// STATE MACHINE FUNCTIONS /////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+
+
+void firstnum(void){ // turn right 3 times around , right is numbers going down
+    ledoff();
+    LED1 = 1;
+
+    int8_t delta = previous_display - current_display ;
+
+    if ( (delta < -1) && (delta > -20) ) { //catch it if you go backwards
+        counter = 0;
+    }
+
+    if (current_display == combo1 )  { // set a temp if you get the number to turn past
+        tempval = 1;
+    }
+    if (previous_display == combo1 && tempval == 1) { // if you move on to a new number after that
+        counter = counter + 1;
+        tempval = 0;
+    }
+    if(counter == 2 && tempval == 1){ // go to next direction
+        combo_num = secondnum;      // cleanup things here
+        counter = 0;
+        tempval = 0;
+        previous_display = current_display; // so you don't think you went backwards as soon as you enter the state
+    }
+    U1_putc(1);
+    U1_putc(counter);
+    U1_putc(tempval);
+    U1_putc('\r');
+    U1_putc('\n');
+    U1_flush_tx_buffer();
+    delay_by_nop(15);
+
+}
+
+void secondnum(void){ // turn left 1 extra time around , left us numbers going up
+    ledoff();
+    LED2 = 1;
+
+    int8_t delta = previous_display - current_display ;
+
+    if (current_display == combo2 ){ // set a temp if you get the number to turn past
+        tempval = 1;
+    }
+
+    if (previous_display == combo2 && tempval == 1) { // if you move on to a new number after that
+        counter = counter + 1;
+        tempval = 0;
+    }
+    if(counter == 1 && tempval == 1){ // go to next direction
+        combo_num = thirdnum;      // cleanup things here
+        counter = 0;
+        tempval = 0;
+        previous_display = current_display; // so you don't think you went backwards as soon as you enter the state
+
+    }
+    if ( (delta > 1) && (delta < 20) ) {  //catch it if you go backwards
+        counter = 0;
+        tempval = 0;
+        combo_num = firstnum;
+    }
+
+    U1_putc(2);
+    U1_putc(counter);
+    U1_putc(tempval);
+    U1_putc('\r');
+    U1_putc('\n');
+    U1_flush_tx_buffer();
+    delay_by_nop(15);
+}
+
+void thirdnum(void){
+    ledoff();
+    LED3 = 1;
+    int8_t delta = previous_display - current_display ;
+    if (current_display == combo3 ) {
+        combo_num = firstnum;
+        counter = 0;
+        state = solved;
+    }
+    if ( (delta < -1) && (delta > -20) ) {  //catch it if you go backwards
+        combo_num = firstnum;
+        counter = 0;
+    }
+
+    U1_putc(3);
+    U1_putc(counter);
+    U1_putc(tempval);
+    U1_putc('\r');
+    U1_putc('\n');
+    U1_flush_tx_buffer();
+    delay_by_nop(15);
+}
+
+void setup(void) { // Waits for master module to start the game
+    // State Setup
+    if (state != last_state) {
+        last_state = state;
+        MODULE_LED_GREEN = ON;
+        MODULE_LED_RED = ON;
+        // setup state here
+    }
+
+    // Perform state tasks
+
+    // usually this will determine what the combo values are based on the serial number
+    // if (serial_number == 1) { combo1 = 5; combo2 = 10; combo3 = 15; }
+    // if (serial_number == 2) { combo1 = 13; combo2 = 7; combo3 = 2; }
+    // if (serial_number == 3) { combo1 = 17; combo2 = 8; combo3 = 20; }
+    combo1 = 5; combo2 = 10; combo3 = 15;
+
+    combo_num = firstnum;
+
+    // Check for state transitions
+    complete_flag = 0;
+    state = run;
+    delay_by_nop(300000);
+
+    // State Cleanup
+    if (state != last_state) {
+        MODULE_LED_GREEN = OFF;
     }
 }
 
-void SelectChr(){//Locks in the current character on the screen.
-
-}
-
-void test_LED(){
-  while (1){LED1 = ON;}
-}
-
-void dispChr(uint8_t direction){//Increments/decrements the character on the screen.
-  if (direction == UP){
-    if (LED1 == ON){LED1 = OFF;}
-    else {LED1 = ON;}
+void run(void) { // Plays the game
+    // State Setup
+    if (state != last_state) {
+        last_state = state;
+        // LED1 = ON; delay_by_nop(1);
+        MODULE_LED_RED = ON;
     }
-  else if (direction == DOWN){
-    if (LED3 == ON){LED3 = OFF;}
-    else {LED3 = ON;}
+
+    // Perform state tasks
+    combo_num();
+
+    // Check for state transitions
+    if (win_flag == 1) {state = end_win;}
+    else if (lose_flag == 1) {state = end_fail;}
+    else if (SW2 == 0 ) {state = solved;}
+
+    // State Cleanup
+    if (state != last_state) {
+        // LED1=OFF; delay_by_nop(1);
+        MODULE_LED_RED = OFF;
     }
-  else {;}
 }
 
-//
-void loop(){
-  int8_t enc_action = 0; // 1 or -1 if moved, sign is direction
-  uint8_t enc_cur_pos = 0;
-//
+void solved(void) { // The puzzle on this module is finished
+    // State Setup
+    if (state != last_state) {
+        last_state = state;
+        // LED3 = ON;
+        complete_flag = 1;
+        MODULE_LED_GREEN = ON;
+    }
 
-  //Ground state of the pins is 1.  Therefore 0 means a change.
-  /*Can use A as the clock.  Whenever a rising edge of A is detected, check state of B.
-  So when A is "0", if B is 0, then that means it's one direction, and if B is one, then
-  it's another direction.
-
-
-  Add in interrupt so can control the system through that instead of polling.
-  /*
-  if (PIN_ENCODER_A == 0){
-    enc_cur_pos |= (1 <<0);
-
-    } //Read Encoder_Pin_A?
-  if (PIN_ENCODER_B == 0){enc_cur_pos |= (1 <<1);} //Read Encoder_Pin_B?
-  //if (enc_cur_pos != 0){test_LED();}
-  */
+    // Perform state tasks
 
 
+    // Check for state transitions
+    if (win_flag == 1) {state = end_win;}
+    else if (lose_flag == 1) {state = end_fail;}
 
-
-//   // if any rotation at all
-  // if (enc_cur_pos != enc_prev_pos){
-  //   if (enc_prev_pos == 0x00) {
-  //     if (enc_cur_pos == 0x01) {enc_flags |= (1 << 0);}        // this is the first edge
-  //     else if (enc_cur_pos == 0x02) {enc_flags |= (1 << 1);}
-  //   }
-  //
-  //   if (enc_cur_pos == 0x03){enc_flags |= (1 << 4);}   // this is when the encoder is in the middle of a "step"
-  //   else if (enc_cur_pos == 0x00){
-  //     if (enc_prev_pos == 0x02) {enc_flags |= (1 << 2);}     // this is the final edge
-  //     else if (enc_prev_pos == 0x01) {enc_flags |= (1 << 3);}
-  //   }
-  //}
-// check the first and last edge
-// or maybe one edge is missing, if missing then require the middle state
-// this will reject bounces and false movements
-
-// //       if (bit_is_set(enc_flags, 0) && (bit_is_set(enc_flags, 2) || bit_is_set(enc_flags, 4))) {
-// //         enc_action = 1;}
-//
-//   if ((enc_flags & (1 << 0)) && enc_flags & (1 << 2) || (enc_flags & (1 << 4))){
-//         enc_action = 1;
-//   }
-// //
-// //       else if (bit_is_set(enc_flags, 2) && (bit_is_set(enc_flags, 0) || bit_is_set(enc_flags, 4))) {
-// //         enc_action = 1;}
-//
-//   else if ((enc_flags & (1 << 2)) && enc_flags & (1 << 0) || (enc_flags & (1 << 4))){
-//     enc_action = 1;
-//   }
-// //
-// //       else if (bit_is_set(enc_flags, 1) && (bit_is_set(enc_flags, 3) || bit_is_set(enc_flags, 4))) {
-// //         enc_action = -1;}
-//
-//   else if ((enc_flags & (1 << 1)) && enc_flags & (1 << 3) || (enc_flags & (1 << 4))){
-//       enc_action = -1;
-//   }
-//
-// //       else if (bit_is_set(enc_flags, 3) && (bit_is_set(enc_flags, 1) || bit_is_set(enc_flags, 4))) {
-// //         enc_action = -1;}
-//
-//   else if ((enc_flags & (1 << 3)) && enc_flags & (1 << 1) || (enc_flags & (1 << 4))){
-//       enc_action = 1;
-//   }
-// //
-//   enc_flags = 0; // reset for next time
-//
-//     }
-//   }
-//   //Encoder action is basically going up or down.  So basically can use that to increment up and down.
-//
-//   // Figure out the output from the loop, detect output and convert it to an incrementing table.
-//   // Interrupt to select the current character and move on to selecting the next character.
-
-
-  enc_prev_pos = enc_cur_pos;
-
-
-  //if (enc_action > 0) {dispChr(UP);}
-  //else if (enc_action < 0) {dispChr(DOWN);}
+    // State Cleanup
+    if (state != last_state) {
+        // LED3 = OFF;
+        complete_flag = 0;
+        MODULE_LED_GREEN = OFF;
+    }
 }
-//
-//
+
+void end_win(void) { // The master module said the game was won
+    // State Setup
+    if (state != last_state) {
+        last_state = state;
+        MODULE_LED_GREEN = ON;
+    }
+
+    // Perform state tasks
+
+    // Check for state transitions
+    if (start_flag == 1) {state = run;}
+
+    // State Cleanup
+    if (state != last_state) {MODULE_LED_GREEN = OFF;}
+}
+
+void end_fail(void) { // The master module said the game was lost
+    // State Setup
+    if (state != last_state) {
+        last_state = state;
+        MODULE_LED_RED = ON;
+    }
+
+    // Perform state tasks
+
+    // Check for state transitions
+    if (start_flag == 1) {state = run;}
+
+    // State Cleanup
+    if (state != last_state) {MODULE_LED_RED = OFF; }
+}
+
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+
+
+void ledoff(void) {
+    LED1 = 0; delay_by_nop(1);
+    LED2 = 0; delay_by_nop(1);
+    LED3 = 0; delay_by_nop(1);
+    // D0 = OFF;
+}
+
+
+void dispNumber(uint16_t number) {
+    uint8_t num_new;
+    uint8_t thousands, hundreds, tens, ones;
+
+    thousands = number / 1000 ;
+    num_new = number - ( thousands * 1000);
+    hundreds = num_new  / 100 ;
+    num_new = num_new - (hundreds * 100);
+    tens = num_new / 10 ;
+    num_new = num_new - (tens * 10) ;
+    ones = num_new ;
+
+    // U1_putc(thousands); U1_putc(hundreds); U1_putc(tens); U1_putc(ones);
+    // U1_putc('\r'); U1_putc('\n'); U1_flush_tx_buffer();
+
+    sevseg_writeDigitNum(&matrix, 1, tens, 0);
+    sevseg_writeDigitNum(&matrix, 3, ones, 0);
+    led_writeDisplay((_ADAFRUIT_LED*)&matrix.super); //Don't forget to actually write the data!
+}
