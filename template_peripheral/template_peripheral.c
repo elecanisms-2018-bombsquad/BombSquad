@@ -14,6 +14,8 @@ void solved(void);
 void end_win(void);
 void end_fail(void);
 
+uint8_t has_struck;
+
 STATE_HANDLER_T state, last_state;
 
 void ledoff(void) {
@@ -48,6 +50,9 @@ void setup(void) { // Waits for master module to start the game
     if (state != last_state) {
         last_state = state;
         MODULE_LED_GREEN = ON;
+        complete_flag = 0;
+        num_strikes = 0;
+        error_code = 0;
         // setup state here
     }
 
@@ -57,7 +62,6 @@ void setup(void) { // Waits for master module to start the game
     // if ((start_flag == 1) || (SW2 == 0)){
     //     state = run;
     // }
-    complete_flag = 0;
     state = run;
 
     // State Cleanup
@@ -74,6 +78,7 @@ void run(void) { // Plays the game
         // setup state here
         LED1 = ON; delay_by_nop(1);
         MODULE_LED_RED = ON;
+        has_struck = 0;
     }
 
     // Perform state tasks
@@ -84,8 +89,15 @@ void run(void) { // Plays the game
         state = end_win;
     } else if (lose_flag == 1) {
         state = end_fail;
-    } else if (SW2 == 0 ) {
+    }
+    if (SW2 == 0 ) {
         state = solved;
+    }
+    if (SW1 == 0) {
+        if (!has_struck) {
+            num_strikes++;
+            has_struck = 1;
+        }
     }
 
     // State Cleanup

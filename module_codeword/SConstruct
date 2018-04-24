@@ -27,6 +27,7 @@ env.Program('codeword', ['codeword.c',
                         '../lib/i2c_reg.c',
                         '../lib/peripheral_core.c',
                         '../lib/elecanisms.c',
+                        '../lib/ajuart.c',
                         '../lib/common.c'])
 
 #print('Creating builder to load hex file via bootloader...')
