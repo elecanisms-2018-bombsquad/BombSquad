@@ -11,5 +11,7 @@
 #define MODULE_BUTTON_ADDR      0x40
 #define MODULE_NEEDY_ADDR       0x50
 #define MODULE_SIMON_ADDR       0x60
+#define MODULE_COMBO_ADDR       0x70
+
 
 #endif
