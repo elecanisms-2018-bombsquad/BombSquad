@@ -11,6 +11,7 @@
 #include "codeword.h"
 #include "peripheral_core.h"
 #include "i2c_address_space.h"
+#include "ajuart.h"
 
 #define LETTERS_PER_COLUMN  6
 #define MODULE_LED_RED      D10
@@ -39,6 +40,7 @@ _LCD lcd1;
 
 void main(void) {
     init_elecanisms();
+    init_ajuart();
     // Setup rocker pins as inputs and set pull-up resistors
     toggleSwitchSetup();
 
@@ -139,6 +141,8 @@ void setup(void) { // Waits for master module to start the game
     if (state != last_state) {
         last_state = state;
         MODULE_LED_GREEN = ON;
+        lcd_print2(&lcd1, "_setup_", "");
+        complete_flag = 0;
         // setup state here
     }
 
@@ -148,8 +152,10 @@ void setup(void) { // Waits for master module to start the game
     // if ((start_flag == 1) || (SW2 == 0)){
     //     state = run;
     // }
-    complete_flag = 0;
-    state = run;
+
+    if (start_flag == 1) {
+        state = run;
+    }
 
     // State Cleanup
     if (state != last_state) {
@@ -177,6 +183,8 @@ void run(void) { // Plays the game
         state = solved;
     } else {
         LED3 = OFF;
+        U1_putc(num_strikes);
+        U1_flush_tx_buffer();
         lcd_print2(&lcd1, dispptr, "");
     }
     delay_by_nop(30000);

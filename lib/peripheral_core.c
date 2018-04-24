@@ -2,7 +2,7 @@
 #include "i2c_reg.h"
 #include "bs_headers.h"
 
-
+ // TODO: Check if making these volatiles makes this work
 uint8_t _byte_to_master;
 uint8_t _data_from_master;
 uint8_t serial_number;
