@@ -53,11 +53,22 @@ void main(void) {
     I2C2MSK = 0;                         // Set mask to 0 (only this address matters)
     _SI2C2IE = 1;                        // Enable i2c slave interrupt
 
-    rand_val = read_analog(A0);
-    uint8_t i;
-    for (i=0; i<20+read_analog(A0); i++) {
-        rand_next();
+    rand_val = read_analog(A0); // Set up the seed
+
+    // Add more random noise
+    uint8_t i, j;
+    for (i=0; i<20; i++) {
+        for (j=0; j<read_analog(A0); j++) {
+            rand_next();
+            delay_by_nop(read_analog(A0));
+        }
     }
+
+    U1_putc((uint8_t)rand_val >> 8);
+    U1_putc((uint8_t)rand_val);
+    U1_putc('\r');
+    U1_putc('\n');
+    U1_flush_tx_buffer();
 
     // set codeword and set of letters
     char _codeSet[36];
@@ -140,8 +151,8 @@ void setup(void) { // Waits for master module to start the game
     // State Setup
     if (state != last_state) {
         last_state = state;
-        MODULE_LED_GREEN = ON;
-        lcd_print2(&lcd1, "_setup_", "");
+        MODULE_LED_GREEN = ON; delay_by_nop(1);
+        MODULE_LED_RED = ON;
         complete_flag = 0;
         // setup state here
     }
@@ -160,7 +171,8 @@ void setup(void) { // Waits for master module to start the game
     // State Cleanup
     if (state != last_state) {
         // cleanup state here
-        MODULE_LED_GREEN = OFF;
+        MODULE_LED_GREEN = OFF; delay_by_nop(1);
+        MODULE_LED_RED = ON;
     }
 }
 
@@ -183,8 +195,6 @@ void run(void) { // Plays the game
         state = solved;
     } else {
         LED3 = OFF;
-        U1_putc(num_strikes);
-        U1_flush_tx_buffer();
         lcd_print2(&lcd1, dispptr, "");
     }
     delay_by_nop(30000);
