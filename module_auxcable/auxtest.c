@@ -1,28 +1,295 @@
+#include "elecanisms.h"
+#include "peripheral_core.h"
+#include "i2c_address_space.h"
+#include "ajuart.h"
+#include "adafruit_led.h"
+
+#define MODULE_LED_RED      D0
+#define MODULE_LED_GREEN    D1
+
+typedef void (*STATE_HANDLER_T)(void); // frame of game states
+void setup(void);// forward declaration of module modes
+void run(void);
+void solved(void);
+void end_win(void);
+void end_fail(void);
+STATE_HANDLER_T state, last_state;
+
+typedef void (*GAME_STATE)(void);  // the sattes the games goes through
+void first_gamestate(void);
+void second_gamestate(void);
+void third_gamestate(void);
+GAME_STATE num_gamestate;
+
+uint8_t done_striked;
+
+void ledoff(void); // define function
+// void updateReading(uint8_t oldarray, uint8_t targetarray );
+void updateReading(uint8_t *oldarray, uint8_t *targetarray ){
+    uint8_t i;
+    for (i = 0; i < 6; i++){
+        targetarray[i] = oldarray[i];
+    }
+}
+
+void updateAnalog(uint8_t *array){
+    uint8_t i;
+    for (i = 0; i < 6; i++){
+        array[i] = read_analog(A0_AN);
+    }
+}
+
+// void test(uint8_t *a, uint8_t b){
+//     // *a = *b; // put B into A
+//     *a[0] = b[5];
+// }
+
+uint8_t prev_debounce_reading[2];
+uint8_t new_debounce_reading[2];
+uint8_t eval_reading[2];
+
+
+uint8_t* valpointer;
+uint8_t* valpointertwo;
+uint8_t valarray[2];
+
+
+void __attribute__((interrupt, auto_psv)) _T1Interrupt(void) {
+    // LED1 = 1;
+    IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
+
+    valarray[0] = read_analog(A0_AN);
+    valarray[1] = read_analog(A1_AN);
+    valarray[2] = read_analog(A2_AN);
+
+    valpointer[0] = valarray[0];
+    valpointertwo = valarray;
+
+
+
+
+    // updateAnalog(uint8_t prev_debounce_reading);
+    // prev_debounce_reading = new_debounce_reading;
+    // new_debounce_reading[0] = read_analog(A0_AN);
+    // new_debounce_reading[1] = read_analog(A1_AN);
+    // new_debounce_reading[2] = read_analog(A2_AN);
+    // new_debounce_reading[3] = read_analog(A3_AN);
+    // new_debounce_reading[4] = read_analog(A4_AN);
+    // new_debounce_reading[5] = read_analog(A5_AN);
+    // if (new_debounce_reading == prev_debounce_reading) {
+    //     eval_reading = new_debounce_reading;
+    // }
+
+}
+
+
+
+int16_t main(void) {
+    init_elecanisms();
+    init_ajuart();
+
+    D0_DIR = OUT;
+    D1_DIR = OUT;
+
+    i2c2_init(157);                      // Initializes I2C on I2C2
+    I2C2ADD = TEST_PERIPHERAL_ADDR>>1;   // Set the device address (7-bit register)
+    I2C2MSK = 0;                         // Set mask to 0 (only this address matters)
+    _SI2C2IE = 1;                        // Enable i2c slave interrupt
+
+    T1CON = 0x0020;         // set Timer1cd .. period to 10 ms for debounce
+    PR1 = 0x2710;           // prescaler 16, match value 10000
+    TMR1 = 0;               // set Timer1 count to 0
+    IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
+    IEC0bits.T1IE = 1;      // enable Timer1 interrupt
+    T1CONbits.TON = 1;      // turn on Timer1
+
+    state = setup;
+
+
+
+    while (1) {
+        state();
+    }
+} // end of main
+
+
+// STATE MACHINE FUNCTIONS /////////////////////////////////////////////////////
+
+
+void setup(void) { // Waits for master module to start the game
+    // State Setup
+    if (state != last_state) {
+        last_state = state;
+        MODULE_LED_GREEN = ON; delay_by_nop(1);
+        MODULE_LED_RED = ON;
+        complete_flag = 0;
+        num_strikes = 0;
+        error_code = 0;
+        // setup state here
+    }
+
+    // Perform state tasks
+
+    //Check for state transitions
+    if ((start_flag == 1) || (SW2 == 0)){
+        state = run;
+    }
+
+    // State Cleanup
+    if (state != last_state) {
+        MODULE_LED_RED = OFF; delay_by_nop(1);
+        MODULE_LED_GREEN = OFF;
+    }
+}
+
+void run(void) { // Plays the game
+    // State Setup
+    if (state != last_state) {
+        last_state = state;
+        LED1 = ON; delay_by_nop(1);
+        MODULE_LED_RED = ON;
+        done_striked = 0;
+    }
+
+    // Perform state tasks
+
+
+    // Check for state transitions
+    if (win_flag == 1) {
+        state = end_win;
+    } else if (lose_flag == 1) {
+        state = end_fail;
+    }
+    if (SW2 == 0 ) {
+        state = solved;
+    }
+    if (SW1 == 0) {
+        if (!done_striked) {
+            num_strikes++;
+            done_striked = 1;
+        }
+    }
+    if (SW3 == 0) {
+        if (!done_striked) {
+            num_strikes+=3;
+            done_striked = 1;
+        }
+    }
+    U1_putc(num_strikes);
+    U1_putc('\r');
+    U1_putc('\n');
+    U1_flush_tx_buffer();
+
+    // State Cleanup
+    if (state != last_state) {
+        LED1=OFF; delay_by_nop(1);
+        MODULE_LED_RED = OFF;
+    }
+}
+
+void solved(void) { // The puzzle on this module is finished
+    // State Setup
+    if (state != last_state) {
+        last_state = state;
+        LED3 = ON;
+        complete_flag = 1;
+        MODULE_LED_GREEN = ON;
+    }
+
+    // Perform state tasks
+
+
+    // Check for state transitions
+    if (win_flag == 1) {
+        state = end_win;
+    } else if (lose_flag == 1) {
+        state = end_fail;
+    }
+
+    // State Cleanup
+    if (state != last_state) {
+        LED3 = OFF;
+        complete_flag = 0;
+        MODULE_LED_GREEN = OFF;
+    }
+}
+
+void end_win(void) { // The master module said the game was won
+    // State Setup
+    if (state != last_state) {
+        last_state = state;
+        MODULE_LED_GREEN = ON;
+
+        T1CON = 0x0030;         // set Timer1 period to 0.5s
+        PR1 = 0x7A11;
+
+        TMR1 = 0;               // set Timer1 count to 0
+        IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
+        T1CONbits.TON = 1;      // turn on Timer1
+        // setup state here
+    }
+
+    // Perform state tasks
+    if (IFS0bits.T1IF == 1) {
+        IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
+        MODULE_LED_GREEN = !MODULE_LED_GREEN;           // toggle LED
+    }
+
+
+    // State Cleanup
+    if (state != last_state) {
+        MODULE_LED_GREEN = OFF;
+    }
+}
+
+void end_fail(void) { // The master module said the game was lost
+    // State Setup
+    if (state != last_state) {
+        last_state = state;
+        MODULE_LED_RED = ON;
+
+        T1CON = 0x0030;         // set Timer1 period to 0.5s
+        PR1 = 0x7A11;
+
+        TMR1 = 0;               // set Timer1 count to 0
+        IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
+        T1CONbits.TON = 1;      // turn on Timer1
+    }
+
+    // Perform state tasks
+    if (IFS0bits.T1IF == 1) {
+        IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
+        MODULE_LED_RED = !MODULE_LED_RED;           // toggle LED
+    }
+
+
+    // State Cleanup
+    if (state != last_state) {
+        MODULE_LED_RED = OFF;
+        T1CONbits.TON = 0;      // turn off Timer1
+    }
+}
+
+void ledoff(void) {
+    LED1 = 0; delay_by_nop(1);
+    LED2 = 0; delay_by_nop(1);
+    LED3 = 0; delay_by_nop(1);
+    D0 = OFF;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /*
-** Copyright (c) 2018, Bradley A. Minch
-** All rights reserved.
-**
-** Redistribution and use in source and binary forms, with or without
-** modification, are permitted provided that the following conditions are met:
-**
-**     1. Redistributions of source code must retain the above copyright
-**        notice, this list of conditions and the following disclaimer.
-**     2. Redistributions in binary form must reproduce the above copyright
-**        notice, this list of conditions and the following disclaimer in the
-**        documentation and/or other materials provided with the distribution.
-**
-** THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-** IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-** ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
-** LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-** CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-** SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-** INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-** CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-** POSSIBILITY OF SUCH DAMAGE.
-*/
+// Old stuff from last time
 
 #include <p24FJ128GB206.h>
 #include <stdint.h>
@@ -127,3 +394,5 @@ while(1){
 
 
 } // end of main
+
+*/

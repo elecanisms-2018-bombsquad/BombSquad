@@ -17,8 +17,12 @@ list = Builder(action = 'xc16-objdump -S -D $SOURCE > $TARGET',
 env.Append(BUILDERS = {'List' : list})
 
 env.Program('auxtest', ['auxtest.c',
-                        'descriptors.c',
-                        '../lib/usb.c',
+                        # '../lib/usb.c',
+                        '../lib/peripheral_core.c',
+                        # '../lib/i2c_address_space.c',
+                        '../lib/ajuart.c',
+                        '../lib/i2c_reg.c',
+                        '../lib/adafruit_led.c',
                         '../lib/elecanisms.c'])
 env.Hex('auxtest')
 env.List('auxtest')
