@@ -93,6 +93,9 @@
 #define D8_PUE              CNPU4bits.CN54PUE
 #define D9_PUE              CNPU4bits.CN55PUE
 #define D10_PUE             CNPU4bits.CN49PUE
+// something wring iwth pullup for D11
+// when I try to compile with D11_PUE = 1; in main I get error:
+// " error: 'CNPU3BITS' has no member named 'CN46PUE' "
 #define D11_PUE             CNPU3bits.CN46PUE
 #define D12_PUE             CNPU4bits.CN51PUE
 #define D13_PUE             CNPU4bits.CN52PUE
