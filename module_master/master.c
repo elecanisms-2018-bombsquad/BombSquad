@@ -1,36 +1,164 @@
-#include <p24FJ128GB206.h>
-#include <stdint.h>
-
-#include "common.h" // common.h needed for _init_clock, not sure if needed
+#include <stdlib.h>
+#include <string.h> // for strlen, memset
 #include "elecanisms.h"
-#include "i2c_reg.h"
 #include "adafruit_led.h"
+#include "i2c_reg.h"
+#include "ajuart.h"
+#include "i2c_address_space.h"
+#include "bs_headers.h"
 
 #define STRIKE1_RLED      D0
 #define STRIKE1_GLED      D1
-#define STRIKE2_RLED      D2
-#define STRIKE2_GLED      D3
+#define STRIKE2_RLED      D10
+#define STRIKE2_GLED      D11
 #define STRIKE3_RLED      D4
 #define STRIKE3_GLED      D5
 #define BUTTON_LED        D6
 #define BUTTON_LED_LOW    D7
 
 #define max_time 10
+uint16_t time_left;
 
 _7SEGMENT matrix;
+uint8_t matrix_addr = 0xE0;
 
-const uint8_t target_addr = 0xE0;
-uint16_t time_left;
+uint8_t data_buffer[1024];
+uint8_t datareturned;
+uint8_t peripheral_addrs[6] = {TEST_PERIPHERAL_ADDR,
+                               MODULE_CODEWORD_ADDR,
+                               MODULE_AUXCABLE_ADDR,
+                               MODULE_BUTTON_ADDR  ,
+                               MODULE_NEEDY_ADDR   ,
+                               MODULE_SIMON_ADDR   };
+
+uint8_t peripheral_present[6] = {0,0,0,0,0,0};
+uint8_t peripheral_complete[6] = {0,0,0,0,0,0};
+uint8_t num_strikes = 0;
+uint8_t prev_num_strikes = 0;
+uint8_t game_complete = 0;
+
+
 
 // Forward declarations of functions to avoid a header file :/
 void idle(void);
 void active(void);
-void end(void);
+void end_win(void);
+void end_fail(void);
 void dispSeconds(uint16_t seconds);
 
 typedef void (*STATE_HANDLER_T)(void);
 STATE_HANDLER_T state, last_state;
 
+void strikeLEDOff() {
+    STRIKE1_RLED = OFF; delay_by_nop(1);
+    STRIKE1_GLED = OFF; delay_by_nop(1);
+    STRIKE2_RLED = OFF; delay_by_nop(1);
+    STRIKE2_GLED = OFF; delay_by_nop(1);
+    STRIKE3_RLED = OFF; delay_by_nop(1);
+    STRIKE3_GLED = OFF; delay_by_nop(1);
+}
+
+// MAIN FUNCTION ***************************************************************
+
+int16_t main(void) {
+    init_elecanisms();
+    init_clock(); // not sure if this does anything
+    // Initializes I2C on I2C3
+    i2c_init(1e3);
+    led_begin((_ADAFRUIT_LED*)&matrix.super, matrix_addr); // Set up the HT16K33 and start the oscillator
+
+    time_left = max_time; // Set up time left to be max time
+
+    // Setup pins as output
+    D0_DIR = 0;
+    D1_DIR = 0;
+    D10_DIR = 0;
+    D11_DIR = 0;
+    D4_DIR = 0;
+    D5_DIR = 0;
+    D6_DIR = 0;
+    D7_DIR = 0;
+    D9_DIR = 0;
+
+
+    // Init button low
+    BUTTON_LED = 0;
+    BUTTON_LED_LOW = 0;
+
+    // Setup D8 as input
+    D8_DIR = 1;
+    // Set up pull-up resistor on button D8
+    CNPU4bits.CN54PUE = 1;
+    // Set D9 as pull-down for button
+    D9 = 0;
+
+    /* Timer 1 setup for game timing*/
+    T1CON = 0x0030;         // set Timer1 period to 1s
+    PR1 = 0xF422;
+    TMR1 = 0;               // set Timer1 count to 0
+    IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
+    IEC0bits.T1IE = 1;      // enable Timer1 interrupt
+
+    // /* Timer 2 setup for beep timing*/
+    // T2CON = 0x0030;
+    // PR2 = 0x186A;           // set Timer2 period to 0.1s
+    // TMR2 = 0;               // set Timer1 count to 0
+    // IFS0bits.T2IF = 0;      // lower T2 interrupt flag
+    // IEC0bits.T2IE = 1;      // enable T2 interrupt
+
+
+    state = idle;           // Initialize state to idle
+    last_state = (STATE_HANDLER_T)NULL;
+
+    memset(peripheral_present, 0, 6); // set arrays to 0
+    memset(peripheral_complete, 0, 6);
+    num_strikes = 0;
+    prev_num_strikes = 0;
+    game_complete = 0;
+
+    i2c2_init(157);      // initialize I2C for 16Mhz OSC with 100kHz I2C clock
+
+    delay_by_nop(300000);
+
+
+    uint8_t i = 0;
+    // Poll the peripherals to see who's here
+    for (i = 0; i < 6; i++) {
+        uint8_t temp = 0;
+
+        i2c2_start();
+        temp = send_i2c2_byte(peripheral_addrs[i]); // set /W bit
+        if (temp == 0) {
+            peripheral_present[i] = 1; // We found it, but we need to reset the FSM for i2c
+            send_i2c2_byte(0xA0); // Send dummy byte to reset FSM
+        }
+        reset_i2c2_bus();
+    }
+
+    //TODO: Send out parameters
+
+    //TODO: Send out start condition
+    for (i = 0; i < 6; i++) {
+        if (peripheral_present[i]) {
+            i2c2_start();
+            send_i2c2_byte(peripheral_addrs[i] | 0);  // init a write, last to 0
+            send_i2c2_byte(HEADER_START_GAME << 5);
+            reset_i2c2_bus();
+        }
+    }
+
+    while (1) {
+        state();
+    }
+
+}
+
+// ISRs ************************************************************************
+void __attribute__((interrupt, auto_psv)) _T1Interrupt(void) {
+    IFS0bits.T1IF = 0;  // if it's been a second, lower the counter and show it
+    time_left--;
+
+}
 // STATE MACHINE FUNCTIONS *****************************************************
 
 void idle(void) {
@@ -59,6 +187,7 @@ void active(void) {
         IFS0bits.T1IF = 0; //lower interrupt flag
         TMR1 = 0;          // reset timer register
         T1CONbits.TON = 1; // enable 1 second timer
+
         time_left = max_time;
         dispSeconds(time_left);
         STRIKE1_GLED = ON; // Turn on strike LEDs to green
@@ -69,17 +198,115 @@ void active(void) {
     }
 
     // Perform state tasks
-    if (IFS0bits.T1IF == 1) {
-        IFS0bits.T1IF = 0;  // if it's been a second, lower the counter and show it
-        time_left--;
-        dispSeconds(time_left);
+    datareturned = 0;
+    delay_by_nop(500);
+    LED3 = ON;
+    uint8_t i;
+
+    // Handle time
+    dispSeconds(time_left);
+    if (time_left == 0) {
+        for (i = 0; i < 6; i++) {
+            if(peripheral_present[i]) {
+                i2c2_start();
+                send_i2c2_byte(peripheral_addrs[i] | 0);  // init a write, last to 0
+                send_i2c2_byte(HEADER_END_LOSE << 5); // Broadcast the current number of strikes
+                reset_i2c2_bus();
+            }
+        }
+       state = end_fail;            // if we're out of time, go to end
+    }
+
+    // Get completeness and strikes from every module
+    prev_num_strikes = num_strikes;
+    for (i = 0; i < 6; i++) {
+        if(peripheral_present[i]) {
+            i2c2_start();
+            send_i2c2_byte(peripheral_addrs[i] | 1);  // init a read, last to 1
+            datareturned = i2c2_read_nack();
+            reset_i2c2_bus();
+
+            if (datareturned & 0b10000000) { // Complete flag
+                peripheral_complete[i] = 1;
+            }
+            if (((datareturned & 0b01110000) >> 4) > prev_num_strikes) { //If the module recorded any strikes
+                num_strikes+= ((datareturned & 0b01110000) >> 4);
+            }
+            if ((datareturned & 0b00001111) != 0) {
+                // TODO: implement error codes if necessary
+            }
+        }
+    }
+    //Handles completeness
+    game_complete = 1;
+    for (i = 0; i < 6; i++) {
+        if (peripheral_present[i] && !peripheral_complete[i]) {
+            game_complete = 0;
+        }
+    }
+    // If we checked all of them and the game is still complete, then count it!
+    if (game_complete) {
+        for (i = 0; i < 6; i++) {
+            if(peripheral_present[i]) {
+                i2c2_start();
+                send_i2c2_byte(peripheral_addrs[i] | 0);  // init a write, last to 0
+                send_i2c2_byte(HEADER_END_WIN << 5); // Broadcast that we won
+                reset_i2c2_bus();
+            }
+        }
+        //TODO: Go to 'win' state
+        state = end_win;
+    }
+
+    //Handles strikes
+    strikeLEDOff(); // Handle strike LEDs
+    switch (num_strikes){
+        case 0:
+            STRIKE1_GLED = ON; delay_by_nop(1);
+            STRIKE2_GLED = ON; delay_by_nop(1);
+            STRIKE3_GLED = ON; delay_by_nop(1);
+        break;
+        case 1:
+            STRIKE1_RLED = ON; delay_by_nop(1);
+            STRIKE2_GLED = ON; delay_by_nop(1);
+            STRIKE3_GLED = ON; delay_by_nop(1);
+        break;
+        case 2:
+            STRIKE1_RLED = ON; delay_by_nop(1);
+            STRIKE2_RLED = ON; delay_by_nop(1);
+            STRIKE3_GLED = ON; delay_by_nop(1);
+        break;
+        default:
+            STRIKE1_RLED = ON; delay_by_nop(1);
+            STRIKE2_RLED = ON; delay_by_nop(1);
+            STRIKE3_RLED = ON; delay_by_nop(1);
+        break;
+    }
+    if (num_strikes > 2) {
+        for (i = 0; i < 6; i++) {
+            if(peripheral_present[i]) {
+                i2c2_start();
+                send_i2c2_byte(peripheral_addrs[i] | 0);  // init a write, last to 0
+                send_i2c2_byte(HEADER_END_LOSE << 5); // Broadcast the current number of strikes
+                reset_i2c2_bus();
+            }
+        }
+        state = end_fail;
+    }
+    else if (num_strikes > prev_num_strikes) {
+        for (i = 0; i < 6; i++) {
+            if (peripheral_present[i]) {
+                i2c2_start();
+                send_i2c2_byte(peripheral_addrs[i] | 0);  // init a write, last to 0
+                send_i2c2_byte((HEADER_NUM_STRIKES<<5) | num_strikes); // Broadcast the current number of strikes
+                reset_i2c2_bus();
+            }
+        }
     }
 
     // Check for state transitions
     if (SW2 == 0) {
         state = idle;           // SW2 resets to idle
-    } else if (time_left == 0) {
-        state = end;            // if we're out of time, go to end
     }
 
     // if we are leaving the state, do clean up stuff
@@ -93,25 +320,25 @@ void active(void) {
     }
 }
 
-void end(void) {
+void end_fail(void) {
     if (state != last_state) {  // if we are entering the state, do initialization stuff
         last_state = state;
         // start timer again to blink red LEDs
         IFS0bits.T1IF = 0; //lower interrupt flag
         TMR1 = 0;          // reset timer register
         T1CONbits.TON = 1; // enable 1 second timer
-        STRIKE1_RLED = ON; // Turn on strike LEDs red
-        STRIKE2_RLED = ON;
-        STRIKE3_RLED = ON;
+        STRIKE1_RLED = ON; delay_by_nop(1); // Turn on strike LEDs red
+        STRIKE2_RLED = ON; delay_by_nop(1);
+        STRIKE3_RLED = ON; delay_by_nop(1);
     }
 
     // Perform state tasks
     if (IFS0bits.T1IF == 1) {
         IFS0bits.T1IF = 0;  // if it's been a second, lower the counter and show it
         // Blink RLEDs
-        STRIKE1_RLED = !STRIKE1_RLED;
-        STRIKE2_RLED = !STRIKE2_RLED;
-        STRIKE3_RLED = !STRIKE3_RLED;
+        STRIKE1_RLED = !STRIKE1_RLED; delay_by_nop(1);
+        STRIKE2_RLED = !STRIKE2_RLED; delay_by_nop(1);
+        STRIKE3_RLED = !STRIKE3_RLED; delay_by_nop(1);
     }
 
     // Check for state transitions
@@ -121,9 +348,43 @@ void end(void) {
     // if we are leaving the state, do clean up stuff
     if (state != last_state) {
         T1CONbits.TON = 0;
-        STRIKE1_RLED = OFF;
-        STRIKE2_RLED = OFF; // turn off strike LEDs
-        STRIKE3_RLED = OFF;
+        STRIKE1_RLED = OFF; delay_by_nop(1);
+        STRIKE2_RLED = OFF; delay_by_nop(1); // turn off strike LEDs
+        STRIKE3_RLED = OFF; delay_by_nop(1);
+    }
+}
+
+void end_win(void) {
+    if (state != last_state) {  // if we are entering the state, do initialization stuff
+        last_state = state;
+        // start timer again to blink red LEDs
+        IFS0bits.T1IF = 0; //lower interrupt flag
+        TMR1 = 0;          // reset timer register
+        T1CONbits.TON = 1; // enable 1 second timer
+        STRIKE1_GLED = ON; delay_by_nop(1); // Turn on strike LEDs red
+        STRIKE2_GLED = ON; delay_by_nop(1);
+        STRIKE3_GLED = ON; delay_by_nop(1);
+    }
+
+    // Perform state tasks
+    if (IFS0bits.T1IF == 1) {
+        IFS0bits.T1IF = 0;  // if it's been a second, lower the counter and show it
+        // Blink GLEDs
+        STRIKE1_GLED = !STRIKE1_GLED; delay_by_nop(1);
+        STRIKE2_GLED = !STRIKE2_GLED; delay_by_nop(1);
+        STRIKE3_GLED = !STRIKE3_GLED; delay_by_nop(1);
+    }
+
+    // Check for state transitions
+
+    /* NO TRANSITIONS */
+
+    // if we are leaving the state, do clean up stuff
+    if (state != last_state) {
+        T1CONbits.TON = 0;
+        STRIKE1_GLED = OFF; delay_by_nop(1);
+        STRIKE2_GLED = OFF; delay_by_nop(1); // turn off strike LEDs
+        STRIKE3_GLED = OFF; delay_by_nop(1);
     }
 }
 
@@ -150,52 +411,4 @@ void drawOnce(void) {
     sevseg_writeDigitNum(&matrix, 3, 3, 0);
     sevseg_writeDigitNum(&matrix, 4, 4, 0);
     led_writeDisplay((_ADAFRUIT_LED*)&matrix.super);
-}
-
-// MAIN FUNCTION ***************************************************************
-
-int16_t main(void) {
-    init_elecanisms();
-    init_clock(); // not sure if this does anything
-    // Initializes I2C on I2C3
-    i2c_init(1e3);
-    led_begin((_ADAFRUIT_LED*)&matrix.super, target_addr); // Set up the HT16K33 and start the oscillator
-
-    time_left = max_time; // Set up time left to be max time
-
-    // Setup pins as output
-    D0_DIR = 0;
-    D1_DIR = 0;
-    D2_DIR = 0;
-    D3_DIR = 0;
-    D4_DIR = 0;
-    D5_DIR = 0;
-    D6_DIR = 0;
-    D7_DIR = 0;
-    D9_DIR = 0;
-
-
-    // Init button low
-    BUTTON_LED = 0;
-    BUTTON_LED_LOW = 0;
-
-    // Setup D8 as input
-    D8_DIR = 1;
-    // Set up pull-up resistor on button D8
-    CNPU4bits.CN54PUE = 1;
-    // Set D9 as pull-down for button
-    D9 = 0;
-
-    T1CON = 0x0030;         // set Timer1 period to 1s
-    PR1 = 0xF422;
-    TMR1 = 0;               // set Timer1 count to 0
-    IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
-
-    state = idle;           // Initialize state to idle
-    last_state = (STATE_HANDLER_T)NULL;
-
-    while (1) {
-        state();
-    }
-
 }
