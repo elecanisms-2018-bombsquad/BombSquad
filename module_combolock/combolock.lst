@@ -1513,7 +1513,7 @@ Disassembly of section .const:
     95a8:	6d 00       	.word 0x6d
     95aa:	7d 00       	.word 0x7d
     95ac:	07 00       	.word 0x7
-    95ae:	3f 00       	.word 0x3f
+    95ae:	7f 00       	.word 0x7f
     95b0:	6f 00       	.word 0x6f
     95b2:	77 00       	.word 0x77
     95b4:	7c 00       	.word 0x7c
@@ -4259,7 +4259,7 @@ unsigned char I2C2poll(char addr){
     2386:	80 40 eb    	clr.b     w1
     2388:	60 03 21    	mov.w     #0x1036, w0
     238a:	ee fa 07    	rcall     0x1968 <_sevseg_writeDigitNum> <.LFB11> <.LFE10>
-    238c:	13 c0 b3    	mov.b     #0x1, w3
+    238c:	80 41 eb    	clr.b     w3
     238e:	12 c1 b3    	mov.b     #0x11, w2
     2390:	41 c0 b3    	mov.b     #0x4, w1
     2392:	60 03 21    	mov.w     #0x1036, w0
