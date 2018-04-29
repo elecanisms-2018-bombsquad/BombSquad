@@ -53,3 +53,7 @@ dkms.conf
 
 # Python
 *.pyc
+
+# Sconsign specific ones
+*.dblite
+*.lst
