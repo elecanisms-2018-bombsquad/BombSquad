@@ -75,7 +75,7 @@ int16_t main(void) {
     led_begin((_ADAFRUIT_LED*)&matrix.super, adafruit_display_addr); // Set up the HT16K33 and start the oscillator
 
     T1CON = 0x0020;         // set Timer1cd .. period to 10 ms for debounce
-    PR1 = 0x2710;           // prescaler 16, match value 10000
+    PR1 = 0x1710;           // prescaler 16, match value 10000
     // T1CON = 0x0030; // PR1 = 0x3D08;        // set Timer1 period to 0.25s, prescaler 256 match 15624
     TMR1 = 0;               // set Timer1 count to 0
     IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
@@ -103,7 +103,6 @@ int16_t main(void) {
 void firstnum(void){ // turn right 3 times around , right is numbers going down
     ledoff();
     LED1 = 1;
-
     int8_t delta = previous_display - current_display ;
 
     if ( (delta < -1) && (delta > -20) ) { //catch it if you go backwards
@@ -117,19 +116,19 @@ void firstnum(void){ // turn right 3 times around , right is numbers going down
         counter = counter + 1;
         tempval = 0;
     }
-    if(counter == 2 && tempval == 1){ // go to next direction
+    if(counter > 1 && tempval == 1){ // go to next direction
         combo_num = secondnum;      // cleanup things here
         counter = 0;
         tempval = 0;
         previous_display = current_display; // so you don't think you went backwards as soon as you enter the state
     }
-    U1_putc(1);
-    U1_putc(counter);
-    U1_putc(tempval);
-    U1_putc('\r');
-    U1_putc('\n');
-    U1_flush_tx_buffer();
-    delay_by_nop(15);
+    // U1_putc(1);
+    // U1_putc(counter);
+    // U1_putc(tempval);
+    // U1_putc('\r');
+    // U1_putc('\n');
+    // U1_flush_tx_buffer();
+    // delay_by_nop(15);
 
 }
 
@@ -160,13 +159,13 @@ void secondnum(void){ // turn left 1 extra time around , left us numbers going u
         combo_num = firstnum;
     }
 
-    U1_putc(2);
-    U1_putc(counter);
-    U1_putc(tempval);
-    U1_putc('\r');
-    U1_putc('\n');
-    U1_flush_tx_buffer();
-    delay_by_nop(15);
+    // U1_putc(2);
+    // U1_putc(counter);
+    // U1_putc(tempval);
+    // U1_putc('\r');
+    // U1_putc('\n');
+    // U1_flush_tx_buffer();
+    // delay_by_nop(15);
 }
 
 void thirdnum(void){
@@ -183,13 +182,13 @@ void thirdnum(void){
         counter = 0;
     }
 
-    U1_putc(3);
-    U1_putc(counter);
-    U1_putc(tempval);
-    U1_putc('\r');
-    U1_putc('\n');
-    U1_flush_tx_buffer();
-    delay_by_nop(15);
+    // U1_putc(3);
+    // U1_putc(counter);
+    // U1_putc(tempval);
+    // U1_putc('\r');
+    // U1_putc('\n');
+    // U1_flush_tx_buffer();
+    // delay_by_nop(15);
 }
 
 void setup(void) { // Waits for master module to start the game
@@ -202,7 +201,6 @@ void setup(void) { // Waits for master module to start the game
     }
 
     // Perform state tasks
-
     // usually this will determine what the combo values are based on the serial number
     // if (serial_number == 1) { combo1 = 5; combo2 = 10; combo3 = 15; }
     // if (serial_number == 2) { combo1 = 13; combo2 = 7; combo3 = 2; }
@@ -218,6 +216,7 @@ void setup(void) { // Waits for master module to start the game
 
     // State Cleanup
     if (state != last_state) {
+        MODULE_LED_RED = OFF; delay_by_nop(1);
         MODULE_LED_GREEN = OFF;
     }
 }
@@ -226,7 +225,6 @@ void run(void) { // Plays the game
     // State Setup
     if (state != last_state) {
         last_state = state;
-        // LED1 = ON; delay_by_nop(1);
         MODULE_LED_RED = ON;
     }
 
@@ -240,7 +238,6 @@ void run(void) { // Plays the game
 
     // State Cleanup
     if (state != last_state) {
-        // LED1=OFF; delay_by_nop(1);
         MODULE_LED_RED = OFF;
     }
 }
@@ -249,13 +246,11 @@ void solved(void) { // The puzzle on this module is finished
     // State Setup
     if (state != last_state) {
         last_state = state;
-        // LED3 = ON;
         complete_flag = 1;
         MODULE_LED_GREEN = ON;
     }
 
     // Perform state tasks
-
 
     // Check for state transitions
     if (win_flag == 1) {state = end_win;}
@@ -263,7 +258,6 @@ void solved(void) { // The puzzle on this module is finished
 
     // State Cleanup
     if (state != last_state) {
-        // LED3 = OFF;
         complete_flag = 0;
         MODULE_LED_GREEN = OFF;
     }
@@ -329,6 +323,8 @@ void dispNumber(uint16_t number) {
     // U1_putc(thousands); U1_putc(hundreds); U1_putc(tens); U1_putc(ones);
     // U1_putc('\r'); U1_putc('\n'); U1_flush_tx_buffer();
 
+    sevseg_writeDigitNum(&matrix, 0, 17, 1);
+    sevseg_writeDigitNum(&matrix, 4, 17, 0);
     sevseg_writeDigitNum(&matrix, 1, tens, 0);
     sevseg_writeDigitNum(&matrix, 3, ones, 0);
     led_writeDisplay((_ADAFRUIT_LED*)&matrix.super); //Don't forget to actually write the data!
