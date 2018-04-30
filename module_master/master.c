@@ -16,7 +16,7 @@
 #define BUTTON_LED        D6
 #define BUTTON_LED_LOW    D7
 
-#define max_time 9
+#define max_time 300
 uint16_t time_left;
 
 _7SEGMENT matrix;
@@ -233,9 +233,14 @@ void idle(void) {
     // Perform state tasks
 
     // Check for state transitions
-    if (D8 == 0) { // D8 is pulled-up, if button is pressed it pulls it down
-        state = run;
-    }
+
+    /* TODO is it better to not have the start button? */
+    delay_by_nop(2000000); // delay for a long time at the start
+    state=run;
+
+    // if (D8 == 0) { // D8 is pulled-up, if button is pressed it pulls it down
+    //     state = run;
+    // }
 
     // if we are leaving the state, do clean up stuff
     if (state != last_state) {
