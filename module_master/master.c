@@ -39,6 +39,8 @@ uint8_t game_complete = 0;
 
 const uint16_t PWM_PERIOD_2_3 = (uint16_t)(FCY / 2.3e3 - 1.);
 const uint16_t PWM_PERIOD_1_9 = (uint16_t)(FCY / 1.9e3 - 1.);
+const uint16_t PWM_PERIOD_1 = (uint16_t)  (FCY / 1e3 - 1.);
+const uint16_t PWM_PERIOD_2 = (uint16_t)  (FCY / 2e3 - 1.);
 
 
 // Forward declarations of functions to avoid a header file :/
@@ -267,6 +269,7 @@ void run(void) {
     // Perform state tasks
     datareturned = 0;
     uint8_t i;
+    uint16_t prev_r = 0; uint16_t prev_rs = 0;
 
     // Handle time
     dispSeconds(time_left);
@@ -292,6 +295,17 @@ void run(void) {
             reset_i2c2_bus();
 
             if (datareturned & 0b10000000) { // Complete flag
+                if (peripheral_complete[i] == 0){
+                    prev_rs = OC1RS;
+                    prev_r = OC1R;
+                    OC1RS = PWM_PERIOD_2;
+                    OC1R = OC1RS >> 1; // Make a high-pitched complete sound
+                    disable_interrupts();
+                    delay_by_nop(300000);
+                    OC1RS = prev_rs;;
+                    OC1R = prev_r;
+                    enable_interrupts();
+                }
                 peripheral_complete[i] = 1;
             }
             if (((datareturned & 0b01110000) >> 4) > prev_num_strikes) { //If the module recorded any strikes
@@ -367,6 +381,16 @@ void run(void) {
                 reset_i2c2_bus();
             }
         }
+
+        prev_rs = OC1RS;
+        prev_r = OC1R;
+        OC1RS = PWM_PERIOD_1;
+        OC1R = OC1RS >> 1; // Make a soise for the strike
+        disable_interrupts();
+        delay_by_nop(300000);
+        OC1RS = prev_rs;;
+        OC1R = prev_r;
+        enable_interrupts();
     }
 
     // Check for state transitions
@@ -385,6 +409,7 @@ void run(void) {
         IEC0bits.T2IE = 0; // disable beep interrupt
         OC1R = 0; // turn off beep
         dispSeconds(time_left);
+        strikeLEDOff(); // turn off strike LEDs
     }
 }
 
