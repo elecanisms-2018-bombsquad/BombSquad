@@ -41,6 +41,7 @@ const uint16_t PWM_PERIOD_2_3 = (uint16_t)(FCY / 2.3e3 - 1.);
 const uint16_t PWM_PERIOD_1_9 = (uint16_t)(FCY / 1.9e3 - 1.);
 const uint16_t PWM_PERIOD_1 = (uint16_t)  (FCY / 1e3 - 1.);
 const uint16_t PWM_PERIOD_2 = (uint16_t)  (FCY / 2e3 - 1.);
+const uint16_t PWM_PERIOD_40 = (uint16_t) (FCY / 40 - 1.);
 
 
 // Forward declarations of functions to avoid a header file :/
@@ -361,18 +362,8 @@ void run(void) {
             STRIKE3_RLED = ON; delay_by_nop(1);
         break;
     }
-    if (num_strikes > 2) {
-        for (i = 0; i < 6; i++) {
-            if(peripheral_present[i]) {
-                i2c2_start();
-                send_i2c2_byte(peripheral_addrs[i] | 0);  // init a write, last to 0
-                send_i2c2_byte(HEADER_END_LOSE << 5); // Broadcast the current number of strikes
-                reset_i2c2_bus();
-            }
-        }
-        state = end_fail;
-    }
-    else if (num_strikes > prev_num_strikes) {
+
+    if (num_strikes > prev_num_strikes) {
         for (i = 0; i < 6; i++) {
             if (peripheral_present[i]) {
                 i2c2_start();
@@ -388,9 +379,20 @@ void run(void) {
         OC1R = OC1RS >> 1; // Make a soise for the strike
         disable_interrupts();
         delay_by_nop(300000);
-        OC1RS = prev_rs;;
+        OC1RS = prev_rs;
         OC1R = prev_r;
         enable_interrupts();
+    }
+    if (num_strikes > 2) {
+        for (i = 0; i < 6; i++) {
+            if(peripheral_present[i]) {
+                i2c2_start();
+                send_i2c2_byte(peripheral_addrs[i] | 0);  // init a write, last to 0
+                send_i2c2_byte(HEADER_END_LOSE << 5); // Broadcast the current number of strikes
+                reset_i2c2_bus();
+            }
+        }
+        state = end_fail;
     }
 
     // Check for state transitions

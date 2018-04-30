@@ -453,14 +453,14 @@ Disassembly of section .text:
     1142:	00 00 00 
 
 00001144 <L13>:
-    1144:	fe 16 02    	call      0x16fe <_main>
+    1144:	00 17 02    	call      0x1700 <_main>
     1146:	00 00 00 
     1148:	00 40 da    	break     
     114a:	00 00 fe    	reset     
 
 0000114c <__psv_init>:
     114c:	44 40 a9    	bclr.b    0x44, #0x2
-    114e:	c0 12 20    	mov.w     #0x12c, w0
+    114e:	e0 12 20    	mov.w     #0x12e, w0
     1150:	00 00 e0    	cp0.w     w0
     1152:	03 00 32    	bra       Z, 0x115a <L14>
     1154:	00 20 20    	mov.w     #0x200, w0
@@ -595,9 +595,9 @@ Disassembly of section .text:
     1212:	ee ff 37    	bra       0x11f0 <L34>
 
 00001214 <.handle>:
-    1214:	32 18 04    	goto      0x1832 <_idle>
+    1214:	34 18 04    	goto      0x1834 <_idle>
     1216:	00 00 00 
-    1218:	5e 18 04    	goto      0x185e <_run>
+    1218:	60 18 04    	goto      0x1860 <_run>
     121a:	00 00 00 
     121c:	02 1b 04    	goto      0x1b02 <_end_fail>
     121e:	00 00 00 
@@ -1662,336 +1662,339 @@ Disassembly of section .const:
 
 000096c6 <_PWM_PERIOD_2>:
     96c6:	3f 1f       	.word 0x1f3f
+
+000096c8 <_PWM_PERIOD_40>:
+    96c8:	ff ff       	.word 0xffff
 Disassembly of section .text:
 
-000016c8 <_strikeLEDOff>:
+000016ca <_strikeLEDOff>:
 
 typedef void (*STATE_HANDLER_T)(void);
 STATE_HANDLER_T state, last_state;
 
 void strikeLEDOff() {
-    16c8:	00 00 fa    	lnk       #0x0
+    16ca:	00 00 fa    	lnk       #0x0
     STRIKE1_RLED = OFF; delay_by_nop(1);
-    16ca:	da a2 a9    	bclr.b    0x2da, #0x5
-    16cc:	10 00 20    	mov.w     #0x1, w0
-    16ce:	01 00 20    	mov.w     #0x0, w1
-    16d0:	fd 05 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+    16cc:	da a2 a9    	bclr.b    0x2da, #0x5
+    16ce:	10 00 20    	mov.w     #0x1, w0
+    16d0:	01 00 20    	mov.w     #0x0, w1
+    16d2:	fc 05 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
     STRIKE1_GLED = OFF; delay_by_nop(1);
-    16d2:	da 82 a9    	bclr.b    0x2da, #0x4
-    16d4:	10 00 20    	mov.w     #0x1, w0
-    16d6:	01 00 20    	mov.w     #0x0, w1
-    16d8:	f9 05 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+    16d4:	da 82 a9    	bclr.b    0x2da, #0x4
+    16d6:	10 00 20    	mov.w     #0x1, w0
+    16d8:	01 00 20    	mov.w     #0x0, w1
+    16da:	f8 05 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
     STRIKE2_RLED = OFF; delay_by_nop(1);
-    16da:	da 02 a9    	bclr.b    0x2da, #0x0
-    16dc:	10 00 20    	mov.w     #0x1, w0
-    16de:	01 00 20    	mov.w     #0x0, w1
-    16e0:	f5 05 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+    16dc:	da 02 a9    	bclr.b    0x2da, #0x0
+    16de:	10 00 20    	mov.w     #0x1, w0
+    16e0:	01 00 20    	mov.w     #0x0, w1
+    16e2:	f4 05 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
     STRIKE2_GLED = OFF; delay_by_nop(1);
-    16e2:	da 22 a9    	bclr.b    0x2da, #0x1
-    16e4:	10 00 20    	mov.w     #0x1, w0
-    16e6:	01 00 20    	mov.w     #0x0, w1
-    16e8:	f1 05 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+    16e4:	da 22 a9    	bclr.b    0x2da, #0x1
+    16e6:	10 00 20    	mov.w     #0x1, w0
+    16e8:	01 00 20    	mov.w     #0x0, w1
+    16ea:	f0 05 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
     STRIKE3_RLED = OFF; delay_by_nop(1);
-    16ea:	cb e2 a9    	bclr.b    0x2cb, #0x7
-    16ec:	10 00 20    	mov.w     #0x1, w0
-    16ee:	01 00 20    	mov.w     #0x0, w1
-    16f0:	ed 05 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+    16ec:	cb e2 a9    	bclr.b    0x2cb, #0x7
+    16ee:	10 00 20    	mov.w     #0x1, w0
+    16f0:	01 00 20    	mov.w     #0x0, w1
+    16f2:	ec 05 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
     STRIKE3_GLED = OFF; delay_by_nop(1);
-    16f2:	ea 62 a9    	bclr.b    0x2ea, #0x3
-    16f4:	10 00 20    	mov.w     #0x1, w0
-    16f6:	01 00 20    	mov.w     #0x0, w1
-    16f8:	e9 05 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+    16f4:	ea 62 a9    	bclr.b    0x2ea, #0x3
+    16f6:	10 00 20    	mov.w     #0x1, w0
+    16f8:	01 00 20    	mov.w     #0x0, w1
+    16fa:	e8 05 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
 }
-    16fa:	00 80 fa    	ulnk      
-    16fc:	00 00 06    	return    
+    16fc:	00 80 fa    	ulnk      
+    16fe:	00 00 06    	return    
 
-000016fe <_main>:
+00001700 <_main>:
 
 // MAIN FUNCTION ***************************************************************
 
 int16_t main(void) {
-    16fe:	08 00 fa    	lnk       #0x8
+    1700:	08 00 fa    	lnk       #0x8
     init_elecanisms();
-    1700:	92 08 07    	rcall     0x2826 <.LFE3> <_init_elecanisms> <.L0> <.LFB0> <.Ltext0>
+    1702:	91 08 07    	rcall     0x2826 <.LFE3> <_init_elecanisms> <.L0> <.LFB0> <.Ltext0>
     init_clock(); // not sure if this does anything
-    1702:	00 10 20    	mov.w     #0x100, w0
-    1704:	20 3a 88    	mov.w     w0, 0x744
+    1704:	00 10 20    	mov.w     #0x100, w0
+    1706:	20 3a 88    	mov.w     w0, 0x744
     // Initializes I2C on I2C3
     i2c_init(1e3);
-    1706:	80 3e 20    	mov.w     #0x3e8, w0
-    1708:	f4 05 07    	rcall     0x22f2 <_i2c_init> <.LFB1> <.LFE0>
+    1708:	80 3e 20    	mov.w     #0x3e8, w0
+    170a:	f3 05 07    	rcall     0x22f2 <_i2c_init> <.LFB1> <.LFE0>
     led_begin((_ADAFRUIT_LED*)&matrix.super, matrix_addr); // Set up the HT16K33 and start the oscillator
-    170a:	0c c8 bf    	mov.b     0x80c, WREG
-    170c:	80 40 78    	mov.b     w0, w1
-    170e:	e0 80 20    	mov.w     #0x80e, w0
-    1710:	2b 03 07    	rcall     0x1d68 <_led_begin> <.L0> <.LFB0> <.LFE9> <.Letext0> <.Ltext0>
+    170c:	0c c8 bf    	mov.b     0x80c, WREG
+    170e:	80 40 78    	mov.b     w0, w1
+    1710:	e0 80 20    	mov.w     #0x80e, w0
+    1712:	2a 03 07    	rcall     0x1d68 <_led_begin> <.L0> <.LFB0> <.LFE9> <.Letext0> <.Ltext0>
 
     time_left = max_time; // Set up time left to be max time
-    1712:	c0 12 20    	mov.w     #0x12c, w0
-    1714:	00 40 88    	mov.w     w0, 0x800
+    1714:	c0 12 20    	mov.w     #0x12c, w0
+    1716:	00 40 88    	mov.w     w0, 0x800
 
     // Setup pins as output
     D0_DIR = 0;
-    1716:	d8 a2 a9    	bclr.b    0x2d8, #0x5
+    1718:	d8 a2 a9    	bclr.b    0x2d8, #0x5
     D1_DIR = 0;
-    1718:	d8 82 a9    	bclr.b    0x2d8, #0x4
+    171a:	d8 82 a9    	bclr.b    0x2d8, #0x4
     D10_DIR = 0;
-    171a:	d8 02 a9    	bclr.b    0x2d8, #0x0
+    171c:	d8 02 a9    	bclr.b    0x2d8, #0x0
     D11_DIR = 0;
-    171c:	d8 22 a9    	bclr.b    0x2d8, #0x1
+    171e:	d8 22 a9    	bclr.b    0x2d8, #0x1
     D4_DIR = 0;
-    171e:	c9 e2 a9    	bclr.b    0x2c9, #0x7
+    1720:	c9 e2 a9    	bclr.b    0x2c9, #0x7
     D5_DIR = 0;
-    1720:	e8 62 a9    	bclr.b    0x2e8, #0x3
+    1722:	e8 62 a9    	bclr.b    0x2e8, #0x3
     D6_DIR = 0;
-    1722:	d9 02 a9    	bclr.b    0x2d9, #0x0
+    1724:	d9 02 a9    	bclr.b    0x2d9, #0x0
     D7_DIR = 0;
-    1724:	d9 62 a9    	bclr.b    0x2d9, #0x3
+    1726:	d9 62 a9    	bclr.b    0x2d9, #0x3
     D9_DIR = 0;
-    1726:	d9 42 a9    	bclr.b    0x2d9, #0x2
+    1728:	d9 42 a9    	bclr.b    0x2d9, #0x2
 
 
     // Init button low
     BUTTON_LED = 0;
-    1728:	db 02 a9    	bclr.b    0x2db, #0x0
+    172a:	db 02 a9    	bclr.b    0x2db, #0x0
     BUTTON_LED_LOW = 0;
-    172a:	db 62 a9    	bclr.b    0x2db, #0x3
+    172c:	db 62 a9    	bclr.b    0x2db, #0x3
 
     // Setup D8 as input
     D8_DIR = 1;
-    172c:	d9 22 a8    	bset.b    0x2d9, #0x1
+    172e:	d9 22 a8    	bset.b    0x2d9, #0x1
     // Set up pull-up resistor on button D8
     CNPU4bits.CN54PUE = 1;
-    172e:	74 c0 a8    	bset.b    0x74, #0x6
+    1730:	74 c0 a8    	bset.b    0x74, #0x6
     // Set D9 as pull-down for button
     D9 = 0;
-    1730:	db 42 a9    	bclr.b    0x2db, #0x2
+    1732:	db 42 a9    	bclr.b    0x2db, #0x2
 
     /* Timer 1 setup for game timing*/
     T1CON = 0x0030;         // set Timer1 period to 1s
-    1732:	00 03 20    	mov.w     #0x30, w0
-    1734:	20 08 88    	mov.w     w0, 0x104
+    1734:	00 03 20    	mov.w     #0x30, w0
+    1736:	20 08 88    	mov.w     w0, 0x104
     PR1 = 0xF422;
-    1736:	20 42 2f    	mov.w     #0xf422, w0
-    1738:	10 08 88    	mov.w     w0, 0x102
+    1738:	20 42 2f    	mov.w     #0xf422, w0
+    173a:	10 08 88    	mov.w     w0, 0x102
     TMR1 = 0;               // set Timer1 count to 0
-    173a:	00 21 ef    	clr.w     0x100
+    173c:	00 21 ef    	clr.w     0x100
     IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
-    173c:	84 60 a9    	bclr.b    0x84, #0x3
+    173e:	84 60 a9    	bclr.b    0x84, #0x3
     IEC0bits.T1IE = 1;      // enable Timer1 interrupt
-    173e:	94 60 a8    	bset.b    0x94, #0x3
+    1740:	94 60 a8    	bset.b    0x94, #0x3
 
     /* Timer 2 setup for beep timing*/
     T2CON = 0x0030;
-    1740:	00 03 20    	mov.w     #0x30, w0
-    1742:	80 08 88    	mov.w     w0, 0x110
+    1742:	00 03 20    	mov.w     #0x30, w0
+    1744:	80 08 88    	mov.w     w0, 0x110
     PR2 = 0x186A;           // set Timer2 period to 0.1s
-    1744:	a0 86 21    	mov.w     #0x186a, w0
-    1746:	60 08 88    	mov.w     w0, 0x10c
+    1746:	a0 86 21    	mov.w     #0x186a, w0
+    1748:	60 08 88    	mov.w     w0, 0x10c
     TMR2 = 0;               // set Timer1 count to 0
-    1748:	06 21 ef    	clr.w     0x106
+    174a:	06 21 ef    	clr.w     0x106
     IFS0bits.T2IF = 0;      // lower T2 interrupt flag
-    174a:	84 e0 a9    	bclr.b    0x84, #0x7
+    174c:	84 e0 a9    	bclr.b    0x84, #0x7
     IEC0bits.T2IE = 1;      // enable T2 interrupt
-    174c:	94 e0 a8    	bset.b    0x94, #0x7
+    174e:	94 e0 a8    	bset.b    0x94, #0x7
 
     /* Remap OC1 to D11 */
     uint8_t *RPOR, *RPINR;
     RPOR = (uint8_t *)&RPOR0;
-    174e:	00 6c 20    	mov.w     #0x6c0, w0
-    1750:	10 07 98    	mov.w     w0, [w14+2]
+    1750:	00 6c 20    	mov.w     #0x6c0, w0
+    1752:	10 07 98    	mov.w     w0, [w14+2]
     RPINR = (uint8_t *)&RPINR0;
-    1752:	00 68 20    	mov.w     #0x680, w0
-    1754:	20 07 98    	mov.w     w0, [w14+4]
+    1754:	00 68 20    	mov.w     #0x680, w0
+    1756:	20 07 98    	mov.w     w0, [w14+4]
 
     __builtin_write_OSCCONL(OSCCON & 0xBF);
-    1756:	11 3a 80    	mov.w     0x742, w1
-    1758:	f0 0b 20    	mov.w     #0xbf, w0
-    175a:	00 81 60    	and.w     w1, w0, w2
-    175c:	60 04 20    	mov.w     #0x46, w0
-    175e:	71 05 20    	mov.w     #0x57, w1
-    1760:	23 74 20    	mov.w     #0x742, w3
-    1762:	80 49 78    	mov.b     w0, [w3]
-    1764:	81 49 78    	mov.b     w1, [w3]
-    1766:	82 49 78    	mov.b     w2, [w3]
+    1758:	11 3a 80    	mov.w     0x742, w1
+    175a:	f0 0b 20    	mov.w     #0xbf, w0
+    175c:	00 81 60    	and.w     w1, w0, w2
+    175e:	60 04 20    	mov.w     #0x46, w0
+    1760:	71 05 20    	mov.w     #0x57, w1
+    1762:	23 74 20    	mov.w     #0x742, w3
+    1764:	80 49 78    	mov.b     w0, [w3]
+    1766:	81 49 78    	mov.b     w1, [w3]
+    1768:	82 49 78    	mov.b     w2, [w3]
     RPOR[D12_RP] = OC1_RP;  // connect the OC1 module output to pin D8
-    1768:	1e 00 90    	mov.w     [w14+2], w0
-    176a:	77 00 40    	add.w     w0, #0x17, w0
-    176c:	21 c1 b3    	mov.b     #0x12, w1
-    176e:	01 48 78    	mov.b     w1, [w0]
+    176a:	1e 00 90    	mov.w     [w14+2], w0
+    176c:	77 00 40    	add.w     w0, #0x17, w0
+    176e:	21 c1 b3    	mov.b     #0x12, w1
+    1770:	01 48 78    	mov.b     w1, [w0]
     __builtin_write_OSCCONL(OSCCON | 0x40);
-    1770:	10 3a 80    	mov.w     0x742, w0
-    1772:	00 01 78    	mov.w     w0, w2
-    1774:	02 60 a0    	bset.w    w2, #0x6
-    1776:	60 04 20    	mov.w     #0x46, w0
-    1778:	71 05 20    	mov.w     #0x57, w1
-    177a:	23 74 20    	mov.w     #0x742, w3
-    177c:	80 49 78    	mov.b     w0, [w3]
-    177e:	81 49 78    	mov.b     w1, [w3]
-    1780:	82 49 78    	mov.b     w2, [w3]
+    1772:	10 3a 80    	mov.w     0x742, w0
+    1774:	00 01 78    	mov.w     w0, w2
+    1776:	02 60 a0    	bset.w    w2, #0x6
+    1778:	60 04 20    	mov.w     #0x46, w0
+    177a:	71 05 20    	mov.w     #0x57, w1
+    177c:	23 74 20    	mov.w     #0x742, w3
+    177e:	80 49 78    	mov.b     w0, [w3]
+    1780:	81 49 78    	mov.b     w1, [w3]
+    1782:	82 49 78    	mov.b     w2, [w3]
 
     /* OC1 setup for beep output*/
     OC1CON1bits.OCTSEL = 0b111;   // configure OC1 module to use the peripheral
-    1782:	81 0c 80    	mov.w     0x190, w1
-    1784:	00 c0 21    	mov.w     #0x1c00, w0
-    1786:	01 00 70    	ior.w     w0, w1, w0
-    1788:	80 0c 88    	mov.w     w0, 0x190
+    1784:	81 0c 80    	mov.w     0x190, w1
+    1786:	00 c0 21    	mov.w     #0x1c00, w0
+    1788:	01 00 70    	ior.w     w0, w1, w0
+    178a:	80 0c 88    	mov.w     w0, 0x190
                                   //   clock (i.e., FCY, OCTSEL<2:0> = 0b111) and
     OC1CON1bits.OCM = 0b110;      //   and to operate in edge-aligned PWM mode
-    178a:	81 0c 80    	mov.w     0x190, w1
-    178c:	80 ff 2f    	mov.w     #0xfff8, w0
-    178e:	00 80 60    	and.w     w1, w0, w0
-    1790:	60 00 b3    	ior.w     #0x6, w0
-    1792:	80 0c 88    	mov.w     w0, 0x190
+    178c:	81 0c 80    	mov.w     0x190, w1
+    178e:	80 ff 2f    	mov.w     #0xfff8, w0
+    1790:	00 80 60    	and.w     w1, w0, w0
+    1792:	60 00 b3    	ior.w     #0x6, w0
+    1794:	80 0c 88    	mov.w     w0, 0x190
                                   //   (OCM<2:0> = 0b110)
     OC1CON2bits.OCTRIG = 0;       // configure OC1 module to syncrhonize to itself
-    1794:	92 e1 a9    	bclr.b    0x192, #0x7
+    1796:	92 e1 a9    	bclr.b    0x192, #0x7
     OC1CON2bits.SYNCSEL = 0x1F;   //   (i.e., OCTRIG = 0 and SYNCSEL<4:0> = 0b11111)
-    1796:	90 0c 80    	mov.w     0x192, w0
-    1798:	f0 01 b3    	ior.w     #0x1f, w0
-    179a:	90 0c 88    	mov.w     w0, 0x192
+    1798:	90 0c 80    	mov.w     0x192, w0
+    179a:	f0 01 b3    	ior.w     #0x1f, w0
+    179c:	90 0c 88    	mov.w     w0, 0x192
 
     OC1RS = PWM_PERIOD_2_3;       // configure period register to get 2.3 kHz
-    179c:	00 b6 84    	mov.w     0x96c0, w0
-    179e:	a0 0c 88    	mov.w     w0, 0x194
+    179e:	00 b6 84    	mov.w     0x96c0, w0
+    17a0:	a0 0c 88    	mov.w     w0, 0x194
     OC1TMR = 0;                   // set OC1 timer count to 0
-    17a0:	98 21 ef    	clr.w     0x198
+    17a2:	98 21 ef    	clr.w     0x198
     OC1R = 0;                     // start with it off
-    17a2:	96 21 ef    	clr.w     0x196
+    17a4:	96 21 ef    	clr.w     0x196
 
 
     state = idle;           // Initialize state to idle
-    17a4:	20 83 21    	mov.w     #0x1832, w0
-    17a6:	30 40 88    	mov.w     w0, 0x806
+    17a6:	40 83 21    	mov.w     #0x1834, w0
+    17a8:	30 40 88    	mov.w     w0, 0x806
     last_state = (STATE_HANDLER_T)NULL;
-    17a8:	08 28 ef    	clr.w     0x808
+    17aa:	08 28 ef    	clr.w     0x808
 
     memset(peripheral_present, 0, 6); // set arrays to 0
-    17aa:	62 00 20    	mov.w     #0x6, w2
-    17ac:	80 00 eb    	clr.w     w1
-    17ae:	20 c2 20    	mov.w     #0xc22, w0
-    17b0:	ee fe 07    	rcall     0x158e <_memset>
+    17ac:	62 00 20    	mov.w     #0x6, w2
+    17ae:	80 00 eb    	clr.w     w1
+    17b0:	20 c2 20    	mov.w     #0xc22, w0
+    17b2:	ed fe 07    	rcall     0x158e <_memset>
     memset(peripheral_complete, 0, 6);
-    17b2:	62 00 20    	mov.w     #0x6, w2
-    17b4:	80 00 eb    	clr.w     w1
-    17b6:	80 c2 20    	mov.w     #0xc28, w0
-    17b8:	ea fe 07    	rcall     0x158e <_memset>
+    17b4:	62 00 20    	mov.w     #0x6, w2
+    17b6:	80 00 eb    	clr.w     w1
+    17b8:	80 c2 20    	mov.w     #0xc28, w0
+    17ba:	e9 fe 07    	rcall     0x158e <_memset>
     num_strikes = 0;
-    17ba:	03 68 ef    	clr.b     0x803
+    17bc:	03 68 ef    	clr.b     0x803
     prev_num_strikes = 0;
-    17bc:	04 68 ef    	clr.b     0x804
+    17be:	04 68 ef    	clr.b     0x804
     game_complete = 0;
-    17be:	05 68 ef    	clr.b     0x805
+    17c0:	05 68 ef    	clr.b     0x805
 
     i2c2_init(157);      // initialize I2C for 16Mhz OSC with 100kHz I2C clock
-    17c0:	d0 09 20    	mov.w     #0x9d, w0
-    17c2:	d7 06 07    	rcall     0x2572 <_i2c2_init> <.LFB13> <.LFE12>
+    17c2:	d0 09 20    	mov.w     #0x9d, w0
+    17c4:	d6 06 07    	rcall     0x2572 <_i2c2_init> <.LFB13> <.LFE12>
 
     delay_by_nop(300000);
-    17c4:	00 3e 29    	mov.w     #0x93e0, w0
-    17c6:	41 00 20    	mov.w     #0x4, w1
-    17c8:	81 05 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+    17c6:	00 3e 29    	mov.w     #0x93e0, w0
+    17c8:	41 00 20    	mov.w     #0x4, w1
+    17ca:	80 05 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
 
 
     uint8_t i = 0;
-    17ca:	00 40 eb    	clr.b     w0
-    17cc:	00 4f 78    	mov.b     w0, [w14]
+    17cc:	00 40 eb    	clr.b     w0
+    17ce:	00 4f 78    	mov.b     w0, [w14]
     // Poll the peripherals to see who's here
     for (i = 0; i < 6; i++) {
-    17ce:	00 40 eb    	clr.b     w0
-    17d0:	00 4f 78    	mov.b     w0, [w14]
-    17d2:	14 00 37    	bra       0x17fc <.L3>
+    17d0:	00 40 eb    	clr.b     w0
+    17d2:	00 4f 78    	mov.b     w0, [w14]
+    17d4:	14 00 37    	bra       0x17fe <.L3>
 
-000017d4 <.L5>:
+000017d6 <.L5>:
         uint8_t temp = 0;
-    17d4:	00 40 eb    	clr.b     w0
-    17d6:	60 47 98    	mov.b     w0, [w14+6]
+    17d6:	00 40 eb    	clr.b     w0
+    17d8:	60 47 98    	mov.b     w0, [w14+6]
 
         i2c2_start();
-    17d8:	d9 06 07    	rcall     0x258c <_i2c2_start> <.LFB14> <.LFE13>
+    17da:	d8 06 07    	rcall     0x258c <_i2c2_start> <.LFB14> <.LFE13>
         temp = send_i2c2_byte(peripheral_addrs[i]); // set /W bit
-    17da:	1e 80 fb    	ze        [w14], w0
-    17dc:	e1 c2 20    	mov.w     #0xc2e, w1
-    17de:	61 40 78    	mov.b     [w1+w0], w0
-    17e0:	00 80 fb    	ze        w0, w0
-    17e2:	23 07 07    	rcall     0x262a <_send_i2c2_byte> <.LFB17> <.LFE16>
-    17e4:	60 47 98    	mov.b     w0, [w14+6]
+    17dc:	1e 80 fb    	ze        [w14], w0
+    17de:	e1 c2 20    	mov.w     #0xc2e, w1
+    17e0:	61 40 78    	mov.b     [w1+w0], w0
+    17e2:	00 80 fb    	ze        w0, w0
+    17e4:	22 07 07    	rcall     0x262a <_send_i2c2_byte> <.LFB17> <.LFE16>
+    17e6:	60 47 98    	mov.b     w0, [w14+6]
         if (temp == 0) {
-    17e6:	6e 40 90    	mov.b     [w14+6], w0
-    17e8:	00 04 e0    	cp0.b     w0
-    17ea:	06 00 3a    	bra       NZ, 0x17f8 <.L4>
+    17e8:	6e 40 90    	mov.b     [w14+6], w0
+    17ea:	00 04 e0    	cp0.b     w0
+    17ec:	06 00 3a    	bra       NZ, 0x17fa <.L4>
             peripheral_present[i] = 1; // We found it, but we need to reset the FSM for i2c
-    17ec:	1e 80 fb    	ze        [w14], w0
-    17ee:	21 c2 20    	mov.w     #0xc22, w1
-    17f0:	12 c0 b3    	mov.b     #0x1, w2
-    17f2:	82 70 78    	mov.b     w2, [w1+w0]
+    17ee:	1e 80 fb    	ze        [w14], w0
+    17f0:	21 c2 20    	mov.w     #0xc22, w1
+    17f2:	12 c0 b3    	mov.b     #0x1, w2
+    17f4:	82 70 78    	mov.b     w2, [w1+w0]
             send_i2c2_byte(0xA0); // Send dummy byte to reset FSM
-    17f4:	00 0a 20    	mov.w     #0xa0, w0
-    17f6:	19 07 07    	rcall     0x262a <_send_i2c2_byte> <.LFB17> <.LFE16>
+    17f6:	00 0a 20    	mov.w     #0xa0, w0
+    17f8:	18 07 07    	rcall     0x262a <_send_i2c2_byte> <.LFB17> <.LFE16>
 
-000017f8 <.L4>:
+000017fa <.L4>:
         }
         reset_i2c2_bus();
-    17f8:	fd 06 07    	rcall     0x25f4 <_reset_i2c2_bus> <.LFB16> <.LFE15>
+    17fa:	fc 06 07    	rcall     0x25f4 <_reset_i2c2_bus> <.LFB16> <.LFE15>
 
-000017fa <.LBE2>:
-    17fa:	1e 4f e8    	inc.b     [w14], [w14]
+000017fc <.LBE2>:
+    17fc:	1e 4f e8    	inc.b     [w14], [w14]
 
-000017fc <.L3>:
-    17fc:	1e 40 78    	mov.b     [w14], w0
-    17fe:	e5 4f 50    	sub.b     w0, #0x5, [w15]
-    1800:	e9 ff 36    	bra       LEU, 0x17d4 <.L5> <.LBB2>
+000017fe <.L3>:
+    17fe:	1e 40 78    	mov.b     [w14], w0
+    1800:	e5 4f 50    	sub.b     w0, #0x5, [w15]
+    1802:	e9 ff 36    	bra       LEU, 0x17d6 <.L5> <.LBB2>
     }
 
     //TODO: Send out parameters
 
     //TODO: Send out start condition
     for (i = 0; i < 6; i++) {
-    1802:	00 40 eb    	clr.b     w0
-    1804:	00 4f 78    	mov.b     w0, [w14]
-    1806:	0f 00 37    	bra       0x1826 <.L6>
+    1804:	00 40 eb    	clr.b     w0
+    1806:	00 4f 78    	mov.b     w0, [w14]
+    1808:	0f 00 37    	bra       0x1828 <.L6>
 
-00001808 <.L8>:
+0000180a <.L8>:
         if (peripheral_present[i]) {
-    1808:	1e 80 fb    	ze        [w14], w0
-    180a:	21 c2 20    	mov.w     #0xc22, w1
-    180c:	61 40 78    	mov.b     [w1+w0], w0
-    180e:	00 04 e0    	cp0.b     w0
-    1810:	09 00 32    	bra       Z, 0x1824 <.L7>
+    180a:	1e 80 fb    	ze        [w14], w0
+    180c:	21 c2 20    	mov.w     #0xc22, w1
+    180e:	61 40 78    	mov.b     [w1+w0], w0
+    1810:	00 04 e0    	cp0.b     w0
+    1812:	09 00 32    	bra       Z, 0x1826 <.L7>
             i2c2_start();
-    1812:	bc 06 07    	rcall     0x258c <_i2c2_start> <.LFB14> <.LFE13>
+    1814:	bb 06 07    	rcall     0x258c <_i2c2_start> <.LFB14> <.LFE13>
             send_i2c2_byte(peripheral_addrs[i] | 0);  // init a write, last to 0
-    1814:	1e 80 fb    	ze        [w14], w0
-    1816:	e1 c2 20    	mov.w     #0xc2e, w1
-    1818:	61 40 78    	mov.b     [w1+w0], w0
-    181a:	00 80 fb    	ze        w0, w0
-    181c:	06 07 07    	rcall     0x262a <_send_i2c2_byte> <.LFB17> <.LFE16>
+    1816:	1e 80 fb    	ze        [w14], w0
+    1818:	e1 c2 20    	mov.w     #0xc2e, w1
+    181a:	61 40 78    	mov.b     [w1+w0], w0
+    181c:	00 80 fb    	ze        w0, w0
+    181e:	05 07 07    	rcall     0x262a <_send_i2c2_byte> <.LFB17> <.LFE16>
             send_i2c2_byte(HEADER_START_GAME << 5);
-    181e:	00 0c 20    	mov.w     #0xc0, w0
-    1820:	04 07 07    	rcall     0x262a <_send_i2c2_byte> <.LFB17> <.LFE16>
+    1820:	00 0c 20    	mov.w     #0xc0, w0
+    1822:	03 07 07    	rcall     0x262a <_send_i2c2_byte> <.LFB17> <.LFE16>
             reset_i2c2_bus();
-    1822:	e8 06 07    	rcall     0x25f4 <_reset_i2c2_bus> <.LFB16> <.LFE15>
+    1824:	e7 06 07    	rcall     0x25f4 <_reset_i2c2_bus> <.LFB16> <.LFE15>
 
-00001824 <.L7>:
-    1824:	1e 4f e8    	inc.b     [w14], [w14]
+00001826 <.L7>:
+    1826:	1e 4f e8    	inc.b     [w14], [w14]
 
-00001826 <.L6>:
-    1826:	1e 40 78    	mov.b     [w14], w0
-    1828:	e5 4f 50    	sub.b     w0, #0x5, [w15]
-    182a:	ee ff 36    	bra       LEU, 0x1808 <.L8>
+00001828 <.L6>:
+    1828:	1e 40 78    	mov.b     [w14], w0
+    182a:	e5 4f 50    	sub.b     w0, #0x5, [w15]
+    182c:	ee ff 36    	bra       LEU, 0x180a <.L8>
 
-0000182c <.L9>:
+0000182e <.L9>:
         }
     }
 
     while (1) {
         state();
-    182c:	30 40 80    	mov.w     0x806, w0
-    182e:	00 00 01    	call      w0
+    182e:	30 40 80    	mov.w     0x806, w0
+    1830:	00 00 01    	call      w0
     }
-    1830:	fd ff 37    	bra       0x182c <.L9>
+    1832:	fd ff 37    	bra       0x182e <.L9>
 
-00001832 <_idle>:
+00001834 <_idle>:
 
 }
 
@@ -2043,22 +2046,22 @@ void __attribute__((interrupt, auto_psv)) _T2Interrupt(void) {
 // STATE MACHINE FUNCTIONS *****************************************************
 
 void idle(void) {
-    1832:	00 00 fa    	lnk       #0x0
+    1834:	00 00 fa    	lnk       #0x0
     if (state != last_state) {  // if we are entering the state, do initialization stuff
-    1834:	31 40 80    	mov.w     0x806, w1
-    1836:	40 40 80    	mov.w     0x808, w0
-    1838:	80 8f 50    	sub.w     w1, w0, [w15]
-    183a:	05 00 32    	bra       Z, 0x1846 <.L20>
+    1836:	31 40 80    	mov.w     0x806, w1
+    1838:	40 40 80    	mov.w     0x808, w0
+    183a:	80 8f 50    	sub.w     w1, w0, [w15]
+    183c:	05 00 32    	bra       Z, 0x1848 <.L20>
         last_state = state;
-    183c:	30 40 80    	mov.w     0x806, w0
-    183e:	40 40 88    	mov.w     w0, 0x808
+    183e:	30 40 80    	mov.w     0x806, w0
+    1840:	40 40 88    	mov.w     w0, 0x808
         dispSeconds(max_time); // Start by showing full time
-    1840:	c0 12 20    	mov.w     #0x12c, w0
-    1842:	2a 02 07    	rcall     0x1c98 <_dispSeconds> <.LFB8> <.LFE7>
+    1842:	c0 12 20    	mov.w     #0x12c, w0
+    1844:	29 02 07    	rcall     0x1c98 <_dispSeconds> <.LFB8> <.LFE7>
         BUTTON_LED = ON;
-    1844:	db 02 a8    	bset.b    0x2db, #0x0
+    1846:	db 02 a8    	bset.b    0x2db, #0x0
 
-00001846 <.L20>:
+00001848 <.L20>:
     }
 
     // Perform state tasks
@@ -2067,12 +2070,12 @@ void idle(void) {
 
     /* TODO is it better to not have the start button? */
     delay_by_nop(2000000); // delay for a long time at the start
-    1846:	00 48 28    	mov.w     #0x8480, w0
-    1848:	e1 01 20    	mov.w     #0x1e, w1
-    184a:	40 05 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+    1848:	00 48 28    	mov.w     #0x8480, w0
+    184a:	e1 01 20    	mov.w     #0x1e, w1
+    184c:	3f 05 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
     state=run;
-    184c:	e0 85 21    	mov.w     #0x185e, w0
-    184e:	30 40 88    	mov.w     w0, 0x806
+    184e:	00 86 21    	mov.w     #0x1860, w0
+    1850:	30 40 88    	mov.w     w0, 0x806
 
     // if (D8 == 0) { // D8 is pulled-up, if button is pressed it pulls it down
     //     state = run;
@@ -2080,229 +2083,229 @@ void idle(void) {
 
     // if we are leaving the state, do clean up stuff
     if (state != last_state) {
-    1850:	31 40 80    	mov.w     0x806, w1
-    1852:	40 40 80    	mov.w     0x808, w0
-    1854:	80 8f 50    	sub.w     w1, w0, [w15]
-    1856:	01 00 32    	bra       Z, 0x185a <.L19>
+    1852:	31 40 80    	mov.w     0x806, w1
+    1854:	40 40 80    	mov.w     0x808, w0
+    1856:	80 8f 50    	sub.w     w1, w0, [w15]
+    1858:	01 00 32    	bra       Z, 0x185c <.L19>
         BUTTON_LED = OFF;
-    1858:	db 02 a9    	bclr.b    0x2db, #0x0
+    185a:	db 02 a9    	bclr.b    0x2db, #0x0
 
-0000185a <.L19>:
+0000185c <.L19>:
     }
 }
-    185a:	00 80 fa    	ulnk      
-    185c:	00 00 06    	return    
+    185c:	00 80 fa    	ulnk      
+    185e:	00 00 06    	return    
 
-0000185e <_run>:
+00001860 <_run>:
 
 void run(void) {
-    185e:	06 00 fa    	lnk       #0x6
+    1860:	06 00 fa    	lnk       #0x6
     if (state != last_state) {  // if we are entering the state, do intitialization stuff
-    1860:	31 40 80    	mov.w     0x806, w1
-    1862:	40 40 80    	mov.w     0x808, w0
-    1864:	80 8f 50    	sub.w     w1, w0, [w15]
-    1866:	12 00 32    	bra       Z, 0x188c <.L23>
+    1862:	31 40 80    	mov.w     0x806, w1
+    1864:	40 40 80    	mov.w     0x808, w0
+    1866:	80 8f 50    	sub.w     w1, w0, [w15]
+    1868:	12 00 32    	bra       Z, 0x188e <.L23>
         last_state = state;
-    1868:	30 40 80    	mov.w     0x806, w0
-    186a:	40 40 88    	mov.w     w0, 0x808
+    186a:	30 40 80    	mov.w     0x806, w0
+    186c:	40 40 88    	mov.w     w0, 0x808
         IFS0bits.T1IF = 0; //lower interrupt flag
-    186c:	84 60 a9    	bclr.b    0x84, #0x3
+    186e:	84 60 a9    	bclr.b    0x84, #0x3
         TMR1 = 0;          // reset timer register
-    186e:	00 21 ef    	clr.w     0x100
+    1870:	00 21 ef    	clr.w     0x100
         T1CONbits.TON = 1; // enable 1 second timer
-    1870:	05 e1 a8    	bset.b    0x105, #0x7
+    1872:	05 e1 a8    	bset.b    0x105, #0x7
 
         time_left = max_time;
-    1872:	c0 12 20    	mov.w     #0x12c, w0
-    1874:	00 40 88    	mov.w     w0, 0x800
+    1874:	c0 12 20    	mov.w     #0x12c, w0
+    1876:	00 40 88    	mov.w     w0, 0x800
         dispSeconds(time_left);
-    1876:	00 40 80    	mov.w     0x800, w0
-    1878:	0f 02 07    	rcall     0x1c98 <_dispSeconds> <.LFB8> <.LFE7>
+    1878:	00 40 80    	mov.w     0x800, w0
+    187a:	0e 02 07    	rcall     0x1c98 <_dispSeconds> <.LFB8> <.LFE7>
         STRIKE1_GLED = ON; // Turn on strike LEDs to green
-    187a:	da 82 a8    	bset.b    0x2da, #0x4
+    187c:	da 82 a8    	bset.b    0x2da, #0x4
         delay_by_nop(1);
-    187c:	10 00 20    	mov.w     #0x1, w0
-    187e:	01 00 20    	mov.w     #0x0, w1
-    1880:	25 05 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+    187e:	10 00 20    	mov.w     #0x1, w0
+    1880:	01 00 20    	mov.w     #0x0, w1
+    1882:	24 05 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
         STRIKE2_GLED = ON;
-    1882:	da 22 a8    	bset.b    0x2da, #0x1
+    1884:	da 22 a8    	bset.b    0x2da, #0x1
         delay_by_nop(1);
-    1884:	10 00 20    	mov.w     #0x1, w0
-    1886:	01 00 20    	mov.w     #0x0, w1
-    1888:	21 05 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+    1886:	10 00 20    	mov.w     #0x1, w0
+    1888:	01 00 20    	mov.w     #0x0, w1
+    188a:	20 05 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
         STRIKE3_GLED = ON;
-    188a:	ea 62 a8    	bset.b    0x2ea, #0x3
+    188c:	ea 62 a8    	bset.b    0x2ea, #0x3
 
-0000188c <.L23>:
+0000188e <.L23>:
     }
 
     // Perform state tasks
     datareturned = 0;
-    188c:	02 68 ef    	clr.b     0x802
+    188e:	02 68 ef    	clr.b     0x802
     uint8_t i;
     uint16_t prev_r = 0; uint16_t prev_rs = 0;
-    188e:	00 00 eb    	clr.w     w0
-    1890:	10 07 98    	mov.w     w0, [w14+2]
-    1892:	00 00 eb    	clr.w     w0
-    1894:	20 07 98    	mov.w     w0, [w14+4]
+    1890:	00 00 eb    	clr.w     w0
+    1892:	10 07 98    	mov.w     w0, [w14+2]
+    1894:	00 00 eb    	clr.w     w0
+    1896:	20 07 98    	mov.w     w0, [w14+4]
 
     // Handle time
     dispSeconds(time_left);
-    1896:	00 40 80    	mov.w     0x800, w0
-    1898:	ff 01 07    	rcall     0x1c98 <_dispSeconds> <.LFB8> <.LFE7>
+    1898:	00 40 80    	mov.w     0x800, w0
+    189a:	fe 01 07    	rcall     0x1c98 <_dispSeconds> <.LFB8> <.LFE7>
     if (time_left == 0) {
-    189a:	00 40 80    	mov.w     0x800, w0
-    189c:	00 00 e0    	cp0.w     w0
-    189e:	17 00 3a    	bra       NZ, 0x18ce <.L24>
+    189c:	00 40 80    	mov.w     0x800, w0
+    189e:	00 00 e0    	cp0.w     w0
+    18a0:	17 00 3a    	bra       NZ, 0x18d0 <.L24>
         for (i = 0; i < 6; i++) {
-    18a0:	00 40 eb    	clr.b     w0
-    18a2:	00 4f 78    	mov.b     w0, [w14]
-    18a4:	0f 00 37    	bra       0x18c4 <.L25>
+    18a2:	00 40 eb    	clr.b     w0
+    18a4:	00 4f 78    	mov.b     w0, [w14]
+    18a6:	0f 00 37    	bra       0x18c6 <.L25>
 
-000018a6 <.L27>:
+000018a8 <.L27>:
             if(peripheral_present[i]) {
-    18a6:	1e 80 fb    	ze        [w14], w0
-    18a8:	21 c2 20    	mov.w     #0xc22, w1
-    18aa:	61 40 78    	mov.b     [w1+w0], w0
-    18ac:	00 04 e0    	cp0.b     w0
-    18ae:	09 00 32    	bra       Z, 0x18c2 <.L26>
+    18a8:	1e 80 fb    	ze        [w14], w0
+    18aa:	21 c2 20    	mov.w     #0xc22, w1
+    18ac:	61 40 78    	mov.b     [w1+w0], w0
+    18ae:	00 04 e0    	cp0.b     w0
+    18b0:	09 00 32    	bra       Z, 0x18c4 <.L26>
                 i2c2_start();
-    18b0:	6d 06 07    	rcall     0x258c <_i2c2_start> <.LFB14> <.LFE13>
+    18b2:	6c 06 07    	rcall     0x258c <_i2c2_start> <.LFB14> <.LFE13>
                 send_i2c2_byte(peripheral_addrs[i] | 0);  // init a write, last to 0
-    18b2:	1e 80 fb    	ze        [w14], w0
-    18b4:	e1 c2 20    	mov.w     #0xc2e, w1
-    18b6:	61 40 78    	mov.b     [w1+w0], w0
-    18b8:	00 80 fb    	ze        w0, w0
-    18ba:	b7 06 07    	rcall     0x262a <_send_i2c2_byte> <.LFB17> <.LFE16>
+    18b4:	1e 80 fb    	ze        [w14], w0
+    18b6:	e1 c2 20    	mov.w     #0xc2e, w1
+    18b8:	61 40 78    	mov.b     [w1+w0], w0
+    18ba:	00 80 fb    	ze        w0, w0
+    18bc:	b6 06 07    	rcall     0x262a <_send_i2c2_byte> <.LFB17> <.LFE16>
                 send_i2c2_byte(HEADER_END_LOSE << 5); // Broadcast the current number of strikes
-    18bc:	00 04 20    	mov.w     #0x40, w0
-    18be:	b5 06 07    	rcall     0x262a <_send_i2c2_byte> <.LFB17> <.LFE16>
+    18be:	00 04 20    	mov.w     #0x40, w0
+    18c0:	b4 06 07    	rcall     0x262a <_send_i2c2_byte> <.LFB17> <.LFE16>
                 reset_i2c2_bus();
-    18c0:	99 06 07    	rcall     0x25f4 <_reset_i2c2_bus> <.LFB16> <.LFE15>
+    18c2:	98 06 07    	rcall     0x25f4 <_reset_i2c2_bus> <.LFB16> <.LFE15>
 
-000018c2 <.L26>:
-    18c2:	1e 4f e8    	inc.b     [w14], [w14]
+000018c4 <.L26>:
+    18c4:	1e 4f e8    	inc.b     [w14], [w14]
 
-000018c4 <.L25>:
-    18c4:	1e 40 78    	mov.b     [w14], w0
-    18c6:	e5 4f 50    	sub.b     w0, #0x5, [w15]
-    18c8:	ee ff 36    	bra       LEU, 0x18a6 <.L27>
+000018c6 <.L25>:
+    18c6:	1e 40 78    	mov.b     [w14], w0
+    18c8:	e5 4f 50    	sub.b     w0, #0x5, [w15]
+    18ca:	ee ff 36    	bra       LEU, 0x18a8 <.L27>
             }
         }
        state = end_fail;            // if we're out of time, go to end
-    18ca:	20 b0 21    	mov.w     #0x1b02, w0
-    18cc:	30 40 88    	mov.w     w0, 0x806
+    18cc:	20 b0 21    	mov.w     #0x1b02, w0
+    18ce:	30 40 88    	mov.w     w0, 0x806
 
-000018ce <.L24>:
+000018d0 <.L24>:
     }
 
     // Get completeness and strikes from every module
     prev_num_strikes = num_strikes;
-    18ce:	03 c8 bf    	mov.b     0x803, WREG
-    18d0:	04 e8 b7    	mov.b     WREG, 0x804
+    18d0:	03 c8 bf    	mov.b     0x803, WREG
+    18d2:	04 e8 b7    	mov.b     WREG, 0x804
     for (i = 0; i < 6; i++) {
-    18d2:	00 40 eb    	clr.b     w0
-    18d4:	00 4f 78    	mov.b     w0, [w14]
-    18d6:	40 00 37    	bra       0x1958 <.L28>
+    18d4:	00 40 eb    	clr.b     w0
+    18d6:	00 4f 78    	mov.b     w0, [w14]
+    18d8:	40 00 37    	bra       0x195a <.L28>
 
-000018d8 <.L33>:
+000018da <.L33>:
         if(peripheral_present[i]) {
-    18d8:	1e 80 fb    	ze        [w14], w0
-    18da:	21 c2 20    	mov.w     #0xc22, w1
-    18dc:	61 40 78    	mov.b     [w1+w0], w0
-    18de:	00 04 e0    	cp0.b     w0
-    18e0:	3a 00 32    	bra       Z, 0x1956 <.L29>
+    18da:	1e 80 fb    	ze        [w14], w0
+    18dc:	21 c2 20    	mov.w     #0xc22, w1
+    18de:	61 40 78    	mov.b     [w1+w0], w0
+    18e0:	00 04 e0    	cp0.b     w0
+    18e2:	3a 00 32    	bra       Z, 0x1958 <.L29>
             i2c2_start();
-    18e2:	54 06 07    	rcall     0x258c <_i2c2_start> <.LFB14> <.LFE13>
+    18e4:	53 06 07    	rcall     0x258c <_i2c2_start> <.LFB14> <.LFE13>
             send_i2c2_byte(peripheral_addrs[i] | 1);  // init a read, last to 1
-    18e4:	1e 80 fb    	ze        [w14], w0
-    18e6:	e1 c2 20    	mov.w     #0xc2e, w1
-    18e8:	61 40 78    	mov.b     [w1+w0], w0
-    18ea:	00 04 a0    	bset.b    w0, #0x0
-    18ec:	00 80 fb    	ze        w0, w0
-    18ee:	9d 06 07    	rcall     0x262a <_send_i2c2_byte> <.LFB17> <.LFE16>
+    18e6:	1e 80 fb    	ze        [w14], w0
+    18e8:	e1 c2 20    	mov.w     #0xc2e, w1
+    18ea:	61 40 78    	mov.b     [w1+w0], w0
+    18ec:	00 04 a0    	bset.b    w0, #0x0
+    18ee:	00 80 fb    	ze        w0, w0
+    18f0:	9c 06 07    	rcall     0x262a <_send_i2c2_byte> <.LFB17> <.LFE16>
             datareturned = i2c2_read_nack();
-    18f0:	fe 06 07    	rcall     0x26ee <_i2c2_read_nack> <.LFB20> <.LFE19>
-    18f2:	02 e8 b7    	mov.b     WREG, 0x802
+    18f2:	fd 06 07    	rcall     0x26ee <_i2c2_read_nack> <.LFB20> <.LFE19>
+    18f4:	02 e8 b7    	mov.b     WREG, 0x802
             reset_i2c2_bus();
-    18f4:	7f 06 07    	rcall     0x25f4 <_reset_i2c2_bus> <.LFB16> <.LFE15>
+    18f6:	7e 06 07    	rcall     0x25f4 <_reset_i2c2_bus> <.LFB16> <.LFE15>
 
             if (datareturned & 0b10000000) { // Complete flag
-    18f6:	02 c8 bf    	mov.b     0x802, WREG
-    18f8:	00 04 e0    	cp0.b     w0
-    18fa:	1b 00 3d    	bra       GE, 0x1932 <.L30>
+    18f8:	02 c8 bf    	mov.b     0x802, WREG
+    18fa:	00 04 e0    	cp0.b     w0
+    18fc:	1b 00 3d    	bra       GE, 0x1934 <.L30>
                 if (peripheral_complete[i] == 0){
-    18fc:	1e 80 fb    	ze        [w14], w0
-    18fe:	81 c2 20    	mov.w     #0xc28, w1
-    1900:	61 40 78    	mov.b     [w1+w0], w0
-    1902:	00 04 e0    	cp0.b     w0
-    1904:	12 00 3a    	bra       NZ, 0x192a <.L31>
+    18fe:	1e 80 fb    	ze        [w14], w0
+    1900:	81 c2 20    	mov.w     #0xc28, w1
+    1902:	61 40 78    	mov.b     [w1+w0], w0
+    1904:	00 04 e0    	cp0.b     w0
+    1906:	12 00 3a    	bra       NZ, 0x192c <.L31>
                     prev_rs = OC1RS;
-    1906:	a1 0c 80    	mov.w     0x194, w1
-    1908:	21 07 98    	mov.w     w1, [w14+4]
+    1908:	a1 0c 80    	mov.w     0x194, w1
+    190a:	21 07 98    	mov.w     w1, [w14+4]
                     prev_r = OC1R;
-    190a:	b1 0c 80    	mov.w     0x196, w1
-    190c:	11 07 98    	mov.w     w1, [w14+2]
+    190c:	b1 0c 80    	mov.w     0x196, w1
+    190e:	11 07 98    	mov.w     w1, [w14+2]
                     OC1RS = PWM_PERIOD_2;
-    190e:	30 b6 84    	mov.w     0x96c6, w0
-    1910:	a0 0c 88    	mov.w     w0, 0x194
+    1910:	30 b6 84    	mov.w     0x96c6, w0
+    1912:	a0 0c 88    	mov.w     w0, 0x194
                     OC1R = OC1RS >> 1; // Make a high-pitched complete sound
-    1912:	a0 0c 80    	mov.w     0x194, w0
-    1914:	00 00 d1    	lsr.w     w0, w0
-    1916:	b0 0c 88    	mov.w     w0, 0x196
+    1914:	a0 0c 80    	mov.w     0x194, w0
+    1916:	00 00 d1    	lsr.w     w0, w0
+    1918:	b0 0c 88    	mov.w     w0, 0x196
                     disable_interrupts();
-    1918:	ff 3f fc    	disi      #0x3fff
+    191a:	ff 3f fc    	disi      #0x3fff
                     delay_by_nop(300000);
-    191a:	00 3e 29    	mov.w     #0x93e0, w0
-    191c:	41 00 20    	mov.w     #0x4, w1
-    191e:	d6 04 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+    191c:	00 3e 29    	mov.w     #0x93e0, w0
+    191e:	41 00 20    	mov.w     #0x4, w1
+    1920:	d5 04 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
                     OC1RS = prev_rs;;
-    1920:	ae 00 90    	mov.w     [w14+4], w1
-    1922:	a1 0c 88    	mov.w     w1, 0x194
+    1922:	ae 00 90    	mov.w     [w14+4], w1
+    1924:	a1 0c 88    	mov.w     w1, 0x194
                     OC1R = prev_r;
-    1924:	9e 00 90    	mov.w     [w14+2], w1
-    1926:	b1 0c 88    	mov.w     w1, 0x196
+    1926:	9e 00 90    	mov.w     [w14+2], w1
+    1928:	b1 0c 88    	mov.w     w1, 0x196
                     enable_interrupts();
-    1928:	52 20 ef    	clr.w     0x52
+    192a:	52 20 ef    	clr.w     0x52
 
-0000192a <.L31>:
+0000192c <.L31>:
                 }
                 peripheral_complete[i] = 1;
-    192a:	1e 80 fb    	ze        [w14], w0
-    192c:	81 c2 20    	mov.w     #0xc28, w1
-    192e:	12 c0 b3    	mov.b     #0x1, w2
-    1930:	82 70 78    	mov.b     w2, [w1+w0]
+    192c:	1e 80 fb    	ze        [w14], w0
+    192e:	81 c2 20    	mov.w     #0xc28, w1
+    1930:	12 c0 b3    	mov.b     #0x1, w2
+    1932:	82 70 78    	mov.b     w2, [w1+w0]
 
-00001932 <.L30>:
+00001934 <.L30>:
             }
             if (((datareturned & 0b01110000) >> 4) > prev_num_strikes) { //If the module recorded any strikes
-    1932:	02 c8 bf    	mov.b     0x802, WREG
-    1934:	80 80 fb    	ze        w0, w1
-    1936:	00 07 20    	mov.w     #0x70, w0
-    1938:	00 80 60    	and.w     w1, w0, w0
-    193a:	c4 80 de    	asr.w     w0, #0x4, w1
-    193c:	04 c8 bf    	mov.b     0x804, WREG
-    193e:	00 80 fb    	ze        w0, w0
-    1940:	80 8f 50    	sub.w     w1, w0, [w15]
-    1942:	09 00 34    	bra       LE, 0x1956 <.L29>
+    1934:	02 c8 bf    	mov.b     0x802, WREG
+    1936:	80 80 fb    	ze        w0, w1
+    1938:	00 07 20    	mov.w     #0x70, w0
+    193a:	00 80 60    	and.w     w1, w0, w0
+    193c:	c4 80 de    	asr.w     w0, #0x4, w1
+    193e:	04 c8 bf    	mov.b     0x804, WREG
+    1940:	00 80 fb    	ze        w0, w0
+    1942:	80 8f 50    	sub.w     w1, w0, [w15]
+    1944:	09 00 34    	bra       LE, 0x1958 <.L29>
                 num_strikes+= ((datareturned & 0b01110000) >> 4);
-    1944:	02 c8 bf    	mov.b     0x802, WREG
-    1946:	80 80 fb    	ze        w0, w1
-    1948:	00 07 20    	mov.w     #0x70, w0
-    194a:	00 80 60    	and.w     w1, w0, w0
-    194c:	44 80 de    	asr.w     w0, #0x4, w0
-    194e:	80 40 78    	mov.b     w0, w1
-    1950:	03 c8 bf    	mov.b     0x803, WREG
-    1952:	00 c0 40    	add.b     w1, w0, w0
-    1954:	03 e8 b7    	mov.b     WREG, 0x803
+    1946:	02 c8 bf    	mov.b     0x802, WREG
+    1948:	80 80 fb    	ze        w0, w1
+    194a:	00 07 20    	mov.w     #0x70, w0
+    194c:	00 80 60    	and.w     w1, w0, w0
+    194e:	44 80 de    	asr.w     w0, #0x4, w0
+    1950:	80 40 78    	mov.b     w0, w1
+    1952:	03 c8 bf    	mov.b     0x803, WREG
+    1954:	00 c0 40    	add.b     w1, w0, w0
+    1956:	03 e8 b7    	mov.b     WREG, 0x803
 
-00001956 <.L29>:
-    1956:	1e 4f e8    	inc.b     [w14], [w14]
+00001958 <.L29>:
+    1958:	1e 4f e8    	inc.b     [w14], [w14]
 
-00001958 <.L28>:
-    1958:	1e 40 78    	mov.b     [w14], w0
-    195a:	e5 4f 50    	sub.b     w0, #0x5, [w15]
-    195c:	bd ff 36    	bra       LEU, 0x18d8 <.L33>
+0000195a <.L28>:
+    195a:	1e 40 78    	mov.b     [w14], w0
+    195c:	e5 4f 50    	sub.b     w0, #0x5, [w15]
+    195e:	bd ff 36    	bra       LEU, 0x18da <.L33>
             }
             if ((datareturned & 0b00001111) != 0) {
                 // TODO: implement error codes if necessary
@@ -2311,297 +2314,297 @@ void run(void) {
     }
     //Handles completeness
     game_complete = 1;
-    195e:	10 c0 b3    	mov.b     #0x1, w0
-    1960:	05 e8 b7    	mov.b     WREG, 0x805
+    1960:	10 c0 b3    	mov.b     #0x1, w0
+    1962:	05 e8 b7    	mov.b     WREG, 0x805
     for (i = 0; i < 6; i++) {
-    1962:	00 40 eb    	clr.b     w0
-    1964:	00 4f 78    	mov.b     w0, [w14]
-    1966:	0c 00 37    	bra       0x1980 <.L34>
+    1964:	00 40 eb    	clr.b     w0
+    1966:	00 4f 78    	mov.b     w0, [w14]
+    1968:	0c 00 37    	bra       0x1982 <.L34>
 
-00001968 <.L36>:
+0000196a <.L36>:
         if (peripheral_present[i] && !peripheral_complete[i]) {
-    1968:	1e 80 fb    	ze        [w14], w0
-    196a:	21 c2 20    	mov.w     #0xc22, w1
-    196c:	61 40 78    	mov.b     [w1+w0], w0
-    196e:	00 04 e0    	cp0.b     w0
-    1970:	06 00 32    	bra       Z, 0x197e <.L35>
-    1972:	1e 80 fb    	ze        [w14], w0
-    1974:	81 c2 20    	mov.w     #0xc28, w1
-    1976:	61 40 78    	mov.b     [w1+w0], w0
-    1978:	00 04 e0    	cp0.b     w0
-    197a:	01 00 3a    	bra       NZ, 0x197e <.L35>
+    196a:	1e 80 fb    	ze        [w14], w0
+    196c:	21 c2 20    	mov.w     #0xc22, w1
+    196e:	61 40 78    	mov.b     [w1+w0], w0
+    1970:	00 04 e0    	cp0.b     w0
+    1972:	06 00 32    	bra       Z, 0x1980 <.L35>
+    1974:	1e 80 fb    	ze        [w14], w0
+    1976:	81 c2 20    	mov.w     #0xc28, w1
+    1978:	61 40 78    	mov.b     [w1+w0], w0
+    197a:	00 04 e0    	cp0.b     w0
+    197c:	01 00 3a    	bra       NZ, 0x1980 <.L35>
             game_complete = 0;
-    197c:	05 68 ef    	clr.b     0x805
+    197e:	05 68 ef    	clr.b     0x805
 
-0000197e <.L35>:
-    197e:	1e 4f e8    	inc.b     [w14], [w14]
+00001980 <.L35>:
+    1980:	1e 4f e8    	inc.b     [w14], [w14]
 
-00001980 <.L34>:
-    1980:	1e 40 78    	mov.b     [w14], w0
-    1982:	e5 4f 50    	sub.b     w0, #0x5, [w15]
-    1984:	f1 ff 36    	bra       LEU, 0x1968 <.L36>
+00001982 <.L34>:
+    1982:	1e 40 78    	mov.b     [w14], w0
+    1984:	e5 4f 50    	sub.b     w0, #0x5, [w15]
+    1986:	f1 ff 36    	bra       LEU, 0x196a <.L36>
         }
     }
     // If we checked all of them and the game is still complete, then count it!
     if (game_complete) {
-    1986:	05 c8 bf    	mov.b     0x805, WREG
-    1988:	00 04 e0    	cp0.b     w0
-    198a:	17 00 32    	bra       Z, 0x19ba <.L37>
+    1988:	05 c8 bf    	mov.b     0x805, WREG
+    198a:	00 04 e0    	cp0.b     w0
+    198c:	17 00 32    	bra       Z, 0x19bc <.L37>
         for (i = 0; i < 6; i++) {
-    198c:	00 40 eb    	clr.b     w0
-    198e:	00 4f 78    	mov.b     w0, [w14]
-    1990:	0f 00 37    	bra       0x19b0 <.L38>
+    198e:	00 40 eb    	clr.b     w0
+    1990:	00 4f 78    	mov.b     w0, [w14]
+    1992:	0f 00 37    	bra       0x19b2 <.L38>
 
-00001992 <.L40>:
+00001994 <.L40>:
             if(peripheral_present[i]) {
-    1992:	1e 80 fb    	ze        [w14], w0
-    1994:	21 c2 20    	mov.w     #0xc22, w1
-    1996:	61 40 78    	mov.b     [w1+w0], w0
-    1998:	00 04 e0    	cp0.b     w0
-    199a:	09 00 32    	bra       Z, 0x19ae <.L39>
+    1994:	1e 80 fb    	ze        [w14], w0
+    1996:	21 c2 20    	mov.w     #0xc22, w1
+    1998:	61 40 78    	mov.b     [w1+w0], w0
+    199a:	00 04 e0    	cp0.b     w0
+    199c:	09 00 32    	bra       Z, 0x19b0 <.L39>
                 i2c2_start();
-    199c:	f7 05 07    	rcall     0x258c <_i2c2_start> <.LFB14> <.LFE13>
+    199e:	f6 05 07    	rcall     0x258c <_i2c2_start> <.LFB14> <.LFE13>
                 send_i2c2_byte(peripheral_addrs[i] | 0);  // init a write, last to 0
-    199e:	1e 80 fb    	ze        [w14], w0
-    19a0:	e1 c2 20    	mov.w     #0xc2e, w1
-    19a2:	61 40 78    	mov.b     [w1+w0], w0
-    19a4:	00 80 fb    	ze        w0, w0
-    19a6:	41 06 07    	rcall     0x262a <_send_i2c2_byte> <.LFB17> <.LFE16>
+    19a0:	1e 80 fb    	ze        [w14], w0
+    19a2:	e1 c2 20    	mov.w     #0xc2e, w1
+    19a4:	61 40 78    	mov.b     [w1+w0], w0
+    19a6:	00 80 fb    	ze        w0, w0
+    19a8:	40 06 07    	rcall     0x262a <_send_i2c2_byte> <.LFB17> <.LFE16>
                 send_i2c2_byte(HEADER_END_WIN << 5); // Broadcast that we won
-    19a8:	00 02 20    	mov.w     #0x20, w0
-    19aa:	3f 06 07    	rcall     0x262a <_send_i2c2_byte> <.LFB17> <.LFE16>
+    19aa:	00 02 20    	mov.w     #0x20, w0
+    19ac:	3e 06 07    	rcall     0x262a <_send_i2c2_byte> <.LFB17> <.LFE16>
                 reset_i2c2_bus();
-    19ac:	23 06 07    	rcall     0x25f4 <_reset_i2c2_bus> <.LFB16> <.LFE15>
+    19ae:	22 06 07    	rcall     0x25f4 <_reset_i2c2_bus> <.LFB16> <.LFE15>
 
-000019ae <.L39>:
-    19ae:	1e 4f e8    	inc.b     [w14], [w14]
+000019b0 <.L39>:
+    19b0:	1e 4f e8    	inc.b     [w14], [w14]
 
-000019b0 <.L38>:
-    19b0:	1e 40 78    	mov.b     [w14], w0
-    19b2:	e5 4f 50    	sub.b     w0, #0x5, [w15]
-    19b4:	ee ff 36    	bra       LEU, 0x1992 <.L40>
+000019b2 <.L38>:
+    19b2:	1e 40 78    	mov.b     [w14], w0
+    19b4:	e5 4f 50    	sub.b     w0, #0x5, [w15]
+    19b6:	ee ff 36    	bra       LEU, 0x1994 <.L40>
             }
         }
         //TODO: Go to 'win' state
         state = end_win;
-    19b6:	e0 bc 21    	mov.w     #0x1bce, w0
-    19b8:	30 40 88    	mov.w     w0, 0x806
+    19b8:	e0 bc 21    	mov.w     #0x1bce, w0
+    19ba:	30 40 88    	mov.w     w0, 0x806
 
-000019ba <.L37>:
+000019bc <.L37>:
     }
 
     //Handles strikes
     strikeLEDOff(); // Handle strike LEDs
-    19ba:	86 fe 07    	rcall     0x16c8 <_strikeLEDOff> <.L0> <.LFB0> <.Ltext0>
+    19bc:	86 fe 07    	rcall     0x16ca <_strikeLEDOff> <.L0> <.LFB0> <.Ltext0>
     switch (num_strikes){
-    19bc:	03 c8 bf    	mov.b     0x803, WREG
-    19be:	00 80 fb    	ze        w0, w0
-    19c0:	e1 0f 50    	sub.w     w0, #0x1, [w15]
-    19c2:	11 00 32    	bra       Z, 0x19e6 <.L43>
-    19c4:	e2 0f 50    	sub.w     w0, #0x2, [w15]
-    19c6:	1c 00 32    	bra       Z, 0x1a00 <.L44>
-    19c8:	00 00 e0    	cp0.w     w0
-    19ca:	27 00 3a    	bra       NZ, 0x1a1a <.L56>
+    19be:	03 c8 bf    	mov.b     0x803, WREG
+    19c0:	00 80 fb    	ze        w0, w0
+    19c2:	e1 0f 50    	sub.w     w0, #0x1, [w15]
+    19c4:	11 00 32    	bra       Z, 0x19e8 <.L43>
+    19c6:	e2 0f 50    	sub.w     w0, #0x2, [w15]
+    19c8:	1c 00 32    	bra       Z, 0x1a02 <.L44>
+    19ca:	00 00 e0    	cp0.w     w0
+    19cc:	27 00 3a    	bra       NZ, 0x1a1c <.L56>
         case 0:
             STRIKE1_GLED = ON; delay_by_nop(1);
-    19cc:	da 82 a8    	bset.b    0x2da, #0x4
-    19ce:	10 00 20    	mov.w     #0x1, w0
-    19d0:	01 00 20    	mov.w     #0x0, w1
-    19d2:	7c 04 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+    19ce:	da 82 a8    	bset.b    0x2da, #0x4
+    19d0:	10 00 20    	mov.w     #0x1, w0
+    19d2:	01 00 20    	mov.w     #0x0, w1
+    19d4:	7b 04 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
             STRIKE2_GLED = ON; delay_by_nop(1);
-    19d4:	da 22 a8    	bset.b    0x2da, #0x1
-    19d6:	10 00 20    	mov.w     #0x1, w0
-    19d8:	01 00 20    	mov.w     #0x0, w1
-    19da:	78 04 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+    19d6:	da 22 a8    	bset.b    0x2da, #0x1
+    19d8:	10 00 20    	mov.w     #0x1, w0
+    19da:	01 00 20    	mov.w     #0x0, w1
+    19dc:	77 04 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
             STRIKE3_GLED = ON; delay_by_nop(1);
-    19dc:	ea 62 a8    	bset.b    0x2ea, #0x3
-    19de:	10 00 20    	mov.w     #0x1, w0
-    19e0:	01 00 20    	mov.w     #0x0, w1
-    19e2:	74 04 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+    19de:	ea 62 a8    	bset.b    0x2ea, #0x3
+    19e0:	10 00 20    	mov.w     #0x1, w0
+    19e2:	01 00 20    	mov.w     #0x0, w1
+    19e4:	73 04 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
         break;
-    19e4:	27 00 37    	bra       0x1a34 <.L45>
+    19e6:	27 00 37    	bra       0x1a36 <.L45>
 
-000019e6 <.L43>:
+000019e8 <.L43>:
         case 1:
             STRIKE1_RLED = ON; delay_by_nop(1);
-    19e6:	da a2 a8    	bset.b    0x2da, #0x5
-    19e8:	10 00 20    	mov.w     #0x1, w0
-    19ea:	01 00 20    	mov.w     #0x0, w1
-    19ec:	6f 04 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+    19e8:	da a2 a8    	bset.b    0x2da, #0x5
+    19ea:	10 00 20    	mov.w     #0x1, w0
+    19ec:	01 00 20    	mov.w     #0x0, w1
+    19ee:	6e 04 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
             STRIKE2_GLED = ON; delay_by_nop(1);
-    19ee:	da 22 a8    	bset.b    0x2da, #0x1
-    19f0:	10 00 20    	mov.w     #0x1, w0
-    19f2:	01 00 20    	mov.w     #0x0, w1
-    19f4:	6b 04 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+    19f0:	da 22 a8    	bset.b    0x2da, #0x1
+    19f2:	10 00 20    	mov.w     #0x1, w0
+    19f4:	01 00 20    	mov.w     #0x0, w1
+    19f6:	6a 04 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
             STRIKE3_GLED = ON; delay_by_nop(1);
-    19f6:	ea 62 a8    	bset.b    0x2ea, #0x3
-    19f8:	10 00 20    	mov.w     #0x1, w0
-    19fa:	01 00 20    	mov.w     #0x0, w1
-    19fc:	67 04 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+    19f8:	ea 62 a8    	bset.b    0x2ea, #0x3
+    19fa:	10 00 20    	mov.w     #0x1, w0
+    19fc:	01 00 20    	mov.w     #0x0, w1
+    19fe:	66 04 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
         break;
-    19fe:	1a 00 37    	bra       0x1a34 <.L45>
+    1a00:	1a 00 37    	bra       0x1a36 <.L45>
 
-00001a00 <.L44>:
+00001a02 <.L44>:
         case 2:
             STRIKE1_RLED = ON; delay_by_nop(1);
-    1a00:	da a2 a8    	bset.b    0x2da, #0x5
-    1a02:	10 00 20    	mov.w     #0x1, w0
-    1a04:	01 00 20    	mov.w     #0x0, w1
-    1a06:	62 04 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+    1a02:	da a2 a8    	bset.b    0x2da, #0x5
+    1a04:	10 00 20    	mov.w     #0x1, w0
+    1a06:	01 00 20    	mov.w     #0x0, w1
+    1a08:	61 04 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
             STRIKE2_RLED = ON; delay_by_nop(1);
-    1a08:	da 02 a8    	bset.b    0x2da, #0x0
-    1a0a:	10 00 20    	mov.w     #0x1, w0
-    1a0c:	01 00 20    	mov.w     #0x0, w1
-    1a0e:	5e 04 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+    1a0a:	da 02 a8    	bset.b    0x2da, #0x0
+    1a0c:	10 00 20    	mov.w     #0x1, w0
+    1a0e:	01 00 20    	mov.w     #0x0, w1
+    1a10:	5d 04 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
             STRIKE3_GLED = ON; delay_by_nop(1);
-    1a10:	ea 62 a8    	bset.b    0x2ea, #0x3
-    1a12:	10 00 20    	mov.w     #0x1, w0
-    1a14:	01 00 20    	mov.w     #0x0, w1
-    1a16:	5a 04 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+    1a12:	ea 62 a8    	bset.b    0x2ea, #0x3
+    1a14:	10 00 20    	mov.w     #0x1, w0
+    1a16:	01 00 20    	mov.w     #0x0, w1
+    1a18:	59 04 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
         break;
-    1a18:	0d 00 37    	bra       0x1a34 <.L45>
+    1a1a:	0d 00 37    	bra       0x1a36 <.L45>
 
-00001a1a <.L56>:
+00001a1c <.L56>:
         default:
             STRIKE1_RLED = ON; delay_by_nop(1);
-    1a1a:	da a2 a8    	bset.b    0x2da, #0x5
-    1a1c:	10 00 20    	mov.w     #0x1, w0
-    1a1e:	01 00 20    	mov.w     #0x0, w1
-    1a20:	55 04 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+    1a1c:	da a2 a8    	bset.b    0x2da, #0x5
+    1a1e:	10 00 20    	mov.w     #0x1, w0
+    1a20:	01 00 20    	mov.w     #0x0, w1
+    1a22:	54 04 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
             STRIKE2_RLED = ON; delay_by_nop(1);
-    1a22:	da 02 a8    	bset.b    0x2da, #0x0
-    1a24:	10 00 20    	mov.w     #0x1, w0
-    1a26:	01 00 20    	mov.w     #0x0, w1
-    1a28:	51 04 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+    1a24:	da 02 a8    	bset.b    0x2da, #0x0
+    1a26:	10 00 20    	mov.w     #0x1, w0
+    1a28:	01 00 20    	mov.w     #0x0, w1
+    1a2a:	50 04 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
             STRIKE3_RLED = ON; delay_by_nop(1);
-    1a2a:	cb e2 a8    	bset.b    0x2cb, #0x7
-    1a2c:	10 00 20    	mov.w     #0x1, w0
-    1a2e:	01 00 20    	mov.w     #0x0, w1
-    1a30:	4d 04 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+    1a2c:	cb e2 a8    	bset.b    0x2cb, #0x7
+    1a2e:	10 00 20    	mov.w     #0x1, w0
+    1a30:	01 00 20    	mov.w     #0x0, w1
+    1a32:	4c 04 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
         break;
-    1a32:	00 00 00    	nop       
+    1a34:	00 00 00    	nop       
 
-00001a34 <.L45>:
+00001a36 <.L45>:
     }
-    if (num_strikes > 2) {
-    1a34:	03 c8 bf    	mov.b     0x803, WREG
-    1a36:	e2 4f 50    	sub.b     w0, #0x2, [w15]
-    1a38:	18 00 36    	bra       LEU, 0x1a6a <.L46>
+
+    if (num_strikes > prev_num_strikes) {
+    1a36:	31 80 20    	mov.w     #0x803, w1
+    1a38:	91 40 78    	mov.b     [w1], w1
+    1a3a:	04 c8 bf    	mov.b     0x804, WREG
+    1a3c:	80 cf 50    	sub.b     w1, w0, [w15]
+    1a3e:	2b 00 36    	bra       LEU, 0x1a96 <.L46>
         for (i = 0; i < 6; i++) {
-    1a3a:	00 40 eb    	clr.b     w0
-    1a3c:	00 4f 78    	mov.b     w0, [w14]
-    1a3e:	0f 00 37    	bra       0x1a5e <.L47>
+    1a40:	00 40 eb    	clr.b     w0
+    1a42:	00 4f 78    	mov.b     w0, [w14]
+    1a44:	13 00 37    	bra       0x1a6c <.L47>
 
-00001a40 <.L49>:
-            if(peripheral_present[i]) {
-    1a40:	1e 80 fb    	ze        [w14], w0
-    1a42:	21 c2 20    	mov.w     #0xc22, w1
-    1a44:	61 40 78    	mov.b     [w1+w0], w0
-    1a46:	00 04 e0    	cp0.b     w0
-    1a48:	09 00 32    	bra       Z, 0x1a5c <.L48>
-                i2c2_start();
-    1a4a:	a0 05 07    	rcall     0x258c <_i2c2_start> <.LFB14> <.LFE13>
-                send_i2c2_byte(peripheral_addrs[i] | 0);  // init a write, last to 0
-    1a4c:	1e 80 fb    	ze        [w14], w0
-    1a4e:	e1 c2 20    	mov.w     #0xc2e, w1
-    1a50:	61 40 78    	mov.b     [w1+w0], w0
-    1a52:	00 80 fb    	ze        w0, w0
-    1a54:	ea 05 07    	rcall     0x262a <_send_i2c2_byte> <.LFB17> <.LFE16>
-                send_i2c2_byte(HEADER_END_LOSE << 5); // Broadcast the current number of strikes
-    1a56:	00 04 20    	mov.w     #0x40, w0
-    1a58:	e8 05 07    	rcall     0x262a <_send_i2c2_byte> <.LFB17> <.LFE16>
-                reset_i2c2_bus();
-    1a5a:	cc 05 07    	rcall     0x25f4 <_reset_i2c2_bus> <.LFB16> <.LFE15>
-
-00001a5c <.L48>:
-    1a5c:	1e 4f e8    	inc.b     [w14], [w14]
-
-00001a5e <.L47>:
-    1a5e:	1e 40 78    	mov.b     [w14], w0
-    1a60:	e5 4f 50    	sub.b     w0, #0x5, [w15]
-    1a62:	ee ff 36    	bra       LEU, 0x1a40 <.L49>
-            }
-        }
-        state = end_fail;
-    1a64:	20 b0 21    	mov.w     #0x1b02, w0
-    1a66:	30 40 88    	mov.w     w0, 0x806
-    1a68:	30 00 37    	bra       0x1aca <.L50>
-
-00001a6a <.L46>:
-    }
-    else if (num_strikes > prev_num_strikes) {
-    1a6a:	31 80 20    	mov.w     #0x803, w1
-    1a6c:	91 40 78    	mov.b     [w1], w1
-    1a6e:	04 c8 bf    	mov.b     0x804, WREG
-    1a70:	80 cf 50    	sub.b     w1, w0, [w15]
-    1a72:	2b 00 36    	bra       LEU, 0x1aca <.L50>
-        for (i = 0; i < 6; i++) {
-    1a74:	00 40 eb    	clr.b     w0
-    1a76:	00 4f 78    	mov.b     w0, [w14]
-    1a78:	13 00 37    	bra       0x1aa0 <.L51>
-
-00001a7a <.L53>:
+00001a46 <.L49>:
             if (peripheral_present[i]) {
-    1a7a:	1e 80 fb    	ze        [w14], w0
-    1a7c:	21 c2 20    	mov.w     #0xc22, w1
-    1a7e:	61 40 78    	mov.b     [w1+w0], w0
-    1a80:	00 04 e0    	cp0.b     w0
-    1a82:	0d 00 32    	bra       Z, 0x1a9e <.L52>
+    1a46:	1e 80 fb    	ze        [w14], w0
+    1a48:	21 c2 20    	mov.w     #0xc22, w1
+    1a4a:	61 40 78    	mov.b     [w1+w0], w0
+    1a4c:	00 04 e0    	cp0.b     w0
+    1a4e:	0d 00 32    	bra       Z, 0x1a6a <.L48>
                 i2c2_start();
-    1a84:	83 05 07    	rcall     0x258c <_i2c2_start> <.LFB14> <.LFE13>
+    1a50:	9d 05 07    	rcall     0x258c <_i2c2_start> <.LFB14> <.LFE13>
                 send_i2c2_byte(peripheral_addrs[i] | 0);  // init a write, last to 0
-    1a86:	1e 80 fb    	ze        [w14], w0
-    1a88:	e1 c2 20    	mov.w     #0xc2e, w1
-    1a8a:	61 40 78    	mov.b     [w1+w0], w0
-    1a8c:	00 80 fb    	ze        w0, w0
-    1a8e:	cd 05 07    	rcall     0x262a <_send_i2c2_byte> <.LFB17> <.LFE16>
+    1a52:	1e 80 fb    	ze        [w14], w0
+    1a54:	e1 c2 20    	mov.w     #0xc2e, w1
+    1a56:	61 40 78    	mov.b     [w1+w0], w0
+    1a58:	00 80 fb    	ze        w0, w0
+    1a5a:	e7 05 07    	rcall     0x262a <_send_i2c2_byte> <.LFB17> <.LFE16>
                 send_i2c2_byte((HEADER_NUM_STRIKES<<5) | num_strikes); // Broadcast the current number of strikes
-    1a90:	31 80 20    	mov.w     #0x803, w1
-    1a92:	91 40 78    	mov.b     [w1], w1
-    1a94:	00 ce b3    	mov.b     #0xe0, w0
-    1a96:	00 c0 70    	ior.b     w1, w0, w0
-    1a98:	00 80 fb    	ze        w0, w0
-    1a9a:	c7 05 07    	rcall     0x262a <_send_i2c2_byte> <.LFB17> <.LFE16>
+    1a5c:	31 80 20    	mov.w     #0x803, w1
+    1a5e:	91 40 78    	mov.b     [w1], w1
+    1a60:	00 ce b3    	mov.b     #0xe0, w0
+    1a62:	00 c0 70    	ior.b     w1, w0, w0
+    1a64:	00 80 fb    	ze        w0, w0
+    1a66:	e1 05 07    	rcall     0x262a <_send_i2c2_byte> <.LFB17> <.LFE16>
                 reset_i2c2_bus();
-    1a9c:	ab 05 07    	rcall     0x25f4 <_reset_i2c2_bus> <.LFB16> <.LFE15>
+    1a68:	c5 05 07    	rcall     0x25f4 <_reset_i2c2_bus> <.LFB16> <.LFE15>
 
-00001a9e <.L52>:
-    1a9e:	1e 4f e8    	inc.b     [w14], [w14]
+00001a6a <.L48>:
+    1a6a:	1e 4f e8    	inc.b     [w14], [w14]
 
-00001aa0 <.L51>:
-    1aa0:	1e 40 78    	mov.b     [w14], w0
-    1aa2:	e5 4f 50    	sub.b     w0, #0x5, [w15]
-    1aa4:	ea ff 36    	bra       LEU, 0x1a7a <.L53>
+00001a6c <.L47>:
+    1a6c:	1e 40 78    	mov.b     [w14], w0
+    1a6e:	e5 4f 50    	sub.b     w0, #0x5, [w15]
+    1a70:	ea ff 36    	bra       LEU, 0x1a46 <.L49>
             }
         }
 
         prev_rs = OC1RS;
-    1aa6:	a1 0c 80    	mov.w     0x194, w1
-    1aa8:	21 07 98    	mov.w     w1, [w14+4]
+    1a72:	a1 0c 80    	mov.w     0x194, w1
+    1a74:	21 07 98    	mov.w     w1, [w14+4]
         prev_r = OC1R;
-    1aaa:	b1 0c 80    	mov.w     0x196, w1
-    1aac:	11 07 98    	mov.w     w1, [w14+2]
+    1a76:	b1 0c 80    	mov.w     0x196, w1
+    1a78:	11 07 98    	mov.w     w1, [w14+2]
         OC1RS = PWM_PERIOD_1;
-    1aae:	20 b6 84    	mov.w     0x96c4, w0
-    1ab0:	a0 0c 88    	mov.w     w0, 0x194
+    1a7a:	20 b6 84    	mov.w     0x96c4, w0
+    1a7c:	a0 0c 88    	mov.w     w0, 0x194
         OC1R = OC1RS >> 1; // Make a soise for the strike
-    1ab2:	a0 0c 80    	mov.w     0x194, w0
-    1ab4:	00 00 d1    	lsr.w     w0, w0
-    1ab6:	b0 0c 88    	mov.w     w0, 0x196
+    1a7e:	a0 0c 80    	mov.w     0x194, w0
+    1a80:	00 00 d1    	lsr.w     w0, w0
+    1a82:	b0 0c 88    	mov.w     w0, 0x196
         disable_interrupts();
-    1ab8:	ff 3f fc    	disi      #0x3fff
+    1a84:	ff 3f fc    	disi      #0x3fff
         delay_by_nop(300000);
-    1aba:	00 3e 29    	mov.w     #0x93e0, w0
-    1abc:	41 00 20    	mov.w     #0x4, w1
-    1abe:	06 04 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
-        OC1RS = prev_rs;;
-    1ac0:	ae 00 90    	mov.w     [w14+4], w1
-    1ac2:	a1 0c 88    	mov.w     w1, 0x194
+    1a86:	00 3e 29    	mov.w     #0x93e0, w0
+    1a88:	41 00 20    	mov.w     #0x4, w1
+    1a8a:	20 04 07    	rcall     0x22cc <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
+        OC1RS = prev_rs;
+    1a8c:	ae 00 90    	mov.w     [w14+4], w1
+    1a8e:	a1 0c 88    	mov.w     w1, 0x194
         OC1R = prev_r;
-    1ac4:	9e 00 90    	mov.w     [w14+2], w1
-    1ac6:	b1 0c 88    	mov.w     w1, 0x196
+    1a90:	9e 00 90    	mov.w     [w14+2], w1
+    1a92:	b1 0c 88    	mov.w     w1, 0x196
         enable_interrupts();
-    1ac8:	52 20 ef    	clr.w     0x52
+    1a94:	52 20 ef    	clr.w     0x52
+
+00001a96 <.L46>:
+    }
+    if (num_strikes > 2) {
+    1a96:	03 c8 bf    	mov.b     0x803, WREG
+    1a98:	e2 4f 50    	sub.b     w0, #0x2, [w15]
+    1a9a:	17 00 36    	bra       LEU, 0x1aca <.L50>
+        for (i = 0; i < 6; i++) {
+    1a9c:	00 40 eb    	clr.b     w0
+    1a9e:	00 4f 78    	mov.b     w0, [w14]
+    1aa0:	0f 00 37    	bra       0x1ac0 <.L51>
+
+00001aa2 <.L53>:
+            if(peripheral_present[i]) {
+    1aa2:	1e 80 fb    	ze        [w14], w0
+    1aa4:	21 c2 20    	mov.w     #0xc22, w1
+    1aa6:	61 40 78    	mov.b     [w1+w0], w0
+    1aa8:	00 04 e0    	cp0.b     w0
+    1aaa:	09 00 32    	bra       Z, 0x1abe <.L52>
+                i2c2_start();
+    1aac:	6f 05 07    	rcall     0x258c <_i2c2_start> <.LFB14> <.LFE13>
+                send_i2c2_byte(peripheral_addrs[i] | 0);  // init a write, last to 0
+    1aae:	1e 80 fb    	ze        [w14], w0
+    1ab0:	e1 c2 20    	mov.w     #0xc2e, w1
+    1ab2:	61 40 78    	mov.b     [w1+w0], w0
+    1ab4:	00 80 fb    	ze        w0, w0
+    1ab6:	b9 05 07    	rcall     0x262a <_send_i2c2_byte> <.LFB17> <.LFE16>
+                send_i2c2_byte(HEADER_END_LOSE << 5); // Broadcast the current number of strikes
+    1ab8:	00 04 20    	mov.w     #0x40, w0
+    1aba:	b7 05 07    	rcall     0x262a <_send_i2c2_byte> <.LFB17> <.LFE16>
+                reset_i2c2_bus();
+    1abc:	9b 05 07    	rcall     0x25f4 <_reset_i2c2_bus> <.LFB16> <.LFE15>
+
+00001abe <.L52>:
+    1abe:	1e 4f e8    	inc.b     [w14], [w14]
+
+00001ac0 <.L51>:
+    1ac0:	1e 40 78    	mov.b     [w14], w0
+    1ac2:	e5 4f 50    	sub.b     w0, #0x5, [w15]
+    1ac4:	ee ff 36    	bra       LEU, 0x1aa2 <.L53>
+            }
+        }
+        state = end_fail;
+    1ac6:	20 b0 21    	mov.w     #0x1b02, w0
+    1ac8:	30 40 88    	mov.w     w0, 0x806
 
 00001aca <.L50>:
     }
@@ -2614,7 +2617,7 @@ void run(void) {
     1ad0:	00 00 e0    	cp0.w     w0
     1ad2:	02 00 3a    	bra       NZ, 0x1ad8 <.L54>
         state = idle;           // SW2 resets to idle
-    1ad4:	20 83 21    	mov.w     #0x1832, w0
+    1ad4:	40 83 21    	mov.w     #0x1834, w0
     1ad6:	30 40 88    	mov.w     w0, 0x806
 
 00001ad8 <.L54>:
@@ -2650,7 +2653,7 @@ void run(void) {
     1af8:	00 40 80    	mov.w     0x800, w0
     1afa:	ce 00 07    	rcall     0x1c98 <_dispSeconds> <.LFB8> <.LFE7>
         strikeLEDOff(); // turn off strike LEDs
-    1afc:	e5 fd 07    	rcall     0x16c8 <_strikeLEDOff> <.L0> <.LFB0> <.Ltext0>
+    1afc:	e6 fd 07    	rcall     0x16ca <_strikeLEDOff> <.L0> <.LFB0> <.Ltext0>
 
 00001afe <.L22>:
     }
@@ -4915,7 +4918,7 @@ Disassembly of section .isr.text:
     2764:	00 00 e9    	dec.w     w0, w0
     2766:	00 40 88    	mov.w     w0, 0x800
     2768:	31 40 80    	mov.w     0x806, w1
-    276a:	e0 85 21    	mov.w     #0x185e, w0
+    276a:	00 86 21    	mov.w     #0x1860, w0
     276c:	80 8f 50    	sub.w     w1, w0, [w15]
     276e:	09 00 3a    	bra       NZ, 0x2782 <.L10>
     2770:	06 21 ef    	clr.w     0x106
