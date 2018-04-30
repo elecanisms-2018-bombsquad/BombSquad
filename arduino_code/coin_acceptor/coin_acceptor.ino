@@ -55,7 +55,7 @@ void loop() {
 
   // Randomly flicker
   if (relayState == HIGH) {
-    if (random(100000) < 30) {
+    if (random(100000) < 10) {
       digitalWrite(lightPin, LOW);
       delay(random(100,300));
       for (int i = 0; i < 10; i++) {
@@ -63,6 +63,17 @@ void loop() {
         delay(random(100 - i * 9));
         digitalWrite(lightPin, LOW);
         delay(random(100 - i * 9));
+      }
+      digitalWrite(lightPin, HIGH);
+    }
+    if (random(100000) < 50) {
+      digitalWrite(lightPin, LOW);
+      delay(random(10,100));
+      for (int i = 0; i < 6; i++) {
+        digitalWrite(lightPin, HIGH);
+        delay(random(60 - i * 9));
+        digitalWrite(lightPin, LOW);
+        delay(random(60 - i * 9));
       }
       digitalWrite(lightPin, HIGH);
     }
