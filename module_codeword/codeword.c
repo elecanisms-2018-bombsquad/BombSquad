@@ -187,16 +187,19 @@ void run(void) { // Plays the game
 
     // Perform state tasks
     updateDisplay();
-    if ((set0[i0] == codeword[0]) &&
-        (set1[i1] == codeword[1]) &&
-        (set2[i2] == codeword[2]) &&
-        (set3[i3] == codeword[3]) &&
-        (set4[i4] == codeword[4])) {
-        state = solved;
-    } else {
-        LED3 = OFF;
-        lcd_print2(&lcd1, dispptr, "");
+    if (SW1 == 0) { //TODO: Add real submit button pin mapping
+        if ((set0[i0] == codeword[0]) &&
+            (set1[i1] == codeword[1]) &&
+            (set2[i2] == codeword[2]) &&
+            (set3[i3] == codeword[3]) &&
+            (set4[i4] == codeword[4])) {
+                state = solved;
+        } else {
+            num_strikes++;
+            LED3 = OFF;
+        }
     }
+    lcd_print2(&lcd1, dispptr, "");
     delay_by_nop(30000);
 
     // Check for state transitions
