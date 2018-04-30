@@ -16,7 +16,7 @@
 #define BUTTON_LED        D6
 #define BUTTON_LED_LOW    D7
 
-#define max_time 10
+#define max_time 9
 uint16_t time_left;
 
 _7SEGMENT matrix;
@@ -37,11 +37,13 @@ uint8_t num_strikes = 0;
 uint8_t prev_num_strikes = 0;
 uint8_t game_complete = 0;
 
+const uint16_t PWM_PERIOD_2_3 = (uint16_t)(FCY / 2.3e3 - 1.);
+const uint16_t PWM_PERIOD_1_9 = (uint16_t)(FCY / 1.9e3 - 1.);
 
 
 // Forward declarations of functions to avoid a header file :/
 void idle(void);
-void active(void);
+void run(void);
 void end_win(void);
 void end_fail(void);
 void dispSeconds(uint16_t seconds);
@@ -99,12 +101,33 @@ int16_t main(void) {
     IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
     IEC0bits.T1IE = 1;      // enable Timer1 interrupt
 
-    // /* Timer 2 setup for beep timing*/
-    // T2CON = 0x0030;
-    // PR2 = 0x186A;           // set Timer2 period to 0.1s
-    // TMR2 = 0;               // set Timer1 count to 0
-    // IFS0bits.T2IF = 0;      // lower T2 interrupt flag
-    // IEC0bits.T2IE = 1;      // enable T2 interrupt
+    /* Timer 2 setup for beep timing*/
+    T2CON = 0x0030;
+    PR2 = 0x186A;           // set Timer2 period to 0.1s
+    TMR2 = 0;               // set Timer1 count to 0
+    IFS0bits.T2IF = 0;      // lower T2 interrupt flag
+    IEC0bits.T2IE = 1;      // enable T2 interrupt
+
+    /* Remap OC1 to D11 */
+    uint8_t *RPOR, *RPINR;
+    RPOR = (uint8_t *)&RPOR0;
+    RPINR = (uint8_t *)&RPINR0;
+
+    __builtin_write_OSCCONL(OSCCON & 0xBF);
+    RPOR[D12_RP] = OC1_RP;  // connect the OC1 module output to pin D8
+    __builtin_write_OSCCONL(OSCCON | 0x40);
+
+    /* OC1 setup for beep output*/
+    OC1CON1bits.OCTSEL = 0b111;   // configure OC1 module to use the peripheral
+                                  //   clock (i.e., FCY, OCTSEL<2:0> = 0b111) and
+    OC1CON1bits.OCM = 0b110;      //   and to operate in edge-aligned PWM mode
+                                  //   (OCM<2:0> = 0b110)
+    OC1CON2bits.OCTRIG = 0;       // configure OC1 module to syncrhonize to itself
+    OC1CON2bits.SYNCSEL = 0x1F;   //   (i.e., OCTRIG = 0 and SYNCSEL<4:0> = 0b11111)
+
+    OC1RS = PWM_PERIOD_2_3;       // configure period register to get 2.3 kHz
+    OC1TMR = 0;                   // set OC1 timer count to 0
+    OC1R = 0;                     // start with it off
 
 
     state = idle;           // Initialize state to idle
@@ -154,11 +177,50 @@ int16_t main(void) {
 }
 
 // ISRs ************************************************************************
+
+uint8_t beep_state = 0;
+
 void __attribute__((interrupt, auto_psv)) _T1Interrupt(void) {
     IFS0bits.T1IF = 0;  // if it's been a second, lower the counter and show it
     time_left--;
-
+    if (state == run) {
+        TMR2 = 0;
+        beep_state = 0;
+        IEC0bits.T2IE = 1; // enable t2 interrupt
+        T2CONbits.TON = 1; //Start T2
+        OC1RS = PWM_PERIOD_2_3;
+        OC1R = OC1RS>>1; // start beep
+    }
 }
+
+void __attribute__((interrupt, auto_psv)) _T2Interrupt(void) {
+    IFS0bits.T2IF = 0;
+    switch (beep_state) {
+        case 0:         // turn off after first beep
+            OC1R = 0;
+            beep_state++;
+            LED3 = OFF; delay_by_nop(1);
+            LED1 = ON; delay_by_nop(1);
+            break;
+        case 1:
+            OC1RS = PWM_PERIOD_1_9; // make lower beep
+            OC1R = OC1RS>>1;
+            LED1 = OFF; delay_by_nop(1);
+            LED2 = ON; delay_by_nop(1);
+            beep_state++;
+            break;
+        case 2:
+            OC1RS = PWM_PERIOD_2_3; // Reset to high beep and stop
+            OC1R = 0;
+            LED1 = OFF; delay_by_nop(1);
+            LED2 = ON; delay_by_nop(1);
+            beep_state++;
+            break;
+        default:
+            break;
+    }
+}
+
 // STATE MACHINE FUNCTIONS *****************************************************
 
 void idle(void) {
@@ -172,7 +234,7 @@ void idle(void) {
 
     // Check for state transitions
     if (D8 == 0) { // D8 is pulled-up, if button is pressed it pulls it down
-        state = active;
+        state = run;
     }
 
     // if we are leaving the state, do clean up stuff
@@ -181,7 +243,7 @@ void idle(void) {
     }
 }
 
-void active(void) {
+void run(void) {
     if (state != last_state) {  // if we are entering the state, do intitialization stuff
         last_state = state;
         IFS0bits.T1IF = 0; //lower interrupt flag
@@ -199,8 +261,6 @@ void active(void) {
 
     // Perform state tasks
     datareturned = 0;
-    delay_by_nop(500);
-    LED3 = ON;
     uint8_t i;
 
     // Handle time
@@ -317,6 +377,9 @@ void active(void) {
         STRIKE2_GLED = OFF;
         delay_by_nop(1);
         STRIKE3_GLED = OFF;
+        IEC0bits.T2IE = 0; // disable beep interrupt
+        OC1R = 0; // turn off beep
+        dispSeconds(time_left);
     }
 }
 
@@ -327,6 +390,10 @@ void end_fail(void) {
         IFS0bits.T1IF = 0; //lower interrupt flag
         TMR1 = 0;          // reset timer register
         T1CONbits.TON = 1; // enable 1 second timer
+
+        OC1RS = PWM_PERIOD_2_3;
+        OC1R = OC1RS>>1; // start beep
+
         STRIKE1_RLED = ON; delay_by_nop(1); // Turn on strike LEDs red
         STRIKE2_RLED = ON; delay_by_nop(1);
         STRIKE3_RLED = ON; delay_by_nop(1);
@@ -348,6 +415,7 @@ void end_fail(void) {
     // if we are leaving the state, do clean up stuff
     if (state != last_state) {
         T1CONbits.TON = 0;
+        OC1R = 0; // stop beep
         STRIKE1_RLED = OFF; delay_by_nop(1);
         STRIKE2_RLED = OFF; delay_by_nop(1); // turn off strike LEDs
         STRIKE3_RLED = OFF; delay_by_nop(1);
@@ -359,6 +427,7 @@ void end_win(void) {
         last_state = state;
         // start timer again to blink red LEDs
         IFS0bits.T1IF = 0; //lower interrupt flag
+        IEC0bits.T1IE = 0;
         TMR1 = 0;          // reset timer register
         T1CONbits.TON = 1; // enable 1 second timer
         STRIKE1_GLED = ON; delay_by_nop(1); // Turn on strike LEDs red
