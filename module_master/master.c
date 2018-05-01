@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h> // for strlen, memset
 #include "elecanisms.h"
 #include "adafruit_led.h"
@@ -16,13 +17,13 @@
 #define BUTTON_LED        D6
 #define BUTTON_LED_LOW    D7
 
-#define max_time 300
+#define max_time 20
 uint16_t time_left;
 
 _7SEGMENT matrix;
 uint8_t matrix_addr = 0xE0;
 
-uint8_t data_buffer[1024];
+char char_buffer[128];
 uint8_t datareturned;
 uint8_t peripheral_addrs[6] = {TEST_PERIPHERAL_ADDR,
                                MODULE_CODEWORD_ADDR,
@@ -41,7 +42,7 @@ const uint16_t PWM_PERIOD_2_3 = (uint16_t)(FCY / 2.3e3 - 1.);
 const uint16_t PWM_PERIOD_1_9 = (uint16_t)(FCY / 1.9e3 - 1.);
 const uint16_t PWM_PERIOD_1 = (uint16_t)  (FCY / 1e3 - 1.);
 const uint16_t PWM_PERIOD_2 = (uint16_t)  (FCY / 2e3 - 1.);
-const uint16_t PWM_PERIOD_40 = (uint16_t) (FCY / 40 - 1.);
+const uint16_t PWM_PERIOD_40 = (uint16_t) (FCY / 4 - 1.);
 
 
 // Forward declarations of functions to avoid a header file :/
@@ -68,6 +69,7 @@ void strikeLEDOff() {
 int16_t main(void) {
     init_elecanisms();
     init_clock(); // not sure if this does anything
+    init_ajuart();
     // Initializes I2C on I2C3
     i2c_init(1e3);
     led_begin((_ADAFRUIT_LED*)&matrix.super, matrix_addr); // Set up the HT16K33 and start the oscillator
@@ -136,8 +138,6 @@ int16_t main(void) {
     state = idle;           // Initialize state to idle
     last_state = (STATE_HANDLER_T)NULL;
 
-    memset(peripheral_present, 0, 6); // set arrays to 0
-    memset(peripheral_complete, 0, 6);
     num_strikes = 0;
     prev_num_strikes = 0;
     game_complete = 0;
@@ -236,10 +236,14 @@ void idle(void) {
     // Perform state tasks
 
     // Check for state transitions
-
     /* TODO is it better to not have the start button? */
     delay_by_nop(2000000); // delay for a long time at the start
     state=run;
+
+    U1_puts("Setup");
+    U1_putc('\r');
+    U1_putc('\n');
+    U1_flush_tx_buffer();
 
     // if (D8 == 0) { // D8 is pulled-up, if button is pressed it pulls it down
     //     state = run;
@@ -265,6 +269,10 @@ void run(void) {
         STRIKE2_GLED = ON;
         delay_by_nop(1);
         STRIKE3_GLED = ON;
+        U1_puts("run");
+        U1_putc('\r');
+        U1_putc('\n');
+        U1_flush_tx_buffer();
     }
 
     // Perform state tasks
@@ -297,20 +305,21 @@ void run(void) {
 
             if (datareturned & 0b10000000) { // Complete flag
                 if (peripheral_complete[i] == 0){
+
+                    disable_interrupts();
                     prev_rs = OC1RS;
                     prev_r = OC1R;
                     OC1RS = PWM_PERIOD_2;
                     OC1R = OC1RS >> 1; // Make a high-pitched complete sound
-                    disable_interrupts();
                     delay_by_nop(300000);
-                    OC1RS = prev_rs;;
+                    OC1RS = prev_rs;
                     OC1R = prev_r;
                     enable_interrupts();
                 }
                 peripheral_complete[i] = 1;
             }
             if (((datareturned & 0b01110000) >> 4) > prev_num_strikes) { //If the module recorded any strikes
-                num_strikes+= ((datareturned & 0b01110000) >> 4);
+                num_strikes = ((datareturned & 0b01110000) >> 4);
             }
             if ((datareturned & 0b00001111) != 0) {
                 // TODO: implement error codes if necessary
@@ -372,12 +381,16 @@ void run(void) {
                 reset_i2c2_bus();
             }
         }
-
+        sprintf(char_buffer, "Num Strikes:%d", num_strikes);
+        U1_puts(char_buffer);
+        U1_putc('\r');
+        U1_putc('\n');
+        U1_flush_tx_buffer();
+        disable_interrupts();
         prev_rs = OC1RS;
         prev_r = OC1R;
         OC1RS = PWM_PERIOD_1;
         OC1R = OC1RS >> 1; // Make a soise for the strike
-        disable_interrupts();
         delay_by_nop(300000);
         OC1RS = prev_rs;
         OC1R = prev_r;
@@ -413,6 +426,14 @@ void run(void) {
         dispSeconds(time_left);
         strikeLEDOff(); // turn off strike LEDs
     }
+
+    // sprintf(char_buffer, "Num Strikes:%d, Per. Pres:%d%d%d%d%d%d, Per. Complete:%d%d%d%d%d%d", num_strikes,
+    //     peripheral_present[0], peripheral_present[1], peripheral_present[2], peripheral_present[3], peripheral_present[4], peripheral_present[5],
+    //     peripheral_complete[0], peripheral_complete[1], peripheral_complete[2], peripheral_complete[3], peripheral_complete[4], peripheral_complete[5]);
+    // U1_puts(char_buffer);
+    // U1_putc('\r');
+    // U1_putc('\n');
+    // U1_flush_tx_buffer();
 }
 
 void end_fail(void) {
@@ -423,7 +444,7 @@ void end_fail(void) {
         TMR1 = 0;          // reset timer register
         T1CONbits.TON = 1; // enable 1 second timer
 
-        OC1RS = PWM_PERIOD_2_3;
+        OC1RS = PWM_PERIOD_40;
         OC1R = OC1RS>>1; // start beep
 
         STRIKE1_RLED = ON; delay_by_nop(1); // Turn on strike LEDs red
