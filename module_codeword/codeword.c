@@ -252,20 +252,28 @@ void end_win(void) { // The master module said the game was won
     if (state != last_state) {
         last_state = state;
         MODULE_LED_GREEN = ON;
-        // setup state here
+
+        T1CON = 0x0030;         // set Timer1 period to 0.5s
+        PR1 = 0x7A11;
+
+        TMR1 = 0;               // set Timer1 count to 0
+        IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
+        T1CONbits.TON = 1;      // turn on Timer1
     }
 
     // Perform state tasks
+    if (IFS0bits.T1IF == 1) {
+        IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
+        MODULE_LED_GREEN = !MODULE_LED_GREEN;           // toggle LED
+    }
 
     // Check for state transitions
-    if (start_flag == 1) {
-        state = run;
-    }
 
     // State Cleanup
     if (state != last_state) {
         // cleanup state here
         MODULE_LED_GREEN = OFF;
+        T1CONbits.TON = 0;      // turn off Timer1
     }
 }
 
@@ -275,19 +283,28 @@ void end_fail(void) { // The master module said the game was lost
         // setup state here
         last_state = state;
         MODULE_LED_RED = ON;
+
+        T1CON = 0x0030;         // set Timer1 period to 0.5s
+        PR1 = 0x7A11;
+
+        TMR1 = 0;               // set Timer1 count to 0
+        IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
+        T1CONbits.TON = 1;      // turn on Timer1
     }
 
     // Perform state tasks
+    if (IFS0bits.T1IF == 1) {
+        IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
+        MODULE_LED_RED = !MODULE_LED_RED;           // toggle LED
+    }
 
     // Check for state transitions
-    if (start_flag == 1) {
-        state = run;
-    }
 
     // State Cleanup
     if (state != last_state) {
         // cleanup state here
         MODULE_LED_RED = OFF;
+        T1CONbits.TON = 0;      // turn off Timer1
     }
 }
 
