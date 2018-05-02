@@ -16,9 +16,15 @@ char buffer[128];
 #define switch6  0b0000100000   // star / *
 #define switch7  0b0001000000   // done / next
 #define switch8  0b0010000000   // wait / no
-// #define switch9  0b0100000000
+
+uint8_t switchstring = 0b11100101;
+uint8_t l1_activeswitches = 0b10001101;
+uint8_t l2_activeswitches = 0b01110010;
+uint8_t list1sum, list2sum;
+uint8_t l1_missing, l2_missing;
 
 uint16_t switches = 0;
+uint16_t initial_switches = 0;
 
 #define MODULE_LED_RED      D0
 #define MODULE_LED_GREEN    D1
@@ -32,30 +38,28 @@ void end_fail(void);
 STATE_HANDLER_T state, last_state;
 
 typedef void (*GAME_STATE)(void);  // the sattes the games goes through
-void first_gamestate(void);
-void second_gamestate(void);
-void third_gamestate(void);
-GAME_STATE num_gamestate;
+void check_lists(void);
+void listonebigger(void);
+void listtwobigger(void);
+void listsequal(void);
+GAME_STATE gamestate;
 
 uint8_t done_striked;
 
 void ledoff(void); // define function
 void pinsetup(void);
 void checkSwitches(void);
-
-// volatile uint16_t switches = 0;
-
-
-// void __attribute__((interrupt, auto_psv)) _T1Interrupt(void) {
-//     // LED1 = 1;
-//     IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
-// }
+void checkInitialSwitches(void);
 
 
+/////////////////////////////////////////////////////
+/////////////// end of intial stuff /////////////////
+/////////////////////////////////////////////////////
 
 int16_t main(void) {
     init_elecanisms();
     init_ajuart();
+    pinsetup();
 
     D0_DIR = OUT;
     D1_DIR = OUT;
@@ -64,37 +68,163 @@ int16_t main(void) {
     I2C2ADD = TEST_PERIPHERAL_ADDR>>1;   // Set the device address (7-bit register)
     I2C2MSK = 0;                         // Set mask to 0 (only this address matters)
     _SI2C2IE = 1;                        // Enable i2c slave interrupt
-    //
-    // T1CON = 0x0020;         // set Timer1cd .. period to 10 ms for debounce
-    // PR1 = 0x2710;           // prescaler 16, match value 10000
-    // TMR1 = 0;               // set Timer1 count to 0
-    // IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
-    // IEC0bits.T1IE = 1;      // enable Timer1 interrupt
-    // T1CONbits.TON = 1;      // turn on Timer1
-
-    pinsetup();
 
     state = setup;
 
     while (1) {
-
         state();
     }
 } // end of main
 
 
-// STATE MACHINE FUNCTIONS /////////////////////////////////////////////////////
 
+void check_lists(void){
+    delay_by_nop(30000);
+    checkSwitches();
 
-void setup(void) { // Waits for master module to start the game
-    // State Setup
-    U1_putc(100);
-    U1_putc(switches);
-    // U1_putc('\r');
+    // figure out what is missing by xor-ing with the whole list of switch positions
+    // then bitmask out the bits that correspond to the other list
+    // this yields the bits that were wrong for that list
+    l1_missing = (initial_switches ^ switchstring) & l1_activeswitches ;
+    l2_missing = (initial_switches ^ switchstring) & l2_activeswitches ;
+
+    list1sum =
+        (  initial_switches & 0b00000001) +             // switch 1: on
+        (( initial_switches & 0b00000100) >> 2 ) +      // switch 3: on
+        (((~initial_switches) & 0b00001000) >> 3 ) +      // switch 4 : off
+        (( initial_switches & 0b10000000) >> 7) ;       // switch 8 : on
+
+    list2sum =
+        (((~initial_switches) & 0b00000010) >> 1) +             // switch 2: off
+        (((~initial_switches & 0b00010000)) >> 4 ) +      // switch 5: off
+        ( ( initial_switches & 0b00100000)  >> 5 ) +      // switch 6: on
+        ( ( initial_switches & 0b01000000)  >> 6) ;       // switch 7: on
+
+    // list1sum =
+    //     (  switches & 0b00000001) +             // switch 1: on
+    //     (( switches & 0b00000100) >> 2 ) +      // switch 3: on
+    //     (((~switches) & 0b00001000) >> 3 ) +      // switch 4 : off
+    //     (( switches & 0b10000000) >> 7) ;       // switch 8 : on
+    //
+    // list2sum =
+    //     (((~switches) & 0b00000010) >> 1) +             // switch 2: off
+    //     (((~switches & 0b00010000)) >> 4 ) +      // switch 5: off
+    //     ( ( switches & 0b00100000)  >> 5 ) +      // switch 6: on
+    //     ( ( switches & 0b01000000)  >> 6) ;       // switch 7: on
+
+    sprintf(buffer, "[check_lists] IntialSwitches: %x || Switches:%x |  list1: %x | list22: %x ",
+                    initial_switches, switches, list1sum, list2sum);
+    U1_putc('\r');
     U1_putc('\n');
+    U1_puts((uint8_t*)buffer);
+    U1_flush_tx_buffer();
+    delay_by_nop(3000000);
+
+    if(list1sum == 0 || list2sum == 0) {gamestate = listsequal;}
+
+    // if (list1sum > list2sum)  { gamestate = listonebigger; }
+    // if (list2sum > list1sum)  { gamestate = listtwobigger; }
+    // if (list1sum == list2sum) { gamestate = listsequal; }
+    // if(list1sum == 0 || list2sum == 0) {gamestate = listsequal;}
+     gamestate = listsequal;
+
+}
+
+void listonebigger(){
+    delay_by_nop(60000);
+    checkSwitches();
+    uint8_t wingoal;
+    uint8_t toprow = initial_switches & 0b00001111;
+    uint8_t win1 = (toprow << 4);
+    uint8_t win2 = (~toprow & 0b00001111);
+    wingoal = (toprow << 4) | (~toprow & 0b00001111);
+
+    sprintf(buffer, "[ONE] IntialSwitches: %x || Switches:%x | toprow:%x | wingoal:%x || W1: %x | W2: %x ",
+                    initial_switches, switches, toprow,  wingoal, win1, win2);
+    U1_putc('\r');
+    U1_putc('\n');
+    U1_puts((uint8_t*)buffer);
     U1_flush_tx_buffer();
     delay_by_nop(30000);
 
+    if (switches == wingoal) {
+        state = solved;
+
+        sprintf(buffer, "WIN onebigger");
+        U1_putc('\r');
+        U1_putc('\n');
+        U1_puts((uint8_t*)buffer);
+        U1_flush_tx_buffer();
+        delay_by_nop(30000);
+    }
+}
+
+void listtwobigger(){
+    delay_by_nop(60000);
+    checkSwitches();
+    uint8_t wingoal;
+    uint8_t temp1 = initial_switches | l2_activeswitches;
+    uint8_t temp2 = initial_switches & l1_activeswitches;
+    wingoal = (initial_switches & 0b01110010) | (0b10000101);
+
+    sprintf(buffer, "[TWO] IntialS: %x || Switch: %x || wingoal:%x ||| p1: %x | p2: %x ",
+                    initial_switches, switches,  wingoal, temp1, temp2);
+    U1_putc('\r');
+    U1_putc('\n');
+    U1_puts((uint8_t*)buffer);
+    U1_flush_tx_buffer();
+    delay_by_nop(30000);
+
+    if (switches == wingoal) {
+        state = solved;
+
+        sprintf(buffer, "WIN twobigger");
+        U1_putc('\r');
+        U1_putc('\n');
+        U1_puts((uint8_t*)buffer);
+        U1_flush_tx_buffer();
+        delay_by_nop(30000);
+    }
+}
+
+void listsequal(void) {
+    delay_by_nop(60000);
+    uint8_t binarygoal, wingoal;
+    uint8_t toprow = initial_switches & 0b00001111;
+    uint8_t botrow = (initial_switches >> 4) & 0b00001111;
+
+    if (toprow > botrow) { wingoal = (toprow << 4) | toprow ; }
+    else                 { wingoal = (botrow << 4) | botrow; }
+
+    checkSwitches();
+
+    if (switches == wingoal) {
+        state = solved;
+
+        sprintf(buffer, "WIN ");
+        U1_putc('\r');
+        U1_putc('\n');
+        U1_puts((uint8_t*)buffer);
+        U1_flush_tx_buffer();
+        delay_by_nop(30000);
+    }
+
+    sprintf(buffer, "[Equal] IntialSwitches: %x || Switches:%x | toprow:%x | botrow:%x  | wingoal:%x ",
+                            initial_switches, switches, toprow, botrow, wingoal);
+    U1_putc('\r');
+    U1_putc('\n');
+    U1_puts((uint8_t*)buffer);
+    U1_flush_tx_buffer();
+    delay_by_nop(30000);
+
+}
+
+
+
+// STATE MACHINE FUNCTIONS /////////////////////////////////////////////////////
+
+void setup(void) { // Waits for master module to start the game
+    // State Setup
 
     if (state != last_state) {
         last_state = state;
@@ -102,24 +232,20 @@ void setup(void) { // Waits for master module to start the game
         MODULE_LED_RED = ON;
         complete_flag = 0;
         num_strikes = 0;
-        error_code = 0;
-        // setup state here
-    }
-
-    // Perform state tasks
-
-    //Check for state transitions
+        error_code = 0;}
 
     // below lines need to be uncommented so we go to the run state at the right time
     // if ((start_flag == 1) || (SW2 == 0)){
+        delay_by_nop(60000);
+        gamestate = check_lists;
         state = run;
+        checkInitialSwitches();
     // }
 
     // State Cleanup
     if (state != last_state) {
         MODULE_LED_RED = OFF; delay_by_nop(1);
-        MODULE_LED_GREEN = OFF;
-    }
+        MODULE_LED_GREEN = OFF;}
 }
 
 void run(void) { // Plays the game
@@ -130,76 +256,26 @@ void run(void) { // Plays the game
         done_striked = 0;
     }
 
-    // Perform state tasks
-
-    // switches
+    delay_by_nop(300000);
     checkSwitches();
+    gamestate();
 
+    if (state != last_state) { MODULE_LED_RED = OFF;}     // State Cleanup
 
-    sprintf(buffer, "switches is %x", switches);
-    U1_putc('\r');
-    U1_putc('\n');
-    U1_puts((uint8_t*)buffer);
-    U1_flush_tx_buffer();
-    delay_by_nop(1500);
-
-
-
-
-
-// for when it is done game coding
-    // Check for state transitions
-    // if (win_flag == 1) {
-    //     state = end_win;
-    // } else if (lose_flag == 1) {
-    //     state = end_fail;
-    // }
-    // if (SW2 == 0 ) {
-    //     state = solved;
-    // }
-    // if (SW1 == 0) {
-    //     if (!done_striked) {
-    //         num_strikes++;
-    //         done_striked = 1;
-    //     }
-    // }
-    // if (SW3 == 0) {
-    //     if (!done_striked) {
-    //         num_strikes+=3;
-    //         done_striked = 1;
-    //     }
-    // }
-
-
-    // State Cleanup
-    if (state != last_state) {
-        MODULE_LED_RED = OFF;
-    }
 }
 
 void solved(void) { // The puzzle on this module is finished
-    // State Setup
     if (state != last_state) {
         last_state = state;
         complete_flag = 1;
-        MODULE_LED_GREEN = ON;
-    }
+        MODULE_LED_GREEN = ON;}
 
-    // Perform state tasks
+    if (win_flag == 1) {state = end_win; }       // Check for state transitions
+    else if (lose_flag == 1) {state = end_fail;}
 
-
-    // Check for state transitions
-    if (win_flag == 1) {
-        state = end_win;
-    } else if (lose_flag == 1) {
-        state = end_fail;
-    }
-
-    // State Cleanup
-    if (state != last_state) {
+    if (state != last_state) {      // State Cleanup
         complete_flag = 0;
-        MODULE_LED_GREEN = OFF;
-    }
+        MODULE_LED_GREEN = OFF;}
 }
 
 void end_win(void) { // The master module said the game was won
@@ -286,6 +362,28 @@ void pinsetup(void){
     D12_PUE = 1; __asm__("nop");
     D13_PUE = 1; __asm__("nop");
 }
+
+void checkInitialSwitches(void){
+    if (D4 == 0)  {initial_switches = (initial_switches |  switch1); delay_by_nop(10); }
+    if (D4 == 1)  {initial_switches = (initial_switches & ~switch1); delay_by_nop(10); }
+    if (D5 == 0)  {initial_switches = (initial_switches |  switch2); delay_by_nop(10); }
+    if (D5 == 1)  {initial_switches = (initial_switches & ~switch2); delay_by_nop(10); }
+    if (D6 == 0)  {initial_switches = (initial_switches |  switch3); delay_by_nop(10); }
+    if (D6 == 1)  {initial_switches = (initial_switches & ~switch3); delay_by_nop(10); }
+    if (D7 == 0)  {initial_switches = (initial_switches |  switch4); delay_by_nop(10); }
+    if (D7 == 1)  {initial_switches = (initial_switches & ~switch4); delay_by_nop(10); }
+    if (D8 == 0)  {initial_switches = (initial_switches |  switch5); delay_by_nop(10); }
+    if (D8 == 1)  {initial_switches = (initial_switches & ~switch5); delay_by_nop(10); }
+    if (D9 == 0)  {initial_switches = (initial_switches |  switch6); delay_by_nop(10); }
+    if (D9 == 1)  {initial_switches = (initial_switches & ~switch6); delay_by_nop(10); }
+    if (D10 == 0) {initial_switches = (initial_switches |  switch7); delay_by_nop(10); }
+    if (D10 == 1) {initial_switches = (initial_switches & ~switch7); delay_by_nop(10); }
+    if (D13 == 0) {initial_switches = (initial_switches |  switch8); delay_by_nop(10); }
+    if (D13 == 1) {initial_switches = (initial_switches & ~switch8); delay_by_nop(10); }
+    // if (D13 == 0) {switches = (switches |  switch9); delay_by_nop(10); }
+    // if (D13 == 1) {switches = (switches & ~switch9); delay_by_nop(10); }
+}
+
 
 void checkSwitches(void){
     if (D4 == 0)  {switches = (switches |  switch1); delay_by_nop(10); }
