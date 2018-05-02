@@ -3341,7 +3341,7 @@ int16_t main(void) {
     20fa:	3d 03 07    	rcall     0x2776 <_led_begin> <.L0> <.LFB0> <.LFE9> <.Letext0> <.Ltext0>
 
     time_left = max_time; // Set up time left to be max time
-    20fc:	40 01 20    	mov.w     #0x14, w0
+    20fc:	c0 12 20    	mov.w     #0x12c, w0
     20fe:	00 40 88    	mov.w     w0, 0x800
 
     // Setup pins as output
@@ -3657,7 +3657,7 @@ void idle(void) {
     2216:	30 40 80    	mov.w     0x806, w0
     2218:	40 40 88    	mov.w     w0, 0x808
         dispSeconds(max_time); // Start by showing full time
-    221a:	40 01 20    	mov.w     #0x14, w0
+    221a:	c0 12 20    	mov.w     #0x12c, w0
     221c:	44 02 07    	rcall     0x26a6 <_dispSeconds> <.LFB8> <.LFE7>
         BUTTON_LED = ON;
     221e:	db 02 a8    	bset.b    0x2db, #0x0
@@ -3728,7 +3728,7 @@ void run(void) {
     2258:	05 e1 a8    	bset.b    0x105, #0x7
 
         time_left = max_time;
-    225a:	40 01 20    	mov.w     #0x14, w0
+    225a:	c0 12 20    	mov.w     #0x12c, w0
     225c:	00 40 88    	mov.w     w0, 0x800
         dispSeconds(time_left);
     225e:	00 40 80    	mov.w     0x800, w0
@@ -4068,13 +4068,13 @@ void run(void) {
 
 000023f2 <.L44>:
         case 2:
-            STRIKE1_RLED = ON; delay_by_nop(1);
-    23f2:	da a2 a8    	bset.b    0x2da, #0x5
+        STRIKE2_RLED = ON; delay_by_nop(1);
+    23f2:	da 02 a8    	bset.b    0x2da, #0x0
     23f4:	10 00 20    	mov.w     #0x1, w0
     23f6:	01 00 20    	mov.w     #0x0, w1
     23f8:	70 04 07    	rcall     0x2cda <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
-            STRIKE2_RLED = ON; delay_by_nop(1);
-    23fa:	da 02 a8    	bset.b    0x2da, #0x0
+            STRIKE1_RLED = ON; delay_by_nop(1);
+    23fa:	da a2 a8    	bset.b    0x2da, #0x5
     23fc:	10 00 20    	mov.w     #0x1, w0
     23fe:	01 00 20    	mov.w     #0x0, w1
     2400:	6c 04 07    	rcall     0x2cda <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>

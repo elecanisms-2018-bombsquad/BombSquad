@@ -17,7 +17,7 @@
 #define BUTTON_LED        D6
 #define BUTTON_LED_LOW    D7
 
-#define max_time 20
+#define max_time 300
 uint16_t time_left;
 
 _7SEGMENT matrix;
