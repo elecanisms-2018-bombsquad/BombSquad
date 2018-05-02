@@ -45,7 +45,7 @@ void main(void) {
     toggleSwitchSetup();
 
     i2c_init(1e3);
-    lcd_init(&lcd1, 0x06, 'A'); //Setup LCD screen (type A i/o extender)
+    lcd_init(&lcd1, 0x07, 'A'); //Setup LCD screen (type A i/o extender)
     lcd_clear(&lcd1);  // Clears _LCD objects from previous array
 
     i2c2_init(157);                      // Initializes I2C on I2C2
@@ -64,11 +64,11 @@ void main(void) {
         }
     }
 
-    U1_putc((uint8_t)rand_val >> 8);
-    U1_putc((uint8_t)rand_val);
-    U1_putc('\r');
-    U1_putc('\n');
-    U1_flush_tx_buffer();
+    // U1_putc((uint8_t)rand_val >> 8);
+    // U1_putc((uint8_t)rand_val);
+    // U1_putc('\r');
+    // U1_putc('\n');
+    // U1_flush_tx_buffer();
 
     // set codeword and set of letters
     char _codeSet[36];
@@ -187,7 +187,7 @@ void run(void) { // Plays the game
 
     // Perform state tasks
     updateDisplay();
-    if (SW1 == 0) { //TODO: Add real submit button pin mapping
+    if (read_analog(A5_AN) > 500) { //TODO: Add real submit button pin mapping
         if ((set0[i0] == codeword[0]) &&
             (set1[i1] == codeword[1]) &&
             (set2[i2] == codeword[2]) &&
