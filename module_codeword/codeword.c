@@ -187,16 +187,19 @@ void run(void) { // Plays the game
 
     // Perform state tasks
     updateDisplay();
-    if ((set0[i0] == codeword[0]) &&
-        (set1[i1] == codeword[1]) &&
-        (set2[i2] == codeword[2]) &&
-        (set3[i3] == codeword[3]) &&
-        (set4[i4] == codeword[4])) {
-        state = solved;
-    } else {
-        LED3 = OFF;
-        lcd_print2(&lcd1, dispptr, "");
+    if (SW1 == 0) { //TODO: Add real submit button pin mapping
+        if ((set0[i0] == codeword[0]) &&
+            (set1[i1] == codeword[1]) &&
+            (set2[i2] == codeword[2]) &&
+            (set3[i3] == codeword[3]) &&
+            (set4[i4] == codeword[4])) {
+                state = solved;
+        } else {
+            num_strikes++;
+            LED3 = OFF;
+        }
     }
+    lcd_print2(&lcd1, dispptr, "");
     delay_by_nop(30000);
 
     // Check for state transitions
@@ -249,20 +252,28 @@ void end_win(void) { // The master module said the game was won
     if (state != last_state) {
         last_state = state;
         MODULE_LED_GREEN = ON;
-        // setup state here
+
+        T1CON = 0x0030;         // set Timer1 period to 0.5s
+        PR1 = 0x7A11;
+
+        TMR1 = 0;               // set Timer1 count to 0
+        IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
+        T1CONbits.TON = 1;      // turn on Timer1
     }
 
     // Perform state tasks
+    if (IFS0bits.T1IF == 1) {
+        IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
+        MODULE_LED_GREEN = !MODULE_LED_GREEN;           // toggle LED
+    }
 
     // Check for state transitions
-    if (start_flag == 1) {
-        state = run;
-    }
 
     // State Cleanup
     if (state != last_state) {
         // cleanup state here
         MODULE_LED_GREEN = OFF;
+        T1CONbits.TON = 0;      // turn off Timer1
     }
 }
 
@@ -272,19 +283,28 @@ void end_fail(void) { // The master module said the game was lost
         // setup state here
         last_state = state;
         MODULE_LED_RED = ON;
+
+        T1CON = 0x0030;         // set Timer1 period to 0.5s
+        PR1 = 0x7A11;
+
+        TMR1 = 0;               // set Timer1 count to 0
+        IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
+        T1CONbits.TON = 1;      // turn on Timer1
     }
 
     // Perform state tasks
+    if (IFS0bits.T1IF == 1) {
+        IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
+        MODULE_LED_RED = !MODULE_LED_RED;           // toggle LED
+    }
 
     // Check for state transitions
-    if (start_flag == 1) {
-        state = run;
-    }
 
     // State Cleanup
     if (state != last_state) {
         // cleanup state here
         MODULE_LED_RED = OFF;
+        T1CONbits.TON = 0;      // turn off Timer1
     }
 }
 

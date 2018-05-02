@@ -61,7 +61,7 @@ int16_t main(void) {
     init_elecanisms();
 
     i2c2_init(157);                      // Initializes I2C on I2C2
-    I2C2ADD = TEST_PERIPHERAL_ADDR>>1;   // Set the device address (7-bit register)
+    I2C2ADD = MODULE_CODEWORD_ADDR>>1;   // Set the device address (7-bit register)
     I2C2MSK = 0;                         // Set mask to 0 (only this address matters)
     _SI2C2IE = 1;                        // Enable i2c slave interrupt
 
@@ -193,8 +193,11 @@ void setup(void) { // Waits for master module to start the game
     // State Setup
     if (state != last_state) {
         last_state = state;
-        MODULE_LED_GREEN = ON;
+        MODULE_LED_GREEN = ON; delay_by_nop(1);
         MODULE_LED_RED = ON;
+        complete_flag = 0;
+        num_strikes = 0;
+        error_code = 0;
         // setup state here
     }
 
@@ -208,9 +211,10 @@ void setup(void) { // Waits for master module to start the game
     combo_num = firstnum;
 
     // Check for state transitions
-    complete_flag = 0;
-    state = run;
-    delay_by_nop(300000);
+    if (start_flag == 1) {
+        state = run;
+    }
+    // delay_by_nop(30000);
 
     // State Cleanup
     if (state != last_state) {
@@ -266,15 +270,28 @@ void end_win(void) { // The master module said the game was won
     if (state != last_state) {
         last_state = state;
         MODULE_LED_GREEN = ON;
+
+        T1CON = 0x0030;         // set Timer1 period to 0.5s
+        PR1 = 0x7A11;
+
+        TMR1 = 0;               // set Timer1 count to 0
+        IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
+        T1CONbits.TON = 1;      // turn on Timer1
     }
 
     // Perform state tasks
+    if (IFS0bits.T1IF == 1) {
+        IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
+        MODULE_LED_GREEN = !MODULE_LED_GREEN;           // toggle LED
+    }
 
     // Check for state transitions
-    if (start_flag == 1) {state = run;}
 
     // State Cleanup
-    if (state != last_state) {MODULE_LED_GREEN = OFF;}
+    if (state != last_state) {
+        MODULE_LED_GREEN = OFF;
+                T1CONbits.TON = 0;      // turn off Timer1
+    }
 }
 
 void end_fail(void) { // The master module said the game was lost
@@ -282,15 +299,29 @@ void end_fail(void) { // The master module said the game was lost
     if (state != last_state) {
         last_state = state;
         MODULE_LED_RED = ON;
+
+        T1CON = 0x0030;         // set Timer1 period to 0.5s
+        PR1 = 0x7A11;
+
+        TMR1 = 0;               // set Timer1 count to 0
+        IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
+        T1CONbits.TON = 1;      // turn on Timer1
     }
 
     // Perform state tasks
+    if (IFS0bits.T1IF == 1) {
+        IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
+        MODULE_LED_RED = !MODULE_LED_RED;           // toggle LED
+    }
 
     // Check for state transitions
-    if (start_flag == 1) {state = run;}
 
     // State Cleanup
-    if (state != last_state) {MODULE_LED_RED = OFF; }
+    if (state != last_state) {
+        // cleanup state here
+        MODULE_LED_RED = OFF;
+        T1CONbits.TON = 0;      // turn off Timer1
+    }
 }
 
 ////////////////////////////////////////////////////////
@@ -321,7 +352,7 @@ void dispNumber(uint16_t number) {
     // U1_putc(thousands); U1_putc(hundreds); U1_putc(tens); U1_putc(ones);
     // U1_putc('\r'); U1_putc('\n'); U1_flush_tx_buffer();
 
-    sevseg_writeDigitNum(&matrix, 0, 17, 1);
+    sevseg_writeDigitNum(&matrix, 0, 17, 0);
     sevseg_writeDigitNum(&matrix, 4, 17, 0);
     sevseg_writeDigitNum(&matrix, 1, tens, 0);
     sevseg_writeDigitNum(&matrix, 3, ones, 0);

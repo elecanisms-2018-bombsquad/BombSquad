@@ -182,7 +182,6 @@ const uint16_t alphafonttable[128] = {
 
 void led_begin(_ADAFRUIT_LED* ptr, uint8_t addr){
   ptr->i2c_addr = addr;
-	LED1 = 1;
   i2c_start();
   send_i2c_byte(ptr->i2c_addr);
   send_i2c_byte(0x21); // turn on oscillator

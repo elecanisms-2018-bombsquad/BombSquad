@@ -25,6 +25,7 @@ env.Append(BUILDERS = {'List' : list})
 env.Program('master', ['master.c',
                         '../lib/i2c_reg.c',
                         '../lib/adafruit_led.c',
+                        '../lib/ajuart.c',
                         '../lib/common.c',
                         '../lib/elecanisms.c'])
 
