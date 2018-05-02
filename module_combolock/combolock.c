@@ -45,13 +45,11 @@ const uint8_t adafruit_display_addr = 0xE0;
 
 
 void __attribute__((interrupt, auto_psv)) _T1Interrupt(void) {
-    // LED1 = 1;
     IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
     prev_debounce_reading = new_debounce_reading;
     new_debounce_reading = read_analog(A0_AN) >> 5 ;
     if (new_debounce_reading == prev_debounce_reading) {
         eval_reading = new_debounce_reading;
-        // LED3 = 1;
     }
     if(current_display != eval_reading){
         previous_display = current_display;
