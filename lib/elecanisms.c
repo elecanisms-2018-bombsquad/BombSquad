@@ -91,3 +91,11 @@ uint16_t read_analog(uint16_t pin_an) {
     while (AD1CON1bits.DONE == 0) {}
     return ADC1BUF0;
 }
+
+void rand_next(void) {
+    uint16_t val;
+
+    // See "A List of Maximum Period NLFSRs" by Elena Dubrova, p. 7
+    val = (rand_val ^ (rand_val >> 2) ^ (rand_val >> 13) ^ ((rand_val >> 2) & (rand_val >> 3))) & 1;
+    rand_val = (rand_val >> 1) | (val << 15);
+}

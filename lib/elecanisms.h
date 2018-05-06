@@ -231,7 +231,11 @@
 #define OUT                 0
 #define IN                  1
 
+extern uint16_t rand_val;
+
 void init_elecanisms(void);
 uint16_t read_analog(uint16_t pin_an);
+
+void rand_next(void);
 
 #endif
