@@ -8,7 +8,6 @@
 
 void updateDisplay(void);
 void toggleSwitchSetup(void);
-void rand_next(void);
 
 const char words[35][6] = {
     "about",

@@ -53,14 +53,14 @@ void main(void) {
     I2C2MSK = 0;                         // Set mask to 0 (only this address matters)
     _SI2C2IE = 1;                        // Enable i2c slave interrupt
 
-    rand_val = read_analog(A0); // Set up the seed
+    rand_val = read_analog(A0_AN); // Set up the seed
 
     // Add more random noise
     uint8_t i, j;
     for (i=0; i<20; i++) {
-        for (j=0; j<read_analog(A0); j++) {
+        for (j=0; j<read_analog(A0_AN); j++) {
             rand_next();
-            delay_by_nop(read_analog(A0));
+            delay_by_nop(read_analog(A0_AN));
         }
     }
 
@@ -401,12 +401,4 @@ void toggleSwitchSetup(void) {
 
     IFS1bits.CNIF = 0; // lower CN interrupt flag
     IEC1bits.CNIE = 1; // Enable CN interrupt module
-}
-
-void rand_next(void) {
-    uint16_t val;
-
-    // See "A List of Maximum Period NLFSRs" by Elena Dubrova, p. 7
-    val = (rand_val ^ (rand_val >> 2) ^ (rand_val >> 13) ^ ((rand_val >> 2) & (rand_val >> 3))) & 1;
-    rand_val = (rand_val >> 1) | (val << 15);
 }
