@@ -16,6 +16,9 @@ typedef enum  {
 extern uint8_t _byte_to_master;
 extern uint8_t _data_from_master;
 extern uint8_t serial_number;
+extern uint8_t led_eps;
+extern uint8_t led_flux;
+extern uint8_t led_rtc;
 // extern // uint8_t ohshit ;
 extern uint8_t complete_flag ;
 extern uint8_t num_strikes ;

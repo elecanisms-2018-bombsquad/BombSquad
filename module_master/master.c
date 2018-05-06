@@ -4,9 +4,11 @@
 #include "elecanisms.h"
 #include "adafruit_led.h"
 #include "i2c_reg.h"
+#include "lcd.h"
 #include "ajuart.h"
 #include "i2c_address_space.h"
 #include "bs_headers.h"
+#include "master.h"
 
 #define STRIKE1_RLED      D0
 #define STRIKE1_GLED      D1
@@ -14,14 +16,19 @@
 #define STRIKE2_GLED      D11
 #define STRIKE3_RLED      D4
 #define STRIKE3_GLED      D5
-#define BUTTON_LED        D6
-#define BUTTON_LED_LOW    D7
+#define FLUX_LED          D6 // Blue
+#define EPS_LED           D7 // Red
+#define RTC_LED           D8 // Green
 
 #define max_time 300
+
 uint16_t time_left;
 
 _7SEGMENT matrix;
 uint8_t matrix_addr = 0xE0;
+
+_LCD lcd1;
+char* dispstring;
 
 char char_buffer[128];
 uint8_t datareturned;
@@ -37,6 +44,9 @@ uint8_t peripheral_complete[6] = {0,0,0,0,0,0};
 uint8_t num_strikes = 0;
 uint8_t prev_num_strikes = 0;
 uint8_t game_complete = 0;
+uint8_t serial_idx = 0;
+
+uint16_t rand_val = 0;
 
 const uint16_t PWM_PERIOD_2_3 = (uint16_t)(FCY / 2.3e3 - 1.);
 const uint16_t PWM_PERIOD_1_9 = (uint16_t)(FCY / 1.9e3 - 1.);
@@ -73,6 +83,8 @@ int16_t main(void) {
     // Initializes I2C on I2C3
     i2c_init(1e3);
     led_begin((_ADAFRUIT_LED*)&matrix.super, matrix_addr); // Set up the HT16K33 and start the oscillator
+    lcd_init(&lcd1, 0x05, 'A'); //Setup LCD screen (type A i/o extender)
+    lcd_clear(&lcd1);  // Clears _LCD objects from previous array
 
     time_left = max_time; // Set up time left to be max time
 
@@ -85,19 +97,15 @@ int16_t main(void) {
     D5_DIR = 0;
     D6_DIR = 0;
     D7_DIR = 0;
+    D8_DIR = 0;
     D9_DIR = 0;
 
-
-    // Init button low
-    BUTTON_LED = 0;
-    BUTTON_LED_LOW = 0;
-
-    // Setup D8 as input
-    D8_DIR = 1;
-    // Set up pull-up resistor on button D8
-    CNPU4bits.CN54PUE = 1;
-    // Set D9 as pull-down for button
-    D9 = 0;
+    // // Setup D8 as input
+    // D8_DIR = 1;
+    // // Set up pull-up resistor on button D8
+    // CNPU4bits.CN54PUE = 1;
+    // // Set D9 as pull-down for button
+    // D9 = 0;
 
     /* Timer 1 setup for game timing*/
     T1CON = 0x0030;         // set Timer1 period to 1s
@@ -142,12 +150,44 @@ int16_t main(void) {
     prev_num_strikes = 0;
     game_complete = 0;
 
+    /* Setup LEDs and serial number */
+    rand_val = read_analog(A0_AN); // Set up the seed
+
+    // Add more random noise
+    uint8_t i, j;
+    for (i=0; i<20; i++) {
+        for (j=0; j<read_analog(A0_AN); j++) {
+            rand_next();
+            delay_by_nop(read_analog(A0_AN));
+        }
+    }
+
+    serial_idx = rand_val%6;
+
+    char _dispstring[17] = "";
+    for (i=0; i<16; i++){
+        _dispstring[i] = serial_nums[serial_idx][i];
+    }
+    dispstring = _dispstring;
+    lcd_print2(&lcd1, dispstring, "");
+
+    rand_next();
+    sprintf(char_buffer, "LED rand val:%d, %d, %d", ((rand_val%8) & 0x1), ((rand_val%8) & 0x2), ((rand_val%8) & 0x4));
+    U1_puts(char_buffer);
+    U1_putc('\r');
+    U1_putc('\n');
+    U1_flush_tx_buffer();
+
+
+    RTC_LED  = ((rand_val%8) & 0x1) ? ON : OFF; delay_by_nop(1);
+    FLUX_LED = ((rand_val%8) & 0x2) ? ON : OFF; delay_by_nop(1);
+    EPS_LED  = ((rand_val%8) & 0x4) ? ON : OFF; delay_by_nop(1);
+
+
     i2c2_init(157);      // initialize I2C for 16Mhz OSC with 100kHz I2C clock
 
     delay_by_nop(300000);
 
-
-    uint8_t i = 0;
     // Poll the peripherals to see who's here
     for (i = 0; i < 6; i++) {
         uint8_t temp = 0;
@@ -161,9 +201,26 @@ int16_t main(void) {
         reset_i2c2_bus();
     }
 
-    //TODO: Send out parameters
+    /* Send out parameters */
+    for (i = 0; i < 6; i++) {
+        if (peripheral_present[i]) {
+            i2c2_start();
+            send_i2c2_byte(peripheral_addrs[i] | 0);  // init a write, last to 0
+            send_i2c2_byte((HEADER_SERIAL_NUMBER << 5) | serial_idx); // Serial Number
+            reset_i2c2_bus();
+        }
+    }
 
-    //TODO: Send out start condition
+    for (i = 0; i < 6; i++) {
+        if (peripheral_present[i]) {
+            i2c2_start();
+            send_i2c2_byte(peripheral_addrs[i] | 0);  // init a write, last to 0
+            send_i2c2_byte((HEADER_MASTER_LED << 5) | rand_val%8); // LEDs (should be fine, might break if rand_val changes)
+            reset_i2c2_bus();
+        }
+    }
+
+    /* Send out start condition */
     for (i = 0; i < 6; i++) {
         if (peripheral_present[i]) {
             i2c2_start();
@@ -230,7 +287,6 @@ void idle(void) {
     if (state != last_state) {  // if we are entering the state, do initialization stuff
         last_state = state;
         dispSeconds(max_time); // Start by showing full time
-        BUTTON_LED = ON;
     }
 
     // Perform state tasks
@@ -251,7 +307,6 @@ void idle(void) {
 
     // if we are leaving the state, do clean up stuff
     if (state != last_state) {
-        BUTTON_LED = OFF;
     }
 }
 
@@ -533,4 +588,12 @@ void drawOnce(void) {
     sevseg_writeDigitNum(&matrix, 3, 3, 0);
     sevseg_writeDigitNum(&matrix, 4, 4, 0);
     led_writeDisplay((_ADAFRUIT_LED*)&matrix.super);
+}
+
+void rand_next(void) {
+    uint16_t val;
+
+    // See "A List of Maximum Period NLFSRs" by Elena Dubrova, p. 7
+    val = (rand_val ^ (rand_val >> 2) ^ (rand_val >> 13) ^ ((rand_val >> 2) & (rand_val >> 3))) & 1;
+    rand_val = (rand_val >> 1) | (val << 15);
 }

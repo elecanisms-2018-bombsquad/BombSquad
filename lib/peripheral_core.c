@@ -6,6 +6,9 @@
 uint8_t _byte_to_master;
 uint8_t _data_from_master;
 uint8_t serial_number;
+uint8_t led_eps = 0;
+uint8_t led_flux = 0;
+uint8_t led_rtc = 0;
 // uint8_t ohshit = 0 ;
 uint8_t complete_flag = 0 ;
 uint8_t num_strikes = 0 ;
@@ -38,6 +41,11 @@ void __attribute__((interrupt, auto_psv)) _SI2C2Interrupt(void) {
         switch (_data_from_master >> 5){
             case HEADER_SERIAL_NUMBER: // 100
                 serial_number = _data_from_master & 0b00011111 ;
+            break;
+            case HEADER_MASTER_LED: // 0b00011111
+                led_eps = (_data_from_master & 0b00000100) >> 2;
+                led_flux = (_data_from_master & 0b00000010) >> 1;
+                led_rtc = (_data_from_master & 0b00000001);
             break;
             case HEADER_NUM_STRIKES:    // 111
                 num_strikes = _data_from_master & 0b00011111 ;
