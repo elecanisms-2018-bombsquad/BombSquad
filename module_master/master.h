@@ -14,6 +14,4 @@ const char serial_nums[6][16] = {
     " 396T TNXV QDS7"
 };
 
-void rand_next(void);
-
 #endif

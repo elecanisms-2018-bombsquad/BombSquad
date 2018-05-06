@@ -12,6 +12,6 @@
 #define MODULE_NEEDY_ADDR       0x50
 #define MODULE_SIMON_ADDR       0x60
 #define MODULE_COMBO_ADDR       0x70
-
+#define MODULE_MORSE_ADDR       0x80
 
 #endif

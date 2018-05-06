@@ -32,21 +32,21 @@ char* dispstring;
 
 char char_buffer[128];
 uint8_t datareturned;
-uint8_t peripheral_addrs[6] = {TEST_PERIPHERAL_ADDR,
+uint8_t peripheral_addrs[7] = {TEST_PERIPHERAL_ADDR,
                                MODULE_CODEWORD_ADDR,
                                MODULE_AUXCABLE_ADDR,
                                MODULE_BUTTON_ADDR  ,
                                MODULE_NEEDY_ADDR   ,
-                               MODULE_SIMON_ADDR   };
+                               MODULE_SIMON_ADDR   ,
+                               MODULE_MORSE_ADDR   };
 
-uint8_t peripheral_present[6] = {0,0,0,0,0,0};
-uint8_t peripheral_complete[6] = {0,0,0,0,0,0};
+uint8_t peripheral_present[7] = {0,0,0,0,0,0,0};
+uint8_t peripheral_complete[7] = {0,0,0,0,0,0,0};
 uint8_t num_strikes = 0;
 uint8_t prev_num_strikes = 0;
 uint8_t game_complete = 0;
 uint8_t serial_idx = 0;
-
-uint16_t rand_val = 0;
+uint16_t rand_val;
 
 const uint16_t PWM_PERIOD_2_3 = (uint16_t)(FCY / 2.3e3 - 1.);
 const uint16_t PWM_PERIOD_1_9 = (uint16_t)(FCY / 1.9e3 - 1.);
@@ -189,7 +189,7 @@ int16_t main(void) {
     delay_by_nop(300000);
 
     // Poll the peripherals to see who's here
-    for (i = 0; i < 6; i++) {
+    for (i = 0; i < 7; i++) {
         uint8_t temp = 0;
 
         i2c2_start();
@@ -202,7 +202,7 @@ int16_t main(void) {
     }
 
     /* Send out parameters */
-    for (i = 0; i < 6; i++) {
+    for (i = 0; i < 7; i++) {
         if (peripheral_present[i]) {
             i2c2_start();
             send_i2c2_byte(peripheral_addrs[i] | 0);  // init a write, last to 0
@@ -211,7 +211,7 @@ int16_t main(void) {
         }
     }
 
-    for (i = 0; i < 6; i++) {
+    for (i = 0; i < 7; i++) {
         if (peripheral_present[i]) {
             i2c2_start();
             send_i2c2_byte(peripheral_addrs[i] | 0);  // init a write, last to 0
@@ -221,7 +221,7 @@ int16_t main(void) {
     }
 
     /* Send out start condition */
-    for (i = 0; i < 6; i++) {
+    for (i = 0; i < 7; i++) {
         if (peripheral_present[i]) {
             i2c2_start();
             send_i2c2_byte(peripheral_addrs[i] | 0);  // init a write, last to 0
@@ -338,7 +338,7 @@ void run(void) {
     // Handle time
     dispSeconds(time_left);
     if (time_left == 0) {
-        for (i = 0; i < 6; i++) {
+        for (i = 0; i < 7; i++) {
             if(peripheral_present[i]) {
                 i2c2_start();
                 send_i2c2_byte(peripheral_addrs[i] | 0);  // init a write, last to 0
@@ -351,7 +351,7 @@ void run(void) {
 
     // Get completeness and strikes from every module
     prev_num_strikes = num_strikes;
-    for (i = 0; i < 6; i++) {
+    for (i = 0; i < 7; i++) {
         if(peripheral_present[i]) {
             i2c2_start();
             send_i2c2_byte(peripheral_addrs[i] | 1);  // init a read, last to 1
@@ -383,14 +383,14 @@ void run(void) {
     }
     //Handles completeness
     game_complete = 1;
-    for (i = 0; i < 6; i++) {
+    for (i = 0; i < 7; i++) {
         if (peripheral_present[i] && !peripheral_complete[i]) {
             game_complete = 0;
         }
     }
     // If we checked all of them and the game is still complete, then count it!
     if (game_complete) {
-        for (i = 0; i < 6; i++) {
+        for (i = 0; i < 7; i++) {
             if(peripheral_present[i]) {
                 i2c2_start();
                 send_i2c2_byte(peripheral_addrs[i] | 0);  // init a write, last to 0
@@ -428,7 +428,7 @@ void run(void) {
     }
 
     if (num_strikes > prev_num_strikes) {
-        for (i = 0; i < 6; i++) {
+        for (i = 0; i < 7; i++) {
             if (peripheral_present[i]) {
                 i2c2_start();
                 send_i2c2_byte(peripheral_addrs[i] | 0);  // init a write, last to 0
@@ -452,7 +452,7 @@ void run(void) {
         enable_interrupts();
     }
     if (num_strikes > 2) {
-        for (i = 0; i < 6; i++) {
+        for (i = 0; i < 7; i++) {
             if(peripheral_present[i]) {
                 i2c2_start();
                 send_i2c2_byte(peripheral_addrs[i] | 0);  // init a write, last to 0
@@ -588,12 +588,4 @@ void drawOnce(void) {
     sevseg_writeDigitNum(&matrix, 3, 3, 0);
     sevseg_writeDigitNum(&matrix, 4, 4, 0);
     led_writeDisplay((_ADAFRUIT_LED*)&matrix.super);
-}
-
-void rand_next(void) {
-    uint16_t val;
-
-    // See "A List of Maximum Period NLFSRs" by Elena Dubrova, p. 7
-    val = (rand_val ^ (rand_val >> 2) ^ (rand_val >> 13) ^ ((rand_val >> 2) & (rand_val >> 3))) & 1;
-    rand_val = (rand_val >> 1) | (val << 15);
 }
