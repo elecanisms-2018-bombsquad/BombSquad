@@ -26,6 +26,8 @@
 
 #include "elecanisms.h"
 
+uint16_t rand_val;
+
 void init_elecanisms(void) {
     CLKDIV = 0x0100;        // RCDIV = 001 (4MHz, div2),
                             // CPDIV = 00 (FOSC = 32MHz, FCY = 16MHz)
