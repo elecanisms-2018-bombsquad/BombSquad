@@ -24,6 +24,8 @@ char* codeword;
 uint8_t i0, i1, i2, i3, i4;
 uint16_t rand_val;
 
+char char_buffer[128];
+
 typedef void (*STATE_HANDLER_T)(void);
 
 // forward declaration of module modes
@@ -187,7 +189,8 @@ void run(void) { // Plays the game
 
     // Perform state tasks
     updateDisplay();
-    if (read_analog(A5_AN) > 500) { //TODO: Add real submit button pin mapping
+    uint16_t reading = read_analog(A5_AN);
+    if (reading > 500) { //TODO: Add real submit button pin mapping
         if ((set0[i0] == codeword[0]) &&
             (set1[i1] == codeword[1]) &&
             (set2[i2] == codeword[2]) &&
@@ -199,8 +202,14 @@ void run(void) { // Plays the game
             LED3 = OFF;
         }
     }
+    sprintf(char_buffer, "Analog reading:%d", reading);
+    U1_puts(char_buffer);
+    U1_putc('\r');
+    U1_putc('\n');
+    U1_flush_tx_buffer();
+
     lcd_print2(&lcd1, dispptr, "");
-    delay_by_nop(30000);
+    delay_by_nop(3000);
 
     // Check for state transitions
     if (win_flag == 1) {
