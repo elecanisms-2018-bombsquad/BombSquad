@@ -16,7 +16,7 @@ list = Builder(action = 'xc16-objdump -S -D $SOURCE > $TARGET',
                src_suffix = 'elf')
 env.Append(BUILDERS = {'List' : list})
 
-env.Program('auxtest', ['auxtest.c',
+env.Program('aux', ['aux.c',
                         # '../lib/usb.c',
                         '../lib/peripheral_core.c',
                         # '../lib/i2c_address_space.c',
@@ -24,5 +24,5 @@ env.Program('auxtest', ['auxtest.c',
                         '../lib/i2c_reg.c',
                         '../lib/adafruit_led.c',
                         '../lib/elecanisms.c'])
-env.Hex('auxtest')
-env.List('auxtest')
+env.Hex('aux')
+env.List('aux')
