@@ -24,7 +24,6 @@ void end_fail(void);
 
 uint8_t has_struck;
 
-uint16_t rand_val;
 uint8_t morse_idx;
 uint8_t morse_counter;
 uint8_t morse_table_idx;
