@@ -279,59 +279,62 @@ void solved(void) { // The puzzle on this module is finished
 }
 
 void end_win(void) { // The master module said the game was won
-    // // State Setup
-    // if (state != last_state) {
-    //     last_state = state;
-    //     MODULE_LED_GREEN = ON;
-    //
-    //     T1CON = 0x0030;         // set Timer1 period to 0.5s
-    //     PR1 = 0x7A11;
-    //
-    //     TMR1 = 0;               // set Timer1 count to 0
-    //     IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
-    //     T1CONbits.TON = 1;      // turn on Timer1
-    //     // setup state here
-    // }
-    //
-    // // Perform state tasks
-    // // if (IFS0bits.T1IF == 1) {
-    // //     IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
-    // //     MODULE_LED_GREEN = !MODULE_LED_GREEN;           // toggle LED
-    // // }
-    //
-    //
-    // // State Cleanup
-    // if (state != last_state) {
-    //     MODULE_LED_GREEN = OFF;
-    // }
+    // State Setup
+    if (state != last_state) {
+        last_state = state;
+        MODULE_LED_GREEN = ON;
+
+        T1CON = 0x0030;         // set Timer1 period to 0.5s
+        PR1 = 0x7A11;
+
+        TMR1 = 0;               // set Timer1 count to 0
+        IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
+        T1CONbits.TON = 1;      // turn on Timer1
+        // setup state here
+    }
+
+    // Perform state tasks
+    if (IFS0bits.T1IF == 1) {
+        IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
+        MODULE_LED_GREEN = !MODULE_LED_GREEN;           // toggle LED
+    }
+
+
+    // State Cleanup
+    if (state != last_state) {
+        // cleanup state here
+        MODULE_LED_GREEN = OFF;
+    }
 }
 
 void end_fail(void) { // The master module said the game was lost
     // State Setup
-    // if (state != last_state) {
-    //     last_state = state;
-    //     MODULE_LED_RED = ON;
-    //
-    //     T1CON = 0x0030;         // set Timer1 period to 0.5s
-    //     PR1 = 0x7A11;
-    //
-    //     TMR1 = 0;               // set Timer1 count to 0
-    //     IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
-    //     T1CONbits.TON = 1;      // turn on Timer1
-    // }
-    //
-    // // Perform state tasks
-    // if (IFS0bits.T1IF == 1) {
-    //     IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
-    //     MODULE_LED_RED = !MODULE_LED_RED;           // toggle LED
-    // }
-    //
-    //
-    // // State Cleanup
-    // if (state != last_state) {
-    //     MODULE_LED_RED = OFF;
-    //     T1CONbits.TON = 0;      // turn off Timer1
-    // }
+    if (state != last_state) {
+        // setup state here
+        last_state = state;
+        MODULE_LED_RED = ON;
+
+        T1CON = 0x0030;         // set Timer1 period to 0.5s
+        PR1 = 0x7A11;
+
+        TMR1 = 0;               // set Timer1 count to 0
+        IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
+        T1CONbits.TON = 1;      // turn on Timer1
+    }
+
+    // Perform state tasks
+    if (IFS0bits.T1IF == 1) {
+        IFS0bits.T1IF = 0;      // lower Timer1 interrupt flag
+        MODULE_LED_RED = !MODULE_LED_RED;           // toggle LED
+    }
+
+
+    // State Cleanup
+    if (state != last_state) {
+        // cleanup state here
+        MODULE_LED_RED = OFF;
+        T1CONbits.TON = 0;      // turn off Timer1
+    }
 }
 
 void ledoff(void) {
