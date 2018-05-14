@@ -5439,7 +5439,7 @@ unsigned char I2C2poll(char addr){
     2a96:	4f 04 07    	rcall     0x3336 <.LFE2> <_init_elecanisms> <.L0> <.LFB0> <.Ltext0>
     2a98:	d0 09 20    	mov.w     #0x9d, w0
     2a9a:	0d ff 07    	rcall     0x28b6 <_i2c2_init> <.LFB13> <.LFE12>
-    2a9c:	00 01 20    	mov.w     #0x10, w0
+    2a9c:	80 03 20    	mov.w     #0x38, w0
     2a9e:	d0 10 88    	mov.w     w0, 0x21a
     2aa0:	1c 22 ef    	clr.w     0x21c
     2aa2:	9a 20 a8    	bset.b    0x9a, #0x1

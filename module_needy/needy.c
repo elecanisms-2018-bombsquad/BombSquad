@@ -106,6 +106,7 @@ void run(void) { // Plays the game
         LED1 = ON; delay_by_nop(1);
         MODULE_LED_RED = ON;
         has_struck = 0;
+        complete_flag = 1;
         T1CONbits.TON = 1; // start timer
     }
 
@@ -157,27 +158,6 @@ void run(void) { // Plays the game
         }
     }
 
-    // State Cleanup
-    if (state != last_state) {
-        // cleanup state here
-        LED1=OFF; delay_by_nop(1);
-        MODULE_LED_RED = OFF;
-    }
-}
-
-void solved(void) { // The puzzle on this module is finished
-    // State Setup
-    if (state != last_state) {
-        // setup state here
-        last_state = state;
-        LED3 = ON;
-        complete_flag = 1;
-        MODULE_LED_GREEN = ON;
-    }
-
-    // Perform state tasks
-
-
     // Check for state transitions
     if (win_flag == 1) {
         state = end_win;
@@ -188,9 +168,8 @@ void solved(void) { // The puzzle on this module is finished
     // State Cleanup
     if (state != last_state) {
         // cleanup state here
-        LED3 = OFF;
-        complete_flag = 0;
-        MODULE_LED_GREEN = OFF;
+        LED1=OFF; delay_by_nop(1);
+        MODULE_LED_RED = OFF;
     }
 }
 

@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "elecanisms.h"
 #include "peripheral_core.h"
 #include "i2c_address_space.h"
@@ -65,7 +66,7 @@ int16_t main(void) {
     init_elecanisms();
 
     i2c2_init(157);                      // Initializes I2C on I2C2
-    I2C2ADD = MODULE_CODEWORD_ADDR>>1;   // Set the device address (7-bit register)
+    I2C2ADD = MODULE_COMBO_ADDR>>1;   // Set the device address (7-bit register)
     I2C2MSK = 0;                         // Set mask to 0 (only this address matters)
     _SI2C2IE = 1;                        // Enable i2c slave interrupt
 

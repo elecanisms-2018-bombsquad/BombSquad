@@ -417,7 +417,7 @@ Disassembly of section .reset:
 Disassembly of section .text:
 
 00001110 <__reset>:
-    1110:	6f 12 21    	mov.w     #0x1126, w15
+    1110:	8f 12 21    	mov.w     #0x1128, w15
     1112:	0e ff 27    	mov.w     #0x7ff0, w14
     1114:	0e 01 88    	mov.w     w14, 0x20
     1116:	00 00 00    	nop       
@@ -1314,10 +1314,10 @@ Disassembly of section .text:
     1620:	07 00 37    	bra       0x1630 <.L34>
 
 00001622 <.L8>:
-    1622:	81 10 21    	mov.w     #0x1108, w1
+    1622:	a1 10 21    	mov.w     #0x110a, w1
     1624:	01 00 50    	sub.w     w0, w1, w0
     1626:	00 00 40    	add.w     w0, w0, w0
-    1628:	c1 0f 21    	mov.w     #0x10fc, w1
+    1628:	e1 0f 21    	mov.w     #0x10fe, w1
     162a:	61 00 78    	mov.w     [w1+w0], w0
     162c:	df 98 97    	mov.w     [w15-70], w1
     162e:	01 00 70    	ior.w     w0, w1, w0
@@ -1328,7 +1328,7 @@ Disassembly of section .text:
     1634:	09 04 78    	mov.w     w9, w8
     1636:	38 45 78    	mov.b     [w8++], w10
     1638:	8a 00 fb    	se        w10, w1
-    163a:	80 10 21    	mov.w     #0x1108, w0
+    163a:	a0 10 21    	mov.w     #0x110a, w0
     163c:	79 00 07    	rcall     0x1730 <_strchr>
     163e:	00 00 e0    	cp0.w     w0
     1640:	f0 ff 3a    	bra       NZ, 0x1622 <.L8>
@@ -1419,7 +1419,7 @@ Disassembly of section .text:
 000016c0 <.L16>:
     16c0:	98 44 78    	mov.b     [w8], w9
     16c2:	89 00 fb    	se        w9, w1
-    16c4:	40 0f 21    	mov.w     #0x10f4, w0
+    16c4:	60 0f 21    	mov.w     #0x10f6, w0
     16c6:	34 00 07    	rcall     0x1730 <_strchr>
     16c8:	00 00 e0    	cp0.w     w0
     16ca:	02 00 32    	bra       Z, 0x16d0 <.L25>
@@ -2130,24 +2130,24 @@ Disassembly of section .text:
     1b00:	69 40 40    	add.b     w0, #0x9, w0
     1b02:	80 cf 50    	sub.b     w1, w0, [w15]
     1b04:	0b 00 32    	bra       Z, 0x1b1c <.L37>
-    1b06:	30 0e 21    	mov.w     #0x10e3, w0
+    1b06:	50 0e 21    	mov.w     #0x10e5, w0
     1b08:	80 bf 9f    	mov.w     w0, [w15-16]
     1b0a:	ae 00 20    	mov.w     #0xa, w14
     1b0c:	0a 00 37    	bra       0x1b22 <.L2>
 
 00001b0e <.L35>:
-    1b0e:	22 0d 21    	mov.w     #0x10d2, w2
+    1b0e:	42 0d 21    	mov.w     #0x10d4, w2
     1b10:	82 bf 9f    	mov.w     w2, [w15-16]
     1b12:	06 00 37    	bra       0x1b20 <.L46>
 
 00001b14 <.L36>:
-    1b14:	33 0e 21    	mov.w     #0x10e3, w3
+    1b14:	53 0e 21    	mov.w     #0x10e5, w3
     1b16:	83 bf 9f    	mov.w     w3, [w15-16]
     1b18:	8e 00 20    	mov.w     #0x8, w14
     1b1a:	03 00 37    	bra       0x1b22 <.L2>
 
 00001b1c <.L37>:
-    1b1c:	34 0e 21    	mov.w     #0x10e3, w4
+    1b1c:	54 0e 21    	mov.w     #0x10e5, w4
     1b1e:	84 bf 9f    	mov.w     w4, [w15-16]
 
 00001b20 <.L46>:
@@ -3833,7 +3833,7 @@ int16_t main(void) {
     23e4:	33 08 07    	rcall     0x344c <_delay_by_nop> <.L0> <.LFB0> <.LFE16> <.Letext0> <.Ltext0>
 
     // Poll the peripherals to see who's here
-    for (i = 0; i < 7; i++) {
+    for (i = 0; i < 8; i++) {
     23e6:	00 40 eb    	clr.b     w0
     23e8:	00 4f 78    	mov.b     w0, [w14]
     23ea:	14 00 37    	bra       0x2414 <.L9>
@@ -3847,7 +3847,7 @@ int16_t main(void) {
     23f0:	8d 09 07    	rcall     0x370c <_i2c2_start> <.LFB14> <.LFE13>
         temp = send_i2c2_byte(peripheral_addrs[i]); // set /W bit
     23f2:	1e 80 fb    	ze        [w14], w0
-    23f4:	e1 11 21    	mov.w     #0x111e, w1
+    23f4:	01 12 21    	mov.w     #0x1120, w1
     23f6:	61 40 78    	mov.b     [w1+w0], w0
     23f8:	00 80 fb    	ze        w0, w0
     23fa:	d7 09 07    	rcall     0x37aa <_send_i2c2_byte> <.LFB17> <.LFE16>
@@ -3875,12 +3875,12 @@ int16_t main(void) {
 
 00002414 <.L9>:
     2414:	1e 40 78    	mov.b     [w14], w0
-    2416:	e6 4f 50    	sub.b     w0, #0x6, [w15]
+    2416:	e7 4f 50    	sub.b     w0, #0x7, [w15]
     2418:	e9 ff 36    	bra       LEU, 0x23ec <.L11> <.LBB2>
     }
 
     /* Send out parameters */
-    for (i = 0; i < 7; i++) {
+    for (i = 0; i < 8; i++) {
     241a:	00 40 eb    	clr.b     w0
     241c:	00 4f 78    	mov.b     w0, [w14]
     241e:	11 00 37    	bra       0x2442 <.L12>
@@ -3896,7 +3896,7 @@ int16_t main(void) {
     242a:	70 09 07    	rcall     0x370c <_i2c2_start> <.LFB14> <.LFE13>
             send_i2c2_byte(peripheral_addrs[i] | 0);  // init a write, last to 0
     242c:	1e 80 fb    	ze        [w14], w0
-    242e:	e1 11 21    	mov.w     #0x111e, w1
+    242e:	01 12 21    	mov.w     #0x1120, w1
     2430:	61 40 78    	mov.b     [w1+w0], w0
     2432:	00 80 fb    	ze        w0, w0
     2434:	ba 09 07    	rcall     0x37aa <_send_i2c2_byte> <.LFB17> <.LFE16>
@@ -3913,12 +3913,12 @@ int16_t main(void) {
 
 00002442 <.L12>:
     2442:	1e 40 78    	mov.b     [w14], w0
-    2444:	e6 4f 50    	sub.b     w0, #0x6, [w15]
+    2444:	e7 4f 50    	sub.b     w0, #0x7, [w15]
     2446:	ec ff 36    	bra       LEU, 0x2420 <.L14>
         }
     }
 
-    for (i = 0; i < 7; i++) {
+    for (i = 0; i < 8; i++) {
     2448:	00 40 eb    	clr.b     w0
     244a:	00 4f 78    	mov.b     w0, [w14]
     244c:	12 00 37    	bra       0x2472 <.L15>
@@ -3934,7 +3934,7 @@ int16_t main(void) {
     2458:	59 09 07    	rcall     0x370c <_i2c2_start> <.LFB14> <.LFE13>
             send_i2c2_byte(peripheral_addrs[i] | 0);  // init a write, last to 0
     245a:	1e 80 fb    	ze        [w14], w0
-    245c:	e1 11 21    	mov.w     #0x111e, w1
+    245c:	01 12 21    	mov.w     #0x1120, w1
     245e:	61 40 78    	mov.b     [w1+w0], w0
     2460:	00 80 fb    	ze        w0, w0
     2462:	a3 09 07    	rcall     0x37aa <_send_i2c2_byte> <.LFB17> <.LFE16>
@@ -3952,13 +3952,13 @@ int16_t main(void) {
 
 00002472 <.L15>:
     2472:	1e 40 78    	mov.b     [w14], w0
-    2474:	e6 4f 50    	sub.b     w0, #0x6, [w15]
+    2474:	e7 4f 50    	sub.b     w0, #0x7, [w15]
     2476:	eb ff 36    	bra       LEU, 0x244e <.L17>
         }
     }
 
     /* Send out start condition */
-    for (i = 0; i < 7; i++) {
+    for (i = 0; i < 8; i++) {
     2478:	00 40 eb    	clr.b     w0
     247a:	00 4f 78    	mov.b     w0, [w14]
     247c:	0f 00 37    	bra       0x249c <.L18>
@@ -3974,7 +3974,7 @@ int16_t main(void) {
     2488:	41 09 07    	rcall     0x370c <_i2c2_start> <.LFB14> <.LFE13>
             send_i2c2_byte(peripheral_addrs[i] | 0);  // init a write, last to 0
     248a:	1e 80 fb    	ze        [w14], w0
-    248c:	e1 11 21    	mov.w     #0x111e, w1
+    248c:	01 12 21    	mov.w     #0x1120, w1
     248e:	61 40 78    	mov.b     [w1+w0], w0
     2490:	00 80 fb    	ze        w0, w0
     2492:	8b 09 07    	rcall     0x37aa <_send_i2c2_byte> <.LFB17> <.LFE16>
@@ -3989,7 +3989,7 @@ int16_t main(void) {
 
 0000249c <.L18>:
     249c:	1e 40 78    	mov.b     [w14], w0
-    249e:	e6 4f 50    	sub.b     w0, #0x6, [w15]
+    249e:	e7 4f 50    	sub.b     w0, #0x7, [w15]
     24a0:	ee ff 36    	bra       LEU, 0x247e <.L20>
 
 000024a2 <.L21>:
@@ -4178,7 +4178,7 @@ void run(void) {
     2520:	00 40 80    	mov.w     0x800, w0
     2522:	00 00 e0    	cp0.w     w0
     2524:	17 00 3a    	bra       NZ, 0x2554 <.L35>
-        for (i = 0; i < 7; i++) {
+        for (i = 0; i < 8; i++) {
     2526:	00 40 eb    	clr.b     w0
     2528:	00 4f 78    	mov.b     w0, [w14]
     252a:	0f 00 37    	bra       0x254a <.L36>
@@ -4194,7 +4194,7 @@ void run(void) {
     2536:	ea 08 07    	rcall     0x370c <_i2c2_start> <.LFB14> <.LFE13>
                 send_i2c2_byte(peripheral_addrs[i] | 0);  // init a write, last to 0
     2538:	1e 80 fb    	ze        [w14], w0
-    253a:	e1 11 21    	mov.w     #0x111e, w1
+    253a:	01 12 21    	mov.w     #0x1120, w1
     253c:	61 40 78    	mov.b     [w1+w0], w0
     253e:	00 80 fb    	ze        w0, w0
     2540:	34 09 07    	rcall     0x37aa <_send_i2c2_byte> <.LFB17> <.LFE16>
@@ -4209,7 +4209,7 @@ void run(void) {
 
 0000254a <.L36>:
     254a:	1e 40 78    	mov.b     [w14], w0
-    254c:	e6 4f 50    	sub.b     w0, #0x6, [w15]
+    254c:	e7 4f 50    	sub.b     w0, #0x7, [w15]
     254e:	ee ff 36    	bra       LEU, 0x252c <.L38>
             }
         }
@@ -4224,7 +4224,7 @@ void run(void) {
     prev_num_strikes = num_strikes;
     2554:	05 c8 bf    	mov.b     0x805, WREG
     2556:	06 e8 b7    	mov.b     WREG, 0x806
-    for (i = 0; i < 7; i++) {
+    for (i = 0; i < 8; i++) {
     2558:	00 40 eb    	clr.b     w0
     255a:	00 4f 78    	mov.b     w0, [w14]
     255c:	3e 00 37    	bra       0x25da <.L39>
@@ -4240,7 +4240,7 @@ void run(void) {
     2568:	d1 08 07    	rcall     0x370c <_i2c2_start> <.LFB14> <.LFE13>
             send_i2c2_byte(peripheral_addrs[i] | 1);  // init a read, last to 1
     256a:	1e 80 fb    	ze        [w14], w0
-    256c:	e1 11 21    	mov.w     #0x111e, w1
+    256c:	01 12 21    	mov.w     #0x1120, w1
     256e:	61 40 78    	mov.b     [w1+w0], w0
     2570:	00 04 a0    	bset.b    w0, #0x0
     2572:	00 80 fb    	ze        w0, w0
@@ -4257,7 +4257,7 @@ void run(void) {
     2580:	1b 00 3d    	bra       GE, 0x25b8 <.L41>
                 if (peripheral_complete[i] == 0){
     2582:	1e 80 fb    	ze        [w14], w0
-    2584:	a1 0c 21    	mov.w     #0x10ca, w1
+    2584:	b1 0c 21    	mov.w     #0x10cb, w1
     2586:	61 40 78    	mov.b     [w1+w0], w0
     2588:	00 04 e0    	cp0.b     w0
     258a:	12 00 3a    	bra       NZ, 0x25b0 <.L42>
@@ -4294,7 +4294,7 @@ void run(void) {
                 }
                 peripheral_complete[i] = 1;
     25b0:	1e 80 fb    	ze        [w14], w0
-    25b2:	a1 0c 21    	mov.w     #0x10ca, w1
+    25b2:	b1 0c 21    	mov.w     #0x10cb, w1
     25b4:	12 c0 b3    	mov.b     #0x1, w2
     25b6:	82 70 78    	mov.b     w2, [w1+w0]
 
@@ -4324,7 +4324,7 @@ void run(void) {
 
 000025da <.L39>:
     25da:	1e 40 78    	mov.b     [w14], w0
-    25dc:	e6 4f 50    	sub.b     w0, #0x6, [w15]
+    25dc:	e7 4f 50    	sub.b     w0, #0x7, [w15]
     25de:	bf ff 36    	bra       LEU, 0x255e <.L44>
             }
             if ((datareturned & 0b00001111) != 0) {
@@ -4336,7 +4336,7 @@ void run(void) {
     game_complete = 1;
     25e0:	10 c0 b3    	mov.b     #0x1, w0
     25e2:	07 e8 b7    	mov.b     WREG, 0x807
-    for (i = 0; i < 7; i++) {
+    for (i = 0; i < 8; i++) {
     25e4:	00 40 eb    	clr.b     w0
     25e6:	00 4f 78    	mov.b     w0, [w14]
     25e8:	0c 00 37    	bra       0x2602 <.L45>
@@ -4349,7 +4349,7 @@ void run(void) {
     25f0:	00 04 e0    	cp0.b     w0
     25f2:	06 00 32    	bra       Z, 0x2600 <.L46>
     25f4:	1e 80 fb    	ze        [w14], w0
-    25f6:	a1 0c 21    	mov.w     #0x10ca, w1
+    25f6:	b1 0c 21    	mov.w     #0x10cb, w1
     25f8:	61 40 78    	mov.b     [w1+w0], w0
     25fa:	00 04 e0    	cp0.b     w0
     25fc:	01 00 3a    	bra       NZ, 0x2600 <.L46>
@@ -4361,7 +4361,7 @@ void run(void) {
 
 00002602 <.L45>:
     2602:	1e 40 78    	mov.b     [w14], w0
-    2604:	e6 4f 50    	sub.b     w0, #0x6, [w15]
+    2604:	e7 4f 50    	sub.b     w0, #0x7, [w15]
     2606:	f1 ff 36    	bra       LEU, 0x25ea <.L47>
         }
     }
@@ -4370,7 +4370,7 @@ void run(void) {
     2608:	07 c8 bf    	mov.b     0x807, WREG
     260a:	00 04 e0    	cp0.b     w0
     260c:	17 00 32    	bra       Z, 0x263c <.L48>
-        for (i = 0; i < 7; i++) {
+        for (i = 0; i < 8; i++) {
     260e:	00 40 eb    	clr.b     w0
     2610:	00 4f 78    	mov.b     w0, [w14]
     2612:	0f 00 37    	bra       0x2632 <.L49>
@@ -4386,7 +4386,7 @@ void run(void) {
     261e:	76 08 07    	rcall     0x370c <_i2c2_start> <.LFB14> <.LFE13>
                 send_i2c2_byte(peripheral_addrs[i] | 0);  // init a write, last to 0
     2620:	1e 80 fb    	ze        [w14], w0
-    2622:	e1 11 21    	mov.w     #0x111e, w1
+    2622:	01 12 21    	mov.w     #0x1120, w1
     2624:	61 40 78    	mov.b     [w1+w0], w0
     2626:	00 80 fb    	ze        w0, w0
     2628:	c0 08 07    	rcall     0x37aa <_send_i2c2_byte> <.LFB17> <.LFE16>
@@ -4401,7 +4401,7 @@ void run(void) {
 
 00002632 <.L49>:
     2632:	1e 40 78    	mov.b     [w14], w0
-    2634:	e6 4f 50    	sub.b     w0, #0x6, [w15]
+    2634:	e7 4f 50    	sub.b     w0, #0x7, [w15]
     2636:	ee ff 36    	bra       LEU, 0x2614 <.L51>
             }
         }
@@ -4513,7 +4513,7 @@ void run(void) {
     26ba:	06 c8 bf    	mov.b     0x806, WREG
     26bc:	80 cf 50    	sub.b     w1, w0, [w15]
     26be:	33 00 36    	bra       LEU, 0x2726 <.L57>
-        for (i = 0; i < 7; i++) {
+        for (i = 0; i < 8; i++) {
     26c0:	00 40 eb    	clr.b     w0
     26c2:	00 4f 78    	mov.b     w0, [w14]
     26c4:	13 00 37    	bra       0x26ec <.L58>
@@ -4529,7 +4529,7 @@ void run(void) {
     26d0:	1d 08 07    	rcall     0x370c <_i2c2_start> <.LFB14> <.LFE13>
                 send_i2c2_byte(peripheral_addrs[i] | 0);  // init a write, last to 0
     26d2:	1e 80 fb    	ze        [w14], w0
-    26d4:	e1 11 21    	mov.w     #0x111e, w1
+    26d4:	01 12 21    	mov.w     #0x1120, w1
     26d6:	61 40 78    	mov.b     [w1+w0], w0
     26d8:	00 80 fb    	ze        w0, w0
     26da:	67 08 07    	rcall     0x37aa <_send_i2c2_byte> <.LFB17> <.LFE16>
@@ -4548,7 +4548,7 @@ void run(void) {
 
 000026ec <.L58>:
     26ec:	1e 40 78    	mov.b     [w14], w0
-    26ee:	e6 4f 50    	sub.b     w0, #0x6, [w15]
+    26ee:	e7 4f 50    	sub.b     w0, #0x7, [w15]
     26f0:	ea ff 36    	bra       LEU, 0x26c6 <.L60>
             }
         }
@@ -4606,7 +4606,7 @@ void run(void) {
     2726:	05 c8 bf    	mov.b     0x805, WREG
     2728:	e2 4f 50    	sub.b     w0, #0x2, [w15]
     272a:	17 00 36    	bra       LEU, 0x275a <.L61>
-        for (i = 0; i < 7; i++) {
+        for (i = 0; i < 8; i++) {
     272c:	00 40 eb    	clr.b     w0
     272e:	00 4f 78    	mov.b     w0, [w14]
     2730:	0f 00 37    	bra       0x2750 <.L62>
@@ -4622,7 +4622,7 @@ void run(void) {
     273c:	e7 07 07    	rcall     0x370c <_i2c2_start> <.LFB14> <.LFE13>
                 send_i2c2_byte(peripheral_addrs[i] | 0);  // init a write, last to 0
     273e:	1e 80 fb    	ze        [w14], w0
-    2740:	e1 11 21    	mov.w     #0x111e, w1
+    2740:	01 12 21    	mov.w     #0x1120, w1
     2742:	61 40 78    	mov.b     [w1+w0], w0
     2744:	00 80 fb    	ze        w0, w0
     2746:	31 08 07    	rcall     0x37aa <_send_i2c2_byte> <.LFB17> <.LFE16>
@@ -4637,7 +4637,7 @@ void run(void) {
 
 00002750 <.L62>:
     2750:	1e 40 78    	mov.b     [w14], w0
-    2752:	e6 4f 50    	sub.b     w0, #0x6, [w15]
+    2752:	e7 4f 50    	sub.b     w0, #0x7, [w15]
     2754:	ee ff 36    	bra       LEU, 0x2732 <.L64>
             }
         }
@@ -6372,17 +6372,17 @@ void init_lcd(uint8_t initiator) {
             lcd_init(&lcd[0], 0x05,'A');
     304e:	12 c4 b3    	mov.b     #0x41, w2
     3050:	51 c0 b3    	mov.b     #0x5, w1
-    3052:	e0 10 21    	mov.w     #0x110e, w0
+    3052:	00 11 21    	mov.w     #0x1110, w0
     3054:	32 00 07    	rcall     0x30ba <_lcd_init> <.LFB5> <.LFE4>
             lcd_init(&lcd[1], 0x07,'A');
     3056:	12 c4 b3    	mov.b     #0x41, w2
     3058:	71 c0 b3    	mov.b     #0x7, w1
-    305a:	30 11 21    	mov.w     #0x1113, w0
+    305a:	50 11 21    	mov.w     #0x1115, w0
     305c:	2e 00 07    	rcall     0x30ba <_lcd_init> <.LFB5> <.LFE4>
             lcd_init(&lcd[2], 0x06,'T');
     305e:	42 c5 b3    	mov.b     #0x54, w2
     3060:	61 c0 b3    	mov.b     #0x6, w1
-    3062:	80 11 21    	mov.w     #0x1118, w0
+    3062:	a0 11 21    	mov.w     #0x111a, w0
     3064:	2a 00 07    	rcall     0x30ba <_lcd_init> <.LFB5> <.LFE4>
             break;
     3066:	27 00 37    	bra       0x30b6 <.L5>
@@ -6392,17 +6392,17 @@ void init_lcd(uint8_t initiator) {
             lcd_init(&lcd[0], 0x07,'A');
     3068:	12 c4 b3    	mov.b     #0x41, w2
     306a:	71 c0 b3    	mov.b     #0x7, w1
-    306c:	e0 10 21    	mov.w     #0x110e, w0
+    306c:	00 11 21    	mov.w     #0x1110, w0
     306e:	25 00 07    	rcall     0x30ba <_lcd_init> <.LFB5> <.LFE4>
             lcd_init(&lcd[2], 0x06,'A');
     3070:	12 c4 b3    	mov.b     #0x41, w2
     3072:	61 c0 b3    	mov.b     #0x6, w1
-    3074:	80 11 21    	mov.w     #0x1118, w0
+    3074:	a0 11 21    	mov.w     #0x111a, w0
     3076:	21 00 07    	rcall     0x30ba <_lcd_init> <.LFB5> <.LFE4>
             lcd_init(&lcd[1], 0x05,'A');
     3078:	12 c4 b3    	mov.b     #0x41, w2
     307a:	51 c0 b3    	mov.b     #0x5, w1
-    307c:	30 11 21    	mov.w     #0x1113, w0
+    307c:	50 11 21    	mov.w     #0x1115, w0
     307e:	1d 00 07    	rcall     0x30ba <_lcd_init> <.LFB5> <.LFE4>
             break;
     3080:	1a 00 37    	bra       0x30b6 <.L5>
@@ -6412,17 +6412,17 @@ void init_lcd(uint8_t initiator) {
             lcd_init(&lcd[0], 0x07,'T');
     3082:	42 c5 b3    	mov.b     #0x54, w2
     3084:	71 c0 b3    	mov.b     #0x7, w1
-    3086:	e0 10 21    	mov.w     #0x110e, w0
+    3086:	00 11 21    	mov.w     #0x1110, w0
     3088:	18 00 07    	rcall     0x30ba <_lcd_init> <.LFB5> <.LFE4>
             lcd_init(&lcd[1], 0x06,'A');
     308a:	12 c4 b3    	mov.b     #0x41, w2
     308c:	61 c0 b3    	mov.b     #0x6, w1
-    308e:	30 11 21    	mov.w     #0x1113, w0
+    308e:	50 11 21    	mov.w     #0x1115, w0
     3090:	14 00 07    	rcall     0x30ba <_lcd_init> <.LFB5> <.LFE4>
             lcd_init(&lcd[2], 0x05,'A');
     3092:	12 c4 b3    	mov.b     #0x41, w2
     3094:	51 c0 b3    	mov.b     #0x5, w1
-    3096:	80 11 21    	mov.w     #0x1118, w0
+    3096:	a0 11 21    	mov.w     #0x111a, w0
     3098:	10 00 07    	rcall     0x30ba <_lcd_init> <.LFB5> <.LFE4>
             break;
     309a:	0d 00 37    	bra       0x30b6 <.L5>
@@ -6432,17 +6432,17 @@ void init_lcd(uint8_t initiator) {
             lcd_init(&lcd[0], 0x07,'A');
     309c:	12 c4 b3    	mov.b     #0x41, w2
     309e:	71 c0 b3    	mov.b     #0x7, w1
-    30a0:	e0 10 21    	mov.w     #0x110e, w0
+    30a0:	00 11 21    	mov.w     #0x1110, w0
     30a2:	0b 00 07    	rcall     0x30ba <_lcd_init> <.LFB5> <.LFE4>
             lcd_init(&lcd[1], 0x06,'A');
     30a4:	12 c4 b3    	mov.b     #0x41, w2
     30a6:	61 c0 b3    	mov.b     #0x6, w1
-    30a8:	30 11 21    	mov.w     #0x1113, w0
+    30a8:	50 11 21    	mov.w     #0x1115, w0
     30aa:	07 00 07    	rcall     0x30ba <_lcd_init> <.LFB5> <.LFE4>
             lcd_init(&lcd[2], 0x05,'A');
     30ac:	12 c4 b3    	mov.b     #0x41, w2
     30ae:	51 c0 b3    	mov.b     #0x5, w1
-    30b0:	80 11 21    	mov.w     #0x1118, w0
+    30b0:	a0 11 21    	mov.w     #0x111a, w0
     30b2:	03 00 07    	rcall     0x30ba <_lcd_init> <.LFB5> <.LFE4>
             break;
     30b4:	00 00 00    	nop       
@@ -7066,7 +7066,7 @@ void lcd_broadcast(char* message) {
     339c:	1e 80 fb    	ze        [w14], w0
     339e:	65 00 b9    	mul.su    w0, #0x5, w0
     33a0:	80 00 78    	mov.w     w0, w1
-    33a2:	e0 10 21    	mov.w     #0x110e, w0
+    33a2:	00 11 21    	mov.w     #0x1110, w0
     33a4:	00 80 40    	add.w     w1, w0, w0
     33a6:	9e 00 90    	mov.w     [w14+2], w1
     33a8:	ab ff 07    	rcall     0x3300 <_lcd_print> <.LFB14> <.LFE13>
@@ -9016,14 +9016,14 @@ void rand_next(void) {
 Disassembly of section .dinit:
 
 00003daa <.dinit>:
-    3daa:	1e 11 00    	nop       
+    3daa:	20 11 00    	nop       
     3dac:	08 00 00    	nop       
     3dae:	82 00 00    	nop       
     3db0:	10 20 30    	bra       OV, 0x7dd2
     3db2:	40 50 60    	and.b     w0, [--w0], [w0--]
-    3db4:	80 00 00    	nop       
+    3db4:	70 80 00    	nop       
     3db6:	2a 10 00    	nop       
-    3db8:	a8 00 00    	nop       
+    3db8:	aa 00 00    	nop       
     3dba:	80 00 00    	nop       
     3dbc:	00 08 00    	nop       
     3dbe:	10 00 00    	nop       
@@ -9032,7 +9032,7 @@ Disassembly of section .dinit:
     3dc4:	02 00 00    	nop       
     3dc6:	82 00 00    	nop       
     3dc8:	e0 00 00    	nop       
-    3dca:	0e 11 00    	nop       
+    3dca:	10 11 00    	nop       
     3dcc:	10 00 00    	nop       
     3dce:	80 00 00    	nop       
     3dd0:	16 08 00    	nop       
@@ -9044,7 +9044,7 @@ Disassembly of section .dinit:
     3ddc:	14 08 00    	nop       
     3dde:	02 00 00    	nop       
     3de0:	80 00 00    	nop       
-    3de2:	f4 10 00    	nop       
+    3de2:	f6 10 00    	nop       
     3de4:	1a 00 00    	nop       
     3de6:	82 00 00    	nop       
     3de8:	68 6a 6c    	xor.b     w8, #0x8, [++w4]
@@ -9056,7 +9056,7 @@ Disassembly of section .dinit:
     3df4:	00 00 20    	mov.w     #0x0, w0
     3df6:	2b 2d 23    	mov.w     #0x32d2, w11
     3df8:	30 00 00    	nop       
-    3dfa:	d2 10 00    	nop       
+    3dfa:	d4 10 00    	nop       
     3dfc:	22 00 00    	nop       
     3dfe:	82 00 00    	nop       
     3e00:	30 31 32    	bra       Z, 0xa062

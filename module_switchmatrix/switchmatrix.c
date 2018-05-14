@@ -67,7 +67,7 @@ int16_t main(void) {
     D1_DIR = OUT;
 
     i2c2_init(157);                      // Initializes I2C on I2C2
-    I2C2ADD = TEST_PERIPHERAL_ADDR>>1;   // Set the device address (7-bit register)
+    I2C2ADD = MODULE_SWITCHES_ADDR>>1;   // Set the device address (7-bit register)
     I2C2MSK = 0;                         // Set mask to 0 (only this address matters)
     _SI2C2IE = 1;                        // Enable i2c slave interrupt
 
