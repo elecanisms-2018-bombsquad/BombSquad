@@ -16,8 +16,8 @@
 #define STRIKE2_GLED      D11
 #define STRIKE3_RLED      D4
 #define STRIKE3_GLED      D5
-#define FLUX_LED          D6 // Blue
-#define EPS_LED           D7 // Red
+#define FLUX_LED          D7 // Blue
+#define EPS_LED           D6 // Red
 #define RTC_LED           D8 // Green
 
 #define max_time 300

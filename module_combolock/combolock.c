@@ -25,7 +25,7 @@ GAME_STATE combo_num;
 
 
 void ledoff(void);
-void dispNumber(uint16_t number);
+void dispNumber(uint16_t number, uint8_t dots);
 
 uint8_t current_display = 0;
 uint8_t previous_display = 0;
@@ -38,6 +38,8 @@ uint16_t eval_reading = 0;
 uint8_t combo1, combo2, combo3;
 uint8_t counter = 0;
 uint8_t tempval = 0;
+
+uint8_t display_dots = 0;
 
 _7SEGMENT matrix;
 
@@ -83,7 +85,7 @@ int16_t main(void) {
     state = setup;
 
     while (1) {
-        dispNumber(eval_reading);
+        dispNumber(eval_reading, display_dots);
         state();
         // LED2 = 1;
     } // end of while
@@ -103,7 +105,7 @@ void firstnum(void){ // turn right 3 times around , right is numbers going down
     LED1 = 1;
     int8_t delta = previous_display - current_display ;
 
-    if ( (delta < -1) && (delta > -20) ) { //catch it if you go backwards
+    if ( (delta < 0) && (delta > -20) ) { //catch it if you go backwards
         counter = 0;
     }
 
@@ -120,6 +122,7 @@ void firstnum(void){ // turn right 3 times around , right is numbers going down
         tempval = 0;
         previous_display = current_display; // so you don't think you went backwards as soon as you enter the state
     }
+    display_dots = (0);
     // U1_putc(1);
     // U1_putc(counter);
     // U1_putc(tempval);
@@ -133,7 +136,6 @@ void firstnum(void){ // turn right 3 times around , right is numbers going down
 void secondnum(void){ // turn left 1 extra time around , left us numbers going up
     ledoff();
     LED2 = 1;
-
     int8_t delta = previous_display - current_display ;
 
     if (current_display == combo2 ){ // set a temp if you get the number to turn past
@@ -151,12 +153,13 @@ void secondnum(void){ // turn left 1 extra time around , left us numbers going u
         previous_display = current_display; // so you don't think you went backwards as soon as you enter the state
 
     }
-    if ( (delta > 1) && (delta < 20) ) {  //catch it if you go backwards
+    if ( (delta > 0) && (delta < 20) ) {  //catch it if you go backwards
         counter = 0;
         tempval = 0;
         combo_num = firstnum;
+        num_strikes++;
     }
-
+    display_dots = (1);
     // U1_putc(2);
     // U1_putc(counter);
     // U1_putc(tempval);
@@ -175,11 +178,12 @@ void thirdnum(void){
         counter = 0;
         state = solved;
     }
-    if ( (delta < -1) && (delta > -20) ) {  //catch it if you go backwards
+    if ( (delta < 0) && (delta > -20) ) {  //catch it if you go backwards
         combo_num = firstnum;
         counter = 0;
+        num_strikes++;
     }
-
+    display_dots = (2);
     // U1_putc(3);
     // U1_putc(counter);
     // U1_putc(tempval);
@@ -200,6 +204,11 @@ void setup(void) { // Waits for master module to start the game
         error_code = 0;
         // setup state here
     }
+
+    /* Combolock rules: first number is sum of all digits in the sn,
+                        second number is number of consonants,
+                        third number is letter index (A = 1, Z = 26) of first vowel
+    */
 
     // Perform state tasks
     // usually this will determine what the combo values are based on the serial number
@@ -253,6 +262,8 @@ void solved(void) { // The puzzle on this module is finished
     }
 
     // Perform state tasks
+    display_dots = 3;
+    dispNumber(15, display_dots);
 
     // Check for state transitions
     if (win_flag == 1) {state = end_win;}
@@ -337,7 +348,7 @@ void ledoff(void) {
 }
 
 
-void dispNumber(uint16_t number) {
+void dispNumber(uint16_t number, uint8_t dots) {
     uint8_t num_new;
     uint8_t thousands, hundreds, tens, ones;
 
@@ -352,9 +363,9 @@ void dispNumber(uint16_t number) {
     // U1_putc(thousands); U1_putc(hundreds); U1_putc(tens); U1_putc(ones);
     // U1_putc('\r'); U1_putc('\n'); U1_flush_tx_buffer();
 
-    sevseg_writeDigitNum(&matrix, 0, 17, 0);
-    sevseg_writeDigitNum(&matrix, 4, 17, 0);
-    sevseg_writeDigitNum(&matrix, 1, tens, 0);
-    sevseg_writeDigitNum(&matrix, 3, ones, 0);
+    sevseg_writeDigitNum(&matrix, 0, 17, (dots > 0) ? 1 : 0);
+    sevseg_writeDigitNum(&matrix, 1, tens, ((dots-1) > 0) ? 1 : 0);
+    sevseg_writeDigitNum(&matrix, 3, ones, ((dots-2) > 0) ? 1 : 0);
+    sevseg_writeDigitNum(&matrix, 4, 17, ((dots-3) > 0) ? 1 : 0);
     led_writeDisplay((_ADAFRUIT_LED*)&matrix.super); //Don't forget to actually write the data!
 }

@@ -6,14 +6,15 @@ void doMorse(char* morse_str);
 
 void dispNumber(uint16_t number);
 
-const char morse_table[14][32] = {
+const char morse_table[15][32] = {
     "... .... . .-.. .-..", //shell
     ".... .- .-.. .-.. ...", //halls
     "... .-.. .. -.-. -.-", //slick
-    "- .-.. .. -.-. -.-", //trick
+    "- .-. .. -.-. -.-", //trick
     "-... --- -..- . ...", //boxes
     ".-.. . .- -.- ...", //leaks
     "... - .-. --- -... .", //strobe
+    "-... .. ... - .-. ---", //bistro
     "..-. .-.. .. -.-. -.-", //flick
     "-... --- -- -... ...", //bombs
     "-... .-. . .- -.-", //break
@@ -23,7 +24,7 @@ const char morse_table[14][32] = {
     "...- . -.-. - --- .-."  //vector
 };
 
-const uint16_t freq_table[14] = {
+const uint16_t freq_table[15] = {
     3505, //shell
     3515, //halls
     3522, //slick
@@ -31,6 +32,7 @@ const uint16_t freq_table[14] = {
     3535, //boxes
     3542, //leaks
     3545, //strobe
+    3552, //bistro
     3555, //flick
     3565, //bombs
     3572, //break

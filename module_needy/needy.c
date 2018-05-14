@@ -4,10 +4,10 @@
 #include "adafruit_led.h"
 #include "ajuart.h"
 
-#define MODULE_LED_RED      D0
-#define MODULE_LED_GREEN    D1
+#define MODULE_LED_RED      D1
+#define MODULE_LED_GREEN    D0
 #define BUZZER_PIN          D13
-#define BUTTON_PIN          D2
+#define BUTTON_PIN          D7
 
 typedef void (*STATE_HANDLER_T)(void);
 
@@ -40,7 +40,7 @@ int16_t main(void) {
     init_elecanisms();
     i2c2_init(157);
     init_ajuart();                      // Initializes I2C on I2C2
-    I2C2ADD = TEST_PERIPHERAL_ADDR>>1;   // Set the device address (7-bit register)
+    I2C2ADD = MODULE_NEEDY_ADDR>>1;   // Set the device address (7-bit register)
     I2C2MSK = 0;                         // Set mask to 0 (only this address matters)
     _SI2C2IE = 1;                        // Enable i2c slave interrupt
 
@@ -50,8 +50,8 @@ int16_t main(void) {
     /* Set up pin directions and pullup */
     D0_DIR = OUT;
     D1_DIR = OUT;
-    D2_DIR = IN;
-    D2_PUE = ON;
+    D7_DIR = IN;
+    D7_PUE = ON;
     D13_DIR = OUT;
 
     /* Timer 1 setup for game timing*/
