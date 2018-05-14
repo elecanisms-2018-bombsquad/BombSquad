@@ -182,13 +182,16 @@ void setup(void) { // Waits for master module to start the game
         MODULE_LED_RED = ON;
         complete_flag = 0;
         num_strikes = 0;
+        start_flag = 0;
         error_code = 0;}
 
-        delay_by_nop(60000);
-        gamestate = check_lists;
+    gamestate = check_lists;
+    checkInitialSwitches();
+    done_striked = 0;
+
+    if ((start_flag == 1) || (SW2 == 0)){
         state = run;
-        checkInitialSwitches();
-        done_striked = 0;
+    }
 
     if (state != last_state) {
         MODULE_LED_RED = OFF; delay_by_nop(1);
