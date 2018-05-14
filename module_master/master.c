@@ -447,10 +447,12 @@ void run(void) {
         // OC1R = prev_r;
         // enable_interrupts();
 
-        // Pulse SFX pin for error sound low
-        D9 = 0;
-        delay_by_nop(100000);
-        D9 = 1; delay_by_nop(1);
+        if (num_strikes < 3) {
+            // Pulse SFX pin for error sound low
+            D9 = 0;
+            delay_by_nop(300000);
+            D9 = 1; delay_by_nop(1);
+        }
     }
     if (num_strikes > 2) {
         for (i = 0; i < 7; i++) {
