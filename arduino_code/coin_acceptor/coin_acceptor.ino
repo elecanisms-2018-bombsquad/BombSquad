@@ -2,6 +2,8 @@
 const int buttonPin = 2;    // the number of the coin acceptor
 const int relayPin = 12;      // the number of the LED pin
 const int lightPin = 7;
+const int resetPin = 8;
+const int resetPinGND = 9;
 
 int relayState = LOW;         // the current state of the output pin
 int buttonState;             // the current reading from the input pin
@@ -17,11 +19,18 @@ void setup() {
   pinMode(buttonPin, INPUT);
   pinMode(relayPin, OUTPUT);
   pinMode(lightPin, OUTPUT);
+  pinMode(resetPinGND, OUTPUT);
+  digitalWrite(resetPinGND, LOW);
+  pinMode(resetPin, INPUT_PULLUP);
   randomSeed(analogRead(0));
   digitalWrite(relayPin, relayState);
 }
 
 void loop() {
+  if (digitalRead(resetPin) == LOW) { // restart button
+    relayState = LOW;
+    return;
+  }
   int reading = digitalRead(buttonPin);
   if (reading != lastButtonState) {
     lastDebounceTime = millis();
