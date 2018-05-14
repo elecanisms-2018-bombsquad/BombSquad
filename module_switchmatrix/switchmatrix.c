@@ -37,7 +37,7 @@ void end_win(void);
 void end_fail(void);
 STATE_HANDLER_T state, last_state;
 
-typedef void (*GAME_STATE)(void);  // the sattes the games goes through
+typedef void (*GAME_STATE)(void);  // the states the games goes through
 void check_lists(void);
 void listonebigger(void);
 void listtwobigger(void);
@@ -100,18 +100,6 @@ void check_lists(void){
         ( ( initial_switches & 0b00100000)  >> 5 ) +      // switch 6: on
         ( ( initial_switches & 0b01000000)  >> 6) ;       // switch 7: on
 
-    // list1sum =
-    //     (  switches & 0b00000001) +             // switch 1: on
-    //     (( switches & 0b00000100) >> 2 ) +      // switch 3: on
-    //     (((~switches) & 0b00001000) >> 3 ) +      // switch 4 : off
-    //     (( switches & 0b10000000) >> 7) ;       // switch 8 : on
-    //
-    // list2sum =
-    //     (((~switches) & 0b00000010) >> 1) +             // switch 2: off
-    //     (((~switches & 0b00010000)) >> 4 ) +      // switch 5: off
-    //     ( ( switches & 0b00100000)  >> 5 ) +      // switch 6: on
-    //     ( ( switches & 0b01000000)  >> 6) ;       // switch 7: on
-
     sprintf(buffer, "[check_lists] IntialSwitches: %x || Switches:%x |  list1: %x | list22: %x ",
                     initial_switches, switches, list1sum, list2sum);
     U1_putc('\r');
@@ -122,11 +110,11 @@ void check_lists(void){
 
     if(list1sum == 0 || list2sum == 0) {gamestate = listsequal;}
 
-    // if (list1sum > list2sum)  { gamestate = listonebigger; }
-    // if (list2sum > list1sum)  { gamestate = listtwobigger; }
-    // if (list1sum == list2sum) { gamestate = listsequal; }
-    // if(list1sum == 0 || list2sum == 0) {gamestate = listsequal;}
-     gamestate = listsequal;
+    if (list1sum > list2sum)  { gamestate = listonebigger; }
+    if (list2sum > list1sum)  { gamestate = listtwobigger; }
+    if (list1sum == list2sum) { gamestate = listsequal; }
+    if(list1sum == 0 || list2sum == 0) {gamestate = listsequal;}
+     // gamestate = listsequal;
 
 }
 
