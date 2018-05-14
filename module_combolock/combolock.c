@@ -41,6 +41,8 @@ uint8_t tempval = 0;
 
 uint8_t display_dots = 0;
 
+char char_buffer[128];
+
 _7SEGMENT matrix;
 
 const uint8_t adafruit_display_addr = 0xE0;
@@ -209,15 +211,35 @@ void setup(void) { // Waits for master module to start the game
                         second number is number of consonants,
                         third number is letter index (A = 1, Z = 26) of first vowel
     */
-
-    // Perform state tasks
-    // usually this will determine what the combo values are based on the serial number
-    // if (serial_number == 1) { combo1 = 5; combo2 = 10; combo3 = 15; }
-    // if (serial_number == 2) { combo1 = 13; combo2 = 7; combo3 = 2; }
-    // if (serial_number == 3) { combo1 = 17; combo2 = 8; combo3 = 20; }
-    combo1 = 5; combo2 = 10; combo3 = 15;
+    /* set combo based on serial number */
+    switch (serial_number) {
+        case 0:
+            combo1 = 18; combo2 = 7; combo3 = 15;
+            break;
+        case 1:
+            combo1 = 14; combo2 = 8; combo3 = 21;
+            break;
+        case 2:
+            combo1 = 9; combo2 = 6; combo3 = 1;
+            break;
+        case 3:
+            combo1 = 10; combo2 = 9; combo3 = 5;
+            break;
+        case 4:
+            combo1 = 26; combo2 = 5; combo3 = 9;
+            break;
+        case 5:
+            combo1 = 22; combo2 = 9; combo3 = 17;
+            break;
+    }
 
     combo_num = firstnum;
+
+    sprintf(char_buffer, "Serial num: %d", serial_number);
+    U1_puts(char_buffer);
+    U1_putc('\r');
+    U1_putc('\n');
+    U1_flush_tx_buffer();
 
     // Check for state transitions
     if (start_flag == 1) {

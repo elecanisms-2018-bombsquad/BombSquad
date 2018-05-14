@@ -46,7 +46,6 @@ uint8_t num_strikes = 0;
 uint8_t prev_num_strikes = 0;
 uint8_t game_complete = 0;
 uint8_t serial_idx = 0;
-uint16_t rand_val;
 
 const uint16_t PWM_PERIOD_2_3 = (uint16_t)(FCY / 2.3e3 - 1.);
 const uint16_t PWM_PERIOD_1_9 = (uint16_t)(FCY / 1.9e3 - 1.);
