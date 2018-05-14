@@ -101,7 +101,12 @@ int16_t main(void) {
         sprintf(buffer, "CURRENT |||  AuxVal (0)%x (1)%x (2)%x (3)%x (4)%x (5)%x || ColorVal (1)%x (2)%x (3)%x (4)%x (5)%x (6)%x  ",
         aux_cables[0], aux_cables[1], aux_cables[2], aux_cables[3], aux_cables[4], aux_cables[5],
         color_vals[1], color_vals[2], color_vals[3], color_vals[4], color_vals[5], color_vals[6]
-    );
+        );
+        U1_putc('\r'); U1_putc('\n');
+        U1_puts((uint8_t*)buffer); U1_flush_tx_buffer();
+        delay_by_nop(100);
+
+        sprintf(buffer, "FLAGS   |||  EPS %x | FLUX %x | RTC %x  ", led_eps, led_flux, led_rtc );
         U1_putc('\r'); U1_putc('\n');
         U1_puts((uint8_t*)buffer); U1_flush_tx_buffer();
         delay_by_nop(100);
@@ -302,9 +307,6 @@ void threewires(void) {
 // If only one is on, unplug any two of the wires. (1)
 // If two are active, unplug any one of the wires. (2)
     uint8_t status_sum;
-    led_eps =  1;
-    led_flux = 1;
-    led_rtc =  1;
     status_sum = led_eps + led_flux + led_rtc;
 
     if(status_sum == 0 || status_sum == 3) {
@@ -377,28 +379,27 @@ void onewires(void)   {
 // If the wire is purple, plug in all the wires except two (4)
 // If the wire is black, pull out the wire. (0)
 
+    update_wires_out();
+    update_color_values();
+
     // red or yellow state
     if(initial_color_vals[6] == 1 || initial_color_vals[4] == 1){
-        update_color_values();
         if(wires_in == 5) {state = solved; }
     }
 
     // orange or blue state
     if(initial_color_vals[5] == 1 || initial_color_vals[3] == 1){
-        update_color_values();
         if(wires_out == 0) {state = solved; }
     }
 
     // purple state
     if(initial_color_vals[2] == 1 ){
-        update_color_values();
-        if(wires_in == 4) {state = solved; }
+        if(wires_out == 2) {state = solved; }
     }
 
     // black state
     if(initial_color_vals[1] == 1){
-        update_color_values();
-        if(wires_in == 0) {state = solved; }
+        if(wires_out == 6) {state = solved; }
     }
 
     sprintf(buffer, "one wires ---------------------------------------");
@@ -412,9 +413,12 @@ void onewires(void)   {
 
 void zerowires(void)  {
     uint8_t num_to_add;
-    if(led_eps) {num_to_add +=1; }
-    if(led_rtc) {num_to_add +=2; }
-    if(led_flux){num_to_add +=3; }
+    num_to_add = 0;
+    if(led_eps == 1) {num_to_add +=1; }
+    if(led_rtc == 1) {num_to_add +=2; }
+    if(led_flux == 1){num_to_add +=3; }
+
+    if(num_to_add == 0){num_to_add = 6; }
 
     update_wires_out();
     if(wires_in == num_to_add){state = solved; }
@@ -446,7 +450,7 @@ void setup(void) { // Waits for master module to start the game
     set_gamestate();
 
     //Check for state transitions
-    state = run;
+    if (start_flag == 1) { state = run;}
 
     // State Cleanup
     if (state != last_state) {
