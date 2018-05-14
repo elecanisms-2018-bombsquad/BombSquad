@@ -98,13 +98,10 @@ int16_t main(void) {
     D7_DIR = 0;
     D8_DIR = 0;
     D9_DIR = 0;
+    D13_DIR = 0;
 
-    // // Setup D8 as input
-    // D8_DIR = 1;
-    // // Set up pull-up resistor on button D8
-    // CNPU4bits.CN54PUE = 1;
-    // // Set D9 as pull-down for button
-    // D9 = 0;
+    D9 = 1; // Write sound effects pins high
+    D13 = 1;
 
     /* Timer 1 setup for game timing*/
     T1CON = 0x0030;         // set Timer1 period to 1s
@@ -440,15 +437,20 @@ void run(void) {
         U1_putc('\r');
         U1_putc('\n');
         U1_flush_tx_buffer();
-        disable_interrupts();
-        prev_rs = OC1RS;
-        prev_r = OC1R;
-        OC1RS = PWM_PERIOD_1;
-        OC1R = OC1RS >> 1; // Make a soise for the strike
-        delay_by_nop(300000);
-        OC1RS = prev_rs;
-        OC1R = prev_r;
-        enable_interrupts();
+        // disable_interrupts();
+        // prev_rs = OC1RS;
+        // prev_r = OC1R;
+        // OC1RS = PWM_PERIOD_1;
+        // OC1R = OC1RS >> 1; // Make a soise for the strike
+        // delay_by_nop(300000);
+        // OC1RS = prev_rs;
+        // OC1R = prev_r;
+        // enable_interrupts();
+
+        // Pulse SFX pin for error sound low
+        D9 = 0;
+        delay_by_nop(30000);
+        D9 = 1; delay_by_nop(1);
     }
     if (num_strikes > 2) {
         for (i = 0; i < 7; i++) {
@@ -498,8 +500,10 @@ void end_fail(void) {
         TMR1 = 0;          // reset timer register
         T1CONbits.TON = 1; // enable 1 second timer
 
-        OC1RS = PWM_PERIOD_40;
-        OC1R = OC1RS>>1; // start beep
+        // OC1RS = PWM_PERIOD_40;
+        // OC1R = OC1RS>>1; // start beep
+        /* Pulse SFX pin low for bomb sound */
+        D13 = 0; delay_by_nop(300000); D13 = 1; delay_by_nop(1);
 
         STRIKE1_RLED = ON; delay_by_nop(1); // Turn on strike LEDs red
         STRIKE2_RLED = ON; delay_by_nop(1);
